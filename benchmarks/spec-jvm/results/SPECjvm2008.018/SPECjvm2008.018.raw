@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<specjvm-result>
+  <workload>SPECjvm2008 Base</workload>
+  <suite-build-version>SPECjvm2008 1.01 (20090519)</suite-build-version>
+  <run-info>
+    <spec.jvm2008.report.run.location>n/a</spec.jvm2008.report.run.location>
+    <spec.jvm2008.report.run.submitter.url>n/a</spec.jvm2008.report.run.submitter.url>
+    <spec.jvm2008.report.run.license>n/a</spec.jvm2008.report.run.license>
+    <spec.jvm2008.report.run.tester>aditya</spec.jvm2008.report.run.tester>
+    <spec.jvm2008.report.run.date>Sat Oct 08 16:51:30 IST 2022</spec.jvm2008.report.run.date>
+    <spec.jvm2008.report.run.submitter>n/a</spec.jvm2008.report.run.submitter>
+  </run-info>
+  <jvm-info>
+    <spec.jvm2008.report.jvm.vendor>Ubuntu</spec.jvm2008.report.jvm.vendor>
+    <spec.jvm2008.report.jvm.startup.launcher>default</spec.jvm2008.report.jvm.startup.launcher>
+    <spec.jvm2008.report.jvm.other.tuning> </spec.jvm2008.report.jvm.other.tuning>
+    <spec.jvm2008.report.jvm.vendor.url>https://ubuntu.com/</spec.jvm2008.report.jvm.vendor.url>
+    <spec.jvm2008.report.jvm.command.line.max.heap.size>n/a</spec.jvm2008.report.jvm.command.line.max.heap.size>
+    <spec.jvm2008.report.jvm.version>11.0.16+8-post-Ubuntu-0ubuntu122.04 mixed mode, sharing</spec.jvm2008.report.jvm.version>
+    <spec.jvm2008.report.jvm.command.line>n/a</spec.jvm2008.report.jvm.command.line>
+    <spec.jvm2008.report.jvm.command.line.initial.heap.size>n/a</spec.jvm2008.report.jvm.command.line.initial.heap.size>
+    <spec.jvm2008.report.jvm.boot.class.path>n/a</spec.jvm2008.report.jvm.boot.class.path>
+    <spec.jvm2008.report.jvm.name>OpenJDK 64-Bit Server VM</spec.jvm2008.report.jvm.name>
+    <spec.jvm2008.report.jvm.app.class.path>SPECjvm2008.jar</spec.jvm2008.report.jvm.app.class.path>
+    <spec.jvm2008.report.jvm.available.date>n/a</spec.jvm2008.report.jvm.available.date>
+    <spec.jvm2008.report.jvm.java.specification>11</spec.jvm2008.report.jvm.java.specification>
+    <spec.jvm2008.report.jvm.address.bits>64</spec.jvm2008.report.jvm.address.bits>
+    <spec.jvm2008.report.jvm.startup.command.line> </spec.jvm2008.report.jvm.startup.command.line>
+  </jvm-info>
+  <sw-info>
+    <spec.jvm2008.report.sw.other.available> </spec.jvm2008.report.sw.other.available>
+    <spec.jvm2008.report.os.tuning> </spec.jvm2008.report.os.tuning>
+    <spec.jvm2008.report.sw.filesystem>n/a</spec.jvm2008.report.sw.filesystem>
+    <spec.jvm2008.report.os.available.date>n/a</spec.jvm2008.report.os.available.date>
+    <spec.jvm2008.report.sw.other.tuning> </spec.jvm2008.report.sw.other.tuning>
+    <spec.jvm2008.report.os.address.bits>n/a</spec.jvm2008.report.os.address.bits>
+    <spec.jvm2008.report.sw.other.name> </spec.jvm2008.report.sw.other.name>
+    <spec.jvm2008.report.os.name>Linux</spec.jvm2008.report.os.name>
+  </sw-info>
+  <hw-info>
+    <spec.jvm2008.report.hw.available>n/a</spec.jvm2008.report.hw.available>
+    <spec.jvm2008.report.hw.vendor.url>n/a</spec.jvm2008.report.hw.vendor.url>
+    <spec.jvm2008.report.hw.number.of.cores.per.chip>n/a</spec.jvm2008.report.hw.number.of.cores.per.chip>
+    <spec.jvm2008.report.hw.address.bits>n/a</spec.jvm2008.report.hw.address.bits>
+    <spec.jvm2008.report.hw.cpu.speed>n/a</spec.jvm2008.report.hw.cpu.speed>
+    <spec.jvm2008.report.hw.cpu.cache.other>n/a</spec.jvm2008.report.hw.cpu.cache.other>
+    <spec.jvm2008.report.hw.cpu.vendor.url>n/a</spec.jvm2008.report.hw.cpu.vendor.url>
+    <spec.jvm2008.report.hw.cpu.cache.l2>n/a</spec.jvm2008.report.hw.cpu.cache.l2>
+    <spec.jvm2008.report.hw.cpu.cache.l1>n/a</spec.jvm2008.report.hw.cpu.cache.l1>
+    <spec.jvm2008.report.hw.logical.cpus>n/a</spec.jvm2008.report.hw.logical.cpus>
+    <spec.jvm2008.report.hw.number.of.chips>n/a</spec.jvm2008.report.hw.number.of.chips>
+    <spec.jvm2008.report.hw.memory.details>n/a</spec.jvm2008.report.hw.memory.details>
+    <spec.jvm2008.report.hw.details.other>n/a</spec.jvm2008.report.hw.details.other>
+    <spec.jvm2008.report.hw.cpu.vendor>n/a</spec.jvm2008.report.hw.cpu.vendor>
+    <spec.jvm2008.report.hw.model>n/a</spec.jvm2008.report.hw.model>
+    <spec.jvm2008.report.hw.number.of.cores>n/a</spec.jvm2008.report.hw.number.of.cores>
+    <spec.jvm2008.report.hw.memory.size>n/a</spec.jvm2008.report.hw.memory.size>
+    <spec.jvm2008.report.hw.vendor>n/a</spec.jvm2008.report.hw.vendor>
+    <spec.jvm2008.report.hw.cpu.name>n/a</spec.jvm2008.report.hw.cpu.name>
+    <spec.jvm2008.report.hw.threading.enabled>n/a</spec.jvm2008.report.hw.threading.enabled>
+    <spec.jvm2008.report.hw.threads.per.core>n/a</spec.jvm2008.report.hw.threads.per.core>
+  </hw-info>
+  <violations>
+    <violation>Not a compliant sequence of benchmarks for publication.</violation>
+  </violations>
+  <benchmark-results>
+    <benchmark-result
+      name="check"
+      category="null"
+      args=""
+      minIter="1"
+      maxIter="1"
+      numberBmThreads="1"
+      numberOfLoops="1"
+      bmType="functional"
+      runMode="1">
+      <warmup-result>
+    </warmup-result>
+    <iterations>
+      <iteration-result
+        iteration="1"
+        expectedLoops="1"
+        startTime="1665228099147"
+        endTime="1665228099146"
+        operations="1.0">
+        <errors>
+          <error>Interrupted when joining benchmark thread 0: null</error>
+          <error>java.lang.InterruptedException: null
+java.base/java.lang.Object.wait(Native Method)
+java.base/java.lang.Thread.join(Thread.java:1300)
+java.base/java.lang.Thread.join(Thread.java:1375)
+spec.harness.ProgramRunner.runIteration(ProgramRunner.java:504)
+spec.harness.ProgramRunner.runBenchmark(ProgramRunner.java:348)
+spec.harness.ProgramRunner.run(ProgramRunner.java:98)
+</error>
+          <error>Iteration failed.</error>
+        </errors>
+        <loops>
+          <loop-result bmThreadId="1" loopCnt="1" startTime="1665228099148" endTime="1665228099182">
+            <errors>
+              <error>Validation failure on line 9.
+    Expected output: 
+    [008] 2nd bounds test:	OK
+    [009] testIf:     OK
+    [010] testArray:  OK
+    [011] testBitOps: OK
+    [012] testFor:    OK
+    [013] testDiv:    OK
+    [014] ...
+
+    Received output: 
+    [008] 2nd bounds test:	OK
+    [009] Compiler version test:	failed
+    [010] testIf:     OK
+    [011] testArray:  OK
+    [012] testBitOps: OK
+    [013] testFor:    OK
+    [014] ...
+
+Complete output: /home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/results/SPECjvm2008.018/check.bt1.i1.op1.error.log
+Validation file: /home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/resources/check/validity.check.dat
+
+</error>
+            </errors>
+          </loop-result>
+        </loops>
+        <analyzers>
+        </analyzers>
+        <analyzer-results>
+        </analyzer-results>
+      </iteration-result>
+    </iterations>
+    </benchmark-result>
+  </benchmark-results>
+</specjvm-result>

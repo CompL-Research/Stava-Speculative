@@ -1,0 +1,2 @@
+Main.main([Ljava/lang/String;)V [0, 8]
+A.foo(LB;)V [0]

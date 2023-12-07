@@ -1,0 +1,2 @@
+Main.fb(LNode;)V [0]
+Main.main([Ljava/lang/String;)V [0, 8]

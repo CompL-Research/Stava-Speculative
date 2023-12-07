@@ -1,0 +1,60 @@
+===== DaCapo 9.12-MR1 sunflow starting =====
+===== DaCapo 9.12-MR1 sunflow PASSED in 8493 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1163 |   __   0 __
+  1: AllocationStatistics/Heap                |         1135 |     97.59% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           28 |      2.41% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     62649967 |   __   0 __
+  1: AllocationStatistics/Heap                |     60320865 |     96.28% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      2329102 |      3.72% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 sunflow starting =====
+===== DaCapo 9.12-MR1 sunflow PASSED in 8432 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1190 |   __   0 __
+  1: AllocationStatistics/Heap                |         1179 |     99.08% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           11 |      0.92% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     61718482 |   __   0 __
+  1: AllocationStatistics/Heap                |     61718480 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 sunflow starting =====
+===== DaCapo 9.12-MR1 sunflow PASSED in 8342 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1181 |   __   0 __
+  1: AllocationStatistics/Heap                |         1153 |     97.63% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           28 |      2.37% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     62730505 |   __   0 __
+  1: AllocationStatistics/Heap                |     60200023 |     95.97% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      2530482 |      4.03% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 sunflow starting =====
+===== DaCapo 9.12-MR1 sunflow PASSED in 8023 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1162 |   __   0 __
+  1: AllocationStatistics/Heap                |         1151 |     99.05% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           11 |      0.95% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     61718313 |   __   0 __
+  1: AllocationStatistics/Heap                |     61718311 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 sunflow starting =====
+===== DaCapo 9.12-MR1 sunflow PASSED in 7807 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1164 |   __   0 __
+  1: AllocationStatistics/Heap                |         1136 |     97.59% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           28 |      2.41% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     62705011 |   __   0 __
+  1: AllocationStatistics/Heap                |     60290149 |     96.15% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      2414862 |      3.85% |   100.00% |  __   3 __

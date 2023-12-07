@@ -1,0 +1,54 @@
+===== DaCapo 9.12-MR1 luindex starting =====
+===== DaCapo 9.12-MR1 luindex PASSED in 2130 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1277 |   __   0 __
+  1: AllocationStatistics/Heap             |         1275 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            2 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |       157705 |    100.00% |  __   1 __
+===== DaCapo 9.12-MR1 luindex starting =====
+===== DaCapo 9.12-MR1 luindex PASSED in 2150 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1261 |   __   0 __
+  1: AllocationStatistics/Heap             |         1259 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            2 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                  |       153987 |   __   0 __
+  1: AllocationStatistics/Heap             |       153289 |     99.55% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |          698 |      0.45% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 luindex starting =====
+===== DaCapo 9.12-MR1 luindex PASSED in 2168 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1268 |   __   0 __
+  1: AllocationStatistics/Heap             |         1265 |     99.76% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            3 |      0.24% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |       158344 |    100.00% |  __   1 __
+===== DaCapo 9.12-MR1 luindex starting =====
+===== DaCapo 9.12-MR1 luindex PASSED in 2155 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1272 |   __   0 __
+  1: AllocationStatistics/Heap             |         1268 |     99.69% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            4 |      0.31% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |       153501 |    100.00% |  __   1 __
+===== DaCapo 9.12-MR1 luindex starting =====
+===== DaCapo 9.12-MR1 luindex PASSED in 2098 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1249 |   __   0 __
+  1: AllocationStatistics/Heap             |         1248 |     99.92% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            1 |      0.08% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                  |       154019 |   __   0 __
+  1: AllocationStatistics/Heap             |       152800 |     99.21% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |         1219 |      0.79% |   100.00% |  __   3 __

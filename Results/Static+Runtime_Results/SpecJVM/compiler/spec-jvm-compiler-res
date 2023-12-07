@@ -1,0 +1,243 @@
+An exception has occurred in the compiler (1.7.0-opensource). Please file a bug at the Java Developer Connection (http://java.sun.com/webapps/bugreport)  after checking the Bug Parade for duplicates. Include your program and the following diagnostic in your report.  Thank you.
+java.lang.NullPointerException
+	at com.sun.tools.javac.comp.Resolve.argumentsAcceptable(Resolve.java:377)
+	at com.sun.tools.javac.comp.Resolve.rawInstantiate(Resolve.java:334)
+	at com.sun.tools.javac.comp.Resolve.selectBest(Resolve.java:557)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:747)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:713)
+	at com.sun.tools.javac.comp.Resolve.findFun(Resolve.java:793)
+	at com.sun.tools.javac.comp.Resolve.resolveMethod(Resolve.java:1190)
+	at com.sun.tools.javac.comp.Attr.visitIdent(Attr.java:1755)
+	at com.sun.tools.javac.tree.JCTree$JCIdent.accept(JCTree.java:1680)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:390)
+	at com.sun.tools.javac.comp.Attr.visitApply(Attr.java:1288)
+	at com.sun.tools.javac.tree.JCTree$JCMethodInvocation.accept(JCTree.java:1297)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribArgs(Attr.java:434)
+	at com.sun.tools.javac.comp.Attr.visitApply(Attr.java:1280)
+	at com.sun.tools.javac.tree.JCTree$JCMethodInvocation.accept(JCTree.java:1297)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:390)
+	at com.sun.tools.javac.comp.Attr.visitReturn(Attr.java:1161)
+	at com.sun.tools.javac.tree.JCTree$JCReturn.accept(JCTree.java:1216)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribStats(Attr.java:426)
+	at com.sun.tools.javac.comp.Attr.visitBlock(Attr.java:762)
+	at com.sun.tools.javac.tree.JCTree$JCBlock.accept(JCTree.java:766)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.visitMethodDef(Attr.java:681)
+	at com.sun.tools.javac.tree.JCTree$JCMethodDecl.accept(JCTree.java:654)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.main.JavaCompiler.attribute(JavaCompiler.java:1052)
+	at com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:781)
+	at com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:746)
+	at com.sun.tools.javac.main.Main.compile(Main.java:381)
+	at com.sun.tools.javac.main.Main.compile(Main.java:307)
+	at spec.benchmarks.compiler.Compiler.compile(Compiler.java:32)
+	at spec.benchmarks.compiler.MainBase.harnessMain(MainBase.java:53)
+	at spec.harness.BenchmarkThread.runLoop(BenchmarkThread.java:170)
+	at spec.harness.BenchmarkThread.executeIteration(BenchmarkThread.java:82)
+	at spec.harness.BenchmarkThread.run(BenchmarkThread.java:59)
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         5732 |   __   0 __
+  1: AllocationStatistics/Heap                |         5505 |     96.04% |  __   1 __
+  2: AllocationStatistics/Stack               |          227 |      3.96% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |           37 |      0.65% |    16.30% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |          190 |      3.31% |    83.70% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      6254962 |   __   0 __
+  1: AllocationStatistics/Heap                |      5813614 |     92.94% |  __   1 __
+  2: AllocationStatistics/Stack               |       441348 |      7.06% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |         2267 |      0.04% |     0.51% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |       439081 |      7.02% |    99.49% |  __   4 __
+Object 000000000035A0F8 not in heap range [000000070AC30000,0000000800000000)
+11:22:40.073 0x113f00    j9mm.141    *   ** ASSERTION FAILED ** at /openj9-openjdk-jdk8/openj9-openjdk-jdk8/omr/gc/base/MarkingScheme.hpp:71: ((false))
+JVMDUMP039I Processing dump event "traceassert", detail "" at 2022/10/07 16:52:40 - please wait.
+JVMDUMP032I JVM requested System dump using '/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/core.20221007.165240.28416.0001.dmp' in response to an event
+JVMPORT030W /proc/sys/kernel/core_pattern setting "|/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -- %E" specifies that the core dump is to be piped to an external program.  Attempting to rename either core or core.28476.
+
+JVMDUMP012E Error in System dump: The core file created by child process with pid = 28476 was not found. Expected to find core file with name "/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/core.28476"
+JVMDUMP032I JVM requested Java dump using '/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/javacore.20221007.165240.28416.0002.txt' in response to an event
+JVMDUMP010I Java dump written to /home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/javacore.20221007.165240.28416.0002.txt
+JVMDUMP032I JVM requested Snap dump using '/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/Snap.20221007.165240.28416.0003.trc' in response to an event
+JVMDUMP010I Snap dump written to /home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/spec-jvm/Snap.20221007.165240.28416.0003.trc
+JVMDUMP013I Processed dump event "traceassert", detail "".
+An exception has occurred in the compiler (1.7.0-opensource). Please file a bug at the Java Developer Connection (http://java.sun.com/webapps/bugreport)  after checking the Bug Parade for duplicates. Include your program and the following diagnostic in your report.  Thank you.
+java.lang.NullPointerException
+	at com.sun.tools.javac.comp.Resolve.rawInstantiate(Resolve.java:323)
+	at com.sun.tools.javac.comp.Resolve.selectBest(Resolve.java:557)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:747)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:713)
+	at com.sun.tools.javac.comp.Resolve.resolveConstructor(Resolve.java:1294)
+	at com.sun.tools.javac.comp.Resolve.resolveConstructor(Resolve.java:1266)
+	at com.sun.tools.javac.comp.Attr.visitNewClass(Attr.java:1455)
+	at com.sun.tools.javac.tree.JCTree$JCNewClass.accept(JCTree.java:1347)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:390)
+	at com.sun.tools.javac.comp.Attr.visitVarDef(Attr.java:730)
+	at com.sun.tools.javac.tree.JCTree$JCVariableDecl.accept(JCTree.java:710)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.comp.Attr.visitClassDef(Attr.java:572)
+	at com.sun.tools.javac.tree.JCTree$JCClassDecl.accept(JCTree.java:586)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.main.JavaCompiler.attribute(JavaCompiler.java:1052)
+	at com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:781)
+	at com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:746)
+	at com.sun.tools.javac.main.Main.compile(Main.java:381)
+	at com.sun.tools.javac.main.Main.compile(Main.java:307)
+	at spec.benchmarks.compiler.Compiler.compile(Compiler.java:32)
+	at spec.benchmarks.compiler.MainBase.harnessMain(MainBase.java:53)
+	at spec.harness.BenchmarkThread.runLoop(BenchmarkThread.java:170)
+	at spec.harness.BenchmarkThread.executeIteration(BenchmarkThread.java:82)
+	at spec.harness.BenchmarkThread.run(BenchmarkThread.java:59)
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         5792 |   __   0 __
+  1: AllocationStatistics/Heap                |         5557 |     95.94% |  __   1 __
+  2: AllocationStatistics/Stack               |          235 |      4.06% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |           39 |      0.67% |    16.60% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |          196 |      3.38% |    83.40% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      7577185 |   __   0 __
+  1: AllocationStatistics/Heap                |      7017304 |     92.61% |  __   1 __
+  2: AllocationStatistics/Stack               |       559881 |      7.39% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |         2951 |      0.04% |     0.53% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |       556930 |      7.35% |    99.47% |  __   4 __
+An exception has occurred in the compiler (1.7.0-opensource). Please file a bug at the Java Developer Connection (http://java.sun.com/webapps/bugreport)  after checking the Bug Parade for duplicates. Include your program and the following diagnostic in your report.  Thank you.
+java.lang.ClassCastException: com.sun.tools.javac.tree.JCTree$JCFieldAccess incompatible with com.sun.tools.javac.code.Type
+	at com.sun.tools.javac.comp.Resolve.rawInstantiate(Resolve.java:323)
+	at com.sun.tools.javac.comp.Resolve.selectBest(Resolve.java:557)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:747)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:713)
+	at com.sun.tools.javac.comp.Resolve.resolveConstructor(Resolve.java:1294)
+	at com.sun.tools.javac.comp.Resolve.resolveConstructor(Resolve.java:1266)
+	at com.sun.tools.javac.comp.Attr.visitNewClass(Attr.java:1455)
+	at com.sun.tools.javac.tree.JCTree$JCNewClass.accept(JCTree.java:1347)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:397)
+	at com.sun.tools.javac.comp.Attr.visitForeachLoop(Attr.java:796)
+	at com.sun.tools.javac.tree.JCTree$JCEnhancedForLoop.accept(JCTree.java:892)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.visitIf(Attr.java:1056)
+	at com.sun.tools.javac.tree.JCTree$JCIf.accept(JCTree.java:1116)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribStats(Attr.java:426)
+	at com.sun.tools.javac.comp.Attr.visitBlock(Attr.java:762)
+	at com.sun.tools.javac.tree.JCTree$JCBlock.accept(JCTree.java:766)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.visitMethodDef(Attr.java:681)
+	at com.sun.tools.javac.tree.JCTree$JCMethodDecl.accept(JCTree.java:654)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.comp.Attr.visitClassDef(Attr.java:572)
+	at com.sun.tools.javac.tree.JCTree$JCClassDecl.accept(JCTree.java:586)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.main.JavaCompiler.attribute(JavaCompiler.java:1052)
+	at com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:781)
+	at com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:746)
+	at com.sun.tools.javac.main.Main.compile(Main.java:381)
+	at com.sun.tools.javac.main.Main.compile(Main.java:307)
+	at spec.benchmarks.compiler.Compiler.compile(Compiler.java:32)
+	at spec.benchmarks.compiler.MainBase.harnessMain(MainBase.java:53)
+	at spec.harness.BenchmarkThread.runLoop(BenchmarkThread.java:170)
+	at spec.harness.BenchmarkThread.executeIteration(BenchmarkThread.java:82)
+	at spec.harness.BenchmarkThread.run(BenchmarkThread.java:59)
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         5753 |   __   0 __
+  1: AllocationStatistics/Heap                |         5524 |     96.02% |  __   1 __
+  2: AllocationStatistics/Stack               |          229 |      3.98% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |           39 |      0.68% |    17.03% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |          190 |      3.30% |    82.97% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      6175456 |   __   0 __
+  1: AllocationStatistics/Heap                |      5734910 |     92.87% |  __   1 __
+  2: AllocationStatistics/Stack               |       440546 |      7.13% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |         2284 |      0.04% |     0.52% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |       438262 |      7.10% |    99.48% |  __   4 __
+An exception has occurred in the compiler (1.7.0-opensource). Please file a bug at the Java Developer Connection (http://java.sun.com/webapps/bugreport)  after checking the Bug Parade for duplicates. Include your program and the following diagnostic in your report.  Thank you.
+java.lang.NullPointerException
+	at com.sun.tools.javac.comp.Resolve.argumentsAcceptable(Resolve.java:377)
+	at com.sun.tools.javac.comp.Resolve.rawInstantiate(Resolve.java:334)
+	at com.sun.tools.javac.comp.Resolve.selectBest(Resolve.java:557)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:747)
+	at com.sun.tools.javac.comp.Resolve.findMethod(Resolve.java:713)
+	at com.sun.tools.javac.comp.Resolve.resolveQualifiedMethod(Resolve.java:1215)
+	at com.sun.tools.javac.comp.Attr.selectSym(Attr.java:1973)
+	at com.sun.tools.javac.comp.Attr.visitSelect(Attr.java:1881)
+	at com.sun.tools.javac.tree.JCTree$JCFieldAccess.accept(JCTree.java:1652)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:390)
+	at com.sun.tools.javac.comp.Attr.visitApply(Attr.java:1288)
+	at com.sun.tools.javac.tree.JCTree$JCMethodInvocation.accept(JCTree.java:1297)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribExpr(Attr.java:390)
+	at com.sun.tools.javac.comp.Attr.visitIf(Attr.java:1055)
+	at com.sun.tools.javac.tree.JCTree$JCIf.accept(JCTree.java:1116)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribStats(Attr.java:426)
+	at com.sun.tools.javac.comp.Attr.visitBlock(Attr.java:762)
+	at com.sun.tools.javac.tree.JCTree$JCBlock.accept(JCTree.java:766)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.visitMethodDef(Attr.java:681)
+	at com.sun.tools.javac.tree.JCTree$JCMethodDecl.accept(JCTree.java:654)
+	at com.sun.tools.javac.comp.Attr.attribTree(Attr.java:373)
+	at com.sun.tools.javac.comp.Attr.attribStat(Attr.java:410)
+	at com.sun.tools.javac.comp.Attr.attribClassBody(Attr.java:2741)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2667)
+	at com.sun.tools.javac.comp.Attr.attribClass(Attr.java:2603)
+	at com.sun.tools.javac.main.JavaCompiler.attribute(JavaCompiler.java:1052)
+	at com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:781)
+	at com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:746)
+	at com.sun.tools.javac.main.Main.compile(Main.java:381)
+	at com.sun.tools.javac.main.Main.compile(Main.java:307)
+	at spec.benchmarks.compiler.Compiler.compile(Compiler.java:32)
+	at spec.benchmarks.compiler.MainBase.harnessMain(MainBase.java:53)
+	at spec.harness.BenchmarkThread.runLoop(BenchmarkThread.java:170)
+	at spec.harness.BenchmarkThread.executeIteration(BenchmarkThread.java:82)
+	at spec.harness.BenchmarkThread.run(BenchmarkThread.java:59)
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         5757 |   __   0 __
+  1: AllocationStatistics/Heap                |         5520 |     95.88% |  __   1 __
+  2: AllocationStatistics/Stack               |          237 |      4.12% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |           41 |      0.71% |    17.30% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |          196 |      3.40% |    82.70% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      8246419 |   __   0 __
+  1: AllocationStatistics/Heap                |      7633555 |     92.57% |  __   1 __
+  2: AllocationStatistics/Stack               |       612864 |      7.43% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |        15566 |      0.19% |     2.54% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |       597298 |      7.24% |    97.46% |  __   4 __

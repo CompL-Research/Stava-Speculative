@@ -1,0 +1,2 @@
+Main.main([Ljava/lang/String;)V [0, 8, 21, 35]
+Main.bar(LNode;)V [0, 8]

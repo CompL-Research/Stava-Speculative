@@ -1,0 +1,4 @@
+Main.<init>()V [] []
+Main.foo(LNode;)V [] []
+Node.<init>()V [] []
+Main.main([Ljava/lang/String;)V [0] []

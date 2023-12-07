@@ -1,0 +1,21 @@
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         3102 |   __   0 __
+  1: AllocationStatistics/Heap                |         3050 |     98.32% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           52 |      1.68% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |  19361744528 |   __   0 __
+  1: AllocationStatistics/Heap                |  19290660863 |     99.63% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |     71083665 |      0.37% |   100.00% |  __   3 __
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2971 |   __   0 __
+  1: AllocationStatistics/Heap                |         2921 |     98.32% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           50 |      1.68% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |  17531985489 |   __   0 __
+  1: AllocationStatistics/Heap                |  17451931853 |     99.54% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |     80053636 |      0.46% |   100.00% |  __   3 __
+

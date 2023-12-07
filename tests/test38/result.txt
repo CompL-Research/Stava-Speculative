@@ -1,0 +1,6 @@
+Main.<init>()V [] []
+Main.func(LNode;)V [0] []
+Node.<init>()V [] []
+Main.foo(LNode;)V [0] [{9<Main.bar(LNode;)V[0]>}]
+Main.main([Ljava/lang/String;)V [8] [{17<Main.foo(LNode;)V[0]>},{25<Main.func(LNode;)V[0]>}]
+Main.bar(LNode;)V [] []

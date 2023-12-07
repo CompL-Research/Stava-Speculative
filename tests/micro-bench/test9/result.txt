@@ -1,0 +1,1 @@
+Main.main([Ljava/lang/String;)V [0, 8, 16, 24]

@@ -1,0 +1,60 @@
+===== DaCapo 9.12-MR1 xalan starting =====
+===== DaCapo 9.12-MR1 xalan PASSED in 5188 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2534 |   __   0 __
+  1: AllocationStatistics/Heap                |         2529 |     99.80% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            5 |      0.20% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      8352961 |   __   0 __
+  1: AllocationStatistics/Heap                |      8352958 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 xalan starting =====
+===== DaCapo 9.12-MR1 xalan PASSED in 5167 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2576 |   __   0 __
+  1: AllocationStatistics/Heap                |         2572 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      8029326 |   __   0 __
+  1: AllocationStatistics/Heap                |      8029323 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 xalan starting =====
+===== DaCapo 9.12-MR1 xalan PASSED in 5112 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2529 |   __   0 __
+  1: AllocationStatistics/Heap                |         2525 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      7372644 |   __   0 __
+  1: AllocationStatistics/Heap                |      7372641 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 xalan starting =====
+===== DaCapo 9.12-MR1 xalan PASSED in 5254 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2558 |   __   0 __
+  1: AllocationStatistics/Heap                |         2554 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      7588234 |   __   0 __
+  1: AllocationStatistics/Heap                |      7588231 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 xalan starting =====
+===== DaCapo 9.12-MR1 xalan PASSED in 5080 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2514 |   __   0 __
+  1: AllocationStatistics/Heap                |         2510 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      7782369 |   __   0 __
+  1: AllocationStatistics/Heap                |      7782366 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |   100.00% |  __   3 __

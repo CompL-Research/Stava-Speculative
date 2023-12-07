@@ -1,0 +1,235 @@
+Compiled from "ProgramRunner.java"
+public class spec.harness.ProgramRunner extends java.lang.Thread {
+  public spec.harness.results.BenchmarkResult bmResult;
+
+  public spec.harness.BenchmarkThread[] bmts;
+
+  public spec.harness.ProgramRunner(spec.harness.results.BenchmarkResult, int);
+    Code:
+       0: aload_0
+       1: new           #1                  // class java/lang/StringBuilder
+       4: dup
+       5: invokespecial #2                  // Method java/lang/StringBuilder."<init>":()V
+       8: ldc           #3                  // String Program Runner for
+      10: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      13: aload_1
+      14: invokevirtual #5                  // Method spec/harness/results/BenchmarkResult.getLogicalName:()Ljava/lang/String;
+      17: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      20: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      23: invokespecial #7                  // Method java/lang/Thread."<init>":(Ljava/lang/String;)V
+      26: aload_0
+      27: aconst_null
+      28: putfield      #8                  // Field bmClass:Ljava/lang/Class;
+      31: aload_0
+      32: aconst_null
+      33: putfield      #9                  // Field bmConstructor:Ljava/lang/reflect/Constructor;
+      36: aload_0
+      37: aconst_null
+      38: putfield      #10                 // Field bmSetupBenchmarkMethod:Ljava/lang/reflect/Method;
+      41: aload_0
+      42: aconst_null
+      43: putfield      #11                 // Field bmSetupIterationMethod:Ljava/lang/reflect/Method;
+      46: aload_0
+      47: aconst_null
+      48: putfield      #12                 // Field bmTearDownIterationMethod:Ljava/lang/reflect/Method;
+      51: aload_0
+      52: aconst_null
+      53: putfield      #13                 // Field bmTearDownBenchmarkMethod:Ljava/lang/reflect/Method;
+      56: aload_0
+      57: aconst_null
+      58: putfield      #14                 // Field bmTestTypeMethod:Ljava/lang/reflect/Method;
+      61: aload_0
+      62: iconst_0
+      63: putfield      #15                 // Field isInterrupted:Z
+      66: aload_0
+      67: aload_1
+      68: putfield      #16                 // Field bmResult:Lspec/harness/results/BenchmarkResult;
+      71: iload_2
+      72: iconst_2
+      73: if_icmpne     81
+      76: aload_0
+      77: iconst_1
+      78: putfield      #17                 // Field isStartup:Z
+      81: aload_0
+      82: putstatic     #18                 // Field myself:Lspec/harness/ProgramRunner;
+      85: aload_0
+      86: invokespecial #19                 // Method setupBenchmarkMethods:()Z
+      89: pop
+      90: return
+
+  public static void setPrintProgress(boolean);
+    Code:
+       0: iload_0
+       1: putstatic     #20                 // Field printProgress:Z
+       4: return
+
+  public void run();
+    Code:
+       0: invokestatic  #21                 // Method spec/harness/Context.getVerify:()Z
+       3: istore_1
+       4: aload_0
+       5: getfield      #17                 // Field isStartup:Z
+       8: ifeq          15
+      11: iconst_0
+      12: invokestatic  #22                 // Method spec/harness/Context.setVerify:(Z)V
+      15: aload_0
+      16: invokespecial #23                 // Method runBenchmark:()Z
+      19: pop
+      20: aload_0
+      21: getfield      #17                 // Field isStartup:Z
+      24: ifeq          31
+      27: iload_1
+      28: invokestatic  #22                 // Method spec/harness/Context.setVerify:(Z)V
+      31: return
+
+  public static java.lang.String getStackTraceAsString(java.lang.Throwable);
+    Code:
+       0: new           #1                  // class java/lang/StringBuilder
+       3: dup
+       4: new           #1                  // class java/lang/StringBuilder
+       7: dup
+       8: invokespecial #2                  // Method java/lang/StringBuilder."<init>":()V
+      11: aload_0
+      12: invokevirtual #169                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: invokevirtual #64                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      18: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      21: ldc           #170                // String :
+      23: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      26: aload_0
+      27: invokevirtual #171                // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+      30: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      33: ldc           #216                // String \n
+      35: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      38: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      41: invokespecial #230                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      44: astore_1
+      45: aload_0
+      46: invokevirtual #231                // Method java/lang/Throwable.getStackTrace:()[Ljava/lang/StackTraceElement;
+      49: astore_2
+      50: iconst_0
+      51: istore_3
+      52: iload_3
+      53: aload_2
+      54: arraylength
+      55: if_icmpge     93
+      58: aload_1
+      59: new           #1                  // class java/lang/StringBuilder
+      62: dup
+      63: invokespecial #2                  // Method java/lang/StringBuilder."<init>":()V
+      66: aload_2
+      67: iload_3
+      68: aaload
+      69: invokevirtual #232                // Method java/lang/StackTraceElement.toString:()Ljava/lang/String;
+      72: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      75: ldc           #216                // String \n
+      77: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      80: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      83: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      86: pop
+      87: iinc          3, 1
+      90: goto          52
+      93: aload_1
+      94: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      97: areturn
+
+  public static int getNoBmHarnessThreads(spec.harness.results.BenchmarkResult);
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: invokevirtual #94                 // Method spec/harness/results/BenchmarkResult.getBmType:()Ljava/lang/String;
+       6: ldc           #233                // String multi
+       8: invokevirtual #77                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      11: ifeq          22
+      14: aload_0
+      15: invokevirtual #95                 // Method spec/harness/results/BenchmarkResult.getNumberBmThreads:()I
+      18: istore_1
+      19: goto          86
+      22: aload_0
+      23: invokevirtual #94                 // Method spec/harness/results/BenchmarkResult.getBmType:()Ljava/lang/String;
+      26: ldc           #234                // String single
+      28: invokevirtual #77                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      31: ifeq          39
+      34: iconst_1
+      35: istore_1
+      36: goto          86
+      39: aload_0
+      40: invokevirtual #94                 // Method spec/harness/results/BenchmarkResult.getBmType:()Ljava/lang/String;
+      43: ldc           #76                 // String functional
+      45: invokevirtual #77                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      48: ifeq          56
+      51: iconst_1
+      52: istore_1
+      53: goto          86
+      56: new           #27                 // class spec/harness/StopBenchmarkException
+      59: dup
+      60: new           #1                  // class java/lang/StringBuilder
+      63: dup
+      64: invokespecial #2                  // Method java/lang/StringBuilder."<init>":()V
+      67: ldc           #235                // String Unknown benchmark type:
+      69: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      72: aload_0
+      73: invokevirtual #94                 // Method spec/harness/results/BenchmarkResult.getBmType:()Ljava/lang/String;
+      76: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      79: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      82: invokespecial #28                 // Method spec/harness/StopBenchmarkException."<init>":(Ljava/lang/String;)V
+      85: athrow
+      86: iload_1
+      87: ireturn
+
+  void pause(long);
+    Code:
+       0: lload_1
+       1: invokestatic  #164                // Method sleep:(J)V
+       4: goto          8
+       7: astore_3
+       8: return
+    Exception table:
+       from    to  target type
+           0     4     7   Class java/lang/InterruptedException
+
+  public static void interruptProgramRunner();
+    Code:
+       0: getstatic     #236                // Field token:Ljava/lang/Object;
+       3: dup
+       4: astore_0
+       5: monitorenter
+       6: getstatic     #18                 // Field myself:Lspec/harness/ProgramRunner;
+       9: getfield      #15                 // Field isInterrupted:Z
+      12: ifne          28
+      15: getstatic     #18                 // Field myself:Lspec/harness/ProgramRunner;
+      18: iconst_1
+      19: putfield      #15                 // Field isInterrupted:Z
+      22: getstatic     #18                 // Field myself:Lspec/harness/ProgramRunner;
+      25: invokevirtual #237                // Method interrupt:()V
+      28: aload_0
+      29: monitorexit
+      30: goto          38
+      33: astore_1
+      34: aload_0
+      35: monitorexit
+      36: aload_1
+      37: athrow
+      38: return
+    Exception table:
+       from    to  target type
+           6    30    33   any
+          33    36    33   any
+
+  public static void endOfMeasurementInterval(long);
+    Code:
+       0: invokestatic  #238                // Method spec/harness/analyzer/AnalyzersRunner.invokeEndMeasurementIntervalForAnalyzers:()V
+       3: return
+
+  static {};
+    Code:
+       0: aconst_null
+       1: putstatic     #18                 // Field myself:Lspec/harness/ProgramRunner;
+       4: iconst_0
+       5: putstatic     #20                 // Field printProgress:Z
+       8: new           #58                 // class java/lang/Object
+      11: dup
+      12: invokespecial #239                // Method java/lang/Object."<init>":()V
+      15: putstatic     #236                // Field token:Ljava/lang/Object;
+      18: return
+}

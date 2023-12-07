@@ -1,0 +1,3 @@
+Main.func(LNode;)V [0]
+Main.foo(LNode;)V [0]
+Main.main([Ljava/lang/String;)V [8]

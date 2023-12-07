@@ -1,0 +1,52 @@
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 5884 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1863 |   __   0 __
+  1: AllocationStatistics/Heap                |         1862 |     99.95% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            1 |      0.05% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4324496 |   __   0 __
+  1: AllocationStatistics/Heap                |      4324316 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          180 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 5814 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1874 |   __   0 __
+  1: AllocationStatistics/Heap                |         1873 |     99.95% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            1 |      0.05% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4526209 |   __   0 __
+  1: AllocationStatistics/Heap                |      4525810 |     99.99% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          399 |      0.01% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 5789 msec =====
+
+== Static debug counters ==
+  1: AllocationStatistics/Heap |         1879 |    100.00% |  __   1 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |      4393822 |    100.00% |  __   1 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 5463 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1835 |   __   0 __
+  1: AllocationStatistics/Heap                |         1834 |     99.95% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |            1 |      0.05% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4349331 |   __   0 __
+  1: AllocationStatistics/Heap                |      4348932 |     99.99% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          399 |      0.01% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 5705 msec =====
+
+== Static debug counters ==
+  1: AllocationStatistics/Heap |         1841 |    100.00% |  __   1 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |      4482722 |    100.00% |  __   1 __

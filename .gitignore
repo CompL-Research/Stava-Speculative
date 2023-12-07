@@ -1,0 +1,13 @@
+.vscode
+*.aux
+*.bbl
+*.blg
+*.log
+*.fls
+*.out
+*.class
+*.jar
+*.fdb_latexmk
+*.synctex.gz
+.DS_Store
+

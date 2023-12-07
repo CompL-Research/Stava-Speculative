@@ -1,0 +1,313 @@
+compiled!
+compiling stava...
+compiled!
+launching stava...
+Soot Arguments are : 
+-whole-program -app -f J -p jb use-original-names:true -allow-phantom-refs -keep-bytecode-offset -p cg.spark on -p cg all-reachable -keep-offset -keep-line-number -main-class Main -process-dir /home/aditya/Research/Working/stava-contextual/tests/micro-bench/test21 -output-dir /home/aditya/Research/Working/stava-contextual/out/testcase -output-format jimple -x jdk.* -x java.* -x org.* -x com.* -x sun.* -x javax.* Read from file: 
+
+ 1. Static Analysis starts: 
+Method Name: <Node: <init>()V>
+Method Name: <Main: <init>()V>
+Method Name: <Node: <init>(LNode;)V>
+Method Name: <Main: main([Ljava/lang/String;)V>
+Method Name: <Main: foo(LNode;)LNode;>
+Method Name: <Main: bar(LNode;)LNode;>
+Static Analysis is done!
+Time Taken:41.35
+**********************************************************
+2. Contextual Resolution Starts : 
+
+ ********  Resolving Method: 1.<Node: void <init>(Node)>  ******** 
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,-1>,0,[F]>
+Resolution is: [Escape]
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+
+ ********  Resolving Method: 2.<Main: Node bar(Node)>  ******** 
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Main: Node bar(Node)>,<returnValue,0>,0,[F]>
+Resolution is: [Escape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+
+ ********  Resolving Method: 3.<Main: Node foo(Node)>  ******** 
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+  Conditional value for object is : <caller,<argument,-1>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+  Conditional value for object is : <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Main: Node bar(Node)>,<parameter,0>,16,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+
+ ********  Resolving Method: 4.<Node: void <init>()>  ******** 
+
+ ********  Resolving Method: 5.<Main: void main(java.lang.String[])>  ******** 
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : <<Main: Node foo(Node)>,<parameter,-1>,19,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : <<Main: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,13,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : <<Main: Node foo(Node)>,<parameter,0>,19,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+
+ ********  Resolving Method: 6.<Main: void <init>()>  ******** 
+
+Methods getting re-analyzed [<Main: Node bar(Node)>, <Main: Node foo(Node)>, <java.lang.Object: void <init>()>, <Node: void <init>()>, <Node: void <init>(Node)>, <Main: void main(java.lang.String[])>, <Main: void <init>()>]
+
+ ********  Resolving Method: 7.<Main: Node bar(Node)>  ******** 
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [Escape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Main: Node bar(Node)>,<returnValue,0>,0,[F]>
+Resolution is: [Escape]
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+
+ ********  Resolving Method: 8.<Main: Node foo(Node)>  ******** 
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+  Conditional value for object is : <caller,<argument,-1>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+  Conditional value for object is : <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [Escape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Main: Node bar(Node)>,<parameter,0>,16,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+  Conditional value for object is : <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+
+ ********  Resolving Method: 9.<Node: void <init>()>  ******** 
+
+ ********  Resolving Method: 10.<Node: void <init>(Node)>  ******** 
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,-1>,0,[F]>
+Resolution is: [Escape]
+ 
+Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+  Conditional value for object is : <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]>
+Resolution is: [Escape]
+Resolved Value is : [Escape]
+
+ ********  Resolving Method: 11.<Main: void main(java.lang.String[])>  ******** 
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+  Conditional value for object is : <caller,<argument,0>,0,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : <<Main: Node foo(Node)>,<parameter,-1>,19,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+  Conditional value for object is : <<Main: void <init>()>,<parameter,-1>,4,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : NoEscape
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : <<Node: void <init>()>,<parameter,-1>,13,[T]>
+Resolution is: [NoEscape]
+ 
+Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+  Conditional value for object is : <<Main: Node foo(Node)>,<parameter,0>,19,[T]>
+Resolution is: [NoEscape]
+Resolved Value is : [NoEscape]
+
+ ********  Resolving Method: 12.<Main: void <init>()>  ******** 
+
+Methods getting re-analyzed []
+Resolution is done
+Time Taken in phase 1:41.35
+Time Taken in phase 2:0.026
+Stat Count: 0 6 0
+calculating stats for solvedsummaries
+Stat Count: 0 0 0
+calculating stats for inline summaries
+Trying to write to:/home/aditya/Research/Working/stava-contextual/out/testcase/stats.txt
+Stats have been written.
+Trying to write to:/home/aditya/Research/Working/stava-contextual/out/testcase/test21.res
+Results have been written.

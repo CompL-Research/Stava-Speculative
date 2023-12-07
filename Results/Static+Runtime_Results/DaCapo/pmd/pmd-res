@@ -1,0 +1,70 @@
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 6115 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1867 |   __   0 __
+  1: AllocationStatistics/Heap             |         1864 |     99.84% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            3 |      0.16% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                  |      4519026 |   __   0 __
+  1: AllocationStatistics/Heap             |      4518989 |    100.00% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |           37 |      0.00% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 6076 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                  |         1854 |   __   0 __
+  1: AllocationStatistics/Heap             |         1852 |     99.89% |  __   1 __
+  3: AllocationStatistics/Stack/Optimistic |            2 |      0.11% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  1: AllocationStatistics/Heap |      4428649 |    100.00% |  __   1 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 6216 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1874 |   __   0 __
+  1: AllocationStatistics/Heap                |         1839 |     98.13% |  __   1 __
+  2: AllocationStatistics/Stack               |           35 |      1.87% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            5 |      0.27% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           30 |      1.60% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4532324 |   __   0 __
+  1: AllocationStatistics/Heap                |      4532233 |    100.00% |  __   1 __
+  2: AllocationStatistics/Stack               |           91 |      0.00% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            3 |      0.00% |     3.30% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           88 |      0.00% |    96.70% |  __   4 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 6116 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1866 |   __   0 __
+  1: AllocationStatistics/Heap                |         1861 |     99.73% |  __   1 __
+  2: AllocationStatistics/Stack               |            5 |      0.27% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            1 |      0.05% |    20.00% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |            4 |      0.21% |    80.00% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4423093 |   __   0 __
+  1: AllocationStatistics/Heap                |      4412678 |     99.76% |  __   1 __
+  2: AllocationStatistics/Stack               |        10415 |      0.24% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |          399 |      0.01% |     3.83% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        10016 |      0.23% |    96.17% |  __   4 __
+===== DaCapo 9.12-MR1 pmd starting =====
+===== DaCapo 9.12-MR1 pmd PASSED in 6267 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1862 |   __   0 __
+  1: AllocationStatistics/Heap                |         1856 |     99.68% |  __   1 __
+  2: AllocationStatistics/Stack               |            6 |      0.32% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            1 |      0.05% |    16.67% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |            5 |      0.27% |    83.33% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      4361470 |   __   0 __
+  1: AllocationStatistics/Heap                |      4356484 |     99.89% |  __   1 __
+  2: AllocationStatistics/Stack               |         4986 |      0.11% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |          160 |      0.00% |     3.21% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |         4826 |      0.11% |    96.79% |  __   4 __

@@ -1,0 +1,99 @@
+--------------
+Testcase Code
+--------------
+public class Main {
+    public static Main global; 
+	public static Main f;
+	public static void main(String[] args) {
+		Main A = new Main();
+        Main B = new Main();
+		A.f = new Main();
+        foo(A);
+        B = A.f;
+
+	}
+
+	public static void foo(Main p1){
+        // Case 1
+        //global = p1.f;
+        // Case 2
+        //p1.f = new Node();
+        // Case 3 (Nothing)
+
+	}
+	
+}
+
+------------------
+Output from Stava
+------------------
+Case 1: Global Variable (Escaping)
+	<Main: void foo(Main)>
+		PTG:
+		Vars:{r0=[<parameter,0>], $r1=[<external,2>]}
+		Fields:{}
+		Summary
+		{<external,2>=[Escape], <parameter,0>=[NoEscape]}
+	
+	<Main: void main(java.lang.String[])>
+		PTG:
+		Vars:{$r0=[<internal,0>], r4=[<parameter,0>], $r3=[<internal,18>], r6=[<external,37>], $r2=[<internal,8>]}
+		Fields:{}
+		Summary
+		{<internal,18>=[Escape], <internal,0>=[NoEscape], <parameter,0>=[NoEscape], <external,37>=[Escape], <internal,8>=[NoEscape]}	
+		
+Explanation:  
+	i) Here the parameter does not escape in foo. As the object pointed by the parameter's field is escaping (getting stored in the global value). Which is correct. But the object pointed by A in main, it's field 
+	actually escape in foo. But we can see that the variable B <internal,8> is having value NoEscape, even though it is pointing to A.f which is escaping.
+	ii) I think <internal,18> object pointed by A.f is conservatively marked as Escaping. (Please see Case 3)
+		
+Case 2: Assigning a new object to the field.
+	<Main: void foo(Main)>
+		PTG:
+		Vars:{$r1=[<internal,2>], r0=[<parameter,0>]}
+		Fields:{}
+		Summary
+		{<parameter,0>=[NoEscape], <internal,2>=[Escape]}
+
+	<Main: void main(java.lang.String[])>
+		PTG:
+		Vars:{$r0=[<internal,0>], r4=[<parameter,0>], $r3=[<internal,18>], r6=[<external,37>], $r2=[<internal,8>]}
+		Fields:{}
+		Summary
+		{<parameter,0>=[NoEscape], <internal,0>=[NoEscape], <external,37>=[Escape], <internal,8>=[NoEscape], <internal,18>=[Escape]}
+
+Explanation:
+	i) Here in foo the newly created object pointed by parameter p1.f is escaping. As this object has reference in main method as well (call by reference). And the object pointed by variable B <internal,8>
+	doesn't escape in main method, which is correct.
+	ii) I think <internal,18> object pointed by A.f is conservatively marked as Escaping. (Please see Case 3)
+
+Case 3: Nothing Happens in foo
+	<Main: void foo(Main)>
+		PTG:
+		Vars:{r0=[<parameter,0>]}
+		Fields:{}
+		Summary
+		{<parameter,0>=[NoEscape]}
+		
+	<Main: void main(java.lang.String[])>
+		PTG:
+		Vars:{$r0=[<internal,0>], r4=[<parameter,0>], $r3=[<internal,18>], r6=[<external,37>], $r2=[<internal,8>]}
+		Fields:{}
+		Summary
+		{<parameter,0>=[NoEscape], <external,37>=[Escape], <internal,8>=[NoEscape], <internal,18>=[Escape], <internal,0>=[NoEscape]}
+		
+Explantion:
+	i) Here is nothing happens in foo method so nothing escapes in foo.
+	ii) But if nothing happens in foo then the object pointed by A.f <internal, 18> in foo should not escape.
+	
+
+
+Problems:
+-----------
+1. The way stava is working right now is that if some object is passed to a function so then the object pointed by its field is marked as esacping in the caller, whether it actually escapes in the called 
+method or not is not considered. 
+2.  Second if the object actually escapes in the called method it should get reflected in the caller method to all it's point-es.
+
+Solution
+----------
+So what we need to do is that instead of conservatively marking as escaping we should wait for the summary of the called method and based on the status flow the values in the caller also. 

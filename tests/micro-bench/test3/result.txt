@@ -1,0 +1,2 @@
+Main.main([Ljava/lang/String;)V [8, 16]
+Main.foo(LNode;)V [0]

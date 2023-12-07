@@ -1,0 +1,1667 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARROW_SEPARATOR	spec/jbb/JBBLogFormatter.java	/^    protected static final String ARROW_SEPARATOR = " -> ";$/;"	f	class:JBBLogFormatter
+AXIS_TICK_RADIUS	spec/reporter/GraphImage.java	/^    public static final int      AXIS_TICK_RADIUS         = 4;$/;"	f	class:GraphImage
+A_C_ID	spec/jbb/JBButil.java	/^    public static final short   A_C_ID            = 102;                                            \/\/ range$/;"	f	class:JBButil
+A_C_LAST	spec/jbb/JBButil.java	/^    public static final short   A_C_LAST          = 255;                                            \/\/ range$/;"	f	class:JBButil
+A_OL_I_ID	spec/jbb/JBButil.java	/^    public static final short   A_OL_I_ID         = 8191;                                           \/\/ range$/;"	f	class:JBButil
+Address	spec/jbb/Address.java	/^    public Address() {$/;"	m	class:Address
+Address	spec/jbb/Address.java	/^public class Address {$/;"	c
+BothScore	spec/reporter/Metrics.java	/^    public String BothScore(int w, double score_1, double score_2,$/;"	m	class:Metrics
+BrandGeneric	spec/jbb/Orderline.java	/^    private char        BrandGeneric;$/;"	f	class:Orderline	file:
+C1	spec/jbb/validity/PepTest.java	/^class C1 {$/;"	c
+C2	spec/jbb/validity/PepTest.java	/^class C2 extends C1 implements C2intf {$/;"	c
+C2intf	spec/jbb/validity/PepTest.java	/^interface C2intf {}$/;"	i
+C3	spec/jbb/validity/PepTest.java	/^class C3 extends C2 implements C3intf {$/;"	c
+C3intf	spec/jbb/validity/PepTest.java	/^interface C3intf extends C2intf, SideIntf {}$/;"	i
+COMPLIANT_RATE_applicationLoggingLevel	spec/jbb/JBBProperties.java	/^    private static final Level   COMPLIANT_RATE_applicationLoggingLevel    = Level.INFO;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_deterministicRandomSeed	spec/jbb/JBBProperties.java	/^    private static final boolean COMPLIANT_RATE_deterministicRandomSeed    = false;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_measurementSeconds	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_measurementSeconds         = 240;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_orderlinesPerOrder	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_orderlinesPerOrder         = 10;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_overrideItemTableSize	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_overrideItemTableSize      = 20000;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_per_jvm_warehouse_rampdown	spec/jbb/JBBProperties.java	/^    private static final float   COMPLIANT_RATE_per_jvm_warehouse_rampdown = 20.0f;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_per_jvm_warehouse_rampup	spec/jbb/JBBProperties.java	/^    private static final float   COMPLIANT_RATE_per_jvm_warehouse_rampup   = 3.0f;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_rampupSeconds	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_rampupSeconds              = 30;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_screenWriteFlag	spec/jbb/JBBProperties.java	/^    private static final boolean COMPLIANT_RATE_screenWriteFlag            = false;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_steadyStateFlag	spec/jbb/JBBProperties.java	/^    private static final boolean COMPLIANT_RATE_steadyStateFlag            = true;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_uniformRandomItems	spec/jbb/JBBProperties.java	/^    private static final boolean COMPLIANT_RATE_uniformRandomItems         = true;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_waitTimePercent	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_waitTimePercent            = 0;$/;"	f	class:JBBProperties	file:
+COMPLIANT_RATE_warehousePopulationBase	spec/jbb/JBBProperties.java	/^    private static final int     COMPLIANT_RATE_warehousePopulationBase    = 60;$/;"	f	class:JBBProperties	file:
+COPYRIGHT	spec/jbb/Address.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Address
+COPYRIGHT	spec/jbb/Company.java	/^    static final String        COPYRIGHT                  = "SPECjbb2005,"$/;"	f	class:Company
+COPYRIGHT	spec/jbb/Controller.java	/^    static final String   COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:Controller
+COPYRIGHT	spec/jbb/CustomerReportTransaction.java	/^    static final String          COPYRIGHT            = "SPECjbb2005,"$/;"	f	class:CustomerReportTransaction
+COPYRIGHT	spec/jbb/DeliveryHandler.java	/^    static final String        COPYRIGHT = "SPECjbb2005,"$/;"	f	class:DeliveryHandler
+COPYRIGHT	spec/jbb/DeliveryTransaction.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:DeliveryTransaction
+COPYRIGHT	spec/jbb/District.java	/^    static final String      COPYRIGHT = "SPECjbb2005,"$/;"	f	class:District
+COPYRIGHT	spec/jbb/History.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:History
+COPYRIGHT	spec/jbb/Infrastructure.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Infrastructure
+COPYRIGHT	spec/jbb/Item.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Item
+COPYRIGHT	spec/jbb/JBBDataStorage.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	interface:JBBDataStorage
+COPYRIGHT	spec/jbb/JBBLogFormatter.java	/^    static final String           COPYRIGHT       = "SPECjbb2005,"$/;"	f	class:JBBLogFormatter
+COPYRIGHT	spec/jbb/JBBProperties.java	/^    static final String          COPYRIGHT                                 = "SPECjbb2005,"$/;"	f	class:JBBProperties
+COPYRIGHT	spec/jbb/JBBSortedStorage.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	interface:JBBSortedStorage
+COPYRIGHT	spec/jbb/JBBmain.java	/^    static final String          COPYRIGHT             = "SPECjbb2005,"$/;"	f	class:JBBmain
+COPYRIGHT	spec/jbb/JBButil.java	/^    static final String         COPYRIGHT         = "SPECjbb2005,"$/;"	f	class:JBButil
+COPYRIGHT	spec/jbb/MapDataStorage.java	/^    static final String       COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:MapDataStorage
+COPYRIGHT	spec/jbb/NewOrder.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:NewOrder
+COPYRIGHT	spec/jbb/NewOrderTransaction.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:NewOrderTransaction
+COPYRIGHT	spec/jbb/Order.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Order
+COPYRIGHT	spec/jbb/OrderStatusTransaction.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:OrderStatusTransaction
+COPYRIGHT	spec/jbb/Orderline.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Orderline
+COPYRIGHT	spec/jbb/PaymentTransaction.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:PaymentTransaction
+COPYRIGHT	spec/jbb/RunSequencer.java	/^    static final String COPYRIGHT    = "SPECjbb2005,"$/;"	f	class:ResFilter
+COPYRIGHT	spec/jbb/RunSequencer.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:PrintLastSeq
+COPYRIGHT	spec/jbb/RunSequencer.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:RunSequencer
+COPYRIGHT	spec/jbb/SaveOutput.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:SaveOutput
+COPYRIGHT	spec/jbb/StockLevelTransaction.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:StockLevelTransaction
+COPYRIGHT	spec/jbb/TimerData.java	/^    static final String          COPYRIGHT             = "SPECjbb2005,"$/;"	f	class:TimerData
+COPYRIGHT	spec/jbb/Transaction.java	/^    static final String         COPYRIGHT          = "SPECjbb2005,"$/;"	f	class:Transaction
+COPYRIGHT	spec/jbb/TransactionManager.java	/^    static final String       COPYRIGHT       = "SPECjbb2005,"$/;"	f	class:TransactionManager
+COPYRIGHT	spec/jbb/TreeMapDataStorage.java	/^    static final String       COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:TreeMapDataStorage
+COPYRIGHT	spec/jbb/Warehouse.java	/^    static final String    COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Warehouse
+COPYRIGHT	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final String       COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:ScreenException
+COPYRIGHT	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final String       COPYRIGHT   = "SPECjbb2005,"$/;"	f	class:TransactionLogBuffer
+COPYRIGHT	spec/jbb/infra/Util/XMLTransactionLog.java	/^    static final String       COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:XMLLineDocumentException
+COPYRIGHT	spec/jbb/infra/Util/XMLTransactionLog.java	/^    static final String     COPYRIGHT = "SPECjbb2005,"$/;"	f	class:XMLTransactionLog
+COPYRIGHT	spec/jbb/validity/Check.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Check
+COPYRIGHT	spec/jbb/validity/LoopBounds.java	/^    static final String   COPYRIGHT = "SPECjbb2005,"$/;"	f	class:LoopBounds
+COPYRIGHT	spec/jbb/validity/LoopBounds.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:LoopBounds2
+COPYRIGHT	spec/jbb/validity/PepTest.java	/^    static final String COPYRIGHT =$/;"	f	class:syncTest
+COPYRIGHT	spec/jbb/validity/Sub.java	/^    static final String   COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Sub
+COPYRIGHT	spec/jbb/validity/Super.java	/^    static final String   COPYRIGHT    = "SPECjbb2005,"$/;"	f	class:Super
+COPYRIGHT	spec/jbb/validity/digest.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:digest
+COPYRIGHT	spec/jbb/validity/digestExpected.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:digestExpected
+COPYRIGHT	spec/reporter/GraphImage.java	/^    static final String          COPYRIGHT                = "SPECjbb2005,"$/;"	f	class:GraphImage
+COPYRIGHT	spec/reporter/HTMLTableGraphGenerator3.java	/^    static final String           COPYRIGHT         = "SPECjbb2005,"$/;"	f	class:HTMLTableGraphGenerator3
+COPYRIGHT	spec/reporter/Metrics.java	/^    static final String         COPYRIGHT             = "SPECjbb2005,"$/;"	f	class:Metrics
+COPYRIGHT	spec/reporter/MultiVMReport.java	/^    static final String         COPYRIGHT            = "SPECjbb2005,"$/;"	f	class:MultiVMReport
+COPYRIGHT	spec/reporter/MultiVMReport.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:JBBReportFilenameFilter
+COPYRIGHT	spec/reporter/MultiVMReporter.java	/^    static final String    COPYRIGHT = "SPECjbb2005,"$/;"	f	class:MultiVMReporter
+COPYRIGHT	spec/reporter/MultiVMTxtReport.java	/^    static final String      COPYRIGHT = "SPECjbb2005,"$/;"	f	class:MultiVMTxtReport
+COPYRIGHT	spec/reporter/Report.java	/^    static final String         COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Report
+COPYRIGHT	spec/reporter/ReportProps.java	/^    static final String       COPYRIGHT        = "SPECjbb2005,"$/;"	f	class:ReportProps
+COPYRIGHT	spec/reporter/Reporter.java	/^    static final String    COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Reporter
+COPYRIGHT	spec/reporter/Result.java	/^    static final String          COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:Result
+COPYRIGHT	spec/reporter/Run.java	/^    static final String         COPYRIGHT     = "SPECjbb2005,"$/;"	f	class:Run
+COPYRIGHT	spec/reporter/Table.java	/^    static final String    COPYRIGHT   = "SPECjbb2005,"$/;"	f	class:Table
+COPYRIGHT	spec/reporter/TableGroup.java	/^    static final String     COPYRIGHT   = "SPECjbb2005,"$/;"	f	class:TableGroup
+COPYRIGHT	spec/reporter/TableGroupCompare.java	/^    static final String     COPYRIGHT   = "SPECjbb2005,"$/;"	f	class:TableGroupCompare
+COPYRIGHT	spec/reporter/Template.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Template
+COPYRIGHT	spec/reporter/TemplateCompare.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:TemplateCompare
+COPYRIGHT	spec/reporter/TextBlock.java	/^    static final String         COPYRIGHT       = "SPECjbb2005,"$/;"	f	class:TextBlock
+COPYRIGHT	spec/reporter/TextColumn.java	/^    static final String         COPYRIGHT       = "SPECjbb2005,"$/;"	f	class:TextColumn
+COPYRIGHT	spec/reporter/TextMetrics.java	/^    static final String          COPYRIGHT = "SPECjbb2005,"$/;"	f	class:TextMetrics
+COPYRIGHT	spec/reporter/TextiReport.java	/^    static final String      COPYRIGHT = "SPECjbb2005,"$/;"	f	class:TextiReport
+COPYRIGHT	spec/reporter/Title.java	/^    static final String COPYRIGHT = "SPECjbb2005,"$/;"	f	class:Title
+C_C_ID	spec/jbb/JBButil.java	/^    public static final short   C_C_ID            = 34;                                             \/\/ within$/;"	f	class:JBButil
+C_C_LAST	spec/jbb/JBButil.java	/^    public static final short   C_C_LAST          = 173;                                            \/\/ within$/;"	f	class:JBButil
+C_OL_I_ID	spec/jbb/JBButil.java	/^    public static final short   C_OL_I_ID         = 5456;                                           \/\/ within$/;"	f	class:JBButil
+Check	spec/jbb/validity/Check.java	/^public class Check {$/;"	c
+Company	spec/jbb/Company.java	/^    public Company() {$/;"	m	class:Company
+Company	spec/jbb/Company.java	/^public class Company {$/;"	c
+Controller	spec/jbb/Controller.java	/^public class Controller {$/;"	c
+Customer	spec/jbb/Customer.java	/^\/* Copyright (c) 2000-2005 Standard Performance Evaluation Corporation (SPEC)$/;"	c
+CustomerReportTransaction	spec/jbb/CustomerReportTransaction.java	/^    public CustomerReportTransaction(Company inCompany, short inWarehouseId) {$/;"	m	class:CustomerReportTransaction
+CustomerReportTransaction	spec/jbb/CustomerReportTransaction.java	/^class CustomerReportTransaction extends Transaction {$/;"	c
+DASH_LENGTH	spec/reporter/GraphImage.java	/^    public static final int      DASH_LENGTH              = 10;$/;"	f	class:GraphImage
+DEFAULT_BACKGROUND_COLOR	spec/reporter/GraphImage.java	/^    public static final Color    DEFAULT_BACKGROUND_COLOR = Color.black;$/;"	f	class:GraphImage
+DEFAULT_BGCOLOR	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final Color     DEFAULT_BGCOLOR   = Color.black;$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_FGCOLOR	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final Color     DEFAULT_FGCOLOR   = Color.red;$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_FILENAME	spec/reporter/GraphImage.java	/^    public static final String   DEFAULT_FILENAME         = "GraphImage.jpg";$/;"	f	class:GraphImage
+DEFAULT_FOREGROUND_COLOR	spec/reporter/GraphImage.java	/^    public static final Color    DEFAULT_FOREGROUND_COLOR = Color.red;$/;"	f	class:GraphImage
+DEFAULT_HEIGHT	spec/reporter/GraphImage.java	/^    public static final int      DEFAULT_HEIGHT           = 250;$/;"	f	class:GraphImage
+DEFAULT_HTMLFILE	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final String    DEFAULT_HTMLFILE  = "HTMLTableGraph.html";$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_JPEG_QUALITY	spec/reporter/GraphImage.java	/^    public static final float    DEFAULT_JPEG_QUALITY     = 1.0f;$/;"	f	class:GraphImage
+DEFAULT_MODE	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+DEFAULT_PADSIZE	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       DEFAULT_PADSIZE   = 2;$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_PIXELSIZE	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       DEFAULT_PIXELSIZE = 2;$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_PIXEL_SIZE	spec/reporter/GraphImage.java	/^    public static final int      DEFAULT_PIXEL_SIZE       = 1;$/;"	f	class:GraphImage
+DEFAULT_PIXEL_TYPE	spec/reporter/GraphImage.java	/^    public static final int      DEFAULT_PIXEL_TYPE       = PIXEL_TYPE_CIRCLE;$/;"	f	class:GraphImage
+DEFAULT_SCALE	spec/reporter/GraphImage.java	/^    public static final double[] DEFAULT_SCALE            = new double[] {$/;"	f	class:GraphImage
+DEFAULT_SCALE	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final double[]  DEFAULT_SCALE     = new double[] {$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_SIZE	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final Dimension DEFAULT_SIZE      = new Dimension(50, 50);$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_WIDTH	spec/reporter/GraphImage.java	/^    public static final int      DEFAULT_WIDTH            = 250;$/;"	f	class:GraphImage
+DEFAULT_XAXIS	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final String    DEFAULT_XAXIS     = "x";$/;"	f	class:HTMLTableGraphGenerator3
+DEFAULT_YAXIS	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final String    DEFAULT_YAXIS     = "y";$/;"	f	class:HTMLTableGraphGenerator3
+DIM	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       DIM               = 2;$/;"	f	class:HTMLTableGraphGenerator3
+DeliveryHandler	spec/jbb/DeliveryHandler.java	/^    public DeliveryHandler(PrintStream ps) {$/;"	m	class:DeliveryHandler
+DeliveryHandler	spec/jbb/DeliveryHandler.java	/^class DeliveryHandler {$/;"	c
+DeliveryTransaction	spec/jbb/DeliveryTransaction.java	/^    public DeliveryTransaction(Company aCompany, short aWarehouse) {$/;"	m	class:DeliveryTransaction
+DeliveryTransaction	spec/jbb/DeliveryTransaction.java	/^class DeliveryTransaction extends Transaction {$/;"	c
+District	spec/jbb/District.java	/^    public District(short inWarehouseId, byte inDistrictId) {$/;"	m	class:District
+District	spec/jbb/District.java	/^public class District {$/;"	c
+DoARun	spec/jbb/JBBmain.java	/^    public void DoARun(Company myCompany, short number_of_warehouses,$/;"	m	class:JBBmain
+DoAValidationRun	spec/jbb/JBBmain.java	/^    public boolean DoAValidationRun(Company myCompany) {$/;"	m	class:JBBmain
+FONT	spec/reporter/GraphImage.java	/^    public static final Font     FONT                     = new Font($/;"	f	class:GraphImage
+GraphImage	spec/reporter/GraphImage.java	/^    public GraphImage() {$/;"	m	class:GraphImage
+GraphImage	spec/reporter/GraphImage.java	/^    public GraphImage(int width, int height) {$/;"	m	class:GraphImage
+GraphImage	spec/reporter/GraphImage.java	/^public class GraphImage extends BufferedImage {$/;"	c
+HTMLTableGraphGenerator3	spec/reporter/HTMLTableGraphGenerator3.java	/^    public HTMLTableGraphGenerator3() {$/;"	m	class:HTMLTableGraphGenerator3
+HTMLTableGraphGenerator3	spec/reporter/HTMLTableGraphGenerator3.java	/^public class HTMLTableGraphGenerator3 {$/;"	c
+Header	spec/jbb/JBBmain.java	/^    public static final String[] Header                = {$/;"	f	class:JBBmain
+History	spec/jbb/History.java	/^    public History() {$/;"	m	class:History
+History	spec/jbb/History.java	/^    public History(short inCustomerId, byte inCustomerDistrictId,$/;"	m	class:History
+History	spec/jbb/History.java	/^public class History {$/;"	c
+IMAGE_INVALID	spec/reporter/Metrics.java	/^    private static final String IMAGE_INVALID         = "invalid.gif";$/;"	f	class:Metrics	file:
+IMAGE_PIX	spec/reporter/Metrics.java	/^    private static final String IMAGE_PIX             = "pix.jpg";$/;"	f	class:Metrics	file:
+IMAGE_PIX_2	spec/reporter/Metrics.java	/^    private static final String IMAGE_PIX_2           = "pix2.jpg";$/;"	f	class:Metrics	file:
+IMAGE_RESOURCE_PATH	spec/reporter/Metrics.java	/^    private static final String IMAGE_RESOURCE_PATH   = "images\/";$/;"	f	class:Metrics	file:
+Infrastructure	spec/jbb/Infrastructure.java	/^class Infrastructure {$/;"	c
+InitialHistories	spec/jbb/Company.java	/^    private int                InitialHistories;                                                            \/\/ should$/;"	f	class:Company	file:
+InitialNewOrders	spec/jbb/Company.java	/^    private int                InitialNewOrders;                                                            \/\/ should$/;"	f	class:Company	file:
+InitialOrders	spec/jbb/Company.java	/^    private int                InitialOrders;                                                               \/\/ should$/;"	f	class:Company	file:
+Item	spec/jbb/Item.java	/^    public Item() {$/;"	m	class:Item
+Item	spec/jbb/Item.java	/^public class Item {$/;"	c
+JBBDataStorage	spec/jbb/JBBDataStorage.java	/^public interface JBBDataStorage {$/;"	i
+JBBLogFormatter	spec/jbb/JBBLogFormatter.java	/^public class JBBLogFormatter extends SimpleFormatter {$/;"	c
+JBBProperties	spec/jbb/JBBProperties.java	/^    public JBBProperties(String propertiesFileName) {$/;"	m	class:JBBProperties
+JBBProperties	spec/jbb/JBBProperties.java	/^public class JBBProperties {$/;"	c
+JBBReportFilenameFilter	spec/reporter/MultiVMReport.java	/^    public JBBReportFilenameFilter(String prefix, String suffix) {$/;"	m	class:JBBReportFilenameFilter
+JBBReportFilenameFilter	spec/reporter/MultiVMReport.java	/^class JBBReportFilenameFilter implements FilenameFilter {$/;"	c
+JBBSortedStorage	spec/jbb/JBBSortedStorage.java	/^public interface JBBSortedStorage extends JBBDataStorage {$/;"	i
+JBBmain	spec/jbb/JBBmain.java	/^public class JBBmain implements Runnable {$/;"	c
+JBButil	spec/jbb/JBButil.java	/^public class JBButil {$/;"	c
+JasonGraph	spec/reporter/Metrics.java	/^    private String JasonGraph(Metrics metrics_2, String label) {$/;"	m	class:Metrics	file:
+JasonGraph	spec/reporter/Metrics.java	/^    private String JasonGraph(String label) {$/;"	m	class:Metrics	file:
+LoopBounds	spec/jbb/validity/LoopBounds.java	/^    public LoopBounds() {$/;"	m	class:LoopBounds
+LoopBounds	spec/jbb/validity/LoopBounds.java	/^class LoopBounds {$/;"	c
+LoopBounds2	spec/jbb/validity/LoopBounds.java	/^class LoopBounds2 extends LoopBounds {$/;"	c
+MAXCOLUMNS	spec/reporter/TableGroup.java	/^    public final static int MAXCOLUMNS  = 3;$/;"	f	class:TableGroup
+MAXCOLUMNS	spec/reporter/TableGroupCompare.java	/^    public final static int MAXCOLUMNS  = 3;$/;"	f	class:TableGroupCompare
+MAXGROUPS	spec/reporter/TableGroup.java	/^    public final static int MAXGROUPS   = 10;$/;"	f	class:TableGroup
+MAXGROUPS	spec/reporter/TableGroupCompare.java	/^    public final static int MAXGROUPS   = 10;$/;"	f	class:TableGroupCompare
+MAXINT	spec/reporter/Metrics.java	/^    private final static int    MAXINT                = 2000000000;$/;"	f	class:Metrics	file:
+MAXROWS	spec/reporter/TableGroup.java	/^    public final static int MAXROWS     = 10;$/;"	f	class:TableGroup
+MAXROWS	spec/reporter/TableGroupCompare.java	/^    public final static int MAXROWS     = 10;$/;"	f	class:TableGroupCompare
+MAXX	spec/reporter/GraphImage.java	/^    public static final int      MAXX                     = 1;$/;"	f	class:GraphImage
+MAXX	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       MAXX              = 1;$/;"	f	class:HTMLTableGraphGenerator3
+MAXY	spec/reporter/GraphImage.java	/^    public static final int      MAXY                     = 3;$/;"	f	class:GraphImage
+MAXY	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       MAXY              = 3;$/;"	f	class:HTMLTableGraphGenerator3
+MB	spec/reporter/Run.java	/^    private final static double MB            = 1024 * 1024;$/;"	f	class:Run	file:
+MINX	spec/reporter/GraphImage.java	/^    public static final int      MINX                     = 0;$/;"	f	class:GraphImage
+MINX	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       MINX              = 0;$/;"	f	class:HTMLTableGraphGenerator3
+MINY	spec/reporter/GraphImage.java	/^    public static final int      MINY                     = 2;$/;"	f	class:GraphImage
+MINY	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       MINY              = 2;$/;"	f	class:HTMLTableGraphGenerator3
+MULTI_RAMP	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+MapDataStorage	spec/jbb/MapDataStorage.java	/^    protected MapDataStorage() {$/;"	m	class:MapDataStorage
+MapDataStorage	spec/jbb/MapDataStorage.java	/^    protected MapDataStorage(Map data) {$/;"	m	class:MapDataStorage
+MapDataStorage	spec/jbb/MapDataStorage.java	/^public class MapDataStorage implements JBBDataStorage {$/;"	c
+MaxCustomersPerDistrict	spec/jbb/Company.java	/^    private int                MaxCustomersPerDistrict;                                                     \/\/ should$/;"	f	class:Company	file:
+MaxDistrictsPerWarehouse	spec/jbb/Company.java	/^    private short              MaxDistrictsPerWarehouse;                                                    \/\/ should$/;"	f	class:Company	file:
+MaxItems	spec/jbb/Company.java	/^    private int                MaxItems;                                                                    \/\/ should$/;"	f	class:Company	file:
+MaxOrderLines	spec/jbb/JBButil.java	/^    public static final byte    MaxOrderLines     = 15;$/;"	f	class:JBButil
+MaxStock	spec/jbb/Company.java	/^    private int                MaxStock;                                                                    \/\/ should$/;"	f	class:Company	file:
+MaxWarehouses	spec/jbb/Company.java	/^    private short              MaxWarehouses;                                                               \/\/ this$/;"	f	class:Company	file:
+Metrics	spec/reporter/Metrics.java	/^    public Metrics(ReportProps props, boolean SPECInternalUse) {$/;"	m	class:Metrics
+Metrics	spec/reporter/Metrics.java	/^public class Metrics {$/;"	c
+MultiVMReport	spec/reporter/MultiVMReport.java	/^    public MultiVMReport(String output_directory, boolean SPECInternalUse,$/;"	m	class:MultiVMReport
+MultiVMReport	spec/reporter/MultiVMReport.java	/^public class MultiVMReport {$/;"	c
+MultiVMReporter	spec/reporter/MultiVMReporter.java	/^public class MultiVMReporter {$/;"	c
+MultiVMTxtReport	spec/reporter/MultiVMTxtReport.java	/^    public MultiVMTxtReport(String newsletter, String output_directory,$/;"	m	class:MultiVMTxtReport
+MultiVMTxtReport	spec/reporter/MultiVMTxtReport.java	/^public class MultiVMTxtReport {$/;"	c
+NEW_LINE_STRING	spec/jbb/JBBLogFormatter.java	/^    protected static final String NEW_LINE_STRING = System$/;"	f	class:JBBLogFormatter
+NL	spec/reporter/TextBlock.java	/^    private final static char   NL              = (char) Character.LINE_SEPARATOR;$/;"	f	class:TextBlock	file:
+NL	spec/reporter/TextColumn.java	/^    private final static char   NL              = (char) Character.LINE_SEPARATOR;$/;"	f	class:TextColumn	file:
+NON_NUMERIC_ENTRY	spec/jbb/JBBmain.java	/^    public static final short    NON_NUMERIC_ENTRY     = -99;$/;"	f	class:JBBmain
+NUrand_val	spec/jbb/JBButil.java	/^    public static int NUrand_val(int A, int x, int y, int C, Random r) {$/;"	m	class:JBButil
+NUrand_val	spec/jbb/JBButil.java	/^    public static int NUrand_val(int A, int x, int y, int C, short warehouseId) {$/;"	m	class:JBButil
+NewOrder	spec/jbb/NewOrder.java	/^    public NewOrder(Order inOrderPtr, int inOrderId, byte inDistrictId,$/;"	m	class:NewOrder
+NewOrder	spec/jbb/NewOrder.java	/^public class NewOrder {$/;"	c
+NewOrderTransaction	spec/jbb/NewOrderTransaction.java	/^    public NewOrderTransaction(Company inCompany, short inWarehouseId) {$/;"	m	class:NewOrderTransaction
+NewOrderTransaction	spec/jbb/NewOrderTransaction.java	/^class NewOrderTransaction extends Transaction {$/;"	c
+Order	spec/jbb/Order.java	/^    public Order(Company inCompany, int inOrderId, byte inDistrictId,$/;"	m	class:Order
+Order	spec/jbb/Order.java	/^public class Order {$/;"	c
+OrderStatusTransaction	spec/jbb/OrderStatusTransaction.java	/^    public OrderStatusTransaction(Company inCompany, short inWarehouseId) \/\/ 2.6.1.1$/;"	m	class:OrderStatusTransaction
+OrderStatusTransaction	spec/jbb/OrderStatusTransaction.java	/^class OrderStatusTransaction extends Transaction {$/;"	c
+Orderline	spec/jbb/Orderline.java	/^    public Orderline(Company inCompany, int inOrderId, byte inDistrictId,$/;"	m	class:Orderline
+Orderline	spec/jbb/Orderline.java	/^public class Orderline {$/;"	c
+PIXEL_TYPE_CIRCLE	spec/reporter/GraphImage.java	/^    public static final int      PIXEL_TYPE_CIRCLE        = 0;$/;"	f	class:GraphImage
+PIXEL_TYPE_SQUARE	spec/reporter/GraphImage.java	/^    public static final int      PIXEL_TYPE_SQUARE        = 1;$/;"	f	class:GraphImage
+PaymentTransaction	spec/jbb/PaymentTransaction.java	/^    public PaymentTransaction(Company inCompany, short inWarehouseId) \/\/ 2.5.1.1$/;"	m	class:PaymentTransaction
+PaymentTransaction	spec/jbb/PaymentTransaction.java	/^class PaymentTransaction extends Transaction {$/;"	c
+PepTest	spec/jbb/validity/PepTest.java	/^class PepTest {$/;"	c
+PreviousMaxWarehouses	spec/jbb/Company.java	/^    private short              PreviousMaxWarehouses;                                                       \/\/ holds$/;"	f	class:Company	file:
+PrintLastSeq	spec/jbb/RunSequencer.java	/^class PrintLastSeq {$/;"	c
+PropertiesForBatch	spec/jbb/JBBProperties.java	/^    private Properties           PropertiesForBatch;$/;"	f	class:JBBProperties	file:
+RAMP_DOWN	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+RAMP_UP	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+RECORDING	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+Report	spec/reporter/Report.java	/^    public Report(boolean echoRaw, boolean SPECInternalUse, String newsletter,$/;"	m	class:Report
+Report	spec/reporter/Report.java	/^public class Report {$/;"	c
+ReportProps	spec/reporter/ReportProps.java	/^public class ReportProps extends Properties {$/;"	c
+Reporter	spec/reporter/Reporter.java	/^public class Reporter {$/;"	c
+ResFilter	spec/jbb/RunSequencer.java	/^    public ResFilter(String prefix, String suffix) {$/;"	m	class:ResFilter
+ResFilter	spec/jbb/RunSequencer.java	/^class ResFilter implements FilenameFilter {$/;"	c
+Result	spec/reporter/Result.java	/^    public Result(String name, ReportProps props) {$/;"	m	class:Result
+Result	spec/reporter/Result.java	/^public class Result {$/;"	c
+Run	spec/reporter/Run.java	/^    public Run(ReportProps props, int runNumber, double time, Result result) {$/;"	m	class:Run
+Run	spec/reporter/Run.java	/^public class Run {$/;"	c
+RunSequencer	spec/jbb/RunSequencer.java	/^    public RunSequencer(String dir, String prefix, String suffix) {$/;"	m	class:RunSequencer
+RunSequencer	spec/jbb/RunSequencer.java	/^public class RunSequencer {$/;"	c
+SPECInternalUse	spec/reporter/Metrics.java	/^    public boolean              SPECInternalUse;$/;"	f	class:Metrics
+SPECInternalUse	spec/reporter/MultiVMReport.java	/^    public boolean              SPECInternalUse;$/;"	f	class:MultiVMReport
+SPECInternalUse	spec/reporter/MultiVMTxtReport.java	/^    public boolean           SPECInternalUse;$/;"	f	class:MultiVMTxtReport
+SPECInternalUse	spec/reporter/Report.java	/^    public boolean              SPECInternalUse;$/;"	f	class:Report
+SPECInternalUse	spec/reporter/TextiReport.java	/^    public boolean           SPECInternalUse;$/;"	f	class:TextiReport
+STOP	spec/jbb/Company.java	/^        DEFAULT_MODE, MULTI_RAMP, RAMP_UP, RECORDING, RAMP_DOWN, STOP$/;"	e	enum:Company.runModes	file:
+SaveOutput	spec/jbb/SaveOutput.java	/^    SaveOutput(PrintStream ps) {$/;"	m	class:SaveOutput
+SaveOutput	spec/jbb/SaveOutput.java	/^class SaveOutput extends PrintStream {$/;"	c
+ScreenException	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    ScreenException() {$/;"	m	class:ScreenException
+ScreenException	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    ScreenException(String s) {$/;"	m	class:ScreenException
+ScreenException	spec/jbb/infra/Util/TransactionLogBuffer.java	/^class ScreenException extends RuntimeException {$/;"	c
+SecondsToSleep	spec/jbb/JBButil.java	/^    public static void SecondsToSleep(double seconds) {$/;"	m	class:JBButil
+SecondsToSleep	spec/jbb/JBButil.java	/^    public static void SecondsToSleep(long seconds) {$/;"	m	class:JBButil
+SideIntf	spec/jbb/validity/PepTest.java	/^interface SideIntf {}$/;"	i
+Stock	spec/jbb/Stock.java	/^\/*$/;"	c
+StockLevelTransaction	spec/jbb/StockLevelTransaction.java	/^    public StockLevelTransaction(Company inCompany, short inWarehouseId) {$/;"	m	class:StockLevelTransaction
+StockLevelTransaction	spec/jbb/StockLevelTransaction.java	/^class StockLevelTransaction extends Transaction {$/;"	c
+StringAndInt	spec/jbb/validity/PepTest.java	/^class StringAndInt implements Cloneable {$/;"	c
+Sub	spec/jbb/validity/Sub.java	/^    public Sub(int black) {$/;"	m	class:Sub
+Sub	spec/jbb/validity/Sub.java	/^public class Sub extends Super {$/;"	c
+Super	spec/jbb/validity/Super.java	/^    public Super(int magic) {$/;"	m	class:Super
+Super	spec/jbb/validity/Super.java	/^public class Super {$/;"	c
+SynchronizedJBBDataStorage	spec/jbb/Infrastructure.java	/^        SynchronizedJBBDataStorage(JBBDataStorage s) {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+SynchronizedJBBDataStorage	spec/jbb/Infrastructure.java	/^    private static class SynchronizedJBBDataStorage implements JBBDataStorage {$/;"	c	class:Infrastructure
+SynchronizedJBBSortedStorage	spec/jbb/Infrastructure.java	/^        SynchronizedJBBSortedStorage(JBBSortedStorage s) {$/;"	m	class:Infrastructure.SynchronizedJBBSortedStorage
+SynchronizedJBBSortedStorage	spec/jbb/Infrastructure.java	/^    private static class SynchronizedJBBSortedStorage extends$/;"	c	class:Infrastructure
+TPC_FAIR_USE	spec/jbb/JBBmain.java	/^    public static final String[] TPC_FAIR_USE          = {$/;"	f	class:JBBmain
+Table	spec/reporter/Table.java	/^    Table(String h, BufferedReader in, ReportProps props, ReportProps titles,$/;"	m	class:Table
+Table	spec/reporter/Table.java	/^public class Table {$/;"	c
+TableGroup	spec/reporter/TableGroup.java	/^    TableGroup(BufferedReader in, ReportProps props, ReportProps titles)$/;"	m	class:TableGroup
+TableGroup	spec/reporter/TableGroup.java	/^public class TableGroup {$/;"	c
+TableGroupCompare	spec/reporter/TableGroupCompare.java	/^    TableGroupCompare(BufferedReader in, BufferedReader in_2,$/;"	m	class:TableGroupCompare
+TableGroupCompare	spec/reporter/TableGroupCompare.java	/^public class TableGroupCompare {$/;"	c
+Template	spec/reporter/Template.java	/^    public Template() {$/;"	m	class:Template
+Template	spec/reporter/Template.java	/^public class Template {$/;"	c
+TemplateCompare	spec/reporter/TemplateCompare.java	/^    public TemplateCompare() {$/;"	m	class:TemplateCompare
+TemplateCompare	spec/reporter/TemplateCompare.java	/^public class TemplateCompare {$/;"	c
+TextBlock	spec/reporter/TextBlock.java	/^    public TextBlock(int width) {$/;"	m	class:TextBlock
+TextBlock	spec/reporter/TextBlock.java	/^    public TextBlock(int width, String text) {$/;"	m	class:TextBlock
+TextBlock	spec/reporter/TextBlock.java	/^public class TextBlock {$/;"	c
+TextColumn	spec/reporter/TextColumn.java	/^    public TextColumn(int width) {$/;"	m	class:TextColumn
+TextColumn	spec/reporter/TextColumn.java	/^    public TextColumn(int width, String text) {$/;"	m	class:TextColumn
+TextColumn	spec/reporter/TextColumn.java	/^public class TextColumn {$/;"	c
+TextMetrics	spec/reporter/TextMetrics.java	/^    public TextMetrics(ReportProps props, boolean SPECInternalUse) {$/;"	m	class:TextMetrics
+TextMetrics	spec/reporter/TextMetrics.java	/^public class TextMetrics extends Metrics {$/;"	c
+TextiReport	spec/reporter/TextiReport.java	/^    public TextiReport(String newsletter, String resultFile,$/;"	m	class:TextiReport
+TextiReport	spec/reporter/TextiReport.java	/^public class TextiReport {$/;"	c
+TimerData	spec/jbb/TimerData.java	/^    public TimerData() {$/;"	m	class:TimerData
+TimerData	spec/jbb/TimerData.java	/^public class TimerData {$/;"	c
+Title	spec/reporter/Title.java	/^    public Title() {$/;"	m	class:Title
+Title	spec/reporter/Title.java	/^public class Title {$/;"	c
+Transaction	spec/jbb/Transaction.java	/^abstract class Transaction {$/;"	c
+TransactionLogBuffer	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public TransactionLogBuffer() {$/;"	m	class:TransactionLogBuffer
+TransactionLogBuffer	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public TransactionLogBuffer(TransactionLogBuffer master) {$/;"	m	class:TransactionLogBuffer
+TransactionLogBuffer	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public TransactionLogBuffer(int row, int col) {$/;"	m	class:TransactionLogBuffer
+TransactionLogBuffer	spec/jbb/infra/Util/TransactionLogBuffer.java	/^public class TransactionLogBuffer {$/;"	c
+TransactionManager	spec/jbb/TransactionManager.java	/^class TransactionManager {$/;"	c
+TreeMapDataStorage	spec/jbb/TreeMapDataStorage.java	/^    TreeMapDataStorage() {$/;"	m	class:TreeMapDataStorage
+TreeMapDataStorage	spec/jbb/TreeMapDataStorage.java	/^public class TreeMapDataStorage extends MapDataStorage implements$/;"	c
+TwoRow	spec/reporter/Result.java	/^    public String TwoRow(Result result_2, Metrics metrics_2, int whAtPeak,$/;"	m	class:Result
+Verify	spec/jbb/validity/PepTest.java	/^  public void Verify(String str) {$/;"	m	class:PepTest
+Version	spec/jbb/JBBmain.java	/^    public static final String   Version               = "SPECjbb2005 1.07";$/;"	f	class:JBBmain
+VersionDate	spec/jbb/JBBmain.java	/^    public static final String   VersionDate           = "March 15, 2006";$/;"	f	class:JBBmain
+Warehouse	spec/jbb/Warehouse.java	/^    public Warehouse() {$/;"	m	class:Warehouse
+Warehouse	spec/jbb/Warehouse.java	/^    public Warehouse(Company inCompany, JBBDataStorage inItemTable) {$/;"	m	class:Warehouse
+Warehouse	spec/jbb/Warehouse.java	/^public class Warehouse {$/;"	c
+X	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       X                 = 0;$/;"	f	class:HTMLTableGraphGenerator3
+XMLLineDocumentException	spec/jbb/infra/Util/XMLTransactionLog.java	/^    XMLLineDocumentException() {$/;"	m	class:XMLLineDocumentException
+XMLLineDocumentException	spec/jbb/infra/Util/XMLTransactionLog.java	/^    XMLLineDocumentException(String s) {$/;"	m	class:XMLLineDocumentException
+XMLLineDocumentException	spec/jbb/infra/Util/XMLTransactionLog.java	/^class XMLLineDocumentException extends RuntimeException {$/;"	c
+XMLTransactionLog	spec/jbb/infra/Util/XMLTransactionLog.java	/^    public XMLTransactionLog() {$/;"	m	class:XMLTransactionLog
+XMLTransactionLog	spec/jbb/infra/Util/XMLTransactionLog.java	/^public class XMLTransactionLog {$/;"	c
+Y	spec/reporter/HTMLTableGraphGenerator3.java	/^    public static final int       Y                 = 1;$/;"	f	class:HTMLTableGraphGenerator3
+a	spec/jbb/validity/digestExpected.java	/^    byte                a[]       = {$/;"	f	class:digestExpected
+accept	spec/jbb/RunSequencer.java	/^    public boolean accept(File dir, String name) {$/;"	m	class:ResFilter
+accept	spec/reporter/MultiVMReport.java	/^    public boolean accept(File dir, String name) {$/;"	m	class:JBBReportFilenameFilter
+accumulateTransactionStats	spec/jbb/TimerData.java	/^    public synchronized void accumulateTransactionStats(long transaction_count) {$/;"	m	class:TimerData
+add	spec/reporter/TextBlock.java	/^    public void add(String text) {$/;"	m	class:TextBlock
+add	spec/reporter/TextBlock.java	/^    public void add(TextBlock block) {$/;"	m	class:TextBlock
+add	spec/reporter/TextColumn.java	/^    public void add(String text) {$/;"	m	class:TextColumn
+addNewOrder	spec/jbb/District.java	/^    public synchronized void addNewOrder(NewOrder aNewOrder) {$/;"	m	class:District
+addOrder	spec/jbb/District.java	/^    public synchronized void addOrder(Order anOrder) {$/;"	m	class:District
+addRight	spec/reporter/TextBlock.java	/^    public void addRight(String text) {$/;"	m	class:TextBlock
+addWarehouseThread	spec/jbb/Company.java	/^    public synchronized void addWarehouseThread(TransactionManager tm) {$/;"	m	class:Company
+addXYPair	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void addXYPair(double[] xypair) {$/;"	m	class:HTMLTableGraphGenerator3
+address	spec/jbb/District.java	/^    private Address          address;$/;"	f	class:District	file:
+address	spec/jbb/Warehouse.java	/^    private Address        address;$/;"	f	class:Warehouse	file:
+alignCenter	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public static final short alignCenter = 1;$/;"	f	class:TransactionLogBuffer
+alignLeft	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public static final short alignLeft   = 0;$/;"	f	class:TransactionLogBuffer
+alignRight	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public static final short alignRight  = 2;$/;"	f	class:TransactionLogBuffer
+allLocal	spec/jbb/Order.java	/^    private boolean     allLocal;$/;"	f	class:Order	file:
+alnum	spec/jbb/JBButil.java	/^    private static final char   alnum[]           = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"$/;"	f	class:JBButil	file:
+alphax	spec/reporter/GraphImage.java	/^    private double               alphax;$/;"	f	class:GraphImage	file:
+alphax	spec/reporter/HTMLTableGraphGenerator3.java	/^    private double                alphax;$/;"	f	class:HTMLTableGraphGenerator3	file:
+alphay	spec/reporter/GraphImage.java	/^    private double               alphay;$/;"	f	class:GraphImage	file:
+alphay	spec/reporter/HTMLTableGraphGenerator3.java	/^    private double                alphay;$/;"	f	class:HTMLTableGraphGenerator3	file:
+amount	spec/jbb/History.java	/^    private BigDecimal  amount;$/;"	f	class:History	file:
+amount	spec/jbb/Orderline.java	/^    private BigDecimal  amount;$/;"	f	class:Orderline	file:
+anyEntry	spec/reporter/TableGroup.java	/^    boolean[][]             anyEntry    = new boolean[MAXGROUPS][MAXCOLUMNS];$/;"	f	class:TableGroup
+anyEntry	spec/reporter/TableGroupCompare.java	/^    boolean[][]             anyEntry    = new boolean[MAXGROUPS][MAXCOLUMNS];$/;"	f	class:TableGroupCompare
+appLog	spec/jbb/JBButil.java	/^    private static Logger       appLog;$/;"	f	class:JBButil	file:
+applicationLoggingLevel	spec/jbb/JBBProperties.java	/^    private Level                applicationLoggingLevel                   = Level.ALL;$/;"	f	class:JBBProperties	file:
+aveOrderlines	spec/jbb/Transaction.java	/^    public static int           aveOrderlines      = 10;$/;"	f	class:Transaction
+averageTime	spec/jbb/TimerData.java	/^    private float                averageTime[];                                                          \/\/ average$/;"	f	class:TimerData	file:
+averagetime	spec/reporter/Run.java	/^    public double               averagetime;$/;"	f	class:Run
+backLog	spec/jbb/NewOrderTransaction.java	/^    private TransactionLogBuffer backLog;$/;"	f	class:NewOrderTransaction	file:
+base	spec/reporter/MultiVMTxtReport.java	/^    public String            base;$/;"	f	class:MultiVMTxtReport
+base	spec/reporter/Report.java	/^    public String               base;$/;"	f	class:Report
+base	spec/reporter/TextiReport.java	/^    public String            base;$/;"	f	class:TextiReport
+benchmarkList	spec/reporter/Metrics.java	/^    public static String[] benchmarkList(ReportProps props) {$/;"	m	class:Metrics
+best	spec/reporter/Result.java	/^    private int                  best          = -1;$/;"	f	class:Result	file:
+bgcolor	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                bgcolor;$/;"	f	class:HTMLTableGraphGenerator3	file:
+bgcolorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    private boolean               bgcolorEnabled;$/;"	f	class:HTMLTableGraphGenerator3	file:
+blocks	spec/reporter/TextColumn.java	/^    private Vector<TextBlock>   blocks          = new Vector<TextBlock>();$/;"	f	class:TextColumn	file:
+bothVarAndMethod	spec/jbb/validity/PepTest.java	/^  public int bothVarAndMethod = 7;$/;"	f	class:superClass
+bothVarAndMethod	spec/jbb/validity/PepTest.java	/^  public int bothVarAndMethod()      { return 8; }$/;"	m	class:superClass
+bothVarAndMethod	spec/jbb/validity/PepTest.java	/^  public void bothVarAndMethod(int x) { bothVarAndMethod = x; }$/;"	m	class:superClass
+brandInformation	spec/jbb/Item.java	/^    private String      brandInformation;$/;"	f	class:Item	file:
+btps	spec/jbb/TimerData.java	/^    private double               btps;                                                                   \/\/ "Business$/;"	f	class:TimerData	file:
+buf	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    byte                      buf[];$/;"	f	class:TransactionLogBuffer
+buf	spec/reporter/Metrics.java	/^    public StringBuffer         buf;$/;"	f	class:Metrics
+buildData	spec/jbb/History.java	/^    public synchronized String buildData(String warehouseName,$/;"	m	class:History
+buildDeck	spec/jbb/TransactionManager.java	/^    public int[] buildDeck() {$/;"	m	class:TransactionManager
+buildDisplay	spec/jbb/TimerData.java	/^    private void buildDisplay() {$/;"	m	class:TimerData	file:
+buildUniqueCustomerKey	spec/jbb/Company.java	/^    public long buildUniqueCustomerKey(short warehouseId, byte districtId,$/;"	m	class:Company
+builder	spec/jbb/infra/Util/XMLTransactionLog.java	/^    static DocumentBuilder  builder;$/;"	f	class:XMLTransactionLog
+calculate	spec/reporter/Metrics.java	/^    private void calculate() {$/;"	m	class:Metrics	file:
+calculateResponseTimeStats	spec/jbb/TimerData.java	/^    public synchronized void calculateResponseTimeStats() {$/;"	m	class:TimerData
+calendar	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    GregorianCalendar         calendar;$/;"	f	class:TransactionLogBuffer
+callReporter	spec/jbb/JBBmain.java	/^    public void callReporter(String output_directory, String outRawFile_name,$/;"	m	class:JBBmain
+carrierId	spec/jbb/DeliveryTransaction.java	/^    private short                carrierId;$/;"	f	class:DeliveryTransaction	file:
+carrierId	spec/jbb/Order.java	/^    private short       carrierId;$/;"	f	class:Order	file:
+category	spec/reporter/Report.java	/^    private String              category;$/;"	f	class:Report	file:
+check	spec/reporter/Metrics.java	/^    public Result               check;$/;"	f	class:Metrics
+checkAllNull	spec/jbb/validity/PepTest.java	/^  void checkAllNull(java.lang.Object a[]) {$/;"	m	class:PepTest
+checkClassNameOf	spec/jbb/validity/PepTest.java	/^  String checkClassNameOf(String exp, Object obj, String expected) {$/;"	m	class:PepTest
+checkClose	spec/jbb/validity/PepTest.java	/^  boolean checkClose(String exprStr, double v, double r) {$/;"	m	class:PepTest
+checkCompliance	spec/jbb/JBBProperties.java	/^    private boolean checkCompliance(Level actualValue, Level compliantValue,$/;"	m	class:JBBProperties	file:
+checkCompliance	spec/jbb/JBBProperties.java	/^    private boolean checkCompliance(boolean actualValue,$/;"	m	class:JBBProperties	file:
+checkCompliance	spec/jbb/JBBProperties.java	/^    private boolean checkCompliance(float actualValue, float compliantValue,$/;"	m	class:JBBProperties	file:
+checkCompliance	spec/jbb/JBBProperties.java	/^    private boolean checkCompliance(int actualValue, int compliantValue,$/;"	m	class:JBBProperties	file:
+checkCompliance	spec/jbb/JBBProperties.java	/^    public void checkCompliance() {$/;"	m	class:JBBProperties
+checkElapsed	spec/reporter/Metrics.java	/^    public boolean checkElapsed() {$/;"	m	class:Metrics
+checkInst	spec/jbb/validity/PepTest.java	/^  String checkInst(superClass x, boolean r1, boolean r2, boolean r3, int c) {$/;"	m	class:PepTest
+checkInst2	spec/jbb/validity/PepTest.java	/^  String checkInst2(superClass x, boolean expected, boolean got, String cn) {$/;"	m	class:PepTest
+checkInstanceOf	spec/jbb/validity/PepTest.java	/^  String checkInstanceOf() {$/;"	m	class:PepTest
+checkInstanceTiming	spec/reporter/MultiVMReport.java	/^    public void checkInstanceTiming() {$/;"	m	class:MultiVMReport
+checkInstanceTiming	spec/reporter/MultiVMTxtReport.java	/^    public void checkInstanceTiming() {$/;"	m	class:MultiVMTxtReport
+checkInterfaceInstanceOf	spec/jbb/validity/PepTest.java	/^  String checkInterfaceInstanceOf() {$/;"	m	class:PepTest
+checkLine	spec/jbb/CustomerReportTransaction.java	/^    boolean[]                    checkLine            = {$/;"	f	class:CustomerReportTransaction
+checkLine	spec/jbb/DeliveryTransaction.java	/^    boolean[]                    checkLine     = {$/;"	f	class:DeliveryTransaction
+checkLine	spec/jbb/NewOrderTransaction.java	/^    boolean[]                    checkLine     = {$/;"	f	class:NewOrderTransaction
+checkLine	spec/jbb/OrderStatusTransaction.java	/^    boolean[]                    checkLine     = {$/;"	f	class:OrderStatusTransaction
+checkLine	spec/jbb/PaymentTransaction.java	/^    boolean[]                    checkLine     = {$/;"	f	class:PaymentTransaction
+checkLine	spec/jbb/StockLevelTransaction.java	/^    boolean[]                    checkLine     = {$/;"	f	class:StockLevelTransaction
+checkMathFcts	spec/jbb/validity/PepTest.java	/^  String checkMathFcts() {$/;"	m	class:PepTest
+checkRemD	spec/jbb/validity/PepTest.java	/^  boolean checkRemD(double a, double b, double res) {$/;"	m	class:PepTest
+checkRemL	spec/jbb/validity/PepTest.java	/^  boolean checkRemL(long a, long b, long res) {$/;"	m	class:PepTest
+checkRemainders	spec/jbb/validity/PepTest.java	/^  String checkRemainders() {$/;"	m	class:PepTest
+checkSubclassing	spec/jbb/validity/Check.java	/^    private static boolean checkSubclassing() {$/;"	m	class:Check	file:
+checkThroughput	spec/jbb/JBBProperties.java	/^    public boolean               checkThroughput;$/;"	f	class:JBBProperties
+checkXMLErrorChecking	spec/jbb/validity/Check.java	/^    private static boolean checkXMLErrorChecking() {$/;"	m	class:Check	file:
+check_all	spec/reporter/Metrics.java	/^    public String check_all() {$/;"	m	class:Metrics
+check_all_buf	spec/reporter/Metrics.java	/^    public StringBuffer         check_all_buf;$/;"	f	class:Metrics
+check_points_before_metric	spec/reporter/Metrics.java	/^    private boolean check_points_before_metric() {$/;"	m	class:Metrics	file:
+check_points_for_metric	spec/reporter/Metrics.java	/^    private boolean check_points_for_metric() {$/;"	m	class:Metrics	file:
+choose_random_last_name	spec/jbb/JBButil.java	/^    public static String choose_random_last_name(int maxCustomers,$/;"	m	class:JBButil
+city	spec/jbb/Address.java	/^    private String      city;$/;"	f	class:Address	file:
+className	spec/jbb/validity/PepTest.java	/^  public String className() { return "subClass"; }$/;"	m	class:subClass
+className	spec/jbb/validity/PepTest.java	/^  public String className() { return "superClass"; }$/;"	m	class:superClass
+clear	spec/jbb/infra/Util/XMLTransactionLog.java	/^    public void clear() {$/;"	m	class:XMLTransactionLog
+clearBuffer	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void clearBuffer() {$/;"	m	class:TransactionLogBuffer
+clearXYPairs	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void clearXYPairs() {$/;"	m	class:HTMLTableGraphGenerator3
+clone	spec/jbb/validity/PepTest.java	/^  public java.lang.Object clone() { $/;"	m	class:StringAndInt
+coefficientOfVariationTime	spec/jbb/TimerData.java	/^    private double               coefficientOfVariationTime[];$/;"	f	class:TimerData	file:
+cols	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    int                       rows, cols;$/;"	f	class:TransactionLogBuffer
+columnSeparator	spec/reporter/TextBlock.java	/^    private final static String columnSeparator = " | ";$/;"	f	class:TextBlock	file:
+columnSeparator	spec/reporter/TextColumn.java	/^    private final static String columnSeparator = " | ";$/;"	f	class:TextColumn	file:
+columnTitle	spec/reporter/MultiVMTxtReport.java	/^    private TextColumn       columnTitle;$/;"	f	class:MultiVMTxtReport	file:
+columnTitle	spec/reporter/TextiReport.java	/^    private TextColumn       columnTitle;$/;"	f	class:TextiReport	file:
+columnValue	spec/reporter/MultiVMTxtReport.java	/^    private TextColumn       columnValue;$/;"	f	class:MultiVMTxtReport	file:
+columnValue	spec/reporter/TextiReport.java	/^    private TextColumn       columnValue;$/;"	f	class:TextiReport	file:
+commandLineParser	spec/jbb/JBBmain.java	/^    public String commandLineParser(String args[]) {$/;"	m	class:JBBmain
+company	spec/jbb/CustomerReportTransaction.java	/^    private Company              company;$/;"	f	class:CustomerReportTransaction	file:
+company	spec/jbb/DeliveryTransaction.java	/^    private Company              company;$/;"	f	class:DeliveryTransaction	file:
+company	spec/jbb/NewOrderTransaction.java	/^    private Company              company;$/;"	f	class:NewOrderTransaction	file:
+company	spec/jbb/Order.java	/^    private Company     company;$/;"	f	class:Order	file:
+company	spec/jbb/OrderStatusTransaction.java	/^    private Company              company;$/;"	f	class:OrderStatusTransaction	file:
+company	spec/jbb/Orderline.java	/^    private Company     company;$/;"	f	class:Orderline	file:
+company	spec/jbb/PaymentTransaction.java	/^    private Company              company;$/;"	f	class:PaymentTransaction	file:
+company	spec/jbb/StockLevelTransaction.java	/^    private Company              company;$/;"	f	class:StockLevelTransaction	file:
+company	spec/jbb/TransactionManager.java	/^    private Company           company;$/;"	f	class:TransactionManager	file:
+company	spec/jbb/Warehouse.java	/^    private Company        company;$/;"	f	class:Warehouse	file:
+companyTimerData	spec/jbb/Company.java	/^    private TimerData          companyTimerData;$/;"	f	class:Company	file:
+compareTableAndGraph	spec/reporter/Metrics.java	/^    public String compareTableAndGraph(Metrics metrics_2, String label,$/;"	m	class:Metrics
+configSection	spec/reporter/MultiVMTxtReport.java	/^    private String configSection() {$/;"	m	class:MultiVMTxtReport	file:
+configSection	spec/reporter/TextiReport.java	/^    private String configSection() {$/;"	m	class:TextiReport	file:
+connectPointsEnabled	spec/reporter/GraphImage.java	/^    private boolean              connectPointsEnabled;$/;"	f	class:GraphImage	file:
+constraintAt	spec/jbb/validity/LoopBounds.java	/^    public int constraintAt(int index) {$/;"	m	class:LoopBounds
+containsKey	spec/jbb/Infrastructure.java	/^        public boolean containsKey(Object o) {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+containsKey	spec/jbb/JBBDataStorage.java	/^    boolean containsKey(Object key);$/;"	m	interface:JBBDataStorage
+containsKey	spec/jbb/MapDataStorage.java	/^    public boolean containsKey(Object key) {$/;"	m	class:MapDataStorage
+copy	spec/jbb/infra/Util/XMLTransactionLog.java	/^    public void copy(Document master) {$/;"	m	class:XMLTransactionLog
+copyPropsToOutput	spec/jbb/JBBProperties.java	/^    public boolean copyPropsToOutput(PrintStream outRawFile) {$/;"	m	class:JBBProperties
+count	spec/reporter/Run.java	/^    public int                  count;$/;"	f	class:Run
+cput	spec/reporter/MultiVMTxtReport.java	/^    private void cput(String name, String title) {$/;"	m	class:MultiVMTxtReport	file:
+cput	spec/reporter/TextiReport.java	/^    private void cput(String name, String title) {$/;"	m	class:TextiReport	file:
+createSortedStorage	spec/jbb/Infrastructure.java	/^    public static JBBSortedStorage createSortedStorage() {$/;"	m	class:Infrastructure
+createStorage	spec/jbb/Infrastructure.java	/^    public static JBBDataStorage createStorage() {$/;"	m	class:Infrastructure
+createStorage	spec/jbb/Infrastructure.java	/^    public static JBBDataStorage createStorage(boolean synch) {$/;"	m	class:Infrastructure
+createTxnInstances	spec/jbb/TransactionManager.java	/^    private void createTxnInstances() {$/;"	m	class:TransactionManager	file:
+create_a_string_with_original	spec/jbb/JBButil.java	/^    public static char[] create_a_string_with_original(int length_lo,$/;"	m	class:JBButil
+create_random_a_string	spec/jbb/JBButil.java	/^    public static char[] create_random_a_string(int length_lo, int length_hi) {$/;"	m	class:JBButil
+create_random_a_string	spec/jbb/JBButil.java	/^    public static char[] create_random_a_string(int length_lo, int length_hi,$/;"	m	class:JBButil
+create_random_customer_id	spec/jbb/JBButil.java	/^    public static short create_random_customer_id(int maxCustomers,$/;"	m	class:JBButil
+create_random_float_val_return	spec/jbb/JBButil.java	/^    public static float create_random_float_val_return(float val_lo,$/;"	m	class:JBButil
+create_random_item_id	spec/jbb/JBButil.java	/^    public static int create_random_item_id(int maxItems, short warehouseId) {$/;"	m	class:JBButil
+create_random_last_name	spec/jbb/JBButil.java	/^    public static String create_random_last_name(int cust_num, short warehouseId) {$/;"	m	class:JBButil
+create_random_n_string	spec/jbb/JBButil.java	/^    public static char[] create_random_n_string(int length_lo, int length_hi) {$/;"	m	class:JBButil
+create_random_n_string	spec/jbb/JBButil.java	/^    public static char[] create_random_n_string(int length_lo, int length_hi,$/;"	m	class:JBButil
+create_warehouse_array	spec/reporter/Metrics.java	/^    private void create_warehouse_array() {$/;"	m	class:Metrics	file:
+crunch_jar	spec/jbb/validity/digest.java	/^    public boolean crunch_jar(String name) {$/;"	m	class:digest
+currentFreeMem	spec/jbb/JBButil.java	/^    public static long currentFreeMem() {$/;"	m	class:JBButil
+currentOrderPtr	spec/jbb/OrderStatusTransaction.java	/^    private Order                currentOrderPtr;$/;"	f	class:OrderStatusTransaction	file:
+currentTotalMem	spec/jbb/JBButil.java	/^    public static long currentTotalMem() {$/;"	m	class:JBButil
+currentUsedMem	spec/jbb/JBButil.java	/^    public static long currentUsedMem() {$/;"	m	class:JBButil
+cust_last_name	spec/jbb/CustomerReportTransaction.java	/^    private String               cust_last_name;$/;"	f	class:CustomerReportTransaction	file:
+cust_last_name	spec/jbb/OrderStatusTransaction.java	/^    private String               cust_last_name;$/;"	f	class:OrderStatusTransaction	file:
+cust_last_name	spec/jbb/PaymentTransaction.java	/^    private String               cust_last_name;$/;"	f	class:PaymentTransaction	file:
+cust_report	spec/jbb/Transaction.java	/^    protected static final byte cust_report        = 5;$/;"	f	class:Transaction
+cust_report	spec/jbb/TransactionManager.java	/^    private static final byte cust_report     = Transaction.cust_report;$/;"	f	class:TransactionManager	file:
+customerBalance	spec/jbb/OrderStatusTransaction.java	/^    private BigDecimal           customerBalance;$/;"	f	class:OrderStatusTransaction	file:
+customerCreditStatus	spec/jbb/NewOrderTransaction.java	/^    private String               customerCreditStatus;$/;"	f	class:NewOrderTransaction	file:
+customerDiscountRate	spec/jbb/NewOrderTransaction.java	/^    private BigDecimal           customerDiscountRate;$/;"	f	class:NewOrderTransaction	file:
+customerDiscountRate	spec/jbb/Order.java	/^    private BigDecimal  customerDiscountRate;$/;"	f	class:Order	file:
+customerDistrictId	spec/jbb/CustomerReportTransaction.java	/^    private byte                 customerDistrictId;$/;"	f	class:CustomerReportTransaction	file:
+customerDistrictId	spec/jbb/History.java	/^    private byte        customerDistrictId;$/;"	f	class:History	file:
+customerDistrictId	spec/jbb/PaymentTransaction.java	/^    private byte                 customerDistrictId;$/;"	f	class:PaymentTransaction	file:
+customerFirstName	spec/jbb/OrderStatusTransaction.java	/^    private String               customerFirstName;$/;"	f	class:OrderStatusTransaction	file:
+customerId	spec/jbb/CustomerReportTransaction.java	/^    private short                customerId;$/;"	f	class:CustomerReportTransaction	file:
+customerId	spec/jbb/History.java	/^    private short       customerId;$/;"	f	class:History	file:
+customerId	spec/jbb/NewOrderTransaction.java	/^    private short                customerId;$/;"	f	class:NewOrderTransaction	file:
+customerId	spec/jbb/Order.java	/^    private short       customerId;$/;"	f	class:Order	file:
+customerId	spec/jbb/OrderStatusTransaction.java	/^    private short                customerId;$/;"	f	class:OrderStatusTransaction	file:
+customerId	spec/jbb/PaymentTransaction.java	/^    private short                customerId;$/;"	f	class:PaymentTransaction	file:
+customerLastName	spec/jbb/NewOrderTransaction.java	/^    private String               customerLastName;$/;"	f	class:NewOrderTransaction	file:
+customerLastName	spec/jbb/OrderStatusTransaction.java	/^    private String               customerLastName;$/;"	f	class:OrderStatusTransaction	file:
+customerLog	spec/jbb/CustomerReportTransaction.java	/^    private TransactionLogBuffer customerLog;$/;"	f	class:CustomerReportTransaction	file:
+customerMiddleName	spec/jbb/OrderStatusTransaction.java	/^    private String               customerMiddleName;$/;"	f	class:OrderStatusTransaction	file:
+customerPtr	spec/jbb/CustomerReportTransaction.java	/^    private Customer             customerPtr;$/;"	f	class:CustomerReportTransaction	file:
+customerPtr	spec/jbb/Order.java	/^    private Customer    customerPtr;$/;"	f	class:Order	file:
+customerPtr	spec/jbb/OrderStatusTransaction.java	/^    private Customer             customerPtr;$/;"	f	class:OrderStatusTransaction	file:
+customerPtr	spec/jbb/PaymentTransaction.java	/^    private Customer             customerPtr;$/;"	f	class:PaymentTransaction	file:
+customerTable	spec/jbb/Company.java	/^    private JBBDataStorage     customerTable;$/;"	f	class:Company	file:
+customerWarehouseId	spec/jbb/CustomerReportTransaction.java	/^    private short                customerWarehouseId;$/;"	f	class:CustomerReportTransaction	file:
+customerWarehouseId	spec/jbb/History.java	/^    private short       customerWarehouseId;$/;"	f	class:History	file:
+customerWarehouseId	spec/jbb/PaymentTransaction.java	/^    private short                customerWarehouseId;$/;"	f	class:PaymentTransaction	file:
+d10_nth	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final double       d10_nth[]   = {$/;"	f	class:TransactionLogBuffer
+data	spec/jbb/History.java	/^    private String      data;$/;"	f	class:History	file:
+data	spec/jbb/MapDataStorage.java	/^    protected Map             data;$/;"	f	class:MapDataStorage
+date	spec/jbb/History.java	/^    private Date        date;$/;"	f	class:History	file:
+dateOrderlines	spec/jbb/Order.java	/^    public synchronized void dateOrderlines(Date orderdate) {$/;"	m	class:Order
+debug	spec/jbb/validity/digest.java	/^    boolean             debug;$/;"	f	class:digest
+deepRecursion	spec/jbb/validity/PepTest.java	/^  int deepRecursion(int n, int sum) {$/;"	m	class:PepTest
+defaultOutputDir	spec/jbb/Controller.java	/^    private static String defaultOutputDir = JBBmain.defaultOutputDir;$/;"	f	class:Controller	file:
+defaultOutputDir	spec/jbb/JBBmain.java	/^    static public String         defaultOutputDir      = "results";$/;"	f	class:JBBmain
+defaultPropsFileName	spec/jbb/JBBmain.java	/^    static public String         defaultPropsFileName  = "SPECjbb.props";$/;"	f	class:JBBmain
+delete	spec/jbb/CustomerReportTransaction.java	/^    public synchronized void delete() {$/;"	m	class:CustomerReportTransaction
+delete	spec/jbb/DeliveryTransaction.java	/^    public void delete() {$/;"	m	class:DeliveryTransaction
+delete	spec/jbb/NewOrderTransaction.java	/^    public void delete() {$/;"	m	class:NewOrderTransaction
+delete	spec/jbb/OrderStatusTransaction.java	/^    public synchronized void delete() {$/;"	m	class:OrderStatusTransaction
+delete	spec/jbb/PaymentTransaction.java	/^    public synchronized void delete() {$/;"	m	class:PaymentTransaction
+delete	spec/jbb/StockLevelTransaction.java	/^    public synchronized void delete() {$/;"	m	class:StockLevelTransaction
+deleteFirstEntities	spec/jbb/Infrastructure.java	/^        public boolean deleteFirstEntities() {$/;"	m	class:Infrastructure.SynchronizedJBBSortedStorage
+deleteFirstEntities	spec/jbb/Infrastructure.java	/^        public boolean deleteFirstEntities(int quant) {$/;"	m	class:Infrastructure.SynchronizedJBBSortedStorage
+deleteFirstEntities	spec/jbb/JBBSortedStorage.java	/^    boolean deleteFirstEntities();$/;"	m	interface:JBBSortedStorage
+deleteFirstEntities	spec/jbb/JBBSortedStorage.java	/^    boolean deleteFirstEntities(int quant);$/;"	m	interface:JBBSortedStorage
+deleteFirstEntities	spec/jbb/TreeMapDataStorage.java	/^    public boolean deleteFirstEntities() {$/;"	m	class:TreeMapDataStorage
+deleteFirstEntities	spec/jbb/TreeMapDataStorage.java	/^    public boolean deleteFirstEntities(int quant) {$/;"	m	class:TreeMapDataStorage
+deliberateErrorForTest	spec/jbb/validity/PepTest.java	/^  private final static boolean deliberateErrorForTest = false;$/;"	f	class:PepTest	file:
+delivery	spec/jbb/Transaction.java	/^    protected static final byte delivery           = 3;$/;"	f	class:Transaction
+delivery	spec/jbb/TransactionManager.java	/^    private static final byte delivery        = Transaction.delivery;$/;"	f	class:TransactionManager	file:
+deliveryDateTime	spec/jbb/Orderline.java	/^    private Date        deliveryDateTime;$/;"	f	class:Orderline	file:
+deliveryHandler	spec/jbb/DeliveryTransaction.java	/^    private DeliveryHandler      deliveryHandler;$/;"	f	class:DeliveryTransaction	file:
+deliveryLog	spec/jbb/DeliveryTransaction.java	/^    private TransactionLogBuffer deliveryLog;$/;"	f	class:DeliveryTransaction	file:
+deliveryTime	spec/jbb/DeliveryTransaction.java	/^    private long                 deliveryTime;$/;"	f	class:DeliveryTransaction	file:
+derived_random_init	spec/jbb/JBButil.java	/^    public static Random derived_random_init(short warehouseId) {$/;"	m	class:JBButil
+destroy	spec/jbb/NewOrder.java	/^    public void destroy() {$/;"	m	class:NewOrder
+detail	spec/reporter/Metrics.java	/^    public String detail() {$/;"	m	class:Metrics
+detail	spec/reporter/TextMetrics.java	/^    public String detail() {$/;"	m	class:TextMetrics
+detailRow	spec/reporter/Result.java	/^    private String detailRow(int n) {$/;"	m	class:Result	file:
+deterministicRandomSeed	spec/jbb/JBBProperties.java	/^    public boolean               deterministicRandomSeed                   = false;$/;"	f	class:JBBProperties
+deterministic_seed	spec/jbb/JBBmain.java	/^    private static long          deterministic_seed    = 2108417082252868L;$/;"	f	class:JBBmain	file:
+dfx	spec/reporter/GraphImage.java	/^    private final DecimalFormat  dfx                      = new DecimalFormat($/;"	f	class:GraphImage	file:
+dfx	spec/reporter/HTMLTableGraphGenerator3.java	/^    private final DecimalFormat   dfx               = new DecimalFormat("#.##");$/;"	f	class:HTMLTableGraphGenerator3	file:
+dfy	spec/reporter/GraphImage.java	/^    private final DecimalFormat  dfy                      = new DecimalFormat($/;"	f	class:GraphImage	file:
+dfy	spec/reporter/HTMLTableGraphGenerator3.java	/^    private final DecimalFormat   dfy               = new DecimalFormat("#.##");$/;"	f	class:HTMLTableGraphGenerator3	file:
+digest	spec/jbb/validity/digest.java	/^    public digest() {$/;"	m	class:digest
+digest	spec/jbb/validity/digest.java	/^public class digest {$/;"	c
+digestExpected	spec/jbb/validity/digestExpected.java	/^    public digestExpected() {$/;"	m	class:digestExpected
+digestExpected	spec/jbb/validity/digestExpected.java	/^public class digestExpected {$/;"	c
+digits	spec/reporter/Metrics.java	/^    private static int          digits                = 3;$/;"	f	class:Metrics	file:
+digits	spec/reporter/Result.java	/^    private int                  digits        = 3;$/;"	f	class:Result	file:
+digits	spec/reporter/TextMetrics.java	/^    private static int           digits    = 3;$/;"	f	class:TextMetrics	file:
+display	spec/jbb/Address.java	/^    public synchronized void display() {$/;"	m	class:Address
+display	spec/jbb/CustomerReportTransaction.java	/^    public synchronized void display() {$/;"	m	class:CustomerReportTransaction
+display	spec/jbb/DeliveryTransaction.java	/^    public synchronized void display(PrintStream out) {$/;"	m	class:DeliveryTransaction
+display	spec/jbb/District.java	/^    public synchronized void display() {$/;"	m	class:District
+display	spec/jbb/NewOrderTransaction.java	/^    public synchronized void display() {$/;"	m	class:NewOrderTransaction
+display	spec/jbb/OrderStatusTransaction.java	/^    public synchronized void display() {$/;"	m	class:OrderStatusTransaction
+display	spec/jbb/PaymentTransaction.java	/^    public synchronized void display() {$/;"	m	class:PaymentTransaction
+display	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public synchronized void display() {$/;"	m	class:TransactionLogBuffer
+display	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void display(PrintStream out) {$/;"	m	class:TransactionLogBuffer
+displayResultTotals	spec/jbb/Company.java	/^    public void displayResultTotals(boolean showWarehouseDetail) {$/;"	m	class:Company
+displayResults	spec/jbb/TimerData.java	/^    public synchronized void displayResults(String title, long totalMem,$/;"	m	class:TimerData
+displayThreadResults	spec/jbb/TimerData.java	/^    public synchronized void displayThreadResults() {$/;"	m	class:TimerData
+distCount	spec/jbb/Warehouse.java	/^    private int            distCount;$/;"	f	class:Warehouse	file:
+districtId	spec/jbb/CustomerReportTransaction.java	/^    private byte                 districtId;$/;"	f	class:CustomerReportTransaction	file:
+districtId	spec/jbb/District.java	/^    private byte             districtId;$/;"	f	class:District	file:
+districtId	spec/jbb/History.java	/^    private byte        districtId;$/;"	f	class:History	file:
+districtId	spec/jbb/NewOrder.java	/^    private byte        districtId;                                                 \/\/ NO_D_ID$/;"	f	class:NewOrder	file:
+districtId	spec/jbb/NewOrderTransaction.java	/^    private byte                 districtId;$/;"	f	class:NewOrderTransaction	file:
+districtId	spec/jbb/Order.java	/^    private byte        districtId;$/;"	f	class:Order	file:
+districtId	spec/jbb/OrderStatusTransaction.java	/^    private byte                 districtId;$/;"	f	class:OrderStatusTransaction	file:
+districtId	spec/jbb/Orderline.java	/^    private byte        districtId;$/;"	f	class:Orderline	file:
+districtId	spec/jbb/PaymentTransaction.java	/^    private byte                 districtId;$/;"	f	class:PaymentTransaction	file:
+districtId	spec/jbb/StockLevelTransaction.java	/^    private byte                 districtId;$/;"	f	class:StockLevelTransaction	file:
+districtInfo	spec/jbb/Orderline.java	/^    private String      districtInfo;$/;"	f	class:Orderline	file:
+districtPtr	spec/jbb/CustomerReportTransaction.java	/^    private District             districtPtr;$/;"	f	class:CustomerReportTransaction	file:
+districtPtr	spec/jbb/NewOrderTransaction.java	/^    private District             districtPtr;$/;"	f	class:NewOrderTransaction	file:
+districtPtr	spec/jbb/OrderStatusTransaction.java	/^    private District             districtPtr;$/;"	f	class:OrderStatusTransaction	file:
+districtPtr	spec/jbb/PaymentTransaction.java	/^    private District             districtPtr;$/;"	f	class:PaymentTransaction	file:
+districtPtr	spec/jbb/StockLevelTransaction.java	/^    private District             districtPtr;$/;"	f	class:StockLevelTransaction	file:
+districtTax	spec/jbb/Order.java	/^    private BigDecimal  districtTax;$/;"	f	class:Order	file:
+districtTaxRate	spec/jbb/NewOrderTransaction.java	/^    private BigDecimal           districtTaxRate;$/;"	f	class:NewOrderTransaction	file:
+districts	spec/jbb/Warehouse.java	/^    private Object[]       districts;$/;"	f	class:Warehouse	file:
+doCheck	spec/jbb/validity/Check.java	/^    public static boolean doCheck() {$/;"	m	class:Check
+doIntWhileLoop	spec/jbb/validity/PepTest.java	/^  void doIntWhileLoop() {$/;"	m	class:PepTest
+doIt	spec/jbb/JBBmain.java	/^    public void doIt() {$/;"	m	class:JBBmain
+doItForValidation	spec/jbb/JBBmain.java	/^    public boolean doItForValidation() {$/;"	m	class:JBBmain
+doLongWhileLoop	spec/jbb/validity/PepTest.java	/^  void doLongWhileLoop() {$/;"	m	class:PepTest
+document	spec/jbb/infra/Util/XMLTransactionLog.java	/^    Document                document;$/;"	f	class:XMLTransactionLog
+dontDouble	spec/jbb/validity/PepTest.java	/^  int dontDouble(int a) {$/;"	m	class:PepTest
+dotsGraph	spec/reporter/Metrics.java	/^    private String dotsGraph(Metrics metrics_2) {$/;"	m	class:Metrics	file:
+drawLegend	spec/reporter/GraphImage.java	/^    public void drawLegend(String legend, double XOffset, double YOffset,$/;"	m	class:GraphImage
+dround	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final double       dround[]    = {$/;"	f	class:TransactionLogBuffer
+dumpCustomerTable	spec/jbb/Company.java	/^    public synchronized void dumpCustomerTable() {$/;"	m	class:Company
+dumpItemTable	spec/jbb/Company.java	/^    public synchronized void dumpItemTable() {$/;"	m	class:Company
+dumpWarehouseTable	spec/jbb/Company.java	/^    public synchronized void dumpWarehouseTable() {$/;"	m	class:Company
+echoRaw	spec/reporter/MultiVMReport.java	/^    public boolean              echoRaw;$/;"	f	class:MultiVMReport
+echoRaw	spec/reporter/Report.java	/^    public boolean              echoRaw;$/;"	f	class:Report
+elapsed	spec/reporter/Result.java	/^    public double                elapsed;$/;"	f	class:Result
+elapsed	spec/reporter/Result.java	/^    public double elapsed() {$/;"	m	class:Result
+elapsed_time	spec/jbb/Company.java	/^    private long               elapsed_time;$/;"	f	class:Company	file:
+elements	spec/jbb/Infrastructure.java	/^        public Iterator elements() {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+elements	spec/jbb/JBBDataStorage.java	/^    Iterator elements();$/;"	m	interface:JBBDataStorage
+elements	spec/jbb/MapDataStorage.java	/^    public Iterator elements() {$/;"	m	class:MapDataStorage
+enableLogWrite	spec/jbb/Transaction.java	/^    static boolean              enableLogWrite     = false;$/;"	f	class:Transaction
+end_millis	spec/reporter/Metrics.java	/^    private long                end_millis[];$/;"	f	class:Metrics	file:
+end_millis	spec/reporter/Result.java	/^    public long end_millis() {$/;"	m	class:Result
+end_millis_at_wh	spec/reporter/Metrics.java	/^    public long end_millis_at_wh(int n) {$/;"	m	class:Metrics
+end_rampdown_time_milliseconds	spec/reporter/Result.java	/^    public long                  end_rampdown_time_milliseconds;$/;"	f	class:Result
+end_time_milliseconds	spec/reporter/Result.java	/^    public long                  end_time_milliseconds;$/;"	f	class:Result
+endingNumberWarehouses	spec/jbb/JBBProperties.java	/^    public int                   endingNumberWarehouses;$/;"	f	class:JBBProperties
+entryDateTime	spec/jbb/Order.java	/^    private Date        entryDateTime;$/;"	f	class:Order	file:
+execute	spec/jbb/validity/LoopBounds.java	/^    public void execute() {$/;"	m	class:LoopBounds
+expandN	spec/reporter/Table.java	/^    private String expandN(String s) {$/;"	m	class:Table	file:
+expectedPeakWarehouse	spec/jbb/JBBProperties.java	/^    public int                   expectedPeakWarehouse                     = 4;                                              \/\/ defaults$/;"	f	class:JBBProperties
+expectedPeakWh	spec/reporter/Metrics.java	/^    public int                  expectedPeakWh        = 0;$/;"	f	class:Metrics
+expected_peak	spec/reporter/Result.java	/^    public double                expected_peak;$/;"	f	class:Result
+expected_peak	spec/reporter/Result.java	/^    public double expected_peak() {$/;"	m	class:Result
+f1	spec/jbb/RunSequencer.java	/^    File                f1;$/;"	f	class:RunSequencer
+f10_nth	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final float        f10_nth[]   = {$/;"	f	class:TransactionLogBuffer
+fgcolor	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                fgcolor;$/;"	f	class:HTMLTableGraphGenerator3	file:
+filePrefix	spec/reporter/MultiVMReport.java	/^    String              filePrefix;$/;"	f	class:JBBReportFilenameFilter
+filePrefixLen	spec/reporter/MultiVMReport.java	/^    int                 filePrefixLen;$/;"	f	class:JBBReportFilenameFilter
+fileSuffix	spec/reporter/MultiVMReport.java	/^    String              fileSuffix;$/;"	f	class:JBBReportFilenameFilter
+fileSuffixStart	spec/reporter/MultiVMReport.java	/^    int                 fileSuffixStart;$/;"	f	class:JBBReportFilenameFilter
+firstColumn	spec/reporter/TableGroup.java	/^    private static String   firstColumn = "<TR><TD WIDTH=\\"50%\\" VALIGN=\\"TOP\\">\\n";$/;"	f	class:TableGroup	file:
+firstColumn	spec/reporter/TableGroupCompare.java	/^    private static String   firstColumn = "<TR><TD WIDTH=\\"50%\\" VALIGN=\\"TOP\\">\\n";$/;"	f	class:TableGroupCompare	file:
+fisk	spec/jbb/validity/PepTest.java	/^  public int fisk;$/;"	f	class:PepTest
+fiskString	spec/jbb/validity/PepTest.java	/^  String fiskString() {$/;"	m	class:PepTest
+flushLog	spec/jbb/JBBmain.java	/^    private void flushLog() {$/;"	m	class:JBBmain	file:
+forceGC	spec/jbb/JBBmain.java	/^    private boolean              forceGC;$/;"	f	class:JBBmain	file:
+format	spec/jbb/JBBLogFormatter.java	/^    public String format(LogRecord record) {$/;"	m	class:JBBLogFormatter
+format	spec/reporter/Metrics.java	/^    public static String format(double x) {$/;"	m	class:Metrics
+formatResults	spec/jbb/TimerData.java	/^    public void formatResults(TransactionLogBuffer timerLog) {$/;"	m	class:TimerData
+fout	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static FileOutputStream   fout        = new FileOutputStream($/;"	f	class:TransactionLogBuffer
+fout	spec/jbb/infra/Util/XMLTransactionLog.java	/^    static FileOutputStream fout      = new FileOutputStream(FileDescriptor.out);$/;"	f	class:XMLTransactionLog
+fractionPad	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final String       fractionPad = ".00000000000000000000";$/;"	f	class:TransactionLogBuffer
+free	spec/reporter/Table.java	/^    private boolean        free;                                                         \/\/ free$/;"	f	class:Table	file:
+fround	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    static final float        fround[]    = {$/;"	f	class:TransactionLogBuffer
+generate	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void generate() {$/;"	m	class:HTMLTableGraphGenerator3
+generate	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void generate(String filename) {$/;"	m	class:HTMLTableGraphGenerator3
+generateSingleRawFile	spec/reporter/MultiVMReport.java	/^    public void generateSingleRawFile() {$/;"	m	class:MultiVMReport
+generateString	spec/reporter/HTMLTableGraphGenerator3.java	/^    public String generateString() {$/;"	m	class:HTMLTableGraphGenerator3
+get	spec/jbb/Infrastructure.java	/^        public Object get(Object o) {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+get	spec/jbb/JBBDataStorage.java	/^    Object get(Object key);$/;"	m	interface:JBBDataStorage
+get	spec/jbb/MapDataStorage.java	/^    public Object get(Object key) {$/;"	m	class:MapDataStorage
+get	spec/reporter/MultiVMTxtReport.java	/^    private String get(String name) {$/;"	m	class:MultiVMTxtReport	file:
+get	spec/reporter/MultiVMTxtReport.java	/^    private String get(String name, String def) {$/;"	m	class:MultiVMTxtReport	file:
+get	spec/reporter/ReportProps.java	/^    public String get(String key) {$/;"	m	class:ReportProps
+get	spec/reporter/ReportProps.java	/^    public String get(String key, String def) {$/;"	m	class:ReportProps
+get	spec/reporter/TextiReport.java	/^    private String get(String name) {$/;"	m	class:TextiReport	file:
+get	spec/reporter/TextiReport.java	/^    private String get(String name, String def) {$/;"	m	class:TextiReport	file:
+getAddress	spec/jbb/District.java	/^    public Address getAddress() {$/;"	m	class:District
+getAddress	spec/jbb/Warehouse.java	/^    public Address getAddress() {$/;"	m	class:Warehouse
+getAmount	spec/jbb/History.java	/^    public BigDecimal getAmount() {$/;"	m	class:History
+getAmount	spec/jbb/Orderline.java	/^    public synchronized BigDecimal getAmount() {$/;"	m	class:Orderline
+getApplicationLoggingLevel	spec/jbb/JBBProperties.java	/^    public Level getApplicationLoggingLevel() {$/;"	m	class:JBBProperties
+getArray	spec/jbb/validity/digestExpected.java	/^    public byte[] getArray() {$/;"	m	class:digestExpected
+getBTPS	spec/jbb/TimerData.java	/^    public synchronized double getBTPS() {$/;"	m	class:TimerData
+getBrandGeneric	spec/jbb/Orderline.java	/^    public synchronized char getBrandGeneric() {$/;"	m	class:Orderline
+getBrandInfo	spec/jbb/Item.java	/^    public String getBrandInfo() {$/;"	m	class:Item
+getCarrierId	spec/jbb/Order.java	/^    public synchronized short getCarrierId() {$/;"	m	class:Order
+getCity	spec/jbb/Address.java	/^    public synchronized String getCity() {$/;"	m	class:Address
+getCustomer	spec/jbb/Company.java	/^    public Customer getCustomer(long customerId, boolean lockflag) {$/;"	m	class:Company
+getCustomerByLastName	spec/jbb/Company.java	/^    public Customer getCustomerByLastName(short warehouseId, byte districtId,$/;"	m	class:Company
+getCustomerId	spec/jbb/History.java	/^    public short getCustomerId() {$/;"	m	class:History
+getCustomerPtr	spec/jbb/Order.java	/^    public synchronized Customer getCustomerPtr() {$/;"	m	class:Order
+getDate	spec/jbb/History.java	/^    public Date getDate() {$/;"	m	class:History
+getDeliveryDateTime	spec/jbb/Orderline.java	/^    public synchronized Date getDeliveryDateTime() {$/;"	m	class:Orderline
+getDistrict	spec/jbb/Warehouse.java	/^    public District getDistrict(int distId) {$/;"	m	class:Warehouse
+getDistrictCount	spec/jbb/Warehouse.java	/^    public int getDistrictCount() {$/;"	m	class:Warehouse
+getDistrictPtr	spec/jbb/Warehouse.java	/^    public District getDistrictPtr(byte inDistrictId, boolean lockFlag) {$/;"	m	class:Warehouse
+getDouble	spec/reporter/ReportProps.java	/^    public double getDouble(Object key) {$/;"	m	class:ReportProps
+getDouble	spec/reporter/ReportProps.java	/^    public double getDouble(Object key, double def) {$/;"	m	class:ReportProps
+getElapsedTime	spec/jbb/Company.java	/^    long getElapsedTime() {$/;"	m	class:Company
+getEntryTime	spec/jbb/Order.java	/^    public synchronized Date getEntryTime() {$/;"	m	class:Order
+getHighestScore	spec/reporter/Metrics.java	/^    public double getHighestScore() {$/;"	m	class:Metrics
+getHistoryTable	spec/jbb/Warehouse.java	/^    public synchronized JBBDataStorage getHistoryTable() {$/;"	m	class:Warehouse
+getId	spec/jbb/District.java	/^    public int getId() {$/;"	m	class:District
+getId	spec/jbb/Item.java	/^    public int getId() {$/;"	m	class:Item
+getId	spec/jbb/NewOrder.java	/^    public synchronized int getId() {$/;"	m	class:NewOrder
+getId	spec/jbb/Order.java	/^    public synchronized int getId() {$/;"	m	class:Order
+getId	spec/jbb/Warehouse.java	/^    public short getId() {$/;"	m	class:Warehouse
+getInitialNewOrders	spec/jbb/Company.java	/^    public int getInitialNewOrders() {$/;"	m	class:Company
+getInitialOrders	spec/jbb/Company.java	/^    public int getInitialOrders() {$/;"	m	class:Company
+getInstance	spec/jbb/Transaction.java	/^    static Transaction getInstance(Class transactionClass, Company company,$/;"	m	class:Transaction
+getInt	spec/reporter/ReportProps.java	/^    public int getInt(Object key) {$/;"	m	class:ReportProps
+getInt	spec/reporter/ReportProps.java	/^    public int getInt(Object key, int def) {$/;"	m	class:ReportProps
+getInverseLinearMapX	spec/reporter/HTMLTableGraphGenerator3.java	/^    private double getInverseLinearMapX(int x) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+getInverseLinearMapY	spec/reporter/HTMLTableGraphGenerator3.java	/^    private double getInverseLinearMapY(int y) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+getItemId	spec/jbb/Orderline.java	/^    public synchronized int getItemId() {$/;"	m	class:Orderline
+getItemName	spec/jbb/Orderline.java	/^    public synchronized String getItemName() {$/;"	m	class:Orderline
+getItemPrice	spec/jbb/Orderline.java	/^    public synchronized BigDecimal getItemPrice() {$/;"	m	class:Orderline
+getLine	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public String getLine(int line) {$/;"	m	class:TransactionLogBuffer
+getLineCount	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public int getLineCount() {$/;"	m	class:TransactionLogBuffer
+getLinearMapX	spec/reporter/GraphImage.java	/^    private int getLinearMapX(double x) {$/;"	m	class:GraphImage	file:
+getLinearMapX	spec/reporter/HTMLTableGraphGenerator3.java	/^    private int getLinearMapX(double x) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+getLinearMapY	spec/reporter/GraphImage.java	/^    private int getLinearMapY(double y) {$/;"	m	class:GraphImage	file:
+getLinearMapY	spec/reporter/HTMLTableGraphGenerator3.java	/^    private int getLinearMapY(double y) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+getLog	spec/jbb/JBButil.java	/^    public static Logger getLog() {$/;"	m	class:JBButil
+getLong	spec/reporter/ReportProps.java	/^    public long getLong(Object key) {$/;"	m	class:ReportProps
+getLong	spec/reporter/ReportProps.java	/^    public long getLong(Object key, int def) {$/;"	m	class:ReportProps
+getMaxCustomersPerDistrict	spec/jbb/Company.java	/^    public int getMaxCustomersPerDistrict() {$/;"	m	class:Company
+getMaxDistrictsPerWarehouse	spec/jbb/Company.java	/^    public short getMaxDistrictsPerWarehouse() {$/;"	m	class:Company
+getMaxItems	spec/jbb/Company.java	/^    public int getMaxItems() {$/;"	m	class:Company
+getMaxWarehouses	spec/jbb/Company.java	/^    public short getMaxWarehouses() {$/;"	m	class:Company
+getMaximumTime	spec/jbb/TimerData.java	/^    public synchronized long getMaximumTime(int transaction_type) {$/;"	m	class:TimerData
+getMeasurementTime	spec/jbb/TimerData.java	/^    public synchronized long getMeasurementTime() {$/;"	m	class:TimerData
+getMedianValue	spec/jbb/Infrastructure.java	/^        public Object getMedianValue(Object firstKey, Object lastKey) {$/;"	m	class:Infrastructure.SynchronizedJBBSortedStorage
+getMedianValue	spec/jbb/JBBSortedStorage.java	/^    public Object getMedianValue(Object firstKey, Object lastKey);$/;"	m	interface:JBBSortedStorage
+getMedianValue	spec/jbb/TreeMapDataStorage.java	/^    public Object getMedianValue(Object firstKey, Object lastKey) {$/;"	m	class:TreeMapDataStorage
+getMenuName	spec/jbb/CustomerReportTransaction.java	/^    public String getMenuName() {$/;"	m	class:CustomerReportTransaction
+getMenuName	spec/jbb/DeliveryTransaction.java	/^    public String getMenuName() {$/;"	m	class:DeliveryTransaction
+getMenuName	spec/jbb/NewOrderTransaction.java	/^    public String getMenuName() {$/;"	m	class:NewOrderTransaction
+getMenuName	spec/jbb/OrderStatusTransaction.java	/^    public String getMenuName() {$/;"	m	class:OrderStatusTransaction
+getMenuName	spec/jbb/PaymentTransaction.java	/^    public String getMenuName() {$/;"	m	class:PaymentTransaction
+getMenuName	spec/jbb/StockLevelTransaction.java	/^    public String getMenuName() {$/;"	m	class:StockLevelTransaction
+getMenuName	spec/jbb/Transaction.java	/^    public abstract String getMenuName();$/;"	m	class:Transaction
+getMenuWaitTime	spec/jbb/TimerData.java	/^    public synchronized long getMenuWaitTime(int transaction_type) {$/;"	m	class:TimerData
+getMinimumTime	spec/jbb/TimerData.java	/^    public synchronized long getMinimumTime(int transaction_type) {$/;"	m	class:TimerData
+getName	spec/jbb/District.java	/^    public synchronized String getName() {$/;"	m	class:District
+getName	spec/jbb/Item.java	/^    public String getName() {$/;"	m	class:Item
+getName	spec/jbb/Warehouse.java	/^    public String getName() {$/;"	m	class:Warehouse
+getName	spec/jbb/validity/Sub.java	/^    public String getName() {$/;"	m	class:Sub
+getName	spec/jbb/validity/Super.java	/^    public String getName() {$/;"	m	class:Super
+getOpt	spec/reporter/MultiVMReporter.java	/^    private static boolean getOpt(String[] args) {$/;"	m	class:MultiVMReporter	file:
+getOpt	spec/reporter/Reporter.java	/^    private static boolean getOpt(String[] args) {$/;"	m	class:Reporter	file:
+getOptionalProperty	spec/jbb/JBBProperties.java	/^    public String getOptionalProperty(String s) {$/;"	m	class:JBBProperties
+getOrderPtr	spec/jbb/NewOrder.java	/^    public synchronized Order getOrderPtr() {$/;"	m	class:NewOrder
+getOrderTable	spec/jbb/District.java	/^    public synchronized JBBDataStorage getOrderTable() {$/;"	m	class:District
+getOrderlineCount	spec/jbb/Order.java	/^    public synchronized short getOrderlineCount() {$/;"	m	class:Order
+getOrderlineList	spec/jbb/Order.java	/^    public synchronized Orderline[] getOrderlineList() {$/;"	m	class:Order
+getOutDeliveriesFile	spec/jbb/Company.java	/^    PrintStream getOutDeliveriesFile() {$/;"	m	class:Company
+getPrice	spec/jbb/Item.java	/^    public BigDecimal getPrice() {$/;"	m	class:Item
+getPrivate	spec/jbb/validity/Sub.java	/^    public int getPrivate() {$/;"	m	class:Sub
+getPrivate	spec/jbb/validity/Super.java	/^    public int getPrivate() {$/;"	m	class:Super
+getProps	spec/jbb/JBBProperties.java	/^    public boolean getProps() {$/;"	m	class:JBBProperties
+getProtected	spec/jbb/validity/Sub.java	/^    public int getProtected() {$/;"	m	class:Sub
+getProtected	spec/jbb/validity/Super.java	/^    public int getProtected() {$/;"	m	class:Super
+getQuantity	spec/jbb/Orderline.java	/^    public synchronized short getQuantity() {$/;"	m	class:Orderline
+getRampUpTime	spec/jbb/TimerData.java	/^    public synchronized long getRampUpTime() {$/;"	m	class:TimerData
+getRequiredProperty	spec/jbb/JBBProperties.java	/^    public String getRequiredProperty(String s) {$/;"	m	class:JBBProperties
+getResults	spec/reporter/Metrics.java	/^    public Result[] getResults() {$/;"	m	class:Metrics
+getScoreAt	spec/reporter/Metrics.java	/^    private double getScoreAt(int i) {$/;"	m	class:Metrics	file:
+getSeq	spec/jbb/RunSequencer.java	/^    public int getSeq() {$/;"	m	class:RunSequencer
+getSeqString	spec/jbb/RunSequencer.java	/^    public String getSeqString() {$/;"	m	class:RunSequencer
+getState	spec/jbb/Address.java	/^    public synchronized String getState() {$/;"	m	class:Address
+getStockPtr	spec/jbb/Orderline.java	/^    public Stock getStockPtr() {$/;"	m	class:Orderline
+getStockQuantity	spec/jbb/Orderline.java	/^    public synchronized int getStockQuantity() {$/;"	m	class:Orderline
+getStreet1	spec/jbb/Address.java	/^    public synchronized String getStreet1() {$/;"	m	class:Address
+getStreet2	spec/jbb/Address.java	/^    public synchronized String getStreet2() {$/;"	m	class:Address
+getString	spec/reporter/ReportProps.java	/^    public String getString(Object key) {$/;"	m	class:ReportProps
+getSuggestedMinXScale	spec/reporter/GraphImage.java	/^    public synchronized double getSuggestedMinXScale(double maxx, double maxy) {$/;"	m	class:GraphImage
+getSuggestedMinYScale	spec/reporter/GraphImage.java	/^    public synchronized double getSuggestedMinYScale(double maxx, double maxy) {$/;"	m	class:GraphImage
+getSuggestedYAxisTickInterval	spec/reporter/GraphImage.java	/^    public int getSuggestedYAxisTickInterval(int suggestedNumTicks, double maxy) {$/;"	m	class:GraphImage
+getSuggestedYAxisTickInterval	spec/reporter/Metrics.java	/^    public int getSuggestedYAxisTickInterval(int suggestedNumTicks, double maxy) {$/;"	m	class:Metrics
+getSupplyWarehouse	spec/jbb/Orderline.java	/^    public synchronized short getSupplyWarehouse() {$/;"	m	class:Orderline
+getTPMC	spec/jbb/TimerData.java	/^    public synchronized double getTPMC() {$/;"	m	class:TimerData
+getTaxRate	spec/jbb/District.java	/^    public BigDecimal getTaxRate() {$/;"	m	class:District
+getTaxRate	spec/jbb/Warehouse.java	/^    public BigDecimal getTaxRate() {$/;"	m	class:Warehouse
+getTemplateString	spec/reporter/Template.java	/^    public String getTemplateString() {$/;"	m	class:Template
+getTemplateString	spec/reporter/TemplateCompare.java	/^    public String getTemplateString() {$/;"	m	class:TemplateCompare
+getThinkingWaitTime	spec/jbb/TimerData.java	/^    public synchronized long getThinkingWaitTime(int transaction_type) {$/;"	m	class:TimerData
+getTimerDataPtr	spec/jbb/Company.java	/^    public synchronized TimerData getTimerDataPtr(short warehouseId) {$/;"	m	class:Company
+getTitleString	spec/reporter/Title.java	/^    public String getTitleString() {$/;"	m	class:Title
+getTotalAmount	spec/jbb/Order.java	/^    public synchronized BigDecimal getTotalAmount() {$/;"	m	class:Order
+getTotalTime	spec/jbb/TimerData.java	/^    public synchronized long getTotalTime(int transaction_type) {$/;"	m	class:TimerData
+getTotalTimeSquare	spec/jbb/TimerData.java	/^    public synchronized long getTotalTimeSquare(int transaction_type) {$/;"	m	class:TimerData
+getTransactionCount	spec/jbb/TimerData.java	/^    public synchronized long getTransactionCount(int transaction_type) {$/;"	m	class:TimerData
+getTypingWaitTime	spec/jbb/TimerData.java	/^    public synchronized long getTypingWaitTime(int transaction_type) {$/;"	m	class:TimerData
+getVal	spec/jbb/validity/PepTest.java	/^  public int getVal() { return val; }$/;"	m	class:subClass
+getVal	spec/jbb/validity/PepTest.java	/^  public int getVal() { return val; }$/;"	m	class:superClass
+getWaitTimes	spec/jbb/TimerData.java	/^    public synchronized long[][] getWaitTimes() {$/;"	m	class:TimerData
+getWarehousePtr	spec/jbb/Company.java	/^    public Warehouse getWarehousePtr(short warehouseId, boolean lockFlag) {$/;"	m	class:Company
+getWarehousesTested	spec/reporter/Metrics.java	/^    public int getWarehousesTested() {$/;"	m	class:Metrics
+getZip	spec/jbb/Address.java	/^    public synchronized String getZip() {$/;"	m	class:Address
+get_whAtPeak	spec/reporter/Metrics.java	/^    public int get_whAtPeak() {$/;"	m	class:Metrics
+getrunMode	spec/jbb/TransactionManager.java	/^    public synchronized Company.runModes getrunMode() {$/;"	m	class:TransactionManager
+go	spec/jbb/TransactionManager.java	/^    public void go() {$/;"	m	class:TransactionManager
+goManual	spec/jbb/TransactionManager.java	/^    private long goManual(int selection, TimerData myTimerData) {$/;"	m	class:TransactionManager	file:
+goValidate	spec/jbb/TransactionManager.java	/^    public boolean goValidate() {$/;"	m	class:TransactionManager
+gotError	spec/jbb/validity/LoopBounds.java	/^    public static boolean gotError  = false;$/;"	f	class:LoopBounds
+gotError	spec/jbb/validity/PepTest.java	/^  public boolean gotError = false;$/;"	f	class:PepTest
+graphTable	spec/reporter/MultiVMReport.java	/^    public String               graphTable[];$/;"	f	class:MultiVMReport
+graphTable	spec/reporter/Report.java	/^    public String               graphTable, hardware, metric, name, software;$/;"	f	class:Report
+graphics	spec/reporter/GraphImage.java	/^    private Graphics             graphics;$/;"	f	class:GraphImage	file:
+handleDelivery	spec/jbb/DeliveryHandler.java	/^    public void handleDelivery(DeliveryTransaction deliveryTransaction) {$/;"	m	class:DeliveryHandler
+hardware	spec/reporter/MultiVMReport.java	/^    public String               hardware, name, software;$/;"	f	class:MultiVMReport
+hardware	spec/reporter/MultiVMTxtReport.java	/^    public String            hardware, metric1, metric2, software;$/;"	f	class:MultiVMTxtReport
+hardware	spec/reporter/Report.java	/^    public String               graphTable, hardware, metric, name, software;$/;"	f	class:Report
+hardware	spec/reporter/TextiReport.java	/^    public String            hardware, metric, software;$/;"	f	class:TextiReport
+heading	spec/reporter/Table.java	/^    private String         heading;$/;"	f	class:Table	file:
+heapsize	spec/reporter/Result.java	/^    public double                heapsize;$/;"	f	class:Result
+heapused	spec/reporter/Result.java	/^    public double                heapused;$/;"	f	class:Result
+highestScore	spec/reporter/Metrics.java	/^    public double               highestScore;$/;"	f	class:Metrics
+historyCount	spec/jbb/Warehouse.java	/^    private long           historyCount;$/;"	f	class:Warehouse	file:
+historyTable	spec/jbb/Warehouse.java	/^    private JBBDataStorage historyTable;$/;"	f	class:Warehouse	file:
+home	spec/jbb/CustomerReportTransaction.java	/^    private boolean              home;$/;"	f	class:CustomerReportTransaction	file:
+home	spec/jbb/PaymentTransaction.java	/^    private boolean              home;$/;"	f	class:PaymentTransaction	file:
+host	spec/jbb/Controller.java	/^    private static String host             = "localhost";$/;"	f	class:Controller	file:
+htmlFiles	spec/reporter/MultiVMReport.java	/^    public File                 htmlFiles[];$/;"	f	class:MultiVMReport
+i	spec/jbb/validity/PepTest.java	/^  int    i;$/;"	f	class:StringAndInt
+id	spec/jbb/Item.java	/^    private int         id;$/;"	f	class:Item	file:
+increaseNumWarehouses	spec/jbb/JBBmain.java	/^    private void increaseNumWarehouses(int current, int next,$/;"	m	class:JBBmain	file:
+incrementNumberWarehouses	spec/jbb/JBBProperties.java	/^    public int                   incrementNumberWarehouses;$/;"	f	class:JBBProperties
+init	spec/jbb/CustomerReportTransaction.java	/^    public synchronized void init() {$/;"	m	class:CustomerReportTransaction
+init	spec/jbb/DeliveryTransaction.java	/^    public void init() {$/;"	m	class:DeliveryTransaction
+init	spec/jbb/NewOrderTransaction.java	/^    public void init() {$/;"	m	class:NewOrderTransaction
+init	spec/jbb/OrderStatusTransaction.java	/^    public synchronized void init() {$/;"	m	class:OrderStatusTransaction
+init	spec/jbb/PaymentTransaction.java	/^    public synchronized void init() {$/;"	m	class:PaymentTransaction
+init	spec/jbb/StockLevelTransaction.java	/^    public void init() {$/;"	m	class:StockLevelTransaction
+init	spec/jbb/Transaction.java	/^    public abstract void init();$/;"	m	class:Transaction
+init	spec/reporter/GraphImage.java	/^    private void init() {$/;"	m	class:GraphImage	file:
+initApplicationLogging	spec/jbb/JBBmain.java	/^    private boolean initApplicationLogging(String logFileName) {$/;"	m	class:JBBmain	file:
+initHistory	spec/jbb/History.java	/^    public void initHistory(short inCustomerId, byte inCustomerDistrictId,$/;"	m	class:History
+initLog	spec/jbb/CustomerReportTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:CustomerReportTransaction	file:
+initLog	spec/jbb/DeliveryTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:DeliveryTransaction	file:
+initLog	spec/jbb/NewOrderTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:NewOrderTransaction	file:
+initLog	spec/jbb/OrderStatusTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:OrderStatusTransaction	file:
+initLog	spec/jbb/PaymentTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:PaymentTransaction	file:
+initLog	spec/jbb/StockLevelTransaction.java	/^    private TransactionLogBuffer initLog;$/;"	f	class:StockLevelTransaction	file:
+initNewOrder	spec/jbb/NewOrder.java	/^    public void initNewOrder(Order inOrderPtr, int inOrderId,$/;"	m	class:NewOrder
+initOrder	spec/jbb/Order.java	/^    public void initOrder(Company inCompany, int inOrderId, byte inDistrictId,$/;"	m	class:Order
+initOutputDir	spec/jbb/Controller.java	/^    private static boolean initOutputDir(String dir) {$/;"	m	class:Controller	file:
+initOutputDir	spec/jbb/JBBmain.java	/^    public boolean initOutputDir(String outputDir) {$/;"	m	class:JBBmain
+initThreadsCount	spec/jbb/Company.java	/^    int                        initThreadsCount           = 0;$/;"	f	class:Company
+initThreadsCountMonitor	spec/jbb/Company.java	/^    Object                     initThreadsCountMonitor    = null;$/;"	f	class:Company
+initThreadsStateChange	spec/jbb/Company.java	/^    Object                     initThreadsStateChange     = null;$/;"	f	class:Company
+initTransactionManager	spec/jbb/TransactionManager.java	/^    public void initTransactionManager(Company inCompany, short warehouseId) {$/;"	m	class:TransactionManager
+initWarehouse	spec/jbb/Warehouse.java	/^    public void initWarehouse(Company inCompany, JBBDataStorage inItemTable,$/;"	m	class:Warehouse
+initialize	spec/jbb/TimerData.java	/^    public void initialize() {$/;"	m	class:TimerData
+initializeTransactionLog	spec/jbb/CustomerReportTransaction.java	/^    public synchronized void initializeTransactionLog() {$/;"	m	class:CustomerReportTransaction
+initializeTransactionLog	spec/jbb/DeliveryTransaction.java	/^    public void initializeTransactionLog() {$/;"	m	class:DeliveryTransaction
+initializeTransactionLog	spec/jbb/NewOrderTransaction.java	/^    public void initializeTransactionLog() {$/;"	m	class:NewOrderTransaction
+initializeTransactionLog	spec/jbb/OrderStatusTransaction.java	/^    public synchronized void initializeTransactionLog() {$/;"	m	class:OrderStatusTransaction
+initializeTransactionLog	spec/jbb/PaymentTransaction.java	/^    public synchronized void initializeTransactionLog() {$/;"	m	class:PaymentTransaction
+initializeTransactionLog	spec/jbb/StockLevelTransaction.java	/^    public void initializeTransactionLog() {$/;"	m	class:StockLevelTransaction
+initializeTransactionLog	spec/jbb/Transaction.java	/^    public abstract void initializeTransactionLog();$/;"	m	class:Transaction
+insertBreakAfterColons	spec/reporter/Table.java	/^    private String insertBreakAfterColons(String s) {$/;"	m	class:Table	file:
+instanceChecksPassed	spec/reporter/MultiVMReport.java	/^    public boolean              instanceChecksPassed = true;$/;"	f	class:MultiVMReport
+instanceChecksPassed	spec/reporter/MultiVMTxtReport.java	/^    public boolean           instanceChecksPassed = true;$/;"	f	class:MultiVMTxtReport
+instanceId	spec/jbb/JBBmain.java	/^    static public int            instanceId            = -1;$/;"	f	class:JBBmain
+instanceMain	spec/jbb/validity/PepTest.java	/^  public void instanceMain() {$/;"	m	class:PepTest
+instances	spec/reporter/MultiVMReport.java	/^    public int                  instances            = 0;$/;"	f	class:MultiVMReport
+instances	spec/reporter/MultiVMTxtReport.java	/^    public int               instances            = 0;$/;"	f	class:MultiVMTxtReport
+invalidReason	spec/reporter/Result.java	/^    public StringBuffer          invalidReason = new StringBuffer();$/;"	f	class:Result
+invalid_buf	spec/reporter/Metrics.java	/^    public StringBuffer         invalid_buf;$/;"	f	class:Metrics
+invalidateRun	spec/jbb/Transaction.java	/^    public static void invalidateRun() {$/;"	m	class:Transaction
+isBackgroundColorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    public boolean isBackgroundColorEnabled() {$/;"	m	class:HTMLTableGraphGenerator3
+isCustomer	spec/jbb/Company.java	/^    public boolean isCustomer(long customerId) {$/;"	m	class:Company
+isMultiple	spec/jbb/TransactionManager.java	/^    boolean isMultiple(int selection) {$/;"	m	class:TransactionManager
+isPixelBorderColorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    public boolean isPixelBorderColorEnabled() {$/;"	m	class:HTMLTableGraphGenerator3
+isPrime	spec/jbb/validity/PepTest.java	/^  boolean isPrime(int i) {$/;"	m	class:PepTest
+isRunValid	spec/jbb/Transaction.java	/^    public static boolean isRunValid() {$/;"	m	class:Transaction
+issue	spec/reporter/MultiVMReport.java	/^    public String               issue;$/;"	f	class:MultiVMReport
+issue	spec/reporter/MultiVMTxtReport.java	/^    public String            issue;$/;"	f	class:MultiVMTxtReport
+issue	spec/reporter/Report.java	/^    public String               issue;$/;"	f	class:Report
+issue	spec/reporter/TextiReport.java	/^    public String            issue;$/;"	f	class:TextiReport
+itemId	spec/jbb/Orderline.java	/^    private int         itemId;$/;"	f	class:Orderline	file:
+itemName	spec/jbb/Orderline.java	/^    private String      itemName;$/;"	f	class:Orderline	file:
+itemPrice	spec/jbb/Orderline.java	/^    private BigDecimal  itemPrice;$/;"	f	class:Orderline	file:
+itemTable	spec/jbb/Company.java	/^    private JBBDataStorage     itemTable;$/;"	f	class:Company	file:
+itemTable	spec/jbb/Warehouse.java	/^    private JBBDataStorage itemTable;$/;"	f	class:Warehouse	file:
+items	spec/reporter/Table.java	/^    private Vector<String> items;$/;"	f	class:Table	file:
+join	spec/reporter/TextBlock.java	/^    public TextBlock join(TextBlock right) {$/;"	m	class:TextBlock
+join	spec/reporter/TextBlock.java	/^    public TextBlock join(TextBlock right, String columnSeparator) {$/;"	m	class:TextBlock
+join	spec/reporter/TextColumn.java	/^    public TextColumn join(TextColumn right) {$/;"	m	class:TextColumn
+join	spec/reporter/TextColumn.java	/^    public TextColumn join(TextColumn right, String columnSeparator) {$/;"	m	class:TextColumn
+justifyLeft	spec/reporter/TextBlock.java	/^    private String justifyLeft(String s) {$/;"	m	class:TextBlock	file:
+justifyLeft	spec/reporter/TextBlock.java	/^    public static String justifyLeft(String s, int width) {$/;"	m	class:TextBlock
+justifyRight	spec/reporter/TextBlock.java	/^    private String justifyRight(String s) {$/;"	m	class:TextBlock	file:
+justifyRight	spec/reporter/TextBlock.java	/^    public static String justifyRight(String s, int width) {$/;"	m	class:TextBlock
+jvm_instances	spec/jbb/Company.java	/^    private long               jvm_instances              = 0;$/;"	f	class:Company	file:
+jvm_instances	spec/jbb/JBBProperties.java	/^    public int                   jvm_instances                             = 1;$/;"	f	class:JBBProperties
+jvm_instances	spec/reporter/Metrics.java	/^    public int                  jvm_instances         = 1;$/;"	f	class:Metrics
+jvm_instances	spec/reporter/Result.java	/^    public int                   jvm_instances;$/;"	f	class:Result
+label	spec/reporter/MultiVMReport.java	/^    public String               label[];$/;"	f	class:MultiVMReport
+label	spec/reporter/Report.java	/^    public String               label;$/;"	f	class:Report
+labelImg	spec/reporter/MultiVMReport.java	/^    public String               labelImg;$/;"	f	class:MultiVMReport
+lastNameCustomerTable	spec/jbb/Company.java	/^    private JBBSortedStorage   lastNameCustomerTable;$/;"	f	class:Company	file:
+lastOrderId	spec/jbb/District.java	/^    public synchronized int lastOrderId() {$/;"	m	class:District
+lastOrdersQuantity	spec/jbb/CustomerReportTransaction.java	/^    int                          lastOrdersQuantity   = 5;$/;"	f	class:CustomerReportTransaction
+lastPaymentsQuantity	spec/jbb/CustomerReportTransaction.java	/^    int                          lastPaymentsQuantity = 5;$/;"	f	class:CustomerReportTransaction
+last_name_parts	spec/jbb/JBButil.java	/^    private static final String last_name_parts[] = {$/;"	f	class:JBButil	file:
+lineCache	spec/jbb/infra/Util/XMLTransactionLog.java	/^    private ArrayList<Node> lineCache = null;$/;"	f	class:XMLTransactionLog	file:
+lineEnd	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    int                       lineEnd[];$/;"	f	class:TransactionLogBuffer
+lines	spec/reporter/TextBlock.java	/^    private Vector<String>      lines           = new Vector<String>();$/;"	f	class:TextBlock	file:
+load	spec/reporter/ReportProps.java	/^    public void load(Reader readstream) throws IOException {$/;"	m	class:ReportProps
+load	spec/reporter/ReportProps.java	/^    public void load(String name) throws IOException {$/;"	m	class:ReportProps
+loadCustomerTable	spec/jbb/Company.java	/^    public synchronized void loadCustomerTable() {$/;"	m	class:Company
+loadHistoryTable	spec/jbb/Warehouse.java	/^    public synchronized void loadHistoryTable() {$/;"	m	class:Warehouse
+loadInitialOrders	spec/jbb/Company.java	/^    public synchronized void loadInitialOrders() {$/;"	m	class:Company
+loadItemTable	spec/jbb/Company.java	/^    public synchronized void loadItemTable() {$/;"	m	class:Company
+loadStockTable	spec/jbb/Warehouse.java	/^    public void loadStockTable() {$/;"	m	class:Warehouse
+loadWarehouseHistoryTable	spec/jbb/Company.java	/^    public synchronized void loadWarehouseHistoryTable() {$/;"	m	class:Company
+loadWarehouseTable	spec/jbb/Company.java	/^    public synchronized void loadWarehouseTable() {$/;"	m	class:Company
+logfile	spec/jbb/SaveOutput.java	/^    static OutputStream logfile;$/;"	f	class:SaveOutput
+logo	spec/reporter/MultiVMReport.java	/^    private static String       logo                 = "<IMG SRC=\\"spec-sm.gif\\" WIDTH=\\"57\\" HEIGHT=\\"72\\"\\n"$/;"	f	class:MultiVMReport	file:
+logo	spec/reporter/Report.java	/^    private static String       logo      = "<IMG SRC=\\"spec-sm.gif\\" WIDTH=\\"57\\" HEIGHT=\\"72\\"\\n"$/;"	f	class:Report	file:
+loopExitContinueInExceptionHandler	spec/jbb/validity/PepTest.java	/^  String loopExitContinueInExceptionHandler() {$/;"	m	class:PepTest
+lowStock	spec/jbb/StockLevelTransaction.java	/^    private int                  lowStock;$/;"	f	class:StockLevelTransaction	file:
+main	spec/jbb/Controller.java	/^    public static void main(String args[]) {$/;"	m	class:Controller
+main	spec/jbb/JBBmain.java	/^    public static void main(String args[]) {$/;"	m	class:JBBmain
+main	spec/jbb/RunSequencer.java	/^    public static void main(String[] args) {$/;"	m	class:PrintLastSeq
+main	spec/jbb/validity/LoopBounds.java	/^    public static void main(String[] args) {$/;"	m	class:LoopBounds
+main	spec/jbb/validity/PepTest.java	/^  public static void main(String[] args) {$/;"	m	class:PepTest
+main	spec/jbb/validity/PepTest.java	/^  public static void main(String[] args) {$/;"	m	class:syncTest
+main	spec/reporter/MultiVMReporter.java	/^    public static void main(String[] args) {$/;"	m	class:MultiVMReporter
+main	spec/reporter/Reporter.java	/^    public static void main(String[] args) {$/;"	m	class:Reporter
+main	spec/reporter/TextBlock.java	/^    public static void main(String[] args) {$/;"	m	class:TextBlock
+main	spec/reporter/TextColumn.java	/^    public static void main(String[] args) {$/;"	m	class:TextColumn
+make	spec/reporter/GraphImage.java	/^    public void make() {$/;"	m	class:GraphImage
+make	spec/reporter/GraphImage.java	/^    public void make(String filename) {$/;"	m	class:GraphImage
+manualSelection	spec/jbb/TransactionManager.java	/^    private void manualSelection() {$/;"	m	class:TransactionManager	file:
+maxBarWidth	spec/reporter/Metrics.java	/^    private static int          maxBarWidth           = 0;$/;"	f	class:Metrics	file:
+maxBarWidth	spec/reporter/Result.java	/^    private static double        maxBarWidth   = 0;$/;"	f	class:Result	file:
+maxOrderlines	spec/jbb/Transaction.java	/^    public static int           maxOrderlines      = aveOrderlines + 5;$/;"	f	class:Transaction
+maxTxnTypes	spec/jbb/Transaction.java	/^    protected static final byte maxTxnTypes        = (byte) transactionNames.length;$/;"	f	class:Transaction
+maxTxnTypes	spec/jbb/TransactionManager.java	/^    private static final byte maxTxnTypes     = Transaction.maxTxnTypes;$/;"	f	class:TransactionManager	file:
+maxWaitTypes	spec/jbb/TimerData.java	/^    private static byte          maxWaitTypes          = 3;$/;"	f	class:TimerData	file:
+maxWarehouses	spec/reporter/Metrics.java	/^    public int                  maxWarehouses;$/;"	f	class:Metrics
+maxWh	spec/jbb/JBBmain.java	/^    public static int            maxWh                 = 2;$/;"	f	class:JBBmain
+max_thread_transactions	spec/reporter/Result.java	/^    public double                max_thread_transactions;$/;"	f	class:Result
+max_transaction_count	spec/jbb/TimerData.java	/^    private long                 max_transaction_count = Long.MIN_VALUE;$/;"	f	class:TimerData	file:
+maximumTime	spec/jbb/TimerData.java	/^    private long                 maximumTime[];                                                          \/\/ slowest$/;"	f	class:TimerData	file:
+maximum_warehouses	spec/reporter/Metrics.java	/^    public int                  maximum_warehouses;$/;"	f	class:Metrics
+maximumtime	spec/reporter/Run.java	/^    public double               maximumtime;$/;"	f	class:Run
+meas_int	spec/reporter/Result.java	/^    public double                meas_int;$/;"	f	class:Result
+meas_int	spec/reporter/Result.java	/^    public double meas_int() {$/;"	m	class:Result
+measuredPeakWarehouse	spec/reporter/Metrics.java	/^    public int                  measuredPeakWarehouse = 0;$/;"	f	class:Metrics
+measurementSeconds	spec/jbb/JBBProperties.java	/^    public int                   measurementSeconds;$/;"	f	class:JBBProperties
+measurement_time	spec/jbb/Company.java	/^    private long               measurement_time;$/;"	f	class:Company	file:
+measurement_time	spec/jbb/TimerData.java	/^    private long                 measurement_time;                                                       \/\/ time$/;"	f	class:TimerData	file:
+memFormat	spec/reporter/Result.java	/^    private static DecimalFormat memFormat     = new DecimalFormat("##.0");$/;"	f	class:Result	file:
+memFormat	spec/reporter/TextMetrics.java	/^    private static DecimalFormat memFormat = new DecimalFormat("#0");$/;"	f	class:TextMetrics	file:
+memory	spec/reporter/MultiVMTxtReport.java	/^    private String           memory;$/;"	f	class:MultiVMTxtReport	file:
+memory	spec/reporter/Report.java	/^    private String              memory;$/;"	f	class:Report	file:
+memory	spec/reporter/TextiReport.java	/^    private String           memory;$/;"	f	class:TextiReport	file:
+memoryDescription	spec/reporter/MultiVMTxtReport.java	/^    public String            memoryDescription;$/;"	f	class:MultiVMTxtReport
+memoryDescription	spec/reporter/Report.java	/^    private String              memoryDescription;$/;"	f	class:Report	file:
+memoryDescription	spec/reporter/TextiReport.java	/^    private String           memoryDescription;$/;"	f	class:TextiReport	file:
+menu	spec/jbb/TimerData.java	/^    private static byte          menu                  = 0;$/;"	f	class:TimerData	file:
+merge	spec/reporter/TextColumn.java	/^    public TextBlock merge() {$/;"	m	class:TextColumn
+messages	spec/reporter/Report.java	/^    public String messages() {$/;"	m	class:Report
+metric	spec/reporter/Metrics.java	/^    public String metric() {$/;"	m	class:Metrics
+metric	spec/reporter/MultiVMReport.java	/^    public String               metric[];$/;"	f	class:MultiVMReport
+metric	spec/reporter/MultiVMTxtReport.java	/^    public String            metric[];$/;"	f	class:MultiVMTxtReport
+metric	spec/reporter/Report.java	/^    public String               graphTable, hardware, metric, name, software;$/;"	f	class:Report
+metric	spec/reporter/TextiReport.java	/^    public String            hardware, metric, software;$/;"	f	class:TextiReport
+metric1	spec/reporter/MultiVMReport.java	/^    public String               metric1;$/;"	f	class:MultiVMReport
+metric1	spec/reporter/MultiVMTxtReport.java	/^    public String            hardware, metric1, metric2, software;$/;"	f	class:MultiVMTxtReport
+metric2	spec/reporter/MultiVMReport.java	/^    public String               metric2;$/;"	f	class:MultiVMReport
+metric2	spec/reporter/MultiVMTxtReport.java	/^    public String            hardware, metric1, metric2, software;$/;"	f	class:MultiVMTxtReport
+metrics	spec/reporter/MultiVMReport.java	/^    public Metrics              metrics[];$/;"	f	class:MultiVMReport
+metrics	spec/reporter/MultiVMTxtReport.java	/^    public TextMetrics       metrics[];$/;"	f	class:MultiVMTxtReport
+metrics	spec/reporter/Report.java	/^    public Metrics              metrics;$/;"	f	class:Report
+metrics	spec/reporter/TextiReport.java	/^    public TextMetrics       metrics;$/;"	f	class:TextiReport
+metrics_2	spec/reporter/Report.java	/^    public Metrics              metrics_2;$/;"	f	class:Report
+milliSecondsToSleep	spec/jbb/JBButil.java	/^    public static void milliSecondsToSleep(long mills) {$/;"	m	class:JBButil
+minBTPSRatio	spec/jbb/JBBProperties.java	/^    public float                 minBTPSRatio;$/;"	f	class:JBBProperties
+minOrderlines	spec/jbb/Transaction.java	/^    public static int           minOrderlines      = aveOrderlines - 5;$/;"	f	class:Transaction
+min_thread_transactions	spec/reporter/Result.java	/^    public double                min_thread_transactions;$/;"	f	class:Result
+min_transaction_count	spec/jbb/TimerData.java	/^    private long                 min_transaction_count = Long.MAX_VALUE;$/;"	f	class:TimerData	file:
+minimumTime	spec/jbb/TimerData.java	/^    private long                 minimumTime[];                                                          \/\/ fastest$/;"	f	class:TimerData	file:
+minimumtime	spec/reporter/Run.java	/^    public double               minimumtime;$/;"	f	class:Run
+mode	spec/jbb/Company.java	/^    private volatile runModes mode = runModes.DEFAULT_MODE;$/;"	f	class:Company	file:
+mode	spec/jbb/TransactionManager.java	/^    public Company.runModes   mode            = Company.runModes.DEFAULT_MODE;$/;"	f	class:TransactionManager
+multiCurvesGraph	spec/reporter/Metrics.java	/^    public static String multiCurvesGraph(Metrics[] metrics, String label,$/;"	m	class:Metrics
+multiJVMMode	spec/jbb/JBBmain.java	/^    static public boolean        multiJVMMode          = false;$/;"	f	class:JBBmain
+multiple_orders	spec/jbb/TransactionManager.java	/^    private static final byte multiple_orders = maxTxnTypes;$/;"	f	class:TransactionManager	file:
+myCompany	spec/jbb/JBBmain.java	/^    public static Company        myCompany             = null;$/;"	f	class:JBBmain
+n	spec/jbb/validity/LoopBounds.java	/^    private int         n         = 0;$/;"	f	class:LoopBounds2	file:
+name	spec/jbb/District.java	/^    private String           name;$/;"	f	class:District	file:
+name	spec/jbb/Item.java	/^    private String      name;$/;"	f	class:Item	file:
+name	spec/jbb/Warehouse.java	/^    private String         name;$/;"	f	class:Warehouse	file:
+name	spec/jbb/validity/Sub.java	/^    private static String name      = "Sub";$/;"	f	class:Sub	file:
+name	spec/jbb/validity/Super.java	/^    private static String name         = "Super";$/;"	f	class:Super	file:
+name	spec/reporter/Metrics.java	/^    public String[]             name;$/;"	f	class:Metrics
+name	spec/reporter/MultiVMReport.java	/^    public String               hardware, name, software;$/;"	f	class:MultiVMReport
+name	spec/reporter/Report.java	/^    public String               graphTable, hardware, metric, name, software;$/;"	f	class:Report
+name	spec/reporter/Result.java	/^    public String                name;$/;"	f	class:Result
+negativeExpDistribution	spec/jbb/JBButil.java	/^    public static double negativeExpDistribution(double mean, short warehouseId) {$/;"	m	class:JBButil
+newOrderIter	spec/jbb/District.java	/^    public synchronized Iterator newOrderIter() {$/;"	m	class:District
+newOrderTable	spec/jbb/District.java	/^    private JBBSortedStorage newOrderTable;$/;"	f	class:District	file:
+new_order	spec/jbb/Transaction.java	/^    protected static final byte new_order          = 0;$/;"	f	class:Transaction
+new_order	spec/jbb/TransactionManager.java	/^    private static final byte new_order       = Transaction.new_order;$/;"	f	class:TransactionManager	file:
+nextOrder	spec/jbb/District.java	/^    private int              nextOrder;$/;"	f	class:District	file:
+nextOrderId	spec/jbb/District.java	/^    public synchronized int nextOrderId() {$/;"	m	class:District
+numInst	spec/jbb/Controller.java	/^    private static int    numInst          = 1;$/;"	f	class:Controller	file:
+number_of_orderlines	spec/jbb/NewOrderTransaction.java	/^    private short                number_of_orderlines;$/;"	f	class:NewOrderTransaction	file:
+o_directory	spec/reporter/Metrics.java	/^    private String              o_directory;$/;"	f	class:Metrics	file:
+ol_amount	spec/jbb/OrderStatusTransaction.java	/^    private BigDecimal           ol_amount[];$/;"	f	class:OrderStatusTransaction	file:
+ol_b_g	spec/jbb/OrderStatusTransaction.java	/^    private char                 ol_b_g[];$/;"	f	class:OrderStatusTransaction	file:
+ol_delivery_date	spec/jbb/OrderStatusTransaction.java	/^    private Date                 ol_delivery_date[];$/;"	f	class:OrderStatusTransaction	file:
+ol_item_id	spec/jbb/OrderStatusTransaction.java	/^    private int                  ol_item_id[];$/;"	f	class:OrderStatusTransaction	file:
+ol_item_name	spec/jbb/OrderStatusTransaction.java	/^    private String               ol_item_name[];$/;"	f	class:OrderStatusTransaction	file:
+ol_item_price	spec/jbb/OrderStatusTransaction.java	/^    private BigDecimal           ol_item_price[];$/;"	f	class:OrderStatusTransaction	file:
+ol_quantity	spec/jbb/OrderStatusTransaction.java	/^    private short                ol_quantity[];$/;"	f	class:OrderStatusTransaction	file:
+ol_stock	spec/jbb/OrderStatusTransaction.java	/^    private int                  ol_stock[];$/;"	f	class:OrderStatusTransaction	file:
+ol_supplying_warehouse	spec/jbb/OrderStatusTransaction.java	/^    private short                ol_supplying_warehouse[];$/;"	f	class:OrderStatusTransaction	file:
+oldStderr	spec/jbb/SaveOutput.java	/^    static PrintStream  oldStderr;$/;"	f	class:SaveOutput
+oldStdout	spec/jbb/SaveOutput.java	/^    static PrintStream  oldStdout;$/;"	f	class:SaveOutput
+oldestHistory	spec/jbb/Warehouse.java	/^    private long           oldestHistory;$/;"	f	class:Warehouse	file:
+oldestOrder	spec/jbb/District.java	/^    private int              oldestOrder;$/;"	f	class:District	file:
+opta	spec/reporter/MultiVMReporter.java	/^    private static boolean opta      = false;$/;"	f	class:MultiVMReporter	file:
+opta	spec/reporter/Reporter.java	/^    private static boolean opta      = false;$/;"	f	class:Reporter	file:
+optc	spec/reporter/Reporter.java	/^    private static String  optc;$/;"	f	class:Reporter	file:
+opte	spec/reporter/MultiVMReporter.java	/^    private static boolean opte      = true;$/;"	f	class:MultiVMReporter	file:
+opte	spec/reporter/Reporter.java	/^    private static boolean opte      = true;$/;"	f	class:Reporter	file:
+opth	spec/reporter/MultiVMReporter.java	/^    private static boolean opth      = false;$/;"	f	class:MultiVMReporter	file:
+opth	spec/reporter/Reporter.java	/^    private static boolean opth      = false;$/;"	f	class:Reporter	file:
+optl	spec/reporter/MultiVMReporter.java	/^    private static String  optl;$/;"	f	class:MultiVMReporter	file:
+optl	spec/reporter/Reporter.java	/^    private static String  optl;$/;"	f	class:Reporter	file:
+optn	spec/reporter/MultiVMReporter.java	/^    private static String  optn;$/;"	f	class:MultiVMReporter	file:
+optn	spec/reporter/Reporter.java	/^    private static String  optn;$/;"	f	class:Reporter	file:
+opto	spec/reporter/MultiVMReporter.java	/^    private static String  opto;$/;"	f	class:MultiVMReporter	file:
+opto	spec/reporter/Reporter.java	/^    private static String  opto;$/;"	f	class:Reporter	file:
+optp	spec/reporter/MultiVMReporter.java	/^    private static String  optp;$/;"	f	class:MultiVMReporter	file:
+optr	spec/reporter/MultiVMReporter.java	/^    private static String  optr;$/;"	f	class:MultiVMReporter	file:
+optr	spec/reporter/Reporter.java	/^    private static String  optr;$/;"	f	class:Reporter	file:
+opts	spec/reporter/MultiVMReporter.java	/^    private static boolean opts      = false;$/;"	f	class:MultiVMReporter	file:
+opts	spec/reporter/Reporter.java	/^    private static boolean opts      = false;$/;"	f	class:Reporter	file:
+optv	spec/reporter/Reporter.java	/^    private static boolean optv      = false;$/;"	f	class:Reporter	file:
+orderAmount	spec/jbb/CustomerReportTransaction.java	/^    BigDecimal                   orderAmount[]        = new BigDecimal[lastOrdersQuantity];$/;"	f	class:CustomerReportTransaction
+orderCarrierId	spec/jbb/OrderStatusTransaction.java	/^    private short                orderCarrierId;$/;"	f	class:OrderStatusTransaction	file:
+orderDates	spec/jbb/CustomerReportTransaction.java	/^    Date                         orderDates[]         = new Date[lastOrdersQuantity];$/;"	f	class:CustomerReportTransaction
+orderEntryDate	spec/jbb/OrderStatusTransaction.java	/^    private Date                 orderEntryDate;$/;"	f	class:OrderStatusTransaction	file:
+orderId	spec/jbb/NewOrder.java	/^    private int         orderId;                                                    \/\/ NO_O_ID$/;"	f	class:NewOrder	file:
+orderId	spec/jbb/NewOrderTransaction.java	/^    private int                  orderId;$/;"	f	class:NewOrderTransaction	file:
+orderId	spec/jbb/Order.java	/^    private int         orderId;$/;"	f	class:Order	file:
+orderId	spec/jbb/OrderStatusTransaction.java	/^    private int                  orderId;$/;"	f	class:OrderStatusTransaction	file:
+orderId	spec/jbb/Orderline.java	/^    private int         orderId;$/;"	f	class:Orderline	file:
+orderLineCount	spec/jbb/Order.java	/^    private short       orderLineCount;$/;"	f	class:Order	file:
+orderLineCount	spec/jbb/OrderStatusTransaction.java	/^    private int                  orderLineCount;$/;"	f	class:OrderStatusTransaction	file:
+orderLineNumber	spec/jbb/Orderline.java	/^    private short       orderLineNumber;$/;"	f	class:Orderline	file:
+orderLog	spec/jbb/NewOrderTransaction.java	/^    private TransactionLogBuffer orderLog;$/;"	f	class:NewOrderTransaction	file:
+orderLog	spec/jbb/OrderStatusTransaction.java	/^    private TransactionLogBuffer orderLog;$/;"	f	class:OrderStatusTransaction	file:
+orderPtr	spec/jbb/NewOrder.java	/^    private Order       orderPtr;$/;"	f	class:NewOrder	file:
+orderTable	spec/jbb/District.java	/^    private JBBSortedStorage orderTable;$/;"	f	class:District	file:
+orderTable	spec/jbb/StockLevelTransaction.java	/^    private JBBDataStorage       orderTable;$/;"	f	class:StockLevelTransaction	file:
+order_status	spec/jbb/Transaction.java	/^    protected static final byte order_status       = 2;$/;"	f	class:Transaction
+order_status	spec/jbb/TransactionManager.java	/^    private static final byte order_status    = Transaction.order_status;$/;"	f	class:TransactionManager	file:
+orderlineList	spec/jbb/Order.java	/^    private Orderline[] orderlineList;$/;"	f	class:Order	file:
+orderline_count	spec/jbb/NewOrderTransaction.java	/^    private short                orderline_count;$/;"	f	class:NewOrderTransaction	file:
+orderlinesPerOrder	spec/jbb/JBBProperties.java	/^    public int                   orderlinesPerOrder;$/;"	f	class:JBBProperties
+orderlinesPerOrder	spec/jbb/JBBmain.java	/^    private int                  orderlinesPerOrder;$/;"	f	class:JBBmain	file:
+originalText	spec/jbb/JBButil.java	/^    private static final String originalText      = "ORIGINAL";$/;"	f	class:JBButil	file:
+otherColumn	spec/reporter/TableGroup.java	/^    private static String   otherColumn = "<\/TD><TD WIDTH=\\"50%\\" VALIGN=\\"TOP\\">\\n";$/;"	f	class:TableGroup	file:
+otherColumn	spec/reporter/TableGroupCompare.java	/^    private static String   otherColumn =$/;"	f	class:TableGroupCompare	file:
+out	spec/jbb/validity/PepTest.java	/^  private static PrintStream out = System.out;$/;"	f	class:PepTest	file:
+outDeliveriesFile	spec/jbb/Company.java	/^    static private PrintStream outDeliveriesFile;$/;"	f	class:Company	file:
+outDeliveriesFile	spec/jbb/JBBmain.java	/^    static private PrintStream   outDeliveriesFile     = null;$/;"	f	class:JBBmain	file:
+outFile	spec/jbb/DeliveryHandler.java	/^    static private PrintStream outFile;$/;"	f	class:DeliveryHandler	file:
+outPropFile	spec/jbb/Company.java	/^    static private PrintStream outPropFile;$/;"	f	class:Company	file:
+outRawFile	spec/jbb/JBBmain.java	/^    static private PrintStream   outRawFile            = null;$/;"	f	class:JBBmain	file:
+outResultsFile	spec/jbb/JBBmain.java	/^    static private PrintStream   outResultsFile        = null;$/;"	f	class:JBBmain	file:
+outputDir	spec/jbb/Controller.java	/^    private static String outputDir        = null;$/;"	f	class:Controller	file:
+output_directory	spec/reporter/MultiVMReport.java	/^    public String               output_directory;$/;"	f	class:MultiVMReport
+output_directory	spec/reporter/MultiVMTxtReport.java	/^    public String            output_directory;$/;"	f	class:MultiVMTxtReport
+output_directory	spec/reporter/Report.java	/^    public String               output_directory;$/;"	f	class:Report
+output_properly	spec/reporter/Metrics.java	/^    public void output_properly(String s) {$/;"	m	class:Metrics
+overrideItemTableSize	spec/jbb/JBBProperties.java	/^    public static int            overrideItemTableSize                     = 20000;$/;"	f	class:JBBProperties
+overrideItemTableSize	spec/jbb/JBBmain.java	/^    public static int            overrideItemTableSize = 0;$/;"	f	class:JBBmain
+pad	spec/reporter/HTMLTableGraphGenerator3.java	/^    private int                   pad;$/;"	f	class:HTMLTableGraphGenerator3	file:
+padNumber	spec/jbb/RunSequencer.java	/^    public String padNumber(int n) {$/;"	m	class:RunSequencer
+pageWidth	spec/reporter/MultiVMTxtReport.java	/^    private final static int pageWidth = 120;$/;"	f	class:MultiVMTxtReport	file:
+pageWidth	spec/reporter/TextiReport.java	/^    private final static int pageWidth = 120;$/;"	f	class:TextiReport	file:
+payment	spec/jbb/Transaction.java	/^    protected static final byte payment            = 1;$/;"	f	class:Transaction
+payment	spec/jbb/TransactionManager.java	/^    private static final byte payment         = Transaction.payment;$/;"	f	class:TransactionManager	file:
+paymentAmount	spec/jbb/CustomerReportTransaction.java	/^    BigDecimal                   paymentAmount[]      = new BigDecimal[lastPaymentsQuantity];$/;"	f	class:CustomerReportTransaction
+paymentAmount	spec/jbb/PaymentTransaction.java	/^    private BigDecimal           paymentAmount;$/;"	f	class:PaymentTransaction	file:
+paymentDates	spec/jbb/CustomerReportTransaction.java	/^    Date                         paymentDates[]       = new Date[lastPaymentsQuantity];$/;"	f	class:CustomerReportTransaction
+paymentLog	spec/jbb/PaymentTransaction.java	/^    private TransactionLogBuffer paymentLog;$/;"	f	class:PaymentTransaction	file:
+paymentTime	spec/jbb/PaymentTransaction.java	/^    private Date                 paymentTime;$/;"	f	class:PaymentTransaction	file:
+per_jvm_warehouse_rampdown	spec/jbb/Company.java	/^    private float              per_jvm_warehouse_rampdown = 0.5f;$/;"	f	class:Company	file:
+per_jvm_warehouse_rampdown	spec/jbb/JBBProperties.java	/^    public float                 per_jvm_warehouse_rampdown                = 0f;$/;"	f	class:JBBProperties
+per_jvm_warehouse_rampup	spec/jbb/Company.java	/^    private float              per_jvm_warehouse_rampup   = 0.5f;$/;"	f	class:Company	file:
+per_jvm_warehouse_rampup	spec/jbb/JBBProperties.java	/^    public float                 per_jvm_warehouse_rampup                  = 0f;$/;"	f	class:JBBProperties
+per_wh_r	spec/jbb/Warehouse.java	/^    private Random         per_wh_r;$/;"	f	class:Warehouse	file:
+pgm_exit	spec/jbb/TransactionManager.java	/^    private static final byte pgm_exit        = (byte) (multiple_orders + 2);$/;"	f	class:TransactionManager	file:
+pixel	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                pixel;$/;"	f	class:HTMLTableGraphGenerator3	file:
+pixelcolor	spec/reporter/GraphImage.java	/^    private Color                pixelcolor;$/;"	f	class:GraphImage	file:
+pixelcolor	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                pixelcolor;$/;"	f	class:HTMLTableGraphGenerator3	file:
+pixelcolorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    private boolean               pixelcolorEnabled;$/;"	f	class:HTMLTableGraphGenerator3	file:
+pixelsize	spec/reporter/GraphImage.java	/^    private int                  pixelsize;$/;"	f	class:GraphImage	file:
+pixelsize	spec/reporter/HTMLTableGraphGenerator3.java	/^    private int                   pixelsize;$/;"	f	class:HTMLTableGraphGenerator3	file:
+pixeltype	spec/reporter/GraphImage.java	/^    private int                  pixeltype;$/;"	f	class:GraphImage	file:
+plot	spec/reporter/GraphImage.java	/^    public void plot(double x, double y) {$/;"	m	class:GraphImage
+plot	spec/reporter/GraphImage.java	/^    public void plot(double x, double y, Color c) {$/;"	m	class:GraphImage
+plot	spec/reporter/GraphImage.java	/^    public void plot(double x, double y, int p, Color c) {$/;"	m	class:GraphImage
+plotFlatLine	spec/reporter/GraphImage.java	/^    public void plotFlatLine(double x1, double x2, double y, Color c) {$/;"	m	class:GraphImage
+plotFlatLine	spec/reporter/GraphImage.java	/^    public void plotFlatLine(double y, Color c) {$/;"	m	class:GraphImage
+plotLine	spec/reporter/GraphImage.java	/^    public void plotLine(double x1, double y1, double x2, double y2) {$/;"	m	class:GraphImage
+plotXAxisTicks	spec/reporter/GraphImage.java	/^    public void plotXAxisTicks(double step, Color c, String label) {$/;"	m	class:GraphImage
+plotXYAxes	spec/reporter/GraphImage.java	/^    public void plotXYAxes(Color c) {$/;"	m	class:GraphImage
+plotYAxisTicks	spec/reporter/GraphImage.java	/^    public void plotYAxisTicks(double step, Color c, String label) {$/;"	m	class:GraphImage
+populateXML	spec/jbb/infra/Util/XMLTransactionLog.java	/^    public void populateXML(TransactionLogBuffer log_buffer) {$/;"	m	class:XMLTransactionLog
+port	spec/jbb/Controller.java	/^    private static int    port             = 1500;$/;"	f	class:Controller	file:
+port	spec/jbb/JBBmain.java	/^    static public int            port                  = 1500;$/;"	f	class:JBBmain
+prefix	spec/reporter/MultiVMReport.java	/^    public String               prefix;$/;"	f	class:MultiVMReport
+prefix	spec/reporter/MultiVMTxtReport.java	/^    public String            prefix;$/;"	f	class:MultiVMTxtReport
+prepareForStart	spec/jbb/Company.java	/^    public synchronized void prepareForStart() {$/;"	m	class:Company
+preprocess	spec/jbb/DeliveryTransaction.java	/^    public boolean preprocess() {$/;"	m	class:DeliveryTransaction
+prevSet	spec/reporter/GraphImage.java	/^    private boolean              prevSet;$/;"	f	class:GraphImage	file:
+prevx	spec/reporter/GraphImage.java	/^    private double               prevx;$/;"	f	class:GraphImage	file:
+prevy	spec/reporter/GraphImage.java	/^    private double               prevy;$/;"	f	class:GraphImage	file:
+price	spec/jbb/Item.java	/^    private BigDecimal  price;$/;"	f	class:Item	file:
+primeWithDummyData	spec/jbb/Company.java	/^    public synchronized void primeWithDummyData(short number_of_warehouses,$/;"	m	class:Company
+print	spec/reporter/MultiVMReport.java	/^    public void print(PrintStream out) {$/;"	m	class:MultiVMReport
+print	spec/reporter/MultiVMReport.java	/^    public void print(String outFile) {$/;"	m	class:MultiVMReport
+print	spec/reporter/MultiVMTxtReport.java	/^    public void print(PrintStream out) {$/;"	m	class:MultiVMTxtReport
+print	spec/reporter/MultiVMTxtReport.java	/^    public void print(String outFile) {$/;"	m	class:MultiVMTxtReport
+print	spec/reporter/Report.java	/^    public void print(PrintStream out) {$/;"	m	class:Report
+print	spec/reporter/Report.java	/^    public void print(String outFile) {$/;"	m	class:Report
+print	spec/reporter/TextiReport.java	/^    public void print(PrintStream out) {$/;"	m	class:TextiReport
+print	spec/reporter/TextiReport.java	/^    public void print(String outFile) {$/;"	m	class:TextiReport
+printInterfaces	spec/jbb/validity/PepTest.java	/^  void printInterfaces(java.lang.Class cl) {$/;"	m	class:PepTest
+printOtherProperties	spec/reporter/Report.java	/^    private void printOtherProperties(PrintStream out) {$/;"	m	class:Report	file:
+printPrimes	spec/jbb/validity/PepTest.java	/^  void printPrimes() {$/;"	m	class:PepTest
+printPropertiesAndArgs	spec/jbb/JBBProperties.java	/^    public static boolean        printPropertiesAndArgs                    = true;$/;"	f	class:JBBProperties
+printRemD	spec/jbb/validity/PepTest.java	/^  void printRemD(double a, double b) {$/;"	m	class:PepTest
+printTime	spec/jbb/validity/PepTest.java	/^  void printTime() {$/;"	m	class:PepTest
+print_score	spec/reporter/Metrics.java	/^    public boolean              print_score;$/;"	f	class:Metrics
+priv	spec/jbb/validity/Sub.java	/^    private int           priv      = 5;$/;"	f	class:Sub	file:
+priv	spec/jbb/validity/Super.java	/^    private int           priv         = 2;$/;"	f	class:Super	file:
+privChar	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final void privChar(char c, int x, int y) {$/;"	m	class:TransactionLogBuffer	file:
+privCharFill	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final void privCharFill(char c, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privInt	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final int privInt(int iz, char sign, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privInt	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final int privInt(int iz, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privIntLeadingZeros	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final int privIntLeadingZeros(int iz, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privLong	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final long privLong(long iz, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privSubstring	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final void privSubstring(String s, int x, int y, int off, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privText	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final void privText(String s, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer	file:
+privText	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private final void privText(String s, int x, int y, int len, short align) {$/;"	m	class:TransactionLogBuffer	file:
+process	spec/jbb/CustomerReportTransaction.java	/^    public boolean process() {$/;"	m	class:CustomerReportTransaction
+process	spec/jbb/DeliveryTransaction.java	/^    public synchronized boolean process() {$/;"	m	class:DeliveryTransaction
+process	spec/jbb/NewOrderTransaction.java	/^    public boolean process() {$/;"	m	class:NewOrderTransaction
+process	spec/jbb/OrderStatusTransaction.java	/^    public boolean process() {$/;"	m	class:OrderStatusTransaction
+process	spec/jbb/Orderline.java	/^    private void process(Item itemRef, Stock stockRef) {$/;"	m	class:Orderline	file:
+process	spec/jbb/PaymentTransaction.java	/^    public boolean process() {$/;"	m	class:PaymentTransaction
+process	spec/jbb/StockLevelTransaction.java	/^    public boolean process() {$/;"	m	class:StockLevelTransaction
+process	spec/jbb/Transaction.java	/^    public abstract boolean process();$/;"	m	class:Transaction
+processLines	spec/jbb/Order.java	/^    public synchronized boolean processLines(Warehouse inWarehousePtr,$/;"	m	class:Order
+processPreloadedOrders	spec/jbb/NewOrderTransaction.java	/^    public synchronized void processPreloadedOrders() {$/;"	m	class:NewOrderTransaction
+processTransactionLog	spec/jbb/CustomerReportTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:CustomerReportTransaction
+processTransactionLog	spec/jbb/DeliveryTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:DeliveryTransaction
+processTransactionLog	spec/jbb/NewOrderTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:NewOrderTransaction
+processTransactionLog	spec/jbb/OrderStatusTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:OrderStatusTransaction
+processTransactionLog	spec/jbb/PaymentTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:PaymentTransaction
+processTransactionLog	spec/jbb/StockLevelTransaction.java	/^    public synchronized void processTransactionLog() {$/;"	m	class:StockLevelTransaction
+processTransactionLog	spec/jbb/Transaction.java	/^    public abstract void processTransactionLog();$/;"	m	class:Transaction
+prop	spec/jbb/JBBmain.java	/^    JBBProperties                prop;$/;"	f	class:JBBmain
+propFile	spec/jbb/Controller.java	/^    private static String propFile         = JBBmain.defaultPropsFileName;$/;"	f	class:Controller	file:
+propPrefix	spec/jbb/Company.java	/^    private String             propPrefix                 = null;$/;"	f	class:Company	file:
+propResults	spec/jbb/TimerData.java	/^    public synchronized void propResults(String prefix, PrintStream out) {$/;"	m	class:TimerData
+propResults	spec/jbb/TimerData.java	/^    public synchronized void propResults(String prefix, PrintStream out,$/;"	m	class:TimerData
+propThreadResults	spec/jbb/TimerData.java	/^    public synchronized void propThreadResults(String prefix, PrintStream out) {$/;"	m	class:TimerData
+props	spec/reporter/Metrics.java	/^    public ReportProps          props;$/;"	f	class:Metrics
+props	spec/reporter/Run.java	/^    private ReportProps         props;$/;"	f	class:Run	file:
+props	spec/reporter/Table.java	/^    private ReportProps    props;$/;"	f	class:Table	file:
+props	spec/reporter/TableGroup.java	/^    private ReportProps     props;$/;"	f	class:TableGroup	file:
+props	spec/reporter/TableGroupCompare.java	/^    private ReportProps     props;$/;"	f	class:TableGroupCompare	file:
+props_2	spec/reporter/TableGroupCompare.java	/^    private ReportProps     props_2;$/;"	f	class:TableGroupCompare	file:
+prot	spec/jbb/validity/Sub.java	/^    protected int         prot      = 11;$/;"	f	class:Sub
+prot	spec/jbb/validity/Super.java	/^    protected int         prot         = 3;$/;"	f	class:Super
+psi	spec/jbb/validity/Sub.java	/^    private static int    psi       = publicStatic + 7;$/;"	f	class:Sub	file:
+psi	spec/jbb/validity/Super.java	/^    private static int    psi          = 10;$/;"	f	class:Super	file:
+pub	spec/jbb/validity/Sub.java	/^    public int            pub       = 13;$/;"	f	class:Sub
+pub	spec/jbb/validity/Super.java	/^    public int            pub          = 4;$/;"	f	class:Super
+publicStatic	spec/jbb/validity/Super.java	/^    public static int     publicStatic = psi - 2;$/;"	f	class:Super
+put	spec/jbb/Infrastructure.java	/^        public Object put(Object key, Object value) {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+put	spec/jbb/JBBDataStorage.java	/^    Object put(Object key, Object value);$/;"	m	interface:JBBDataStorage
+put	spec/jbb/MapDataStorage.java	/^    public Object put(Object key, Object value) {$/;"	m	class:MapDataStorage
+putChar	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putChar(char c, int x, int y) {$/;"	m	class:TransactionLogBuffer
+putCharFill	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putCharFill(char c, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putDate	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putDate(Date d, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putDollars	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putDollars(BigDecimal d, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putDollars	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putDollars(double d, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putDouble	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putDouble(String d, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putDouble	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putDouble(double d, int x, int y, int len, int frac) {$/;"	m	class:TransactionLogBuffer
+putInt	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putInt(int i, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putLine	spec/jbb/infra/Util/XMLTransactionLog.java	/^    private final void putLine(String s, int n) {$/;"	m	class:XMLTransactionLog	file:
+putLong	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putLong(long l, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putSubstring	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putSubstring(String s, int x, int y, int off, int len) {$/;"	m	class:TransactionLogBuffer
+putText	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putText(String s, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+putText	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putText(String s, int x, int y, int len, short align) {$/;"	m	class:TransactionLogBuffer
+putTime	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public void putTime(Date d, int x, int y, int len) {$/;"	m	class:TransactionLogBuffer
+quality	spec/reporter/GraphImage.java	/^    private float                quality;$/;"	f	class:GraphImage	file:
+quantity	spec/jbb/Orderline.java	/^    private short       quantity;$/;"	f	class:Orderline	file:
+queuedLog	spec/jbb/DeliveryTransaction.java	/^    private TransactionLogBuffer queuedLog;$/;"	f	class:DeliveryTransaction	file:
+r	spec/jbb/JBButil.java	/^    private static Random       r;$/;"	f	class:JBButil	file:
+ramp_up_int	spec/reporter/Result.java	/^    public double                ramp_up_int;$/;"	f	class:Result
+ramp_up_int	spec/reporter/Result.java	/^    public double ramp_up_int() {$/;"	m	class:Result
+rampdown_millis	spec/reporter/Metrics.java	/^    private long                rampdown_millis[];$/;"	f	class:Metrics	file:
+rampdown_millis	spec/reporter/Result.java	/^    public long rampdown_millis() {$/;"	m	class:Result
+rampdown_millis_at_wh	spec/reporter/Metrics.java	/^    public long rampdown_millis_at_wh(int n) {$/;"	m	class:Metrics
+rampupSeconds	spec/jbb/JBBProperties.java	/^    public int                   rampupSeconds;$/;"	f	class:JBBProperties
+rampup_millis	spec/reporter/Metrics.java	/^    private long                rampup_millis[];$/;"	f	class:Metrics	file:
+rampup_millis	spec/reporter/Result.java	/^    public long rampup_millis() {$/;"	m	class:Result
+rampup_millis_at_wh	spec/reporter/Metrics.java	/^    public long rampup_millis_at_wh(int n) {$/;"	m	class:Metrics
+rampup_time	spec/jbb/Company.java	/^    private long               rampup_time;$/;"	f	class:Company	file:
+rampup_time	spec/jbb/TimerData.java	/^    private long                 rampup_time;                                                            \/\/ time$/;"	f	class:TimerData	file:
+random	spec/jbb/JBButil.java	/^    public static int random(int low, int high) {$/;"	m	class:JBButil
+random	spec/jbb/JBButil.java	/^    public static int random(int low, int high, Random r) {$/;"	m	class:JBButil
+random	spec/jbb/JBButil.java	/^    public static int random(int low, int high, short warehouseId) {$/;"	m	class:JBButil
+random_init	spec/jbb/JBButil.java	/^    public static void random_init(int num_warehouse_streams) {$/;"	m	class:JBButil
+ratio	spec/reporter/Run.java	/^    public double ratio() {$/;"	m	class:Run
+ratioOrNa	spec/reporter/Metrics.java	/^    public String ratioOrNa(double x) {$/;"	m	class:Metrics
+ratioTable	spec/reporter/TextMetrics.java	/^    public String ratioTable() {$/;"	m	class:TextMetrics
+readProperties	spec/jbb/Controller.java	/^    private static void readProperties() {$/;"	m	class:Controller	file:
+readUserValue	spec/jbb/TransactionManager.java	/^    private String readUserValue() {$/;"	m	class:TransactionManager	file:
+receivePayment	spec/jbb/District.java	/^    public synchronized void receivePayment(BigDecimal paymentAmount) {$/;"	m	class:District
+receivePayment	spec/jbb/Warehouse.java	/^    public synchronized void receivePayment(BigDecimal paymentAmount) {$/;"	m	class:Warehouse
+referenceTime	spec/reporter/Result.java	/^    public double                referenceTime;$/;"	f	class:Result
+register_warehouse_Random_stream	spec/jbb/JBButil.java	/^    public static void register_warehouse_Random_stream(short warehouseId,$/;"	m	class:JBButil
+relocateImageResource	spec/reporter/Metrics.java	/^    public void relocateImageResource(String image, String relocateTo) {$/;"	m	class:Metrics
+remove	spec/jbb/Infrastructure.java	/^        public Object remove(Object o) {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+remove	spec/jbb/JBBDataStorage.java	/^    Object remove(Object key);$/;"	m	interface:JBBDataStorage
+remove	spec/jbb/MapDataStorage.java	/^    public Object remove(Object key) {$/;"	m	class:MapDataStorage
+removeFirstElem	spec/jbb/Infrastructure.java	/^        public Object removeFirstElem() {$/;"	m	class:Infrastructure.SynchronizedJBBSortedStorage
+removeFirstElem	spec/jbb/JBBSortedStorage.java	/^    Object removeFirstElem();$/;"	m	interface:JBBSortedStorage
+removeFirstElem	spec/jbb/TreeMapDataStorage.java	/^    public Object removeFirstElem() {$/;"	m	class:TreeMapDataStorage
+removeFirstNewOrder	spec/jbb/District.java	/^    public synchronized NewOrder removeFirstNewOrder() {$/;"	m	class:District
+removeNewOrder	spec/jbb/District.java	/^    public synchronized NewOrder removeNewOrder(Object key) {$/;"	m	class:District
+removeOldNewOrders	spec/jbb/District.java	/^    public synchronized void removeOldNewOrders(int minNewOrders) {$/;"	m	class:District
+removeOldOrders	spec/jbb/District.java	/^    public synchronized void removeOldOrders(int minOrders) {$/;"	m	class:District
+removeOldestHistory	spec/jbb/Warehouse.java	/^    public void removeOldestHistory() {$/;"	m	class:Warehouse
+removeOldestHistorySynch	spec/jbb/Warehouse.java	/^    private Object removeOldestHistorySynch = new Object();$/;"	f	class:Warehouse	file:
+removeOldestOrder	spec/jbb/District.java	/^    public synchronized void removeOldestOrder() {$/;"	m	class:District
+rep	spec/reporter/TextBlock.java	/^    private static String rep(String s, int n) {$/;"	m	class:TextBlock	file:
+reportTime	spec/jbb/CustomerReportTransaction.java	/^    private Date                 reportTime;$/;"	f	class:CustomerReportTransaction	file:
+resetConnectPoints	spec/reporter/GraphImage.java	/^    public void resetConnectPoints() {$/;"	m	class:GraphImage
+result	spec/reporter/Metrics.java	/^    public Result[]             result;$/;"	f	class:Metrics
+result	spec/reporter/Run.java	/^    public Result               result;$/;"	f	class:Run
+resultPrefix	spec/jbb/RunSequencer.java	/^    String              resultPrefix;                                                  \/\/ =$/;"	f	class:ResFilter
+resultPrefix	spec/jbb/RunSequencer.java	/^    String              resultPrefix;$/;"	f	class:RunSequencer
+resultPrefixLen	spec/jbb/RunSequencer.java	/^    int                 resultPrefixLen;                                               \/\/ =$/;"	f	class:ResFilter
+resultPrefixLen	spec/jbb/RunSequencer.java	/^    int                 resultPrefixLen;$/;"	f	class:RunSequencer
+resultSuffix	spec/jbb/RunSequencer.java	/^    String              resultSuffix = ".results";$/;"	f	class:ResFilter
+resultSuffix	spec/jbb/RunSequencer.java	/^    String              resultSuffix;$/;"	f	class:RunSequencer
+resultSuffixStart	spec/jbb/RunSequencer.java	/^    int                 resultSuffixStart;$/;"	f	class:ResFilter
+results	spec/reporter/MultiVMReport.java	/^    public ReportProps          results[];$/;"	f	class:MultiVMReport
+results	spec/reporter/MultiVMTxtReport.java	/^    public ReportProps       results[];$/;"	f	class:MultiVMTxtReport
+results	spec/reporter/Report.java	/^    public ReportProps          results   = new ReportProps();$/;"	f	class:Report
+results	spec/reporter/TextiReport.java	/^    public ReportProps       results   = new ReportProps();$/;"	f	class:TextiReport
+results_2	spec/reporter/Report.java	/^    public ReportProps          results_2 = new ReportProps();$/;"	f	class:Report
+results_buf	spec/reporter/Metrics.java	/^    public StringBuffer         results_buf;$/;"	f	class:Metrics
+retrieveItem	spec/jbb/Warehouse.java	/^    public Item retrieveItem(int inItemId) {$/;"	m	class:Warehouse
+retrieveOrder	spec/jbb/District.java	/^    public synchronized Order retrieveOrder(Order order) {$/;"	m	class:District
+retrieveStock	spec/jbb/Warehouse.java	/^    public Stock retrieveStock(int inItemId) {$/;"	m	class:Warehouse
+rollback	spec/jbb/NewOrderTransaction.java	/^    private boolean              rollback;$/;"	f	class:NewOrderTransaction	file:
+rollupTimerData	spec/jbb/TimerData.java	/^    public synchronized void rollupTimerData(int transaction_type,$/;"	m	class:TimerData
+rows	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    int                       rows, cols;$/;"	f	class:TransactionLogBuffer
+rows	spec/reporter/TableGroup.java	/^    int[][]                 rows        = new int[MAXGROUPS][MAXCOLUMNS];$/;"	f	class:TableGroup
+rows	spec/reporter/TableGroupCompare.java	/^    int[][]                 rows        = new int[MAXGROUPS][MAXCOLUMNS];$/;"	f	class:TableGroupCompare
+run	spec/jbb/JBBmain.java	/^    public void run() {$/;"	m	class:JBBmain
+run	spec/jbb/validity/LoopBounds.java	/^    public static void run() {$/;"	m	class:LoopBounds
+run	spec/reporter/Result.java	/^    public Run[]                 run;$/;"	f	class:Result
+runModes	spec/jbb/Company.java	/^    public enum runModes {$/;"	g	class:Company
+runOutputSubDir	spec/jbb/Controller.java	/^    private static String runOutputSubDir  = null;$/;"	f	class:Controller	file:
+runTxn	spec/jbb/TransactionManager.java	/^    private long runTxn(Transaction txn, long menuWaitTime,$/;"	m	class:TransactionManager	file:
+runWarehouse	spec/jbb/JBBmain.java	/^    public boolean runWarehouse(int cur_warehouses, int num_wh, float min_btps) {$/;"	m	class:JBBmain
+s	spec/jbb/Infrastructure.java	/^        JBBDataStorage s;$/;"	f	class:Infrastructure.SynchronizedJBBDataStorage
+s	spec/jbb/validity/PepTest.java	/^  String s;$/;"	f	class:StringAndInt
+scale	spec/reporter/GraphImage.java	/^    private final double[]       scale                    = new double[DEFAULT_SCALE.length];$/;"	f	class:GraphImage	file:
+scale	spec/reporter/HTMLTableGraphGenerator3.java	/^    private final double[]        scale             = new double[DEFAULT_SCALE.length];$/;"	f	class:HTMLTableGraphGenerator3	file:
+score	spec/reporter/Result.java	/^    private double               score;$/;"	f	class:Result	file:
+score	spec/reporter/Result.java	/^    public double score() {$/;"	m	class:Result
+score_at	spec/reporter/Metrics.java	/^    public double               score_at[];$/;"	f	class:Metrics
+score_at_wh	spec/reporter/Metrics.java	/^    double score_at_wh(int n) {$/;"	m	class:Metrics
+score_format	spec/reporter/Metrics.java	/^    public static String score_format(double x) {$/;"	m	class:Metrics
+screenBuf	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    char                      screenBuf[][];$/;"	f	class:TransactionLogBuffer
+screenWriteFlag	spec/jbb/JBBProperties.java	/^    public boolean               screenWriteFlag;$/;"	f	class:JBBProperties
+screenWriteFlag	spec/jbb/JBBmain.java	/^    private boolean              screenWriteFlag;$/;"	f	class:JBBmain	file:
+sequenceOfWarehouses	spec/jbb/Controller.java	/^    private static int[]  sequenceOfWarehouses;$/;"	f	class:Controller	file:
+sequenceOfWarehouses	spec/jbb/JBBProperties.java	/^    public int[]                 sequenceOfWarehouses;$/;"	f	class:JBBProperties
+serialVersionUID	spec/jbb/MapDataStorage.java	/^    private static final long serialVersionUID = 1L;$/;"	f	class:MapDataStorage	file:
+serialVersionUID	spec/jbb/TreeMapDataStorage.java	/^    private static final long serialVersionUID = 1L;$/;"	f	class:TreeMapDataStorage	file:
+serialVersionUID	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    private static final long serialVersionUID = 1L;$/;"	f	class:ScreenException	file:
+serialVersionUID	spec/jbb/infra/Util/XMLTransactionLog.java	/^    private static final long serialVersionUID = 1L;$/;"	f	class:XMLLineDocumentException	file:
+serialVersionUID	spec/reporter/ReportProps.java	/^    private static final long serialVersionUID = 1L;$/;"	f	class:ReportProps	file:
+setAllLocal	spec/jbb/Order.java	/^    public synchronized void setAllLocal(boolean inAllLocal) {$/;"	m	class:Order
+setAmount	spec/jbb/Orderline.java	/^    public synchronized void setAmount(BigDecimal inAmount) {$/;"	m	class:Orderline
+setAxesLabels	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setAxesLabels(String xaxis, String yaxis) {$/;"	m	class:HTMLTableGraphGenerator3
+setAxesLabelsPrecision	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setAxesLabelsPrecision(int x, int y) {$/;"	m	class:HTMLTableGraphGenerator3
+setAxisLabelsPrecision	spec/reporter/GraphImage.java	/^    private void setAxisLabelsPrecision(DecimalFormat df, int i, int f) {$/;"	m	class:GraphImage	file:
+setBackground	spec/reporter/GraphImage.java	/^    public void setBackground(Color color) {$/;"	m	class:GraphImage
+setBackgroundColor	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setBackgroundColor(Color c) {$/;"	m	class:HTMLTableGraphGenerator3
+setBackgroundColorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setBackgroundColorEnabled(boolean bgcolorEnabled) {$/;"	m	class:HTMLTableGraphGenerator3
+setCarrierId	spec/jbb/Order.java	/^    public synchronized void setCarrierId(short inCarrierId) {$/;"	m	class:Order
+setConnectPointsEnabled	spec/reporter/GraphImage.java	/^    public void setConnectPointsEnabled(boolean connectPointsEnabled) {$/;"	m	class:GraphImage
+setDeliveryTime	spec/jbb/Orderline.java	/^    public synchronized void setDeliveryTime(Date deliveryTime) {$/;"	m	class:Orderline
+setDistrictInfo	spec/jbb/Orderline.java	/^    public synchronized void setDistrictInfo(String inDistrictInfo) {$/;"	m	class:Orderline
+setDistrictandCustomer	spec/jbb/NewOrderTransaction.java	/^    public synchronized void setDistrictandCustomer(byte inDistrictId,$/;"	m	class:NewOrderTransaction
+setEntryDateTime	spec/jbb/Order.java	/^    public synchronized void setEntryDateTime(Date inEntryDateTime) {$/;"	m	class:Order
+setForeground	spec/reporter/GraphImage.java	/^    public void setForeground(Color color) {$/;"	m	class:GraphImage
+setForegroundColor	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setForegroundColor(Color c) {$/;"	m	class:HTMLTableGraphGenerator3
+setImageQuality	spec/reporter/GraphImage.java	/^    public void setImageQuality(float quality) {$/;"	m	class:GraphImage
+setJVMInstanceValues	spec/jbb/Company.java	/^    public synchronized void setJVMInstanceValues(long instanceCount) {$/;"	m	class:Company
+setLog	spec/jbb/JBButil.java	/^    public static synchronized void setLog(Logger appLog) {$/;"	m	class:JBButil
+setLogWrite	spec/jbb/Transaction.java	/^    public static void setLogWrite(boolean onoff) {$/;"	m	class:Transaction
+setMeasurementTime	spec/jbb/TimerData.java	/^    public synchronized void setMeasurementTime(long in_measurement_time) {$/;"	m	class:TimerData
+setMultiJVMRampingValues	spec/jbb/Company.java	/^    public synchronized void setMultiJVMRampingValues(float rampup, float rampdown) {$/;"	m	class:Company
+setOrderLineCount	spec/jbb/Transaction.java	/^    public static void setOrderLineCount(int count) {$/;"	m	class:Transaction
+setOutputDirectory	spec/jbb/Controller.java	/^    private static void setOutputDirectory() {$/;"	m	class:Controller	file:
+setOutputs	spec/jbb/Company.java	/^    static void setOutputs(PrintStream oPropFile, PrintStream oDeliveriesFile) {$/;"	m	class:Company
+setPixelBorderColor	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setPixelBorderColor(Color c) {$/;"	m	class:HTMLTableGraphGenerator3
+setPixelBorderColorEnabled	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setPixelBorderColorEnabled(boolean pixelcolorEnabled) {$/;"	m	class:HTMLTableGraphGenerator3
+setPixelImage	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setPixelImage(String pixel) {$/;"	m	class:HTMLTableGraphGenerator3
+setPixelPadSize	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setPixelPadSize(int pad) {$/;"	m	class:HTMLTableGraphGenerator3
+setPixelSize	spec/reporter/GraphImage.java	/^    public void setPixelSize(int pixelsize) {$/;"	m	class:GraphImage
+setPixelSize	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setPixelSize(int pixelsize) {$/;"	m	class:HTMLTableGraphGenerator3
+setPixelType	spec/reporter/GraphImage.java	/^    public void setPixelType(int pixeltype) {$/;"	m	class:GraphImage
+setPopulationValues	spec/jbb/Company.java	/^    public synchronized void setPopulationValues(int population_base) {$/;"	m	class:Company
+setPopulationValues	spec/jbb/Company.java	/^    public synchronized void setPopulationValues(int population_base,$/;"	m	class:Company
+setProp	spec/jbb/JBBProperties.java	/^    public String setProp(String prop, String value) {$/;"	m	class:JBBProperties
+setPropOutputPrefix	spec/jbb/Company.java	/^    void setPropOutputPrefix(String s) {$/;"	m	class:Company
+setQuantity	spec/jbb/Orderline.java	/^    public synchronized void setQuantity(short inQuantity) {$/;"	m	class:Orderline
+setRampUpTime	spec/jbb/TimerData.java	/^    public synchronized void setRampUpTime(long in_rampup_time) {$/;"	m	class:TimerData
+setRequiredProperty	spec/jbb/JBBProperties.java	/^    public void setRequiredProperty(String property, String value) {$/;"	m	class:JBBProperties
+setScale	spec/reporter/GraphImage.java	/^    public void setScale(double[] scale) {$/;"	m	class:GraphImage
+setScale	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setScale(double[] scale) {$/;"	m	class:HTMLTableGraphGenerator3
+setSteadyState	spec/jbb/Transaction.java	/^    public static void setSteadyState(boolean onoff) {$/;"	m	class:Transaction
+setSupplyWarehouse	spec/jbb/Orderline.java	/^    public synchronized void setSupplyWarehouse(short inSupplyWarehouseId) {$/;"	m	class:Orderline
+setTableSize	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setTableSize(Dimension size) {$/;"	m	class:HTMLTableGraphGenerator3
+setUsingRandom	spec/jbb/Address.java	/^    public synchronized void setUsingRandom(Random r) {$/;"	m	class:Address
+setUsingRandom	spec/jbb/Address.java	/^    public synchronized void setUsingRandom(short warehouseId) {$/;"	m	class:Address
+setUsingRandom	spec/jbb/District.java	/^    public synchronized void setUsingRandom() {$/;"	m	class:District
+setUsingRandom	spec/jbb/Item.java	/^    public synchronized void setUsingRandom(int inId) {$/;"	m	class:Item
+setUsingRandom	spec/jbb/Warehouse.java	/^    public synchronized void setUsingRandom(short inWarehouseId) {$/;"	m	class:Warehouse
+setValidation	spec/jbb/Transaction.java	/^    public static void setValidation(boolean onoff) {$/;"	m	class:Transaction
+setWaitTimes	spec/jbb/TimerData.java	/^    public synchronized void setWaitTimes(long[][] in_wait_times) {$/;"	m	class:TimerData
+setXAxisLabelsPrecision	spec/reporter/GraphImage.java	/^    public void setXAxisLabelsPrecision(int i, int f) {$/;"	m	class:GraphImage
+setXYAxesLabelsPrecision	spec/reporter/GraphImage.java	/^    public void setXYAxesLabelsPrecision(int x, int y) {$/;"	m	class:GraphImage
+setXYPairs	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setXYPairs(Vector xypairs) {$/;"	m	class:HTMLTableGraphGenerator3
+setXYPairs	spec/reporter/HTMLTableGraphGenerator3.java	/^    public void setXYPairs(double[][] xypairs) {$/;"	m	class:HTMLTableGraphGenerator3
+setYAxisLabelsPrecision	spec/reporter/GraphImage.java	/^    public void setYAxisLabelsPrecision(int i, int f) {$/;"	m	class:GraphImage
+set_random_seed	spec/jbb/JBButil.java	/^    public static void set_random_seed(long seed) {$/;"	m	class:JBButil
+setrunMode	spec/jbb/Company.java	/^    public void setrunMode(runModes inmode) {$/;"	m	class:Company
+setrunMode	spec/jbb/TransactionManager.java	/^    public synchronized void setrunMode(Company.runModes inmode) {$/;"	m	class:TransactionManager
+setupCustomerLog	spec/jbb/CustomerReportTransaction.java	/^    private void setupCustomerLog() {$/;"	m	class:CustomerReportTransaction	file:
+setupDeliveryLog	spec/jbb/DeliveryTransaction.java	/^    private void setupDeliveryLog() {$/;"	m	class:DeliveryTransaction	file:
+setupInitLog	spec/jbb/CustomerReportTransaction.java	/^    private void setupInitLog() {$/;"	m	class:CustomerReportTransaction	file:
+setupInitLog	spec/jbb/DeliveryTransaction.java	/^    private void setupInitLog() {$/;"	m	class:DeliveryTransaction	file:
+setupInitLog	spec/jbb/NewOrderTransaction.java	/^    private void setupInitLog() {$/;"	m	class:NewOrderTransaction	file:
+setupInitLog	spec/jbb/OrderStatusTransaction.java	/^    private void setupInitLog() {$/;"	m	class:OrderStatusTransaction	file:
+setupInitLog	spec/jbb/PaymentTransaction.java	/^    private void setupInitLog() {$/;"	m	class:PaymentTransaction	file:
+setupInitLog	spec/jbb/StockLevelTransaction.java	/^    private void setupInitLog() {$/;"	m	class:StockLevelTransaction	file:
+setupOrderLog	spec/jbb/NewOrderTransaction.java	/^    private void setupOrderLog() {$/;"	m	class:NewOrderTransaction	file:
+setupOrderLog	spec/jbb/OrderStatusTransaction.java	/^    private void setupOrderLog() {$/;"	m	class:OrderStatusTransaction	file:
+setupPaymentLog	spec/jbb/PaymentTransaction.java	/^    private void setupPaymentLog() {$/;"	m	class:PaymentTransaction	file:
+setupStockLog	spec/jbb/StockLevelTransaction.java	/^    private void setupStockLog() {$/;"	m	class:StockLevelTransaction	file:
+shiftAnd	spec/jbb/validity/PepTest.java	/^  int shiftAnd(int v, int s) { return (v >>> s) & 0xFF; }$/;"	m	class:PepTest
+shifted_toRow	spec/reporter/Result.java	/^    public String shifted_toRow(int whAtPeak) {$/;"	m	class:Result
+showWarehouseDetail	spec/jbb/JBBProperties.java	/^    public boolean               showWarehouseDetail                       = false;$/;"	f	class:JBBProperties
+size	spec/jbb/Infrastructure.java	/^        public int size() {$/;"	m	class:Infrastructure.SynchronizedJBBDataStorage
+size	spec/jbb/JBBDataStorage.java	/^    int size();$/;"	m	interface:JBBDataStorage
+size	spec/jbb/MapDataStorage.java	/^    public int size() {$/;"	m	class:MapDataStorage
+size	spec/jbb/validity/LoopBounds.java	/^    public int size() {$/;"	m	class:LoopBounds
+size	spec/jbb/validity/LoopBounds.java	/^    public int size() {$/;"	m	class:LoopBounds2
+size	spec/reporter/HTMLTableGraphGenerator3.java	/^    private Dimension             size;$/;"	f	class:HTMLTableGraphGenerator3	file:
+size	spec/reporter/TextBlock.java	/^    public int size() {$/;"	m	class:TextBlock
+size	spec/reporter/TextColumn.java	/^    public int size() {$/;"	m	class:TextColumn
+socIn	spec/jbb/JBBmain.java	/^    static public BufferedReader socIn;$/;"	f	class:JBBmain
+socOut	spec/jbb/JBBmain.java	/^    static public PrintWriter    socOut;$/;"	f	class:JBBmain
+software	spec/reporter/MultiVMReport.java	/^    public String               hardware, name, software;$/;"	f	class:MultiVMReport
+software	spec/reporter/MultiVMTxtReport.java	/^    public String            hardware, metric1, metric2, software;$/;"	f	class:MultiVMTxtReport
+software	spec/reporter/Report.java	/^    public String               graphTable, hardware, metric, name, software;$/;"	f	class:Report
+software	spec/reporter/TextiReport.java	/^    public String            hardware, metric, software;$/;"	f	class:TextiReport
+spaces	spec/reporter/TextBlock.java	/^    private String              spaces;$/;"	f	class:TextBlock	file:
+spec.jbb	spec/jbb/Address.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Company.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Controller.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Customer.java	/^\/* Copyright (c) 2000-2005 Standard Performance Evaluation Corporation (SPEC)$/;"	p
+spec.jbb	spec/jbb/CustomerReportTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/DeliveryHandler.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/DeliveryTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/District.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/History.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Infrastructure.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Item.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBBDataStorage.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBBLogFormatter.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBBProperties.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBBSortedStorage.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBBmain.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/JBButil.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/MapDataStorage.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/NewOrder.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/NewOrderTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Order.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/OrderStatusTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Orderline.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/PaymentTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/RunSequencer.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/SaveOutput.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Stock.java	/^\/*$/;"	p
+spec.jbb	spec/jbb/StockLevelTransaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/TimerData.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Transaction.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/TransactionManager.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/TreeMapDataStorage.java	/^package spec.jbb;$/;"	p
+spec.jbb	spec/jbb/Warehouse.java	/^package spec.jbb;$/;"	p
+spec.jbb.infra.Util	spec/jbb/infra/Util/TransactionLogBuffer.java	/^package spec.jbb.infra.Util;$/;"	p
+spec.jbb.infra.Util	spec/jbb/infra/Util/XMLTransactionLog.java	/^package spec.jbb.infra.Util;$/;"	p
+spec.jbb.validity	spec/jbb/validity/Check.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/LoopBounds.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/PepTest.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/Sub.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/Super.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/digest.java	/^package spec.jbb.validity;$/;"	p
+spec.jbb.validity	spec/jbb/validity/digestExpected.java	/^package spec.jbb.validity;$/;"	p
+spec.reporter	spec/reporter/GraphImage.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/HTMLTableGraphGenerator3.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Metrics.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/MultiVMReport.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/MultiVMReporter.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/MultiVMTxtReport.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Report.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/ReportProps.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Reporter.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Result.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Run.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Table.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TableGroup.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TableGroupCompare.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Template.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TemplateCompare.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TextBlock.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TextColumn.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TextMetrics.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/TextiReport.java	/^package spec.reporter;$/;"	p
+spec.reporter	spec/reporter/Title.java	/^package spec.reporter;$/;"	p
+standardDeviationTime	spec/jbb/TimerData.java	/^    private double               standardDeviationTime[];$/;"	f	class:TimerData	file:
+start	spec/jbb/SaveOutput.java	/^    public static void start(String f) throws IOException {$/;"	m	class:SaveOutput
+startAutomated	spec/jbb/Company.java	/^    public synchronized void startAutomated(short inWarehouseId,$/;"	m	class:Company
+startJBBthread	spec/jbb/JBBmain.java	/^    public synchronized void startJBBthread(short whID) {$/;"	m	class:JBBmain
+startValidation	spec/jbb/Company.java	/^    public synchronized void startValidation(short inWarehouseId) {$/;"	m	class:Company
+start_millis	spec/reporter/Metrics.java	/^    private long                start_millis[];$/;"	f	class:Metrics	file:
+start_millis	spec/reporter/Result.java	/^    public long start_millis() {$/;"	m	class:Result
+start_millis_at_wh	spec/reporter/Metrics.java	/^    public long start_millis_at_wh(int n) {$/;"	m	class:Metrics
+start_rampup_time_milliseconds	spec/reporter/Result.java	/^    public long                  start_rampup_time_milliseconds;$/;"	f	class:Result
+start_time_milliseconds	spec/reporter/Result.java	/^    public long                  start_time_milliseconds;$/;"	f	class:Result
+startingNumberWarehouses	spec/jbb/JBBProperties.java	/^    public int                   startingNumberWarehouses;$/;"	f	class:JBBProperties
+state	spec/jbb/Address.java	/^    private String      state;$/;"	f	class:Address	file:
+staticIntArray	spec/jbb/validity/PepTest.java	/^  static int      staticIntArray[][] = {{1,2,3}, {4,5,6}};$/;"	f	class:PepTest
+staticSubArray	spec/jbb/validity/PepTest.java	/^  static subClass staticSubArray[][] = {{null,null}, {null,null}};$/;"	f	class:PepTest
+steadyStateFlag	spec/jbb/JBBProperties.java	/^    public boolean               steadyStateFlag;$/;"	f	class:JBBProperties
+steadyStateFlag	spec/jbb/JBBmain.java	/^    private boolean              steadyStateFlag;$/;"	f	class:JBBmain	file:
+steadyStateMem	spec/jbb/Transaction.java	/^    static boolean              steadyStateMem     = true;$/;"	f	class:Transaction
+stockLog	spec/jbb/StockLevelTransaction.java	/^    private TransactionLogBuffer stockLog;$/;"	f	class:StockLevelTransaction	file:
+stockPtr	spec/jbb/Orderline.java	/^    private Stock       stockPtr;$/;"	f	class:Orderline	file:
+stockQuantity	spec/jbb/Orderline.java	/^    private int         stockQuantity;$/;"	f	class:Orderline	file:
+stockTable	spec/jbb/Warehouse.java	/^    private JBBDataStorage stockTable;$/;"	f	class:Warehouse	file:
+stock_level	spec/jbb/Transaction.java	/^    protected static final byte stock_level        = 4;$/;"	f	class:Transaction
+stock_level	spec/jbb/TransactionManager.java	/^    private static final byte stock_level     = Transaction.stock_level;$/;"	f	class:TransactionManager	file:
+stop	spec/jbb/SaveOutput.java	/^    public static void stop() {$/;"	m	class:SaveOutput
+stopJBBthread	spec/jbb/JBBmain.java	/^    public synchronized void stopJBBthread() {$/;"	m	class:JBBmain
+stopThreadsCount	spec/jbb/Company.java	/^    int                        stopThreadsCount           = 0;$/;"	f	class:Company
+stopThreadsCountMonitor	spec/jbb/Company.java	/^    Object                     stopThreadsCountMonitor    = null;$/;"	f	class:Company
+street1	spec/jbb/Address.java	/^    private String      street1;$/;"	f	class:Address	file:
+street2	spec/jbb/Address.java	/^    private String      street2;$/;"	f	class:Address	file:
+stringHash	spec/jbb/validity/PepTest.java	/^  String stringHash(String str, int expected11, int expected12) {$/;"	m	class:PepTest
+subClass	spec/jbb/validity/PepTest.java	/^class subClass extends superClass {$/;"	c
+subval	spec/jbb/validity/PepTest.java	/^  public int subval = 4;$/;"	f	class:subClass
+superClass	spec/jbb/validity/PepTest.java	/^class superClass implements Cloneable {$/;"	c
+supplyWarehouseId	spec/jbb/Orderline.java	/^    private short       supplyWarehouseId;$/;"	f	class:Orderline	file:
+syncMethod	spec/jbb/validity/PepTest.java	/^  synchronized int syncMethod(int y) {$/;"	m	class:syncTest
+syncMethod2	spec/jbb/validity/PepTest.java	/^  synchronized int syncMethod2(int y) throws java.lang.ArithmeticException {$/;"	m	class:syncTest
+syncTest	spec/jbb/validity/PepTest.java	/^class syncTest {$/;"	c
+synchStorage	spec/jbb/Infrastructure.java	/^    private static JBBDataStorage synchStorage(JBBDataStorage s) {$/;"	m	class:Infrastructure	file:
+t	spec/reporter/Template.java	/^    String              t;$/;"	f	class:Template
+t	spec/reporter/TemplateCompare.java	/^    String              t;$/;"	f	class:TemplateCompare
+t	spec/reporter/Title.java	/^    String              t;$/;"	f	class:Title
+tableAndGraph	spec/reporter/Metrics.java	/^    public String tableAndGraph(String label, boolean useHtml,$/;"	m	class:Metrics
+tableBegin	spec/reporter/TableGroup.java	/^    private static String   tableBegin  = "<TABLE WIDTH=\\"100%\\" BORDER=0 CELLSPACING=0 CELLPADDING=2>\\n";$/;"	f	class:TableGroup	file:
+tableBegin	spec/reporter/TableGroupCompare.java	/^    private static String   tableBegin  = "<TABLE WIDTH=\\"100%\\" BORDER=0 CELLSPACING=0 CELLPADDING=2>\\n";$/;"	f	class:TableGroupCompare	file:
+tableEnd	spec/reporter/TableGroup.java	/^    private static String   tableEnd    = "<\/TD><\/TR><\/TABLE>";$/;"	f	class:TableGroup	file:
+tableEnd	spec/reporter/TableGroupCompare.java	/^    private static String   tableEnd    = "<\/TD><\/TR><\/TABLE>";$/;"	f	class:TableGroupCompare	file:
+tablePrefix	spec/reporter/Table.java	/^    private static String  tablePrefix = "<TABLE WIDTH=\\"100%\\" BORDER=1 CELLSPACING=2 CELLPADDING=0>"$/;"	f	class:Table	file:
+tables	spec/reporter/TableGroup.java	/^    Table[][][]             tables      = new Table[MAXGROUPS][MAXCOLUMNS][MAXROWS];$/;"	f	class:TableGroup
+tables	spec/reporter/TableGroupCompare.java	/^    Table[][][]             tables      = new Table[MAXGROUPS][MAXCOLUMNS][MAXROWS];$/;"	f	class:TableGroupCompare
+taxRate	spec/jbb/District.java	/^    private BigDecimal       taxRate;$/;"	f	class:District	file:
+taxRate	spec/jbb/Warehouse.java	/^    private BigDecimal     taxRate;$/;"	f	class:Warehouse	file:
+template	spec/reporter/MultiVMReport.java	/^    public Template             template;$/;"	f	class:MultiVMReport
+template	spec/reporter/Report.java	/^    public Template             template;$/;"	f	class:Report
+templateDocument	spec/jbb/infra/Util/XMLTransactionLog.java	/^    static Document         templateDocument;$/;"	f	class:XMLTransactionLog
+testArray	spec/jbb/validity/PepTest.java	/^  String testArray() {$/;"	m	class:PepTest
+testBar	spec/reporter/MultiVMReport.java	/^    public void testBar(PrintStream out) throws IOException {$/;"	m	class:MultiVMReport
+testBar	spec/reporter/MultiVMTxtReport.java	/^    public void testBar(PrintStream out) throws IOException {$/;"	m	class:MultiVMTxtReport
+testBar	spec/reporter/Report.java	/^    public void testBar(PrintStream out) throws IOException {$/;"	m	class:Report
+testBar	spec/reporter/TextiReport.java	/^    public void testBar(PrintStream out) throws IOException {$/;"	m	class:TextiReport
+testBitOps	spec/jbb/validity/PepTest.java	/^  String testBitOps() {$/;"	m	class:PepTest
+testClass	spec/jbb/validity/PepTest.java	/^  String testClass() {$/;"	m	class:PepTest
+testClone	spec/jbb/validity/PepTest.java	/^  String testClone() {$/;"	m	class:PepTest
+testDeepStack	spec/jbb/validity/PepTest.java	/^  String testDeepStack() {$/;"	m	class:PepTest
+testDiv	spec/jbb/validity/PepTest.java	/^  String testDiv() {$/;"	m	class:PepTest
+testDup	spec/jbb/validity/PepTest.java	/^  int testDup() {$/;"	m	class:PepTest
+testExc1	spec/jbb/validity/PepTest.java	/^  String testExc1() {$/;"	m	class:PepTest
+testExc2	spec/jbb/validity/PepTest.java	/^  String testExc2() {$/;"	m	class:PepTest
+testExc3	spec/jbb/validity/PepTest.java	/^  String testExc3() {$/;"	m	class:PepTest
+testExc4	spec/jbb/validity/PepTest.java	/^  String testExc4() {$/;"	m	class:PepTest
+testExc5	spec/jbb/validity/PepTest.java	/^  String testExc5() {$/;"	m	class:PepTest
+testExc6	spec/jbb/validity/PepTest.java	/^  String testExc6() {$/;"	m	class:PepTest
+testExc7	spec/jbb/validity/PepTest.java	/^  String testExc7() {$/;"	m	class:PepTest
+testFor	spec/jbb/validity/PepTest.java	/^  String testFor() {$/;"	m	class:PepTest
+testForLoop	spec/jbb/validity/PepTest.java	/^  int testForLoop(int x, int y) {$/;"	m	class:PepTest
+testGC	spec/jbb/validity/PepTest.java	/^  String testGC() {$/;"	m	class:PepTest
+testHiddenField	spec/jbb/validity/PepTest.java	/^  String testHiddenField() {$/;"	m	class:PepTest
+testIf	spec/jbb/validity/PepTest.java	/^  String testIf() {$/;"	m	class:PepTest
+testLookupSwitch	spec/jbb/validity/PepTest.java	/^  String testLookupSwitch() {$/;"	m	class:PepTest
+testMisk	spec/jbb/validity/PepTest.java	/^  String testMisk() {$/;"	m	class:PepTest
+testObjectArray	spec/jbb/validity/PepTest.java	/^  String testObjectArray() {$/;"	m	class:PepTest
+testObjectHash	spec/jbb/validity/PepTest.java	/^  String testObjectHash() {$/;"	m	class:PepTest
+testRandom	spec/jbb/validity/PepTest.java	/^  String testRandom() {$/;"	m	class:PepTest
+testStringHash	spec/jbb/validity/PepTest.java	/^  String testStringHash() {$/;"	m	class:PepTest
+testTableSwitch	spec/jbb/validity/PepTest.java	/^  String testTableSwitch() {$/;"	m	class:PepTest
+testVarAndMethodNameClash	spec/jbb/validity/PepTest.java	/^  String testVarAndMethodNameClash() {$/;"	m	class:PepTest
+testWaitNull	spec/jbb/validity/PepTest.java	/^  String testWaitNull() {$/;"	m	class:PepTest
+testnum	spec/jbb/JBBmain.java	/^    private int                  testnum               = 0;$/;"	f	class:JBBmain	file:
+thinking	spec/jbb/TimerData.java	/^    private static byte          thinking              = 2;$/;"	f	class:TimerData	file:
+thisOrder	spec/jbb/NewOrderTransaction.java	/^    private Order                thisOrder;$/;"	f	class:NewOrderTransaction	file:
+threadList	spec/jbb/JBBmain.java	/^    public Vector<Thread>        threadList;$/;"	f	class:JBBmain
+threadsDoneCount	spec/jbb/Company.java	/^    int                        threadsDoneCount           = 0;$/;"	f	class:Company
+threadsDoneCountMonitor	spec/jbb/Company.java	/^    Object                     threadsDoneCountMonitor    = null;$/;"	f	class:Company
+threshold	spec/jbb/StockLevelTransaction.java	/^    private int                  threshold;$/;"	f	class:StockLevelTransaction	file:
+throwArithmeticException	spec/jbb/validity/PepTest.java	/^  void throwArithmeticException(int a) {$/;"	m	class:PepTest
+time	spec/reporter/Run.java	/^    public double               time;$/;"	f	class:Run
+timerLog	spec/jbb/TimerData.java	/^    private TransactionLogBuffer timerLog;$/;"	f	class:TimerData	file:
+timer_flag	spec/jbb/TimerData.java	/^    private short                timer_flag;                                                             \/\/ timer$/;"	f	class:TimerData	file:
+timerdataTable	spec/jbb/Company.java	/^    private Object[]           timerdataTable;$/;"	f	class:Company	file:
+titles	spec/reporter/MultiVMReport.java	/^    public ReportProps          titles               = new ReportProps();$/;"	f	class:MultiVMReport
+titles	spec/reporter/Report.java	/^    public ReportProps          titles    = new ReportProps();$/;"	f	class:Report
+titles	spec/reporter/Table.java	/^    private ReportProps    titles;$/;"	f	class:Table	file:
+toDetailRows	spec/reporter/Result.java	/^    public String toDetailRows() {$/;"	m	class:Result
+toFirstRow	spec/reporter/Result.java	/^    public String toFirstRow(int whAtPeak) {$/;"	m	class:Result
+toHexString	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String toHexString(Color c) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+toHexString	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String toHexString(int value) {$/;"	m	class:HTMLTableGraphGenerator3	file:
+toRow	spec/reporter/Result.java	/^    public String toRow(int whAtPeak) {$/;"	m	class:Result
+toString	spec/jbb/validity/Super.java	/^    public String toString() {$/;"	m	class:Super
+toString	spec/reporter/Table.java	/^    public String toString() {$/;"	m	class:Table
+toString	spec/reporter/TableGroup.java	/^    public String toString() {$/;"	m	class:TableGroup
+toString	spec/reporter/TableGroupCompare.java	/^    public String toString() {$/;"	m	class:TableGroupCompare
+toString	spec/reporter/TextBlock.java	/^    public String toString() {$/;"	m	class:TextBlock
+toString	spec/reporter/TextColumn.java	/^    public String toString() {$/;"	m	class:TextColumn
+totalAmount	spec/jbb/Order.java	/^    private BigDecimal  totalAmount;$/;"	f	class:Order	file:
+totalMemoryEnd	spec/reporter/Run.java	/^    public double               totalMemoryEnd;$/;"	f	class:Run
+totalMemoryStart	spec/reporter/Run.java	/^    public double               totalMemoryStart;$/;"	f	class:Run
+totalTime	spec/jbb/TimerData.java	/^    private long                 totalTime[];                                                            \/\/ accumulated$/;"	f	class:TimerData	file:
+totalTimeSquare	spec/jbb/TimerData.java	/^    private long                 totalTimeSquare[];                                                      \/\/ accumulated$/;"	f	class:TimerData	file:
+totaltime	spec/reporter/Run.java	/^    public double               totaltime;$/;"	f	class:Run
+tpmc	spec/jbb/TimerData.java	/^    private double               tpmc;                                                                   \/\/ transactions$/;"	f	class:TimerData	file:
+transaction	spec/reporter/Run.java	/^    public static String        transaction[] = {$/;"	f	class:Run
+transactionClasses	spec/jbb/Transaction.java	/^    static Class                transactionClasses[];$/;"	f	class:Transaction
+transactionConstructorSignature	spec/jbb/Transaction.java	/^    static Class[] transactionConstructorSignature = {$/;"	f	class:Transaction
+transactionCount	spec/jbb/TimerData.java	/^    private long                 transactionCount[];                                                     \/\/ number$/;"	f	class:TimerData	file:
+transactionInstance	spec/jbb/TransactionManager.java	/^    private Transaction       transactionInstance[];$/;"	f	class:TransactionManager	file:
+transactionNames	spec/jbb/Transaction.java	/^    static String               transactionNames[] = {$/;"	f	class:Transaction
+trimOrdersForSteadyState	spec/jbb/Company.java	/^    public synchronized void trimOrdersForSteadyState() {$/;"	m	class:Company
+trimOrdersForSteadyState	spec/jbb/Warehouse.java	/^    public synchronized void trimOrdersForSteadyState() {$/;"	m	class:Warehouse
+trimOrdersForSteadyState	spec/jbb/Warehouse.java	/^    public synchronized void trimOrdersForSteadyState(int initialOrders,$/;"	m	class:Warehouse
+typing	spec/jbb/TimerData.java	/^    private static byte          typing                = 1;$/;"	f	class:TimerData	file:
+uniformRandomItems	spec/jbb/JBBProperties.java	/^    public static boolean        uniformRandomItems                        = true;$/;"	f	class:JBBProperties
+uniformRandomItems	spec/jbb/JBBmain.java	/^    public static boolean        uniformRandomItems;$/;"	f	class:JBBmain
+updateBTPS	spec/jbb/TimerData.java	/^    public synchronized double updateBTPS(double in_btps) {$/;"	m	class:TimerData
+updateBTPS	spec/jbb/TimerData.java	/^    public synchronized double updateBTPS(long elapsed_time) {$/;"	m	class:TimerData
+updateHistory	spec/jbb/Warehouse.java	/^    public void updateHistory(History inHistory) {$/;"	m	class:Warehouse
+updateHistorySynch	spec/jbb/Warehouse.java	/^    private Object updateHistorySynch = new Object();$/;"	f	class:Warehouse	file:
+updateTPMC	spec/jbb/TimerData.java	/^    public synchronized double updateTPMC(double in_tpmc) {$/;"	m	class:TimerData
+updateTPMC	spec/jbb/TimerData.java	/^    public synchronized double updateTPMC(long elapsed_time) {$/;"	m	class:TimerData
+updateTimerData	spec/jbb/TimerData.java	/^    public synchronized void updateTimerData(int transaction_type,$/;"	m	class:TimerData
+usage	spec/reporter/MultiVMReporter.java	/^    private static void usage() {$/;"	m	class:MultiVMReporter	file:
+usage	spec/reporter/Reporter.java	/^    private static void usage() {$/;"	m	class:Reporter	file:
+useHtml	spec/reporter/MultiVMReport.java	/^    public boolean              useHtml;$/;"	f	class:MultiVMReport
+useHtml	spec/reporter/Report.java	/^    public boolean              useHtml;$/;"	f	class:Report
+useJavaGraph	spec/reporter/Report.java	/^    public boolean              useJavaGraph;$/;"	f	class:Report
+useWaitTimesPercentage	spec/jbb/TimerData.java	/^    public synchronized void useWaitTimesPercentage(int percent) {$/;"	m	class:TimerData
+useWaits	spec/jbb/TimerData.java	/^    private boolean              useWaits;$/;"	f	class:TimerData	file:
+use_customerId	spec/jbb/CustomerReportTransaction.java	/^    private char                 use_customerId;$/;"	f	class:CustomerReportTransaction	file:
+use_customerId	spec/jbb/OrderStatusTransaction.java	/^    private boolean              use_customerId;$/;"	f	class:OrderStatusTransaction	file:
+use_customerId	spec/jbb/PaymentTransaction.java	/^    private char                 use_customerId;$/;"	f	class:PaymentTransaction	file:
+usedMemoryEnd	spec/reporter/Run.java	/^    public double               usedMemoryEnd;$/;"	f	class:Run
+usedMemoryStart	spec/reporter/Run.java	/^    public double               usedMemoryStart;$/;"	f	class:Run
+v	spec/jbb/validity/LoopBounds.java	/^    protected Vector      v;$/;"	f	class:LoopBounds
+val	spec/jbb/JBBProperties.java	/^    String                       val;$/;"	f	class:JBBProperties
+val	spec/jbb/validity/PepTest.java	/^  public int val = 1;$/;"	f	class:superClass
+val	spec/jbb/validity/PepTest.java	/^  public int val = 2;     \/\/ This field hides superclass' val field.$/;"	f	class:subClass
+valid	spec/reporter/Metrics.java	/^    public boolean              valid;$/;"	f	class:Metrics
+valid	spec/reporter/Result.java	/^    public boolean               valid         = true;$/;"	f	class:Result
+validDistrict	spec/jbb/Warehouse.java	/^    public boolean validDistrict(byte inDistrictId) {$/;"	m	class:Warehouse
+validRun	spec/jbb/Transaction.java	/^    private static boolean      validRun           = true;$/;"	f	class:Transaction	file:
+validRun	spec/reporter/MultiVMTxtReport.java	/^    public boolean           validRun  = true;$/;"	f	class:MultiVMTxtReport
+validate	spec/jbb/infra/Util/TransactionLogBuffer.java	/^    public String[] validate() {$/;"	m	class:TransactionLogBuffer
+validateAndProcess	spec/jbb/Orderline.java	/^    public synchronized boolean validateAndProcess(Warehouse inWarehousePtr) {$/;"	m	class:Orderline
+validateRun	spec/jbb/Transaction.java	/^    public static void validateRun() {$/;"	m	class:Transaction
+validationFlag	spec/jbb/Transaction.java	/^    static boolean              validationFlag     = false;$/;"	f	class:Transaction
+validationLog	spec/jbb/DeliveryTransaction.java	/^    String[]                     validationLog = {$/;"	f	class:DeliveryTransaction
+validationLog	spec/jbb/NewOrderTransaction.java	/^    String[]                     validationLog = {$/;"	f	class:NewOrderTransaction
+validationLog	spec/jbb/OrderStatusTransaction.java	/^    String[]                     validationLog = {$/;"	f	class:OrderStatusTransaction
+validationLog	spec/jbb/PaymentTransaction.java	/^    String[]                     validationLog = {$/;"	f	class:PaymentTransaction
+validationLog	spec/jbb/StockLevelTransaction.java	/^    String[]                     validationLog = {$/;"	f	class:StockLevelTransaction
+validationScreen	spec/jbb/CustomerReportTransaction.java	/^    String[]                     validationScreen     = {$/;"	f	class:CustomerReportTransaction
+verbose	spec/reporter/Report.java	/^    public boolean              verbose;$/;"	f	class:Report
+version	spec/reporter/MultiVMReport.java	/^    private final static String version              = "@(#)Report.java	1.18 08\/03\/98";$/;"	f	class:MultiVMReport	file:
+version	spec/reporter/Report.java	/^    private final static String version   = "@(#)Report.java	1.18 08\/03\/98";$/;"	f	class:Report	file:
+waitTimePercent	spec/jbb/JBBProperties.java	/^    public int                   waitTimePercent;$/;"	f	class:JBBProperties
+waitTimePercent	spec/jbb/JBBmain.java	/^    private int                  waitTimePercent;$/;"	f	class:JBBmain	file:
+wait_times_menu	spec/jbb/TimerData.java	/^    private long                 wait_times_menu[];                                                      \/\/ time$/;"	f	class:TimerData	file:
+wait_times_thinking	spec/jbb/TimerData.java	/^    private long                 wait_times_thinking[];                                                  \/\/ time$/;"	f	class:TimerData	file:
+wait_times_typing	spec/jbb/TimerData.java	/^    private long                 wait_times_typing[];                                                    \/\/ time$/;"	f	class:TimerData	file:
+warehouseCapacity	spec/jbb/Company.java	/^    private int                warehouseCapacity          = JBBmain.maxWh;                                   ;$/;"	f	class:Company	file:
+warehouseContainers	spec/jbb/Company.java	/^    private Object[]           warehouseContainers;$/;"	f	class:Company	file:
+warehouseId	spec/jbb/CustomerReportTransaction.java	/^    private short                warehouseId;$/;"	f	class:CustomerReportTransaction	file:
+warehouseId	spec/jbb/DeliveryTransaction.java	/^    private short                warehouseId;$/;"	f	class:DeliveryTransaction	file:
+warehouseId	spec/jbb/District.java	/^    private short            warehouseId;$/;"	f	class:District	file:
+warehouseId	spec/jbb/History.java	/^    private short       warehouseId;$/;"	f	class:History	file:
+warehouseId	spec/jbb/NewOrder.java	/^    private short       warehouseId;                                                \/\/ NO_W_ID$/;"	f	class:NewOrder	file:
+warehouseId	spec/jbb/NewOrderTransaction.java	/^    private short                warehouseId;$/;"	f	class:NewOrderTransaction	file:
+warehouseId	spec/jbb/Order.java	/^    private short       warehouseId;$/;"	f	class:Order	file:
+warehouseId	spec/jbb/OrderStatusTransaction.java	/^    private short                warehouseId;$/;"	f	class:OrderStatusTransaction	file:
+warehouseId	spec/jbb/Orderline.java	/^    private short       warehouseId;$/;"	f	class:Orderline	file:
+warehouseId	spec/jbb/PaymentTransaction.java	/^    private short                warehouseId;$/;"	f	class:PaymentTransaction	file:
+warehouseId	spec/jbb/StockLevelTransaction.java	/^    private short                warehouseId;$/;"	f	class:StockLevelTransaction	file:
+warehouseId	spec/jbb/TransactionManager.java	/^    private short             warehouseId;                                                      \/\/ W_ID$/;"	f	class:TransactionManager	file:
+warehouseId	spec/jbb/Warehouse.java	/^    private short          warehouseId;$/;"	f	class:Warehouse	file:
+warehousePopulationBase	spec/jbb/JBBProperties.java	/^    public int                   warehousePopulationBase;$/;"	f	class:JBBProperties
+warehousePopulationBase	spec/jbb/JBBmain.java	/^    private int                  warehousePopulationBase;$/;"	f	class:JBBmain	file:
+warehousePtr	spec/jbb/CustomerReportTransaction.java	/^    private Warehouse            warehousePtr;$/;"	f	class:CustomerReportTransaction	file:
+warehousePtr	spec/jbb/DeliveryTransaction.java	/^    private Warehouse            warehousePtr;$/;"	f	class:DeliveryTransaction	file:
+warehousePtr	spec/jbb/NewOrderTransaction.java	/^    private Warehouse            warehousePtr;$/;"	f	class:NewOrderTransaction	file:
+warehousePtr	spec/jbb/OrderStatusTransaction.java	/^    private Warehouse            warehousePtr;$/;"	f	class:OrderStatusTransaction	file:
+warehousePtr	spec/jbb/Orderline.java	/^    private Warehouse   warehousePtr;$/;"	f	class:Orderline	file:
+warehousePtr	spec/jbb/PaymentTransaction.java	/^    private Warehouse            warehousePtr;$/;"	f	class:PaymentTransaction	file:
+warehouseTable	spec/jbb/Company.java	/^    private Object[]           warehouseTable;$/;"	f	class:Company	file:
+warehouseTax	spec/jbb/Order.java	/^    private BigDecimal  warehouseTax;$/;"	f	class:Order	file:
+warehouseTaxRate	spec/jbb/NewOrderTransaction.java	/^    private BigDecimal           warehouseTaxRate;$/;"	f	class:NewOrderTransaction	file:
+warehouseThreads	spec/jbb/Company.java	/^    private ArrayList          warehouseThreads;$/;"	f	class:Company	file:
+warehouse_random_stream	spec/jbb/JBButil.java	/^    private static Random[]     warehouse_random_stream;$/;"	f	class:JBButil	file:
+warehouses	spec/reporter/Result.java	/^    private int                  warehouses;$/;"	f	class:Result	file:
+warehouses	spec/reporter/Result.java	/^    public int warehouses() {$/;"	m	class:Result
+warehousesTested	spec/reporter/Metrics.java	/^    private int                 warehousesTested      = 0;$/;"	f	class:Metrics	file:
+weight	spec/reporter/Result.java	/^    public double                weight;$/;"	f	class:Result
+whIdStack	spec/jbb/JBBmain.java	/^    public Vector<Short>         whIdStack;$/;"	f	class:JBBmain
+width	spec/reporter/TextBlock.java	/^    private int                 width;$/;"	f	class:TextBlock	file:
+width	spec/reporter/TextColumn.java	/^    private int                 width;$/;"	f	class:TextColumn	file:
+widthAdj1	spec/reporter/Metrics.java	/^    private final static int    widthAdj1             = 80;                                             \/\/ SPEC$/;"	f	class:Metrics	file:
+widthAdj2	spec/reporter/Metrics.java	/^    private final static int    widthAdj2             = -80;                                            \/\/ memory$/;"	f	class:Metrics	file:
+worst	spec/reporter/Result.java	/^    private int                  worst         = -1;$/;"	f	class:Result	file:
+wrap	spec/reporter/Metrics.java	/^    public String wrap(String s) {$/;"	m	class:Metrics
+wrap	spec/reporter/TextMetrics.java	/^    public String wrap(String s) {$/;"	m	class:TextMetrics
+write	spec/jbb/SaveOutput.java	/^    public void write(byte buf[], int off, int len) {$/;"	m	class:SaveOutput
+write	spec/jbb/SaveOutput.java	/^    public void write(int b) {$/;"	m	class:SaveOutput
+x	spec/jbb/validity/PepTest.java	/^  int x = 5;$/;"	f	class:syncTest
+x1	spec/jbb/validity/PepTest.java	/^  int x1;$/;"	f	class:C1
+x2	spec/jbb/validity/PepTest.java	/^  int x2;$/;"	f	class:C2
+x3	spec/jbb/validity/PepTest.java	/^  int x3;$/;"	f	class:C3
+xaxis	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                xaxis;$/;"	f	class:HTMLTableGraphGenerator3	file:
+xmlCustomerLog	spec/jbb/CustomerReportTransaction.java	/^    private XMLTransactionLog    xmlCustomerLog;$/;"	f	class:CustomerReportTransaction	file:
+xmlDeliveryLog	spec/jbb/DeliveryTransaction.java	/^    private XMLTransactionLog    xmlDeliveryLog;$/;"	f	class:DeliveryTransaction	file:
+xmlOrderLog	spec/jbb/NewOrderTransaction.java	/^    private XMLTransactionLog    xmlOrderLog;$/;"	f	class:NewOrderTransaction	file:
+xmlOrderLog	spec/jbb/OrderStatusTransaction.java	/^    private XMLTransactionLog    xmlOrderLog;$/;"	f	class:OrderStatusTransaction	file:
+xmlPaymentLog	spec/jbb/PaymentTransaction.java	/^    private XMLTransactionLog    xmlPaymentLog;$/;"	f	class:PaymentTransaction	file:
+xmlStockLog	spec/jbb/StockLevelTransaction.java	/^    private XMLTransactionLog    xmlStockLog;$/;"	f	class:StockLevelTransaction	file:
+xypairs	spec/reporter/HTMLTableGraphGenerator3.java	/^    private final Hashtable       xypairs           = new Hashtable();$/;"	f	class:HTMLTableGraphGenerator3	file:
+yaxis	spec/reporter/HTMLTableGraphGenerator3.java	/^    private String                yaxis;$/;"	f	class:HTMLTableGraphGenerator3	file:
+ytd	spec/jbb/District.java	/^    private BigDecimal       ytd;$/;"	f	class:District	file:
+ytd	spec/jbb/Warehouse.java	/^    private BigDecimal     ytd;$/;"	f	class:Warehouse	file:
+zeroTimerData	spec/jbb/TimerData.java	/^    public synchronized void zeroTimerData() {$/;"	m	class:TimerData
+zip	spec/jbb/Address.java	/^    private String      zip;$/;"	f	class:Address	file:

@@ -1,0 +1,13 @@
+Report:      SPECjvm2008 Base summary
+Result:      Noncompliant composite result: 29.49 ops/m
+HW Model:    n/a, n/a
+HW CPU:      n/a, n/a
+OS:          Linux
+JVM:         Eclipse OpenJ9, Eclipse OpenJ9 VM, optimistic_scheme_jdk8-fe129d7ba JRE 1.8.0 Linux amd64-64-Bit Compressed References 20221003_000000 (JIT enabled, AOT enabled)
+OpenJ9   - fe129d7ba
+OMR      - 5e99475b9
+JCL      - 2a5e268814 based on jdk8u292-b10
+JVM tuning:  n/a
+JVM startup:  
+Tester:      aditya, n/a
+Run date:    Sun Oct 09 11:45:15 IST 2022

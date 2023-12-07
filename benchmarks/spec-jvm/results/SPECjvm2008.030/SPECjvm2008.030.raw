@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<specjvm-result>
+  <workload>SPECjvm2008 Base</workload>
+  <suite-build-version>SPECjvm2008 1.01 (20090519)</suite-build-version>
+  <run-info>
+    <spec.jvm2008.report.run.location>n/a</spec.jvm2008.report.run.location>
+    <spec.jvm2008.report.run.submitter.url>n/a</spec.jvm2008.report.run.submitter.url>
+    <spec.jvm2008.report.run.license>n/a</spec.jvm2008.report.run.license>
+    <spec.jvm2008.report.run.tester>aditya</spec.jvm2008.report.run.tester>
+    <spec.jvm2008.report.run.date>Sat Oct 08 19:04:42 IST 2022</spec.jvm2008.report.run.date>
+    <spec.jvm2008.report.run.submitter>n/a</spec.jvm2008.report.run.submitter>
+  </run-info>
+  <jvm-info>
+    <spec.jvm2008.report.jvm.vendor>Eclipse OpenJ9</spec.jvm2008.report.jvm.vendor>
+    <spec.jvm2008.report.jvm.startup.launcher>default</spec.jvm2008.report.jvm.startup.launcher>
+    <spec.jvm2008.report.jvm.other.tuning> </spec.jvm2008.report.jvm.other.tuning>
+    <spec.jvm2008.report.jvm.vendor.url>http://www.eclipse.org/openj9</spec.jvm2008.report.jvm.vendor.url>
+    <spec.jvm2008.report.jvm.command.line.max.heap.size>n/a</spec.jvm2008.report.jvm.command.line.max.heap.size>
+    <spec.jvm2008.report.jvm.version>optimistic_scheme_jdk8-fe129d7ba JRE 1.8.0 Linux amd64-64-Bit Compressed References 20221003_000000 (JIT enabled, AOT enabled)
+OpenJ9   - fe129d7ba
+OMR      - 5e99475b9
+JCL      - 2a5e268814 based on jdk8u292-b10</spec.jvm2008.report.jvm.version>
+    <spec.jvm2008.report.jvm.command.line>n/a</spec.jvm2008.report.jvm.command.line>
+    <spec.jvm2008.report.jvm.command.line.initial.heap.size>n/a</spec.jvm2008.report.jvm.command.line.initial.heap.size>
+    <spec.jvm2008.report.jvm.boot.class.path>/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/amd64/default/jclSC180/vm.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/se-service.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/rt.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/resources.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/jsse.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/charsets.jar:/home/aditya/Documents/openj9/openj9/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image/jre/lib/jce.jar</spec.jvm2008.report.jvm.boot.class.path>
+    <spec.jvm2008.report.jvm.name>Eclipse OpenJ9 VM</spec.jvm2008.report.jvm.name>
+    <spec.jvm2008.report.jvm.app.class.path>SPECjvm2008.jar</spec.jvm2008.report.jvm.app.class.path>
+    <spec.jvm2008.report.jvm.available.date>n/a</spec.jvm2008.report.jvm.available.date>
+    <spec.jvm2008.report.jvm.java.specification>1.8</spec.jvm2008.report.jvm.java.specification>
+    <spec.jvm2008.report.jvm.address.bits>64</spec.jvm2008.report.jvm.address.bits>
+    <spec.jvm2008.report.jvm.startup.command.line> </spec.jvm2008.report.jvm.startup.command.line>
+  </jvm-info>
+  <sw-info>
+    <spec.jvm2008.report.sw.other.available> </spec.jvm2008.report.sw.other.available>
+    <spec.jvm2008.report.os.tuning> </spec.jvm2008.report.os.tuning>
+    <spec.jvm2008.report.sw.filesystem>n/a</spec.jvm2008.report.sw.filesystem>
+    <spec.jvm2008.report.os.available.date>n/a</spec.jvm2008.report.os.available.date>
+    <spec.jvm2008.report.sw.other.tuning> </spec.jvm2008.report.sw.other.tuning>
+    <spec.jvm2008.report.os.address.bits>n/a</spec.jvm2008.report.os.address.bits>
+    <spec.jvm2008.report.sw.other.name> </spec.jvm2008.report.sw.other.name>
+    <spec.jvm2008.report.os.name>Linux</spec.jvm2008.report.os.name>
+  </sw-info>
+  <hw-info>
+    <spec.jvm2008.report.hw.available>n/a</spec.jvm2008.report.hw.available>
+    <spec.jvm2008.report.hw.vendor.url>n/a</spec.jvm2008.report.hw.vendor.url>
+    <spec.jvm2008.report.hw.number.of.cores.per.chip>n/a</spec.jvm2008.report.hw.number.of.cores.per.chip>
+    <spec.jvm2008.report.hw.address.bits>n/a</spec.jvm2008.report.hw.address.bits>
+    <spec.jvm2008.report.hw.cpu.speed>n/a</spec.jvm2008.report.hw.cpu.speed>
+    <spec.jvm2008.report.hw.cpu.cache.other>n/a</spec.jvm2008.report.hw.cpu.cache.other>
+    <spec.jvm2008.report.hw.cpu.vendor.url>n/a</spec.jvm2008.report.hw.cpu.vendor.url>
+    <spec.jvm2008.report.hw.cpu.cache.l2>n/a</spec.jvm2008.report.hw.cpu.cache.l2>
+    <spec.jvm2008.report.hw.cpu.cache.l1>n/a</spec.jvm2008.report.hw.cpu.cache.l1>
+    <spec.jvm2008.report.hw.logical.cpus>n/a</spec.jvm2008.report.hw.logical.cpus>
+    <spec.jvm2008.report.hw.number.of.chips>n/a</spec.jvm2008.report.hw.number.of.chips>
+    <spec.jvm2008.report.hw.memory.details>n/a</spec.jvm2008.report.hw.memory.details>
+    <spec.jvm2008.report.hw.details.other>n/a</spec.jvm2008.report.hw.details.other>
+    <spec.jvm2008.report.hw.cpu.vendor>n/a</spec.jvm2008.report.hw.cpu.vendor>
+    <spec.jvm2008.report.hw.model>n/a</spec.jvm2008.report.hw.model>
+    <spec.jvm2008.report.hw.number.of.cores>n/a</spec.jvm2008.report.hw.number.of.cores>
+    <spec.jvm2008.report.hw.memory.size>n/a</spec.jvm2008.report.hw.memory.size>
+    <spec.jvm2008.report.hw.vendor>n/a</spec.jvm2008.report.hw.vendor>
+    <spec.jvm2008.report.hw.cpu.name>n/a</spec.jvm2008.report.hw.cpu.name>
+    <spec.jvm2008.report.hw.threading.enabled>n/a</spec.jvm2008.report.hw.threading.enabled>
+    <spec.jvm2008.report.hw.threads.per.core>n/a</spec.jvm2008.report.hw.threads.per.core>
+  </hw-info>
+  <violations>
+    <violation>Not a compliant sequence of benchmarks for publication.</violation>
+  </violations>
+  <benchmark-results>
+    <benchmark-result
+      name="check"
+      category="null"
+      args=""
+      minIter="1"
+      maxIter="1"
+      numberBmThreads="1"
+      numberOfLoops="1"
+      bmType="functional"
+      runMode="1">
+      <warmup-result>
+    </warmup-result>
+    <iterations>
+      <iteration-result
+        iteration="1"
+        expectedLoops="1"
+        startTime="1665236093292"
+        endTime="1665236093547"
+        operations="1.0">
+        <loops>
+          <loop-result bmThreadId="1" loopCnt="1" startTime="1665236093318" endTime="1665236093547"/>
+        </loops>
+        <analyzers>
+        </analyzers>
+        <analyzer-results>
+        </analyzer-results>
+      </iteration-result>
+    </iterations>
+    </benchmark-result>
+    <benchmark-result
+      name="compress"
+      category="null"
+      args=""
+      minIter="1"
+      maxIter="1"
+      numberBmThreads="1"
+      warmupTime="120000"
+      iterationTime="240s"
+      bmType="multi"
+      runMode="2">
+      <warmup-result>
+      <iteration-result
+        iteration="0"
+        expectedDuration="120000"
+        startTime="1665236093678"
+        endTime="1665236213678"
+        operations="111.04558404558405">
+        <loops>
+          <loop-result bmThreadId="1" loopCnt="1" startTime="1665236093688" endTime="1665236095358"/>
+          <loop-result bmThreadId="1" loopCnt="2" startTime="1665236095358" endTime="1665236096484"/>
+          <loop-result bmThreadId="1" loopCnt="3" startTime="1665236096484" endTime="1665236097637"/>
+          <loop-result bmThreadId="1" loopCnt="4" startTime="1665236097637" endTime="1665236098825"/>
+          <loop-result bmThreadId="1" loopCnt="5" startTime="1665236098825" endTime="1665236099972"/>
+          <loop-result bmThreadId="1" loopCnt="6" startTime="1665236099972" endTime="1665236101085"/>
+          <loop-result bmThreadId="1" loopCnt="7" startTime="1665236101085" endTime="1665236102323"/>
+          <loop-result bmThreadId="1" loopCnt="8" startTime="1665236102323" endTime="1665236103443"/>
+          <loop-result bmThreadId="1" loopCnt="9" startTime="1665236103443" endTime="1665236104490"/>
+          <loop-result bmThreadId="1" loopCnt="10" startTime="1665236104490" endTime="1665236105782"/>
+          <loop-result bmThreadId="1" loopCnt="11" startTime="1665236105782" endTime="1665236106880"/>
+          <loop-result bmThreadId="1" loopCnt="12" startTime="1665236106882" endTime="1665236107988"/>
+          <loop-result bmThreadId="1" loopCnt="13" startTime="1665236107990" endTime="1665236109159"/>
+          <loop-result bmThreadId="1" loopCnt="14" startTime="1665236109159" endTime="1665236110297"/>
+          <loop-result bmThreadId="1" loopCnt="15" startTime="1665236110297" endTime="1665236111456"/>
+          <loop-result bmThreadId="1" loopCnt="16" startTime="1665236111456" endTime="1665236112551"/>
+          <loop-result bmThreadId="1" loopCnt="17" startTime="1665236112551" endTime="1665236113646"/>
+          <loop-result bmThreadId="1" loopCnt="18" startTime="1665236113646" endTime="1665236114713"/>
+          <loop-result bmThreadId="1" loopCnt="19" startTime="1665236114713" endTime="1665236115787"/>
+          <loop-result bmThreadId="1" loopCnt="20" startTime="1665236115787" endTime="1665236116875"/>
+          <loop-result bmThreadId="1" loopCnt="21" startTime="1665236116875" endTime="1665236117981"/>
+          <loop-result bmThreadId="1" loopCnt="22" startTime="1665236117981" endTime="1665236119035"/>
+          <loop-result bmThreadId="1" loopCnt="23" startTime="1665236119035" endTime="1665236120100"/>
+          <loop-result bmThreadId="1" loopCnt="24" startTime="1665236120100" endTime="1665236121202"/>
+          <loop-result bmThreadId="1" loopCnt="25" startTime="1665236121202" endTime="1665236122289"/>
+          <loop-result bmThreadId="1" loopCnt="26" startTime="1665236122289" endTime="1665236123357"/>
+          <loop-result bmThreadId="1" loopCnt="27" startTime="1665236123357" endTime="1665236124459"/>
+          <loop-result bmThreadId="1" loopCnt="28" startTime="1665236124459" endTime="1665236125518"/>
+          <loop-result bmThreadId="1" loopCnt="29" startTime="1665236125518" endTime="1665236126615"/>
+          <loop-result bmThreadId="1" loopCnt="30" startTime="1665236126615" endTime="1665236127725"/>
+          <loop-result bmThreadId="1" loopCnt="31" startTime="1665236127725" endTime="1665236128838"/>
+          <loop-result bmThreadId="1" loopCnt="32" startTime="1665236128838" endTime="1665236129902"/>
+          <loop-result bmThreadId="1" loopCnt="33" startTime="1665236129902" endTime="1665236130967"/>
+          <loop-result bmThreadId="1" loopCnt="34" startTime="1665236130967" endTime="1665236132035"/>
+          <loop-result bmThreadId="1" loopCnt="35" startTime="1665236132035" endTime="1665236133115"/>
+          <loop-result bmThreadId="1" loopCnt="36" startTime="1665236133115" endTime="1665236134211"/>
+          <loop-result bmThreadId="1" loopCnt="37" startTime="1665236134211" endTime="1665236135290"/>
+          <loop-result bmThreadId="1" loopCnt="38" startTime="1665236135290" endTime="1665236136370"/>
+          <loop-result bmThreadId="1" loopCnt="39" startTime="1665236136370" endTime="1665236137452"/>
+          <loop-result bmThreadId="1" loopCnt="40" startTime="1665236137452" endTime="1665236138533"/>
+          <loop-result bmThreadId="1" loopCnt="41" startTime="1665236138533" endTime="1665236139602"/>
+          <loop-result bmThreadId="1" loopCnt="42" startTime="1665236139602" endTime="1665236140668"/>
+          <loop-result bmThreadId="1" loopCnt="43" startTime="1665236140668" endTime="1665236141744"/>
+          <loop-result bmThreadId="1" loopCnt="44" startTime="1665236141744" endTime="1665236142781"/>
+          <loop-result bmThreadId="1" loopCnt="45" startTime="1665236142781" endTime="1665236143836"/>
+          <loop-result bmThreadId="1" loopCnt="46" startTime="1665236143836" endTime="1665236144879"/>
+          <loop-result bmThreadId="1" loopCnt="47" startTime="1665236144879" endTime="1665236145928"/>
+          <loop-result bmThreadId="1" loopCnt="48" startTime="1665236145928" endTime="1665236146950"/>
+          <loop-result bmThreadId="1" loopCnt="49" startTime="1665236146950" endTime="1665236147993"/>
+          <loop-result bmThreadId="1" loopCnt="50" startTime="1665236147993" endTime="1665236149022"/>
+          <loop-result bmThreadId="1" loopCnt="51" startTime="1665236149022" endTime="1665236150059"/>
+          <loop-result bmThreadId="1" loopCnt="52" startTime="1665236150059" endTime="1665236151097"/>
+          <loop-result bmThreadId="1" loopCnt="53" startTime="1665236151097" endTime="1665236152123"/>
+          <loop-result bmThreadId="1" loopCnt="54" startTime="1665236152123" endTime="1665236153144"/>
+          <loop-result bmThreadId="1" loopCnt="55" startTime="1665236153144" endTime="1665236154174"/>
+          <loop-result bmThreadId="1" loopCnt="56" startTime="1665236154174" endTime="1665236155193"/>
+          <loop-result bmThreadId="1" loopCnt="57" startTime="1665236155193" endTime="1665236156207"/>
+          <loop-result bmThreadId="1" loopCnt="58" startTime="1665236156208" endTime="1665236157219"/>
+          <loop-result bmThreadId="1" loopCnt="59" startTime="1665236157219" endTime="1665236158253"/>
+          <loop-result bmThreadId="1" loopCnt="60" startTime="1665236158253" endTime="1665236159278"/>
+          <loop-result bmThreadId="1" loopCnt="61" startTime="1665236159278" endTime="1665236160301"/>
+          <loop-result bmThreadId="1" loopCnt="62" startTime="1665236160301" endTime="1665236161321"/>
+          <loop-result bmThreadId="1" loopCnt="63" startTime="1665236161321" endTime="1665236162347"/>
+          <loop-result bmThreadId="1" loopCnt="64" startTime="1665236162347" endTime="1665236163365"/>
+          <loop-result bmThreadId="1" loopCnt="65" startTime="1665236163365" endTime="1665236164387"/>
+          <loop-result bmThreadId="1" loopCnt="66" startTime="1665236164387" endTime="1665236165436"/>
+          <loop-result bmThreadId="1" loopCnt="67" startTime="1665236165436" endTime="1665236166490"/>
+          <loop-result bmThreadId="1" loopCnt="68" startTime="1665236166490" endTime="1665236167542"/>
+          <loop-result bmThreadId="1" loopCnt="69" startTime="1665236167542" endTime="1665236168610"/>
+          <loop-result bmThreadId="1" loopCnt="70" startTime="1665236168610" endTime="1665236169661"/>
+          <loop-result bmThreadId="1" loopCnt="71" startTime="1665236169661" endTime="1665236170708"/>
+          <loop-result bmThreadId="1" loopCnt="72" startTime="1665236170708" endTime="1665236171732"/>
+          <loop-result bmThreadId="1" loopCnt="73" startTime="1665236171732" endTime="1665236172760"/>
+          <loop-result bmThreadId="1" loopCnt="74" startTime="1665236172760" endTime="1665236173790"/>
+          <loop-result bmThreadId="1" loopCnt="75" startTime="1665236173790" endTime="1665236174850"/>
+          <loop-result bmThreadId="1" loopCnt="76" startTime="1665236174850" endTime="1665236175877"/>
+          <loop-result bmThreadId="1" loopCnt="77" startTime="1665236175877" endTime="1665236177021"/>
+          <loop-result bmThreadId="1" loopCnt="78" startTime="1665236177021" endTime="1665236178159"/>
+          <loop-result bmThreadId="1" loopCnt="79" startTime="1665236178159" endTime="1665236179260"/>
+          <loop-result bmThreadId="1" loopCnt="80" startTime="1665236179260" endTime="1665236180304"/>
+          <loop-result bmThreadId="1" loopCnt="81" startTime="1665236180304" endTime="1665236181331"/>
+          <loop-result bmThreadId="1" loopCnt="82" startTime="1665236181331" endTime="1665236182353"/>
+          <loop-result bmThreadId="1" loopCnt="83" startTime="1665236182353" endTime="1665236183392"/>
+          <loop-result bmThreadId="1" loopCnt="84" startTime="1665236183392" endTime="1665236184448"/>
+          <loop-result bmThreadId="1" loopCnt="85" startTime="1665236184448" endTime="1665236185502"/>
+          <loop-result bmThreadId="1" loopCnt="86" startTime="1665236185502" endTime="1665236186530"/>
+          <loop-result bmThreadId="1" loopCnt="87" startTime="1665236186530" endTime="1665236187599"/>
+          <loop-result bmThreadId="1" loopCnt="88" startTime="1665236187600" endTime="1665236188645"/>
+          <loop-result bmThreadId="1" loopCnt="89" startTime="1665236188645" endTime="1665236189706"/>
+          <loop-result bmThreadId="1" loopCnt="90" startTime="1665236189706" endTime="1665236190773"/>
+          <loop-result bmThreadId="1" loopCnt="91" startTime="1665236190773" endTime="1665236191835"/>
+          <loop-result bmThreadId="1" loopCnt="92" startTime="1665236191835" endTime="1665236192885"/>
+          <loop-result bmThreadId="1" loopCnt="93" startTime="1665236192885" endTime="1665236193955"/>
+          <loop-result bmThreadId="1" loopCnt="94" startTime="1665236193955" endTime="1665236195020"/>
+          <loop-result bmThreadId="1" loopCnt="95" startTime="1665236195020" endTime="1665236196087"/>
+          <loop-result bmThreadId="1" loopCnt="96" startTime="1665236196087" endTime="1665236197133"/>
+          <loop-result bmThreadId="1" loopCnt="97" startTime="1665236197133" endTime="1665236198216"/>
+          <loop-result bmThreadId="1" loopCnt="98" startTime="1665236198216" endTime="1665236199292"/>
+          <loop-result bmThreadId="1" loopCnt="99" startTime="1665236199292" endTime="1665236200395"/>
+          <loop-result bmThreadId="1" loopCnt="100" startTime="1665236200395" endTime="1665236201576"/>
+          <loop-result bmThreadId="1" loopCnt="101" startTime="1665236201576" endTime="1665236202751"/>
+          <loop-result bmThreadId="1" loopCnt="102" startTime="1665236202751" endTime="1665236203853"/>
+          <loop-result bmThreadId="1" loopCnt="103" startTime="1665236203853" endTime="1665236204924"/>
+          <loop-result bmThreadId="1" loopCnt="104" startTime="1665236204924" endTime="1665236206045"/>
+          <loop-result bmThreadId="1" loopCnt="105" startTime="1665236206045" endTime="1665236207108"/>
+          <loop-result bmThreadId="1" loopCnt="106" startTime="1665236207108" endTime="1665236208132"/>
+          <loop-result bmThreadId="1" loopCnt="107" startTime="1665236208132" endTime="1665236209170"/>
+          <loop-result bmThreadId="1" loopCnt="108" startTime="1665236209170" endTime="1665236210265"/>
+          <loop-result bmThreadId="1" loopCnt="109" startTime="1665236210266" endTime="1665236211397"/>
+          <loop-result bmThreadId="1" loopCnt="110" startTime="1665236211397" endTime="1665236212526"/>
+          <loop-result bmThreadId="1" loopCnt="111" startTime="1665236212526" endTime="1665236213630"/>
+          <loop-result bmThreadId="1" loopCnt="112" startTime="1665236213630" endTime="1665236214683"/>
+        </loops>
+        <analyzers>
+        </analyzers>
+        <analyzer-results>
+        </analyzer-results>
+      </iteration-result>
+    </warmup-result>
+    <iterations>
+      <iteration-result
+        iteration="1"
+        expectedDuration="240000"
+        startTime="1665236214843"
+        endTime="1665236454843"
+        operations="221.49518304431598">
+        <loops>
+          <loop-result bmThreadId="1" loopCnt="1" startTime="1665236214843" endTime="1665236215918"/>
+          <loop-result bmThreadId="1" loopCnt="2" startTime="1665236215918" endTime="1665236217003"/>
+          <loop-result bmThreadId="1" loopCnt="3" startTime="1665236217003" endTime="1665236218103"/>
+          <loop-result bmThreadId="1" loopCnt="4" startTime="1665236218103" endTime="1665236219168"/>
+          <loop-result bmThreadId="1" loopCnt="5" startTime="1665236219168" endTime="1665236220231"/>
+          <loop-result bmThreadId="1" loopCnt="6" startTime="1665236220231" endTime="1665236221292"/>
+          <loop-result bmThreadId="1" loopCnt="7" startTime="1665236221292" endTime="1665236222355"/>
+          <loop-result bmThreadId="1" loopCnt="8" startTime="1665236222355" endTime="1665236223411"/>
+          <loop-result bmThreadId="1" loopCnt="9" startTime="1665236223411" endTime="1665236224502"/>
+          <loop-result bmThreadId="1" loopCnt="10" startTime="1665236224502" endTime="1665236225593"/>
+          <loop-result bmThreadId="1" loopCnt="11" startTime="1665236225593" endTime="1665236226688"/>
+          <loop-result bmThreadId="1" loopCnt="12" startTime="1665236226688" endTime="1665236227768"/>
+          <loop-result bmThreadId="1" loopCnt="13" startTime="1665236227768" endTime="1665236228845"/>
+          <loop-result bmThreadId="1" loopCnt="14" startTime="1665236228845" endTime="1665236230011"/>
+          <loop-result bmThreadId="1" loopCnt="15" startTime="1665236230011" endTime="1665236231191"/>
+          <loop-result bmThreadId="1" loopCnt="16" startTime="1665236231191" endTime="1665236232309"/>
+          <loop-result bmThreadId="1" loopCnt="17" startTime="1665236232309" endTime="1665236233348"/>
+          <loop-result bmThreadId="1" loopCnt="18" startTime="1665236233348" endTime="1665236234388"/>
+          <loop-result bmThreadId="1" loopCnt="19" startTime="1665236234388" endTime="1665236235427"/>
+          <loop-result bmThreadId="1" loopCnt="20" startTime="1665236235427" endTime="1665236236474"/>
+          <loop-result bmThreadId="1" loopCnt="21" startTime="1665236236474" endTime="1665236237593"/>
+          <loop-result bmThreadId="1" loopCnt="22" startTime="1665236237593" endTime="1665236238710"/>
+          <loop-result bmThreadId="1" loopCnt="23" startTime="1665236238710" endTime="1665236239926"/>
+          <loop-result bmThreadId="1" loopCnt="24" startTime="1665236239926" endTime="1665236241084"/>
+          <loop-result bmThreadId="1" loopCnt="25" startTime="1665236241084" endTime="1665236242217"/>
+          <loop-result bmThreadId="1" loopCnt="26" startTime="1665236242217" endTime="1665236243383"/>
+          <loop-result bmThreadId="1" loopCnt="27" startTime="1665236243383" endTime="1665236244521"/>
+          <loop-result bmThreadId="1" loopCnt="28" startTime="1665236244522" endTime="1665236245641"/>
+          <loop-result bmThreadId="1" loopCnt="29" startTime="1665236245641" endTime="1665236246783"/>
+          <loop-result bmThreadId="1" loopCnt="30" startTime="1665236246783" endTime="1665236247896"/>
+          <loop-result bmThreadId="1" loopCnt="31" startTime="1665236247896" endTime="1665236249046"/>
+          <loop-result bmThreadId="1" loopCnt="32" startTime="1665236249046" endTime="1665236250188"/>
+          <loop-result bmThreadId="1" loopCnt="33" startTime="1665236250188" endTime="1665236251328"/>
+          <loop-result bmThreadId="1" loopCnt="34" startTime="1665236251328" endTime="1665236252455"/>
+          <loop-result bmThreadId="1" loopCnt="35" startTime="1665236252455" endTime="1665236253613"/>
+          <loop-result bmThreadId="1" loopCnt="36" startTime="1665236253613" endTime="1665236254765"/>
+          <loop-result bmThreadId="1" loopCnt="37" startTime="1665236254765" endTime="1665236255893"/>
+          <loop-result bmThreadId="1" loopCnt="38" startTime="1665236255893" endTime="1665236256994"/>
+          <loop-result bmThreadId="1" loopCnt="39" startTime="1665236256994" endTime="1665236258105"/>
+          <loop-result bmThreadId="1" loopCnt="40" startTime="1665236258105" endTime="1665236259227"/>
+          <loop-result bmThreadId="1" loopCnt="41" startTime="1665236259227" endTime="1665236260393"/>
+          <loop-result bmThreadId="1" loopCnt="42" startTime="1665236260393" endTime="1665236261539"/>
+          <loop-result bmThreadId="1" loopCnt="43" startTime="1665236261539" endTime="1665236262666"/>
+          <loop-result bmThreadId="1" loopCnt="44" startTime="1665236262666" endTime="1665236263731"/>
+          <loop-result bmThreadId="1" loopCnt="45" startTime="1665236263731" endTime="1665236264792"/>
+          <loop-result bmThreadId="1" loopCnt="46" startTime="1665236264792" endTime="1665236265837"/>
+          <loop-result bmThreadId="1" loopCnt="47" startTime="1665236265837" endTime="1665236266949"/>
+          <loop-result bmThreadId="1" loopCnt="48" startTime="1665236266949" endTime="1665236268015"/>
+          <loop-result bmThreadId="1" loopCnt="49" startTime="1665236268015" endTime="1665236269083"/>
+          <loop-result bmThreadId="1" loopCnt="50" startTime="1665236269083" endTime="1665236270169"/>
+          <loop-result bmThreadId="1" loopCnt="51" startTime="1665236270169" endTime="1665236271272"/>
+          <loop-result bmThreadId="1" loopCnt="52" startTime="1665236271272" endTime="1665236272324"/>
+          <loop-result bmThreadId="1" loopCnt="53" startTime="1665236272324" endTime="1665236273451"/>
+          <loop-result bmThreadId="1" loopCnt="54" startTime="1665236273451" endTime="1665236274518"/>
+          <loop-result bmThreadId="1" loopCnt="55" startTime="1665236274518" endTime="1665236275705"/>
+          <loop-result bmThreadId="1" loopCnt="56" startTime="1665236275705" endTime="1665236276755"/>
+          <loop-result bmThreadId="1" loopCnt="57" startTime="1665236276755" endTime="1665236277796"/>
+          <loop-result bmThreadId="1" loopCnt="58" startTime="1665236277796" endTime="1665236278837"/>
+          <loop-result bmThreadId="1" loopCnt="59" startTime="1665236278837" endTime="1665236279888"/>
+          <loop-result bmThreadId="1" loopCnt="60" startTime="1665236279888" endTime="1665236280936"/>
+          <loop-result bmThreadId="1" loopCnt="61" startTime="1665236280936" endTime="1665236281992"/>
+          <loop-result bmThreadId="1" loopCnt="62" startTime="1665236281992" endTime="1665236283069"/>
+          <loop-result bmThreadId="1" loopCnt="63" startTime="1665236283069" endTime="1665236284172"/>
+          <loop-result bmThreadId="1" loopCnt="64" startTime="1665236284172" endTime="1665236285327"/>
+          <loop-result bmThreadId="1" loopCnt="65" startTime="1665236285327" endTime="1665236286480"/>
+          <loop-result bmThreadId="1" loopCnt="66" startTime="1665236286480" endTime="1665236287588"/>
+          <loop-result bmThreadId="1" loopCnt="67" startTime="1665236287588" endTime="1665236288726"/>
+          <loop-result bmThreadId="1" loopCnt="68" startTime="1665236288726" endTime="1665236289864"/>
+          <loop-result bmThreadId="1" loopCnt="69" startTime="1665236289865" endTime="1665236290993"/>
+          <loop-result bmThreadId="1" loopCnt="70" startTime="1665236290993" endTime="1665236292127"/>
+          <loop-result bmThreadId="1" loopCnt="71" startTime="1665236292127" endTime="1665236293219"/>
+          <loop-result bmThreadId="1" loopCnt="72" startTime="1665236293219" endTime="1665236294313"/>
+          <loop-result bmThreadId="1" loopCnt="73" startTime="1665236294313" endTime="1665236295473"/>
+          <loop-result bmThreadId="1" loopCnt="74" startTime="1665236295473" endTime="1665236296607"/>
+          <loop-result bmThreadId="1" loopCnt="75" startTime="1665236296607" endTime="1665236297671"/>
+          <loop-result bmThreadId="1" loopCnt="76" startTime="1665236297671" endTime="1665236298734"/>
+          <loop-result bmThreadId="1" loopCnt="77" startTime="1665236298734" endTime="1665236299813"/>
+          <loop-result bmThreadId="1" loopCnt="78" startTime="1665236299813" endTime="1665236300856"/>
+          <loop-result bmThreadId="1" loopCnt="79" startTime="1665236300856" endTime="1665236301899"/>
+          <loop-result bmThreadId="1" loopCnt="80" startTime="1665236301899" endTime="1665236302944"/>
+          <loop-result bmThreadId="1" loopCnt="81" startTime="1665236302944" endTime="1665236304022"/>
+          <loop-result bmThreadId="1" loopCnt="82" startTime="1665236304022" endTime="1665236305059"/>
+          <loop-result bmThreadId="1" loopCnt="83" startTime="1665236305059" endTime="1665236306124"/>
+          <loop-result bmThreadId="1" loopCnt="84" startTime="1665236306124" endTime="1665236307221"/>
+          <loop-result bmThreadId="1" loopCnt="85" startTime="1665236307221" endTime="1665236308309"/>
+          <loop-result bmThreadId="1" loopCnt="86" startTime="1665236308309" endTime="1665236309418"/>
+          <loop-result bmThreadId="1" loopCnt="87" startTime="1665236309418" endTime="1665236310475"/>
+          <loop-result bmThreadId="1" loopCnt="88" startTime="1665236310475" endTime="1665236311528"/>
+          <loop-result bmThreadId="1" loopCnt="89" startTime="1665236311528" endTime="1665236312622"/>
+          <loop-result bmThreadId="1" loopCnt="90" startTime="1665236312622" endTime="1665236313665"/>
+          <loop-result bmThreadId="1" loopCnt="91" startTime="1665236313665" endTime="1665236314743"/>
+          <loop-result bmThreadId="1" loopCnt="92" startTime="1665236314743" endTime="1665236315979"/>
+          <loop-result bmThreadId="1" loopCnt="93" startTime="1665236315979" endTime="1665236317113"/>
+          <loop-result bmThreadId="1" loopCnt="94" startTime="1665236317113" endTime="1665236318198"/>
+          <loop-result bmThreadId="1" loopCnt="95" startTime="1665236318198" endTime="1665236319280"/>
+          <loop-result bmThreadId="1" loopCnt="96" startTime="1665236319280" endTime="1665236320358"/>
+          <loop-result bmThreadId="1" loopCnt="97" startTime="1665236320358" endTime="1665236321459"/>
+          <loop-result bmThreadId="1" loopCnt="98" startTime="1665236321459" endTime="1665236322592"/>
+          <loop-result bmThreadId="1" loopCnt="99" startTime="1665236322592" endTime="1665236323693"/>
+          <loop-result bmThreadId="1" loopCnt="100" startTime="1665236323693" endTime="1665236324733"/>
+          <loop-result bmThreadId="1" loopCnt="101" startTime="1665236324733" endTime="1665236325817"/>
+          <loop-result bmThreadId="1" loopCnt="102" startTime="1665236325817" endTime="1665236326918"/>
+          <loop-result bmThreadId="1" loopCnt="103" startTime="1665236326918" endTime="1665236327990"/>
+          <loop-result bmThreadId="1" loopCnt="104" startTime="1665236327990" endTime="1665236329048"/>
+          <loop-result bmThreadId="1" loopCnt="105" startTime="1665236329048" endTime="1665236330171"/>
+          <loop-result bmThreadId="1" loopCnt="106" startTime="1665236330171" endTime="1665236331239"/>
+          <loop-result bmThreadId="1" loopCnt="107" startTime="1665236331239" endTime="1665236332325"/>
+          <loop-result bmThreadId="1" loopCnt="108" startTime="1665236332325" endTime="1665236333478"/>
+          <loop-result bmThreadId="1" loopCnt="109" startTime="1665236333478" endTime="1665236334558"/>
+          <loop-result bmThreadId="1" loopCnt="110" startTime="1665236334558" endTime="1665236335624"/>
+          <loop-result bmThreadId="1" loopCnt="111" startTime="1665236335624" endTime="1665236336681"/>
+          <loop-result bmThreadId="1" loopCnt="112" startTime="1665236336681" endTime="1665236337797"/>
+          <loop-result bmThreadId="1" loopCnt="113" startTime="1665236337797" endTime="1665236338848"/>
+          <loop-result bmThreadId="1" loopCnt="114" startTime="1665236338848" endTime="1665236339928"/>
+          <loop-result bmThreadId="1" loopCnt="115" startTime="1665236339928" endTime="1665236341003"/>
+          <loop-result bmThreadId="1" loopCnt="116" startTime="1665236341003" endTime="1665236342066"/>
+          <loop-result bmThreadId="1" loopCnt="117" startTime="1665236342066" endTime="1665236343136"/>
+          <loop-result bmThreadId="1" loopCnt="118" startTime="1665236343136" endTime="1665236344189"/>
+          <loop-result bmThreadId="1" loopCnt="119" startTime="1665236344189" endTime="1665236345277"/>
+          <loop-result bmThreadId="1" loopCnt="120" startTime="1665236345277" endTime="1665236346352"/>
+          <loop-result bmThreadId="1" loopCnt="121" startTime="1665236346352" endTime="1665236347461"/>
+          <loop-result bmThreadId="1" loopCnt="122" startTime="1665236347461" endTime="1665236348575"/>
+          <loop-result bmThreadId="1" loopCnt="123" startTime="1665236348575" endTime="1665236349662"/>
+          <loop-result bmThreadId="1" loopCnt="124" startTime="1665236349662" endTime="1665236350729"/>
+          <loop-result bmThreadId="1" loopCnt="125" startTime="1665236350729" endTime="1665236351826"/>
+          <loop-result bmThreadId="1" loopCnt="126" startTime="1665236351826" endTime="1665236352897"/>
+          <loop-result bmThreadId="1" loopCnt="127" startTime="1665236352897" endTime="1665236353970"/>
+          <loop-result bmThreadId="1" loopCnt="128" startTime="1665236353970" endTime="1665236355074"/>
+          <loop-result bmThreadId="1" loopCnt="129" startTime="1665236355074" endTime="1665236356191"/>
+          <loop-result bmThreadId="1" loopCnt="130" startTime="1665236356191" endTime="1665236357268"/>
+          <loop-result bmThreadId="1" loopCnt="131" startTime="1665236357268" endTime="1665236358372"/>
+          <loop-result bmThreadId="1" loopCnt="132" startTime="1665236358372" endTime="1665236359458"/>
+          <loop-result bmThreadId="1" loopCnt="133" startTime="1665236359458" endTime="1665236360590"/>
+          <loop-result bmThreadId="1" loopCnt="134" startTime="1665236360590" endTime="1665236361662"/>
+          <loop-result bmThreadId="1" loopCnt="135" startTime="1665236361662" endTime="1665236362811"/>
+          <loop-result bmThreadId="1" loopCnt="136" startTime="1665236362811" endTime="1665236363858"/>
+          <loop-result bmThreadId="1" loopCnt="137" startTime="1665236363858" endTime="1665236364948"/>
+          <loop-result bmThreadId="1" loopCnt="138" startTime="1665236364949" endTime="1665236366025"/>
+          <loop-result bmThreadId="1" loopCnt="139" startTime="1665236366025" endTime="1665236367080"/>
+          <loop-result bmThreadId="1" loopCnt="140" startTime="1665236367080" endTime="1665236368140"/>
+          <loop-result bmThreadId="1" loopCnt="141" startTime="1665236368140" endTime="1665236369219"/>
+          <loop-result bmThreadId="1" loopCnt="142" startTime="1665236369219" endTime="1665236370287"/>
+          <loop-result bmThreadId="1" loopCnt="143" startTime="1665236370287" endTime="1665236371362"/>
+          <loop-result bmThreadId="1" loopCnt="144" startTime="1665236371362" endTime="1665236372509"/>
+          <loop-result bmThreadId="1" loopCnt="145" startTime="1665236372509" endTime="1665236373615"/>
+          <loop-result bmThreadId="1" loopCnt="146" startTime="1665236373615" endTime="1665236374659"/>
+          <loop-result bmThreadId="1" loopCnt="147" startTime="1665236374659" endTime="1665236375728"/>
+          <loop-result bmThreadId="1" loopCnt="148" startTime="1665236375728" endTime="1665236376782"/>
+          <loop-result bmThreadId="1" loopCnt="149" startTime="1665236376782" endTime="1665236377841"/>
+          <loop-result bmThreadId="1" loopCnt="150" startTime="1665236377841" endTime="1665236378921"/>
+          <loop-result bmThreadId="1" loopCnt="151" startTime="1665236378921" endTime="1665236379983"/>
+          <loop-result bmThreadId="1" loopCnt="152" startTime="1665236379983" endTime="1665236381032"/>
+          <loop-result bmThreadId="1" loopCnt="153" startTime="1665236381032" endTime="1665236382094"/>
+          <loop-result bmThreadId="1" loopCnt="154" startTime="1665236382094" endTime="1665236383165"/>
+          <loop-result bmThreadId="1" loopCnt="155" startTime="1665236383165" endTime="1665236384245"/>
+          <loop-result bmThreadId="1" loopCnt="156" startTime="1665236384245" endTime="1665236385328"/>
+          <loop-result bmThreadId="1" loopCnt="157" startTime="1665236385328" endTime="1665236386397"/>
+          <loop-result bmThreadId="1" loopCnt="158" startTime="1665236386397" endTime="1665236387483"/>
+          <loop-result bmThreadId="1" loopCnt="159" startTime="1665236387483" endTime="1665236388551"/>
+          <loop-result bmThreadId="1" loopCnt="160" startTime="1665236388551" endTime="1665236389615"/>
+          <loop-result bmThreadId="1" loopCnt="161" startTime="1665236389615" endTime="1665236390685"/>
+          <loop-result bmThreadId="1" loopCnt="162" startTime="1665236390685" endTime="1665236391744"/>
+          <loop-result bmThreadId="1" loopCnt="163" startTime="1665236391744" endTime="1665236392788"/>
+          <loop-result bmThreadId="1" loopCnt="164" startTime="1665236392788" endTime="1665236393854"/>
+          <loop-result bmThreadId="1" loopCnt="165" startTime="1665236393854" endTime="1665236394934"/>
+          <loop-result bmThreadId="1" loopCnt="166" startTime="1665236394934" endTime="1665236395994"/>
+          <loop-result bmThreadId="1" loopCnt="167" startTime="1665236395994" endTime="1665236397064"/>
+          <loop-result bmThreadId="1" loopCnt="168" startTime="1665236397064" endTime="1665236398128"/>
+          <loop-result bmThreadId="1" loopCnt="169" startTime="1665236398128" endTime="1665236399220"/>
+          <loop-result bmThreadId="1" loopCnt="170" startTime="1665236399220" endTime="1665236400284"/>
+          <loop-result bmThreadId="1" loopCnt="171" startTime="1665236400284" endTime="1665236401400"/>
+          <loop-result bmThreadId="1" loopCnt="172" startTime="1665236401400" endTime="1665236402457"/>
+          <loop-result bmThreadId="1" loopCnt="173" startTime="1665236402457" endTime="1665236403534"/>
+          <loop-result bmThreadId="1" loopCnt="174" startTime="1665236403534" endTime="1665236404616"/>
+          <loop-result bmThreadId="1" loopCnt="175" startTime="1665236404616" endTime="1665236405697"/>
+          <loop-result bmThreadId="1" loopCnt="176" startTime="1665236405697" endTime="1665236406819"/>
+          <loop-result bmThreadId="1" loopCnt="177" startTime="1665236406819" endTime="1665236407899"/>
+          <loop-result bmThreadId="1" loopCnt="178" startTime="1665236407899" endTime="1665236408963"/>
+          <loop-result bmThreadId="1" loopCnt="179" startTime="1665236408963" endTime="1665236410031"/>
+          <loop-result bmThreadId="1" loopCnt="180" startTime="1665236410031" endTime="1665236411109"/>
+          <loop-result bmThreadId="1" loopCnt="181" startTime="1665236411109" endTime="1665236412154"/>
+          <loop-result bmThreadId="1" loopCnt="182" startTime="1665236412154" endTime="1665236413221"/>
+          <loop-result bmThreadId="1" loopCnt="183" startTime="1665236413221" endTime="1665236414288"/>
+          <loop-result bmThreadId="1" loopCnt="184" startTime="1665236414288" endTime="1665236415336"/>
+          <loop-result bmThreadId="1" loopCnt="185" startTime="1665236415336" endTime="1665236416423"/>
+          <loop-result bmThreadId="1" loopCnt="186" startTime="1665236416423" endTime="1665236417479"/>
+          <loop-result bmThreadId="1" loopCnt="187" startTime="1665236417479" endTime="1665236418527"/>
+          <loop-result bmThreadId="1" loopCnt="188" startTime="1665236418527" endTime="1665236419588"/>
+          <loop-result bmThreadId="1" loopCnt="189" startTime="1665236419588" endTime="1665236420642"/>
+          <loop-result bmThreadId="1" loopCnt="190" startTime="1665236420642" endTime="1665236421685"/>
+          <loop-result bmThreadId="1" loopCnt="191" startTime="1665236421685" endTime="1665236422760"/>
+          <loop-result bmThreadId="1" loopCnt="192" startTime="1665236422760" endTime="1665236423809"/>
+          <loop-result bmThreadId="1" loopCnt="193" startTime="1665236423809" endTime="1665236424849"/>
+          <loop-result bmThreadId="1" loopCnt="194" startTime="1665236424849" endTime="1665236425924"/>
+          <loop-result bmThreadId="1" loopCnt="195" startTime="1665236425924" endTime="1665236426983"/>
+          <loop-result bmThreadId="1" loopCnt="196" startTime="1665236426983" endTime="1665236428023"/>
+          <loop-result bmThreadId="1" loopCnt="197" startTime="1665236428023" endTime="1665236429081"/>
+          <loop-result bmThreadId="1" loopCnt="198" startTime="1665236429081" endTime="1665236430124"/>
+          <loop-result bmThreadId="1" loopCnt="199" startTime="1665236430124" endTime="1665236431182"/>
+          <loop-result bmThreadId="1" loopCnt="200" startTime="1665236431182" endTime="1665236432228"/>
+          <loop-result bmThreadId="1" loopCnt="201" startTime="1665236432228" endTime="1665236433293"/>
+          <loop-result bmThreadId="1" loopCnt="202" startTime="1665236433293" endTime="1665236434380"/>
+          <loop-result bmThreadId="1" loopCnt="203" startTime="1665236434380" endTime="1665236435438"/>
+          <loop-result bmThreadId="1" loopCnt="204" startTime="1665236435438" endTime="1665236436483"/>
+          <loop-result bmThreadId="1" loopCnt="205" startTime="1665236436483" endTime="1665236437539"/>
+          <loop-result bmThreadId="1" loopCnt="206" startTime="1665236437539" endTime="1665236438569"/>
+          <loop-result bmThreadId="1" loopCnt="207" startTime="1665236438569" endTime="1665236439629"/>
+          <loop-result bmThreadId="1" loopCnt="208" startTime="1665236439629" endTime="1665236440662"/>
+          <loop-result bmThreadId="1" loopCnt="209" startTime="1665236440662" endTime="1665236441707"/>
+          <loop-result bmThreadId="1" loopCnt="210" startTime="1665236441707" endTime="1665236442749"/>
+          <loop-result bmThreadId="1" loopCnt="211" startTime="1665236442749" endTime="1665236443787"/>
+          <loop-result bmThreadId="1" loopCnt="212" startTime="1665236443787" endTime="1665236444814"/>
+          <loop-result bmThreadId="1" loopCnt="213" startTime="1665236444814" endTime="1665236445846"/>
+          <loop-result bmThreadId="1" loopCnt="214" startTime="1665236445846" endTime="1665236446889"/>
+          <loop-result bmThreadId="1" loopCnt="215" startTime="1665236446889" endTime="1665236447964"/>
+          <loop-result bmThreadId="1" loopCnt="216" startTime="1665236447964" endTime="1665236449027"/>
+          <loop-result bmThreadId="1" loopCnt="217" startTime="1665236449027" endTime="1665236450087"/>
+          <loop-result bmThreadId="1" loopCnt="218" startTime="1665236450087" endTime="1665236451148"/>
+          <loop-result bmThreadId="1" loopCnt="219" startTime="1665236451148" endTime="1665236452248"/>
+          <loop-result bmThreadId="1" loopCnt="220" startTime="1665236452248" endTime="1665236453289"/>
+          <loop-result bmThreadId="1" loopCnt="221" startTime="1665236453289" endTime="1665236454329"/>
+          <loop-result bmThreadId="1" loopCnt="222" startTime="1665236454329" endTime="1665236455367"/>
+        </loops>
+        <analyzers>
+        </analyzers>
+        <analyzer-results>
+        </analyzer-results>
+      </iteration-result>
+    </iterations>
+    </benchmark-result>
+  </benchmark-results>
+</specjvm-result>

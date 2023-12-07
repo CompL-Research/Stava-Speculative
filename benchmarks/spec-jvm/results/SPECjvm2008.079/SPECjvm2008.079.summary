@@ -1,0 +1,10 @@
+Report:      SPECjvm2008 Base summary
+Result:      Noncompliant composite result: 35.82 ops/m
+HW Model:    n/a, n/a
+HW CPU:      n/a, n/a
+OS:          Linux
+JVM:         Oracle Corporation, Java HotSpot(TM) 64-Bit Server VM, 25.301-b09 mixed mode
+JVM tuning:  n/a
+JVM startup:  
+Tester:      aditya, n/a
+Run date:    Wed Oct 19 18:12:32 IST 2022

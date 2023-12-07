@@ -1,0 +1,78 @@
+================================
+SPECjvm2008 Base
+================================
+n/a n/a
+Oracle Corporation Java HotSpot(TM) 64-Bit Server VM
+Tested by: n/a Test date: Tue Oct 18 12:51:48 IST 2022
+Run is valid, but not compliant
+
+================================
+startup                       107.91                                  
+Noncompliant composite result: 107.91 ops/m
+================================
+
+
+Submitter                     n/a                                     
+Submitter URL                 n/a                                     
+SPEC license                  n/a                                     
+Tester                        aditya                                  
+Location                      n/a                                     
+Test date:                    Tue Oct 18 12:51:48 IST 2022            
+OS name                       Linux                                   
+OS available                  n/a                                     
+OS address bits               n/a                                     
+OS tuning                                                             
+Filesystem                    n/a                                     
+Other s/w name                                                        
+Other s/w tuning                                                      
+Other s/w available                                                   
+Vendor                        Oracle Corporation                      
+Vendor URL                    http://java.oracle.com/                 
+JVM name                      Java HotSpot(TM) 64-Bit Server VM       
+JVM version                   25.301-b09 mixed mode                   
+JVM available                 n/a                                     
+Java Specification            1.8                                     
+JVM address bits              64                                      
+JVM initial heap memory       n/a                                     
+JVM maximum heap memory       n/a                                     
+JVM command line              n/a                                     
+JVM command line startup                                              
+JVM launcher startup          default                                 
+Additional JVM tuning                                                 
+JVM class path                SPECjvm2008.jar:poa-trunk.jar           
+JVM boot class path           /home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/resources.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/rt.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/sunrsasign.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/jsse.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/jce.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/charsets.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/lib/jfr.jar:/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301/jre/classes
+HW vendor                     n/a                                     
+HW vendor's URL               n/a                                     
+HW model                      n/a                                     
+HW available                  n/a                                     
+CPU vendor                    n/a                                     
+CPU vendor's URL              n/a                                     
+CPU name                      n/a                                     
+CPU frequency                 n/a                                     
+# of logical cpus             n/a                                     
+# of chips                    n/a                                     
+# of cores                    n/a                                     
+Cores per chip                n/a                                     
+Threads per core              n/a                                     
+Threading enabled             n/a                                     
+HW address bits               n/a                                     
+Primary cache                 n/a                                     
+Secondary cache               n/a                                     
+Other cache                   n/a                                     
+Memory size                   n/a                                     
+Memory details                n/a                                     
+Other HW details              n/a                                     
+
+Not a compliant sequence of benchmarks for publication.
+
+Details of Runs
+---------------
+PASSED
+
+Benchmark                     Iteration      Expected(ms)   Actual(ms)     Operations     ops/m          
+---------------------------------------------------------------------------------------------------
+
+startup.scimark.fft           iteration 1    null           556            1.00           107.91         
+
+SPECjvm2008 Version: [SPECjvm2008 1.01 (20090519)]
+Copyright (C) 2008-2022 SPEC. All rights reserved

@@ -1,0 +1,521 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.6.5
+Class-Path: lib/derby.jar lib/jl1.0.jar lib/jcommon-1.0.9.jar lib/jfre
+ echart-1.0.5.jar lib/sunflow.jar lib/janino.jar lib/javac.jar lib/xom
+ -1.1.jar lib/Tidy.jar lib/check.jar build/classes
+Created-By: 1.6.0_07-b06-57 (Apple Inc.)
+Main-Class: spec.harness.Launch
+
+Name: spec/benchmarks/compress/Compressor.class
+SHA1-Digest: zTwVe8o2jBvbtrKVddwkTgsw1Ag=
+
+Name: spec/harness/Constants.class
+SHA1-Digest: J45yaAS7Q7MB9V8FAcc4WOEVT0w=
+
+Name: spec/benchmarks/compress/CodeTable.class
+SHA1-Digest: veHKj8cF8OdlVuTPmZsBtM2OuWg=
+
+Name: spec/harness/KnownIssues.class
+SHA1-Digest: SsgqdnoymETk4PVc6sLpILmsHVE=
+
+Name: spec/reporter/SPECSubmissionProcessor.class
+SHA1-Digest: kbG2vxPoMNR4/MXBg4ux5fPeags=
+
+Name: spec/harness/results/IterationResult.class
+SHA1-Digest: XRF3nnEnsumLT25JnJDtIFzrD4g=
+
+Name: spec/benchmarks/compiler/sunflow/Main.class
+SHA1-Digest: KH5nwIPl4bX7nONhmIStkMCi/tU=
+
+Name: spec/harness/analyzer/TempAnalyzer.class
+SHA1-Digest: Loxd0KHkFc4lnVp4m4Xm/9c0hNk=
+
+Name: spec/harness/analyzer/TempAnalyzer$TemperatureResult.class
+SHA1-Digest: UgD6J2CypkPwaZeMVGXkRyOdeug=
+
+Name: spec/benchmarks/check/StringAndInt.class
+SHA1-Digest: KqnVYjwNIDJ/VhZ3/DJTrNifyRY=
+
+Name: spec/reporter/SPECSubmissionPreparer.class
+SHA1-Digest: ex1MaN7P1kyV/aQ8ApAEiZeOqAE=
+
+Name: spec/benchmarks/xml/transform/BaseOutputStream.class
+SHA1-Digest: +8aLZX9rF01OsFQ9FYjvtq4nQQ8=
+
+Name: spec/harness/analyzer/CallbackAnalyzerExample$NumberInfo.class
+SHA1-Digest: uDhvKjY8NSonDdJBn/ISBNqL2z0=
+
+Name: spec/benchmarks/serial/data/Handler.class
+SHA1-Digest: wvNcvFOloQi6YxeMIpYD9GR0+2s=
+
+Name: spec/benchmarks/serial/data/TestBigInteger.class
+SHA1-Digest: 89QJfrzpv4hdsdM7b145Hy78Zvs=
+
+Name: spec/harness/results/TestResult.class
+SHA1-Digest: QT08HNKdPddOjmGdFBThxNgorlk=
+
+Name: spec/reporter/BenchmarkGroupRecords$BenchmarkGroupRecord.class
+SHA1-Digest: PtTqaM4VoHfNHJRZN4cgmC+UH6I=
+
+Name: spec/harness/analyzer/HeapMemoryTotalAnalyzer.class
+SHA1-Digest: p/pL+st4MwFga8L6SMQYFRhx1wQ=
+
+Name: spec/benchmarks/compress/Main.class
+SHA1-Digest: v4P7WojzvtGPMuvz3xSgUMh0IFo=
+
+Name: spec/benchmarks/sunflow/Main$BenchmarkImpl.class
+SHA1-Digest: 41aBGXlTIs0oDpY8Tmsuv43sf1k=
+
+Name: spec/benchmarks/scimark/lu/LU.class
+SHA1-Digest: MXuoGjs4rHQgwDINphOVqAR55WM=
+
+Name: spec/benchmarks/serial/data/TestClassWithSQLDateOnly.class
+SHA1-Digest: 1mW0d75LMKWJcdObIbda8eF0kdA=
+
+Name: spec/reporter/Writer.class
+SHA1-Digest: nB++/YkXGz4p+Cm2nU6ILIPnVzA=
+
+Name: spec/benchmarks/compiler/Util.class
+SHA1-Digest: g4HaUgOgx2fBymSuE1bnoh65L7g=
+
+Name: spec/benchmarks/derby/DataReader.class
+SHA1-Digest: doS8mme+AKaALsjSKGrpMzVHNFU=
+
+Name: spec/benchmarks/helloworld/Main.class
+SHA1-Digest: 5azaYwgMfyEmrKBXGKenpNtFKfg=
+
+Name: spec/benchmarks/compress/CompBase.class
+SHA1-Digest: A3/Ss94OwR+klE1R8sazhbDr+Nc=
+
+Name: spec/io/ValidityCheckOutputStream.class
+SHA1-Digest: 4r9o9Jxp4yQBgWsSr4hu+/1WSYk=
+
+Name: spec/benchmarks/serial/data/TestArray.class
+SHA1-Digest: X1JQbuOw6FrVMfdLZFS2iAIL+0E=
+
+Name: spec/benchmarks/crypto/Util.class
+SHA1-Digest: INWEC/zHj2/joQ3HSYL9XTko+d0=
+
+Name: spec/harness/StopBenchmarkException.class
+SHA1-Digest: OCvXFutRfUJgGruNi54Y3NTJQbQ=
+
+Name: spec/benchmarks/derby/Main.class
+SHA1-Digest: bXMquvgzjHVt2Z70GWoCkFeeOCw=
+
+Name: spec/benchmarks/mpegaudio/Main.class
+SHA1-Digest: 1t/6Z9R2/+1pI1ObjGhFciiPttI=
+
+Name: spec/reporter/BenchmarkGroupRecords.class
+SHA1-Digest: SzKoW0bWSVwmkVi9HYlXZfqDOvQ=
+
+Name: spec/harness/analyzer/CallbackAnalyzerExample.class
+SHA1-Digest: B1dCwklrEM4KNrqZPblwF80w1ss=
+
+Name: spec/reporter/BenchmarkChart.class
+SHA1-Digest: F0P/TviLF6p/GUIl9Jut1eGawms=
+
+Name: spec/io/FileCache$CachedFile.class
+SHA1-Digest: QLtYNWYTRmH0lyWRzdRMllq94VY=
+
+Name: spec/benchmarks/check/LoopBounds2.class
+SHA1-Digest: wJJjaPDJvPjZVS+RRv+z4ylSzeg=
+
+Name: spec/benchmarks/check/C2intf.class
+SHA1-Digest: kfX6o0N+IZGBNkfMUOlqI0bhSRQ=
+
+Name: spec/benchmarks/scimark/fft/FFT$1.class
+SHA1-Digest: QuPA7ZH8/KUZemwpX0gR2c5l+QU=
+
+Name: spec/benchmarks/derby/DerbyHarness$Client.class
+SHA1-Digest: TDBhpjt4yHn9xOL3KEgXEAQ3DW4=
+
+Name: spec/benchmarks/scimark/sor/SOR$1.class
+SHA1-Digest: tgNl/eoVbd+RyeZqT1kQOs/O4wQ=
+
+Name: spec/harness/results/LoopResult.class
+SHA1-Digest: +LqtyaNdPW7dRpmcrRBTZC83eto=
+
+Name: spec/benchmarks/xml/transform/Main.class
+SHA1-Digest: owXrVQgrK4+k8/r6RXa0EuglKcY=
+
+Name: spec/benchmarks/derby/DerbyHarness.class
+SHA1-Digest: bTzaDgExFa6scDVXRDXqTph97bw=
+
+Name: spec/benchmarks/xml/ReportingHandler.class
+SHA1-Digest: HiA+k+fBq+933v1l3OqGejFFilU=
+
+Name: spec/benchmarks/serial/data/TestProxy.class
+SHA1-Digest: 9FbtFDiyN0UHprNoQ275EpU7KCg=
+
+Name: spec/benchmarks/compress/Decompressor$SuffixTable.class
+SHA1-Digest: 7uWVzkDRAtw8Snar+AW4Yt2KbBU=
+
+Name: spec/benchmarks/crypto/signverify/Main.class
+SHA1-Digest: LrIMidmh8DOjZNrTVMltelTzLfY=
+
+Name: spec/benchmarks/serial/data/TestArrayList.class
+SHA1-Digest: 8L4dYhybbHQTXWtFvWuT//aWN9E=
+
+Name: spec/benchmarks/serial/data/TestHugeData.class
+SHA1-Digest: I9AWx6BBMczXYyEQFnyhWth+yGU=
+
+Name: spec/benchmarks/mpegaudio/Harness.class
+SHA1-Digest: Xxhlq9YorDMZFc8BLnE3Mxuwnvo=
+
+Name: spec/benchmarks/scimark/lu/Main.class
+SHA1-Digest: C+IQTXPmpSTj9vvyLvIFhjYwVkY=
+
+Name: spec/benchmarks/crypto/rsa/Main.class
+SHA1-Digest: EPDcysevxWTqKNJXD9D+g/3rAlc=
+
+Name: spec/benchmarks/scimark/utils/kernel.class
+SHA1-Digest: 1v4xYZ7UuuwhsmGdwtpv9Ed3bd0=
+
+Name: spec/harness/analyzer/PollingAnalyzerExample$NumberOfOperations.
+ class
+SHA1-Digest: u4iCgjcuXstUCtU9/5cKeoHzkA0=
+
+Name: spec/harness/analyzer/HeapMemoryFreeAnalyzer$HeapMemoryFree.clas
+ s
+SHA1-Digest: 8pDZNnnxiDn+os1wBmKePrk9+SQ=
+
+Name: spec/benchmarks/compiler/compiler/Main.class
+SHA1-Digest: 9UsxzJLvnSJwOtNxBdOem764noA=
+
+Name: spec/benchmarks/check/C2.class
+SHA1-Digest: b1d9w2GP86c4e0dFwA0pTjpCcO8=
+
+Name: spec/benchmarks/scimark/monte_carlo/Main.class
+SHA1-Digest: 2A1FVIgB7+lbfchVuNwTy03hc9A=
+
+Name: spec/benchmarks/serial/data/Child.class
+SHA1-Digest: L9J3lwIEyEtAui1E0pUg+tdEzdg=
+
+Name: spec/benchmarks/scimark/sor/Main.class
+SHA1-Digest: 8kHZa1XgAgd2MmbI15pIKx75sr4=
+
+Name: spec/benchmarks/compress/InputBuffer.class
+SHA1-Digest: yv62xK04ldNCso4fMtA7whfMCOE=
+
+Name: spec/benchmarks/serial/Main.class
+SHA1-Digest: +K/tAzUcagK9g68KdSHict6vTAI=
+
+Name: spec/benchmarks/serial/data/TestClassReferenceTest.class
+SHA1-Digest: ZRIRjhozfpyX6W+A1EeeYSZVB/I=
+
+Name: spec/benchmarks/derby/DerbyHarness$1.class
+SHA1-Digest: Nbm1W9dqNZ8+F6uC76wxx320ThI=
+
+Name: spec/reporter/BenchmarkGroupRecords$BenchmarkResultsIterator.cla
+ ss
+SHA1-Digest: KUXlJbdGMqCks0yn/trhxbKfaTU=
+
+Name: spec/harness/analyzer/TYInfo.class
+SHA1-Digest: fTYR/Y+G7OsoPmWADX8MFfVh71s=
+
+Name: spec/benchmarks/derby/CyclicReader.class
+SHA1-Digest: Dp+82d+2G++VYlSJ+IEms6hcZ30=
+
+Name: spec/benchmarks/compiler/SpecFileManager.class
+SHA1-Digest: p5VJo15jsGRvY1nkepIWMx9B5nk=
+
+Name: spec/benchmarks/check/SideIntf.class
+SHA1-Digest: 7/1etP3nOvTnZlLxeGgIydQ0urc=
+
+Name: spec/benchmarks/serial/data/TestDomainObject.class
+SHA1-Digest: H64Zfj/QXgOjN18ckIw5Tk0wvKs=
+
+Name: spec/harness/analyzer/CallbackAnalyzerExample$TheNumberGenerator
+ .class
+SHA1-Digest: hbCZAO1/5qky9ZAWh7zfdtIZ5hk=
+
+Name: spec/benchmarks/compress/Harness.class
+SHA1-Digest: hxh3mIiF6nHon1U0ydHDL2LN2fM=
+
+Name: spec/benchmarks/check/C3.class
+SHA1-Digest: r0CI8T4zws8ifMGPgOzbYpVHOms=
+
+Name: spec/benchmarks/startup/StartupBenchmarkOutput.class
+SHA1-Digest: Qxt1AHWX8PF2AbkcFIklBg++DA0=
+
+Name: spec/reporter/BenchmarkRecord$IterationRecord.class
+SHA1-Digest: NMhPncD3KQGlw+J6jPqsj2k+tZ8=
+
+Name: spec/benchmarks/compress/Compressor$HashTable.class
+SHA1-Digest: NGuYwu2xl105/IANpSn19RQpNYw=
+
+Name: spec/benchmarks/scimark/sparse/SparseCompRow.class
+SHA1-Digest: sK2dHHqPU2xbFKA3/4URk8GVfmg=
+
+Name: spec/harness/VMVersionTest.class
+SHA1-Digest: 5LJbF88CUaVF2ADhwJf4xxknwY0=
+
+Name: spec/benchmarks/scimark/sor/SOR.class
+SHA1-Digest: Rpp5E4ZZUItKaqlUPwMmRsqYOAo=
+
+Name: spec/harness/analyzer/PollingAnalyzerExample.class
+SHA1-Digest: y1l69iSdFoYV59zpgwGanqGGPXI=
+
+Name: spec/harness/SpecJVMBenchmark.class
+SHA1-Digest: Sdm1bHjlT6cgGveLwTGi5CVPYrg=
+
+Name: spec/benchmarks/helloworld/HelloWorld.class
+SHA1-Digest: 0MOV6PtP8Ojog42sB47VTtOfJko=
+
+Name: spec/harness/analyzer/CallbackAnalyzerExample$NumberResult.class
+SHA1-Digest: GwxmRn2KyuztxGMj/b/DMV4xgnA=
+
+Name: spec/harness/analyzer/HeapMemoryFreeAnalyzer.class
+SHA1-Digest: iqWRK1N2pHa9tmUlyL2q7pqb2bk=
+
+Name: spec/benchmarks/serial/data/TestByteArray.class
+SHA1-Digest: LJldIlw+GUfkwv02V/B85j3O2AY=
+
+Name: spec/benchmarks/compress/Harness$Source.class
+SHA1-Digest: 8kvY6ow3Fc8CbA9p0+8Bu/tylKo=
+
+Name: spec/benchmarks/check/C3intf.class
+SHA1-Digest: M54kArZd48b7o85vtpdFEosE/JM=
+
+Name: spec/benchmarks/serial/data/TestWithBigDecimal.class
+SHA1-Digest: 02/4ZqaVCwUTOxdu6njdaTYb5vk=
+
+Name: spec/harness/analyzer/AnalyzerResult.class
+SHA1-Digest: hZCEkvZRbyE0sLzrtYW3q1ofc2k=
+
+Name: spec/benchmarks/check/syncTest.class
+SHA1-Digest: dmEjc1KFHaS6HZDlx/4lkVTShmU=
+
+Name: spec/benchmarks/serial/data/TestReadResolve.class
+SHA1-Digest: eV+mynhUI+NgyGm9577Kfc6bYhU=
+
+Name: spec/benchmarks/check/C1.class
+SHA1-Digest: Cbg3Gz9L0QWje2Fpukh3zN1cI50=
+
+Name: spec/benchmarks/scimark/utils/Constants.class
+SHA1-Digest: o1sLzpjUMiU3PC/tW71/Ha+vk9c=
+
+Name: spec/reporter/ReportGenerator.class
+SHA1-Digest: cTdkr0QAr7vcK9Nm4vw+L+OP8SE=
+
+Name: spec/benchmarks/xml/XMLBenchmark.class
+SHA1-Digest: G8Di0Ehb7Qiujr35eJP1irz13bQ=
+
+Name: spec/benchmarks/check/subClass.class
+SHA1-Digest: zkeiVTtAosrWxgbXorHrcVOm810=
+
+Name: spec/benchmarks/startup/Main.class
+SHA1-Digest: iVwHcMcTMHt/kZDiUNHQsNlufgI=
+
+Name: spec/harness/analyzer/PowerMeter.class
+SHA1-Digest: XKSat56izVy1gjy/Zq07rjYcfPM=
+
+Name: spec/benchmarks/serial/data/TestPayload.class
+SHA1-Digest: w+2vpmDWiOqT/Szcg2aEeN/dsyg=
+
+Name: spec/benchmarks/compiler/MainBase.class
+SHA1-Digest: WA+IiC+9wVMqoXXN/HG0Uq0yL1k=
+
+Name: spec/harness/Launch.class
+SHA1-Digest: EqmPhF7CHTAMMotjxgHkIrQC9SU=
+
+Name: spec/benchmarks/serial/data/TestSimple.class
+SHA1-Digest: 1NzdwqjxASYf2J7dDp2mYBe7rR8=
+
+Name: spec/benchmarks/check/LoopBounds.class
+SHA1-Digest: /j7950wIjvFt6pQZmMboox626PM=
+
+Name: spec/benchmarks/compiler/SpecFileManager$BaseFileObject.class
+SHA1-Digest: +WVmz43r6LajauSPbswUTzOWk4o=
+
+Name: spec/harness/Configuration.class
+SHA1-Digest: aXNO1XQKvUq3BWOXEPkFYJibhas=
+
+Name: spec/harness/SpecJVMBenchmarkBase.class
+SHA1-Digest: kYKBw8TNfyyOemsxxfbZfTfTaVk=
+
+Name: spec/harness/analyzer/PowerAnalyzer$PowerConsumtionResult.class
+SHA1-Digest: nfh1htO94yXT1qV+2GdZZXjDB/Y=
+
+Name: spec/harness/ProgramRunner.class
+SHA1-Digest: xpTZjRd/2AmxHm92ESpx8S6fWyc=
+
+Name: spec/benchmarks/serial/data/TestHandler.class
+SHA1-Digest: XkLVSNlwENuNF3MNaqCpNjll6Uo=
+
+Name: spec/reporter/BenchmarkRecord.class
+SHA1-Digest: bdLrjDcicRqF78LyBGzbEnjPzmY=
+
+Name: spec/benchmarks/sunflow/Main.class
+SHA1-Digest: A1Qj/pRHPCewiaoTPagu6SrTUv8=
+
+Name: spec/reporter/Utils.class
+SHA1-Digest: V7BdeprjkI33Y2VOKjlZHMnCUDE=
+
+Name: spec/benchmarks/compiler/SpecFileManager$OutputFileObject.class
+SHA1-Digest: zv4zBaCbcVrVkNklNK8nF+Hm7Q0=
+
+Name: spec/io/FileCache.class
+SHA1-Digest: crjRBgUZkRDSxfofLeeeFY8vaDs=
+
+Name: spec/benchmarks/check/superClass.class
+SHA1-Digest: XrW5c69zVx3QD3uHgtdVYOmFAaY=
+
+Name: spec/harness/CommandLineParser.class
+SHA1-Digest: rT6wMu/lFZNl0w7qghBHY7DlY3c=
+
+Name: spec/benchmarks/serial/Main$1.class
+SHA1-Digest: HDCwn8g+wPXYaKKhM07xomZmRk4=
+
+Name: spec/harness/Util.class
+SHA1-Digest: K2tYbGbAwYGWJSgMB5BpEdHPv3U=
+
+Name: spec/harness/analyzer/TempSensor.class
+SHA1-Digest: Zg9QZHf7f/gZB9XoIz5NX8iYb7I=
+
+Name: spec/benchmarks/compress/Decompressor$DeStack.class
+SHA1-Digest: 9J+34F0/T+9KbkD2eklZCBrkwqc=
+
+Name: spec/benchmarks/serial/data/TestWithFinalField.class
+SHA1-Digest: iRj8Apxwa82u0FnFP1gdlJG5IEg=
+
+Name: spec/benchmarks/xml/validation/Main.class
+SHA1-Digest: KFkIF2umUKYhFua91LCaktF9pFk=
+
+Name: spec/benchmarks/derby/Utils.class
+SHA1-Digest: w8Ci3fa6ss6UDTtXL/CUSlxmJY8=
+
+Name: spec/harness/analyzer/AnalyzerBase.class
+SHA1-Digest: eTQ0mfvqa4Zi0dwK7/4Zaa52u6U=
+
+Name: spec/benchmarks/serial/data/InterfaceForProxy.class
+SHA1-Digest: 1+Og3gM1vHasgecmBSdSB6KI5D8=
+
+Name: spec/benchmarks/serial/data/TestArrayDouble.class
+SHA1-Digest: C5Dr+BaoxQ1YbkX8xtgJy/XAstI=
+
+Name: spec/benchmarks/crypto/aes/Main.class
+SHA1-Digest: w/mozZKIdqE3D1YiSUglHOnPytc=
+
+Name: spec/benchmarks/compress/OutputBuffer.class
+SHA1-Digest: 7rWVddAfGIUwR+1WPL0fXpnDEOI=
+
+Name: spec/benchmarks/compress/Compress.class
+SHA1-Digest: sM1sgrBmj6Z5yEWwgkaySlUv1ZY=
+
+Name: spec/benchmarks/check/Sub.class
+SHA1-Digest: F1OoXydQXQaMBoY+g0A9c3xylw8=
+
+Name: spec/benchmarks/serial/data/TestParent.class
+SHA1-Digest: YhrZ1S9PSCh0jlYx4Z7X8PwWuNo=
+
+Name: spec/benchmarks/serial/data/TestExceptionReference.class
+SHA1-Digest: INzdqoNKCwcb3LLVplYRIwcL90A=
+
+Name: spec/benchmarks/xml/transform/ExtOutputStream.class
+SHA1-Digest: lCeGH4cvQn8eCFlMl68wyr6bHuA=
+
+Name: spec/harness/results/BenchmarkResult.class
+SHA1-Digest: gbYhFPdCbHYG5eiIUo3xGf2ZTfQ=
+
+Name: spec/reporter/PlainWriter.class
+SHA1-Digest: II8399qSa1oBAIau21zrJugspQQ=
+
+Name: spec/benchmarks/check/Super.class
+SHA1-Digest: VNdg1YPAB2HABLrIPDlrcCesqAg=
+
+Name: spec/benchmarks/serial/data/ProxiedClass.class
+SHA1-Digest: QYyUDH3RpI+yzX2yF8onZBTtFvg=
+
+Name: spec/benchmarks/serial/data/TestExternalizable.class
+SHA1-Digest: Sh2dhEM76TDwe1Z4tesOZQIMa6U=
+
+Name: spec/harness/analyzer/PowerAnalyzer.class
+SHA1-Digest: i0VxrAvqWTe2XeoWKLlZxAmJNDs=
+
+Name: spec/benchmarks/derby/DataReader$Data.class
+SHA1-Digest: BA3K2Wi/I4HiwULmPs2uDqOiEuM=
+
+Name: spec/harness/Context.class
+SHA1-Digest: 3FecQRMJeMeR25qrKipxHAjYGXM=
+
+Name: spec/benchmarks/check/FloatingPointCheck.class
+SHA1-Digest: ZOaZRdhCke3BxrXwtYrHb8XPvCs=
+
+Name: spec/benchmarks/compiler/SpecFileManager$1.class
+SHA1-Digest: xZkf6Or7ZL0Gdl5xlR0T0j+Mhi4=
+
+Name: spec/harness/Context$1.class
+SHA1-Digest: ZG/fgrF9QBAzjNGz67GOfOpJrj8=
+
+Name: spec/harness/BenchmarkThread.class
+SHA1-Digest: vKbvjR7EcdX3CrkS/qYTrROMV9Y=
+
+Name: spec/benchmarks/serial/Utils.class
+SHA1-Digest: menzGMwSzcfLV0Qq714eBaJ3IvY=
+
+Name: spec/benchmarks/compress/Decompressor.class
+SHA1-Digest: Z0eDjeiRi83iHjIumOmzuHyMl9c=
+
+Name: spec/reporter/ReportGenerator$Pair.class
+SHA1-Digest: xsvb04fSyrMtK7CDatbXvCQOnzo=
+
+Name: spec/benchmarks/derby/InitThread.class
+SHA1-Digest: UeAyhywF/19aIrGat+otQG2KBiY=
+
+Name: spec/benchmarks/scimark/fft/FFT.class
+SHA1-Digest: 0N9kSbzZuZciljpeaBJhFjPNacA=
+
+Name: spec/benchmarks/check/Main.class
+SHA1-Digest: t/V1exZzqJp6Z+6okw2CkoGQUe4=
+
+Name: spec/benchmarks/scimark/utils/Random.class
+SHA1-Digest: WjwuD4JbpgoilxFmOgi4KWDme2s=
+
+Name: spec/reporter/Reporter.class
+SHA1-Digest: f5q8jsEO5xeNVxYjLsTfJoRNyW4=
+
+Name: spec/benchmarks/compiler/SpecFileManager$InputFileObject.class
+SHA1-Digest: /zn37Xi8ZKW7aPP7C6kO79YbCzY=
+
+Name: spec/benchmarks/compiler/SpecFileManager$CachedFileObject.class
+SHA1-Digest: yuPk+fvMeTUI0eFm/q0FWvsTLBg=
+
+Name: spec/harness/analyzer/AnalyzersRunner.class
+SHA1-Digest: E/yDSAYqrt/JyvnbzT3TYuB8CtU=
+
+Name: spec/benchmarks/scimark/utils/Stopwatch.class
+SHA1-Digest: MlRHq0oow6GWpDScKgsB6/FGykI=
+
+Name: spec/benchmarks/scimark/fft/Main.class
+SHA1-Digest: KaT4p/kbrWZO74dP9IWeInbCAss=
+
+Name: spec/reporter/HTMLWriter.class
+SHA1-Digest: uGXWTHsxRhSOz0Ig6Gu8aU1ciug=
+
+Name: spec/benchmarks/compiler/Compiler.class
+SHA1-Digest: y/AKhiinXrVopKwW+P4hWIzjFpY=
+
+Name: spec/harness/results/SuiteResult.class
+SHA1-Digest: j2KoSS85BA3vdJyTMzN14EvpZ8A=
+
+Name: spec/benchmarks/check/PepTest.class
+SHA1-Digest: dDx4D7zcqd5O2+uTqz927CKmuV4=
+
+Name: spec/benchmarks/compiler/SpecFileManager$OutputFileObject$1.clas
+ s
+SHA1-Digest: kq8zG3ROl5cIEkZncFW+lyvW7ao=
+
+Name: spec/benchmarks/scimark/monte_carlo/MonteCarlo.class
+SHA1-Digest: otbNVaD4op9+netqPUT6fIJ6hW8=
+
+Name: spec/benchmarks/ReadMe.class
+SHA1-Digest: ExNjfskJUBrZ3eEosbMVIg9wMjc=
+
+Name: spec/harness/analyzer/HeapMemoryTotalAnalyzer$HeapMemoryTotal.cl
+ ass
+SHA1-Digest: FUCnnxUPi6ChNRUokrbP/O5c0/0=
+
+Name: spec/benchmarks/scimark/sparse/Main.class
+SHA1-Digest: glNTUtKgVNFJVJMi0DeLXiryZ68=
+

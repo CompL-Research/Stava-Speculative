@@ -1,0 +1,6 @@
+Before resolution:
+Total Objects: 12 NoEscape: 0 (0.00%) CV: 12 (100.00%) 
+After resolution:
+Total Objects: 12 NoEscape: 9 (75.00%) CV: 0 (0.00%) 
+After inline:
+Total Objects: 8 NoEscape: 1 (12.50%) CV: 0 (0.00%) 

@@ -1,0 +1,60 @@
+===== DaCapo 9.12-MR1 h2 starting =====
+===== DaCapo 9.12-MR1 h2 PASSED in 6735 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2407 |   __   0 __
+  1: AllocationStatistics/Heap                |         2367 |     98.34% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           40 |      1.66% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     97599667 |   __   0 __
+  1: AllocationStatistics/Heap                |     88126822 |     90.29% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      9472845 |      9.71% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 h2 starting =====
+===== DaCapo 9.12-MR1 h2 PASSED in 7074 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2466 |   __   0 __
+  1: AllocationStatistics/Heap                |         2425 |     98.34% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           41 |      1.66% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     96140358 |   __   0 __
+  1: AllocationStatistics/Heap                |     85789421 |     89.23% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |     10350937 |     10.77% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 h2 starting =====
+===== DaCapo 9.12-MR1 h2 PASSED in 6914 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2393 |   __   0 __
+  1: AllocationStatistics/Heap                |         2354 |     98.37% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           39 |      1.63% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     93122300 |   __   0 __
+  1: AllocationStatistics/Heap                |     84212185 |     90.43% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      8910115 |      9.57% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 h2 starting =====
+===== DaCapo 9.12-MR1 h2 PASSED in 6755 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2364 |   __   0 __
+  1: AllocationStatistics/Heap                |         2326 |     98.39% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           38 |      1.61% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     90524537 |   __   0 __
+  1: AllocationStatistics/Heap                |     81158111 |     89.65% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      9366426 |     10.35% |   100.00% |  __   3 __
+===== DaCapo 9.12-MR1 h2 starting =====
+===== DaCapo 9.12-MR1 h2 PASSED in 7187 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         2452 |   __   0 __
+  1: AllocationStatistics/Heap                |         2412 |     98.37% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           40 |      1.63% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |     95062554 |   __   0 __
+  1: AllocationStatistics/Heap                |     87924185 |     92.49% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |      7138369 |      7.51% |   100.00% |  __   3 __

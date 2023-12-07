@@ -1,0 +1,81 @@
+===== DaCapo 9.12-MR1 avrora starting =====
+===== DaCapo 9.12-MR1 avrora PASSED in 7604 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1259 |   __   0 __
+  1: AllocationStatistics/Heap                |         1231 |     97.78% |  __   1 __
+  2: AllocationStatistics/Stack               |           28 |      2.22% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.32% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           24 |      1.91% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      1521497 |   __   0 __
+  1: AllocationStatistics/Heap                |      1450760 |     95.35% |  __   1 __
+  2: AllocationStatistics/Stack               |        70737 |      4.65% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |     0.00% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        70735 |      4.65% |   100.00% |  __   4 __
+===== DaCapo 9.12-MR1 avrora starting =====
+===== DaCapo 9.12-MR1 avrora PASSED in 7014 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1263 |   __   0 __
+  1: AllocationStatistics/Heap                |         1235 |     97.78% |  __   1 __
+  2: AllocationStatistics/Stack               |           28 |      2.22% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.32% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           24 |      1.90% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      1531056 |   __   0 __
+  1: AllocationStatistics/Heap                |      1515847 |     99.01% |  __   1 __
+  2: AllocationStatistics/Stack               |        15209 |      0.99% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |     0.01% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        15207 |      0.99% |    99.99% |  __   4 __
+===== DaCapo 9.12-MR1 avrora starting =====
+===== DaCapo 9.12-MR1 avrora PASSED in 7411 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1256 |   __   0 __
+  1: AllocationStatistics/Heap                |         1228 |     97.77% |  __   1 __
+  2: AllocationStatistics/Stack               |           28 |      2.23% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.32% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           24 |      1.91% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      1598960 |   __   0 __
+  1: AllocationStatistics/Heap                |      1538156 |     96.20% |  __   1 __
+  2: AllocationStatistics/Stack               |        60804 |      3.80% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |     0.00% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        60802 |      3.80% |   100.00% |  __   4 __
+===== DaCapo 9.12-MR1 avrora starting =====
+===== DaCapo 9.12-MR1 avrora PASSED in 7093 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1266 |   __   0 __
+  1: AllocationStatistics/Heap                |         1238 |     97.79% |  __   1 __
+  2: AllocationStatistics/Stack               |           28 |      2.21% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.32% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           24 |      1.90% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      1553187 |   __   0 __
+  1: AllocationStatistics/Heap                |      1532754 |     98.68% |  __   1 __
+  2: AllocationStatistics/Stack               |        20433 |      1.32% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |     0.01% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        20431 |      1.32% |    99.99% |  __   4 __
+===== DaCapo 9.12-MR1 avrora starting =====
+===== DaCapo 9.12-MR1 avrora PASSED in 7330 msec =====
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         1254 |   __   0 __
+  1: AllocationStatistics/Heap                |         1226 |     97.77% |  __   1 __
+  2: AllocationStatistics/Stack               |           28 |      2.23% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            4 |      0.32% |    14.29% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |           24 |      1.91% |    85.71% |  __   4 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |      1572240 |   __   0 __
+  1: AllocationStatistics/Heap                |      1516585 |     96.46% |  __   1 __
+  2: AllocationStatistics/Stack               |        55655 |      3.54% |  __   2 __
+  3: AllocationStatistics/Stack/NonOptimistic |            2 |      0.00% |     0.00% |  __   3 __
+  4: AllocationStatistics/Stack/Optimistic    |        55653 |      3.54% |   100.00% |  __   4 __
+

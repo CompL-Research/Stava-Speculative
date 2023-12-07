@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/test0" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test10" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test11" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test12" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test13" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test14" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test15" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test16" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test17" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test18" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test19" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test20" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test21" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test7" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test8" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test9" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

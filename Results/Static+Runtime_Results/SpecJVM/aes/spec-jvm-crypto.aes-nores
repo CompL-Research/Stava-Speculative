@@ -1,0 +1,50 @@
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         4973 |   __   0 __
+  1: AllocationStatistics/Heap                |         4927 |     99.08% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           46 |      0.92% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |       855685 |   __   0 __
+  1: AllocationStatistics/Heap                |       855310 |     99.96% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          375 |      0.04% |   100.00% |  __   3 __
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         4870 |   __   0 __
+  1: AllocationStatistics/Heap                |         4828 |     99.14% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           42 |      0.86% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |       854732 |   __   0 __
+  1: AllocationStatistics/Heap                |       854415 |     99.96% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          317 |      0.04% |   100.00% |  __   3 __
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         4822 |   __   0 __
+  1: AllocationStatistics/Heap                |         4780 |     99.13% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           42 |      0.87% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |       750893 |   __   0 __
+  1: AllocationStatistics/Heap                |       750587 |     99.96% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          306 |      0.04% |   100.00% |  __   3 __
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         4940 |   __   0 __
+  1: AllocationStatistics/Heap                |         4897 |     99.13% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           43 |      0.87% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |       919732 |   __   0 __
+  1: AllocationStatistics/Heap                |       919360 |     99.96% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          372 |      0.04% |   100.00% |  __   3 __
+
+== Static debug counters ==
+  0: AllocationStatistics                     |         4784 |   __   0 __
+  1: AllocationStatistics/Heap                |         4741 |     99.10% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |           43 |      0.90% |   100.00% |  __   3 __
+
+== Dynamic debug counters ==
+  0: AllocationStatistics                     |       887610 |   __   0 __
+  1: AllocationStatistics/Heap                |       887303 |     99.97% |  __   1 __
+  3: AllocationStatistics/Stack/NonOptimistic |          307 |      0.03% |   100.00% |  __   3 __

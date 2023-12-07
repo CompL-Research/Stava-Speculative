@@ -1,0 +1,548 @@
+Classfile /home/aditya/Documents/Research-Workspace/Stava/stava-contextual/benchmarks/tmp/spec/io/ValidityCheckOutputStream.class
+  Last modified 19-May-2009; size 5841 bytes
+  MD5 checksum 6fd27ec355b017bf1c35e1be45e57d7b
+  Compiled from "ValidityCheckOutputStream.java"
+public class spec.io.ValidityCheckOutputStream extends java.io.OutputStream
+  minor version: 0
+  major version: 49
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #93                         // spec/io/ValidityCheckOutputStream
+  super_class: #94                        // java/io/OutputStream
+  interfaces: 0, fields: 4, methods: 8, attributes: 1
+Constant pool:
+    #1 = Methodref          #94.#154      // java/io/OutputStream."<init>":()V
+    #2 = Class              #155          // java/io/ByteArrayOutputStream
+    #3 = Methodref          #2.#156       // java/io/ByteArrayOutputStream."<init>":(I)V
+    #4 = Fieldref           #93.#157      // spec/io/ValidityCheckOutputStream.ostream:Ljava/io/ByteArrayOutputStream;
+    #5 = Fieldref           #93.#158      // spec/io/ValidityCheckOutputStream.errors:I
+    #6 = Fieldref           #93.#159      // spec/io/ValidityCheckOutputStream.benchName:Ljava/lang/String;
+    #7 = Methodref          #2.#160       // java/io/ByteArrayOutputStream.write:(I)V
+    #8 = Methodref          #93.#161      // spec/io/ValidityCheckOutputStream.flush:()V
+    #9 = Methodref          #93.#162      // spec/io/ValidityCheckOutputStream.validityCheck2:(Lspec/harness/results/LoopResult;)V
+   #10 = Class              #163          // java/io/IOException
+   #11 = Class              #164          // java/lang/StringBuilder
+   #12 = Methodref          #11.#154      // java/lang/StringBuilder."<init>":()V
+   #13 = String             #165          // Error in validityCheck.
+   #14 = Methodref          #11.#166      // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #15 = Methodref          #167.#168     // java/lang/Object.getClass:()Ljava/lang/Class;
+   #16 = Methodref          #169.#170     // java/lang/Class.getName:()Ljava/lang/String;
+   #17 = String             #171          // :
+   #18 = Methodref          #10.#172      // java/io/IOException.getMessage:()Ljava/lang/String;
+   #19 = Methodref          #11.#173      // java/lang/StringBuilder.toString:()Ljava/lang/String;
+   #20 = Methodref          #174.#175     // spec/harness/results/LoopResult.addError:(Ljava/lang/String;)V
+   #21 = Methodref          #93.#176      // spec/io/ValidityCheckOutputStream.getValidityFileName:(Ljava/lang/String;)Ljava/lang/String;
+   #22 = Class              #177          // java/io/File
+   #23 = Methodref          #22.#178      // java/io/File."<init>":(Ljava/lang/String;)V
+   #24 = Methodref          #22.#179      // java/io/File.exists:()Z
+   #25 = String             #180          // Can\'t find validation file
+   #26 = String             #181          // . Verify that the run is done from or the property
+   #27 = String             #182          // specjvm.home.dir
+   #28 = String             #183          //  point to the base dir for SPECjvm2008.
+   #29 = Methodref          #10.#178      // java/io/IOException."<init>":(Ljava/lang/String;)V
+   #30 = Class              #184          // java/io/BufferedReader
+   #31 = Class              #185          // java/io/InputStreamReader
+   #32 = Methodref          #186.#187     // spec/harness/Context.getFileCache:()Lspec/io/FileCache;
+   #33 = Methodref          #188.#189     // spec/io/FileCache.getStream:(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+   #34 = Methodref          #31.#190      // java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+   #35 = Methodref          #30.#191      // java/io/BufferedReader."<init>":(Ljava/io/Reader;)V
+   #36 = Class              #192          // java/io/ByteArrayInputStream
+   #37 = Methodref          #2.#193       // java/io/ByteArrayOutputStream.toByteArray:()[B
+   #38 = Methodref          #36.#194      // java/io/ByteArrayInputStream."<init>":([B)V
+   #39 = Methodref          #30.#195      // java/io/BufferedReader.readLine:()Ljava/lang/String;
+   #40 = Fieldref           #93.#196      // spec/io/ValidityCheckOutputStream.DEBUG:Z
+   #41 = Fieldref           #197.#198     // java/lang/System.err:Ljava/io/PrintStream;
+   #42 = String             #199          // l1=\'
+   #43 = String             #200          // \'
+   #44 = Methodref          #73.#201      // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #45 = String             #202          // l2=\'
+   #46 = Methodref          #203.#204     // java/lang/String.equals:(Ljava/lang/Object;)Z
+   #47 = Methodref          #93.#205      // spec/io/ValidityCheckOutputStream.handleValidationFailure:(Lspec/harness/results/LoopResult;ILjava/lang/String;Ljava/lang/String;)V
+   #48 = Methodref          #30.#206      // java/io/BufferedReader.close:()V
+   #49 = Methodref          #186.#207     // spec/harness/Context.getResultDirNameCurrent:()Ljava/lang/String;
+   #50 = String             #208          // /
+   #51 = String             #209          // .bt
+   #52 = Methodref          #174.#210     // spec/harness/results/LoopResult.getBmThreadId:()I
+   #53 = Methodref          #11.#211      // java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   #54 = String             #212          // .i
+   #55 = Methodref          #174.#213     // spec/harness/results/LoopResult.getIteration:()I
+   #56 = String             #214          // .op
+   #57 = Methodref          #174.#215     // spec/harness/results/LoopResult.getLoopCnt:()I
+   #58 = String             #216          // .error.log
+   #59 = String             #217          // Validation failure on line
+   #60 = Methodref          #11.#178      // java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+   #61 = String             #218          // , more output than expected.\n
+   #62 = String             #219          // , expected more output.\n
+   #63 = String             #220          // .\n
+   #64 = String             #221          //     Expected output: \n
+   #65 = String             #222          // 00
+   #66 = String             #223          // 0
+   #67 = String             #224          //
+   #68 = String             #225          //     [
+   #69 = String             #226          // ]
+   #70 = String             #227          // \n
+   #71 = String             #228          // ] ...\n\n
+   #72 = String             #229          //     Received output: \n
+   #73 = Class              #230          // java/io/PrintStream
+   #74 = Class              #231          // java/io/FileOutputStream
+   #75 = Methodref          #74.#178      // java/io/FileOutputStream."<init>":(Ljava/lang/String;)V
+   #76 = Methodref          #73.#232      // java/io/PrintStream."<init>":(Ljava/io/OutputStream;)V
+   #77 = String             #233          // Complete output:
+   #78 = Methodref          #22.#234      // java/io/File.getCanonicalPath:()Ljava/lang/String;
+   #79 = String             #235          // Validation file:
+   #80 = String             #236          // \n\n
+   #81 = Methodref          #186.#237     // spec/harness/Context.getSpecBasePath:()Ljava/lang/String;
+   #82 = String             #238          // /resources/
+   #83 = String             #239          // validity.
+   #84 = String             #240          // .dat
+   #85 = Methodref          #186.#241     // spec/harness/Context.getOut:()Ljava/io/PrintStream;
+   #86 = String             #242          // Opening
+   #87 = Methodref          #74.#243      // java/io/FileOutputStream.write:([B)V
+   #88 = Methodref          #74.#206      // java/io/FileOutputStream.close:()V
+   #89 = String             #244          // Error creating validity check file:
+   #90 = Methodref          #11.#245      // java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+   #91 = String             #246          // specjvm.io.validation.debug
+   #92 = Methodref          #247.#248     // spec/harness/Util.getBoolProperty:(Ljava/lang/String;Ljava/lang/String;)Z
+   #93 = Class              #249          // spec/io/ValidityCheckOutputStream
+   #94 = Class              #250          // java/io/OutputStream
+   #95 = Utf8               DEBUG
+   #96 = Utf8               Z
+   #97 = Utf8               benchName
+   #98 = Utf8               Ljava/lang/String;
+   #99 = Utf8               ostream
+  #100 = Utf8               Ljava/io/ByteArrayOutputStream;
+  #101 = Utf8               errors
+  #102 = Utf8               I
+  #103 = Utf8               <init>
+  #104 = Utf8               (Ljava/lang/String;)V
+  #105 = Utf8               Code
+  #106 = Utf8               LineNumberTable
+  #107 = Utf8               LocalVariableTable
+  #108 = Utf8               this
+  #109 = Utf8               Lspec/io/ValidityCheckOutputStream;
+  #110 = Utf8               write
+  #111 = Utf8               (I)V
+  #112 = Utf8               b
+  #113 = Utf8               Exceptions
+  #114 = Utf8               validityCheck
+  #115 = Utf8               (Lspec/harness/results/LoopResult;)Z
+  #116 = Utf8               msg
+  #117 = Utf8               x
+  #118 = Utf8               Ljava/io/IOException;
+  #119 = Utf8               lResults
+  #120 = Utf8               Lspec/harness/results/LoopResult;
+  #121 = Utf8               validityCheck2
+  #122 = Utf8               (Lspec/harness/results/LoopResult;)V
+  #123 = Utf8               l1
+  #124 = Utf8               l2
+  #125 = Utf8               ln
+  #126 = Utf8               fileName
+  #127 = Utf8               in1
+  #128 = Utf8               Ljava/io/BufferedReader;
+  #129 = Utf8               in2
+  #130 = Utf8               handleValidationFailure
+  #131 = Utf8               (Lspec/harness/results/LoopResult;ILjava/lang/String;Ljava/lang/String;)V
+  #132 = Utf8               lns
+  #133 = Utf8               failedLineNo
+  #134 = Utf8               el1
+  #135 = Utf8               el2
+  #136 = Utf8               rows
+  #137 = Utf8               validationFileName
+  #138 = Utf8               errorLogFileName
+  #139 = Utf8               report
+  #140 = Utf8               Ljava/lang/StringBuilder;
+  #141 = Utf8               ps
+  #142 = Utf8               Ljava/io/PrintStream;
+  #143 = Utf8               getValidityFileName
+  #144 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #145 = Utf8               bmName
+  #146 = Utf8               createValidityFile
+  #147 = Utf8               ()V
+  #148 = Utf8               fullName
+  #149 = Utf8               out
+  #150 = Utf8               Ljava/io/FileOutputStream;
+  #151 = Utf8               <clinit>
+  #152 = Utf8               SourceFile
+  #153 = Utf8               ValidityCheckOutputStream.java
+  #154 = NameAndType        #103:#147     // "<init>":()V
+  #155 = Utf8               java/io/ByteArrayOutputStream
+  #156 = NameAndType        #103:#111     // "<init>":(I)V
+  #157 = NameAndType        #99:#100      // ostream:Ljava/io/ByteArrayOutputStream;
+  #158 = NameAndType        #101:#102     // errors:I
+  #159 = NameAndType        #97:#98       // benchName:Ljava/lang/String;
+  #160 = NameAndType        #110:#111     // write:(I)V
+  #161 = NameAndType        #251:#147     // flush:()V
+  #162 = NameAndType        #121:#122     // validityCheck2:(Lspec/harness/results/LoopResult;)V
+  #163 = Utf8               java/io/IOException
+  #164 = Utf8               java/lang/StringBuilder
+  #165 = Utf8               Error in validityCheck.
+  #166 = NameAndType        #252:#253     // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #167 = Class              #254          // java/lang/Object
+  #168 = NameAndType        #255:#256     // getClass:()Ljava/lang/Class;
+  #169 = Class              #257          // java/lang/Class
+  #170 = NameAndType        #258:#259     // getName:()Ljava/lang/String;
+  #171 = Utf8               :
+  #172 = NameAndType        #260:#259     // getMessage:()Ljava/lang/String;
+  #173 = NameAndType        #261:#259     // toString:()Ljava/lang/String;
+  #174 = Class              #262          // spec/harness/results/LoopResult
+  #175 = NameAndType        #263:#104     // addError:(Ljava/lang/String;)V
+  #176 = NameAndType        #143:#144     // getValidityFileName:(Ljava/lang/String;)Ljava/lang/String;
+  #177 = Utf8               java/io/File
+  #178 = NameAndType        #103:#104     // "<init>":(Ljava/lang/String;)V
+  #179 = NameAndType        #264:#265     // exists:()Z
+  #180 = Utf8               Can\'t find validation file
+  #181 = Utf8               . Verify that the run is done from or the property
+  #182 = Utf8               specjvm.home.dir
+  #183 = Utf8                point to the base dir for SPECjvm2008.
+  #184 = Utf8               java/io/BufferedReader
+  #185 = Utf8               java/io/InputStreamReader
+  #186 = Class              #266          // spec/harness/Context
+  #187 = NameAndType        #267:#268     // getFileCache:()Lspec/io/FileCache;
+  #188 = Class              #269          // spec/io/FileCache
+  #189 = NameAndType        #270:#271     // getStream:(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+  #190 = NameAndType        #103:#272     // "<init>":(Ljava/io/InputStream;)V
+  #191 = NameAndType        #103:#273     // "<init>":(Ljava/io/Reader;)V
+  #192 = Utf8               java/io/ByteArrayInputStream
+  #193 = NameAndType        #274:#275     // toByteArray:()[B
+  #194 = NameAndType        #103:#276     // "<init>":([B)V
+  #195 = NameAndType        #277:#259     // readLine:()Ljava/lang/String;
+  #196 = NameAndType        #95:#96       // DEBUG:Z
+  #197 = Class              #278          // java/lang/System
+  #198 = NameAndType        #279:#142     // err:Ljava/io/PrintStream;
+  #199 = Utf8               l1=\'
+  #200 = Utf8               \'
+  #201 = NameAndType        #280:#104     // println:(Ljava/lang/String;)V
+  #202 = Utf8               l2=\'
+  #203 = Class              #281          // java/lang/String
+  #204 = NameAndType        #282:#283     // equals:(Ljava/lang/Object;)Z
+  #205 = NameAndType        #130:#131     // handleValidationFailure:(Lspec/harness/results/LoopResult;ILjava/lang/String;Ljava/lang/String;)V
+  #206 = NameAndType        #284:#147     // close:()V
+  #207 = NameAndType        #285:#259     // getResultDirNameCurrent:()Ljava/lang/String;
+  #208 = Utf8               /
+  #209 = Utf8               .bt
+  #210 = NameAndType        #286:#287     // getBmThreadId:()I
+  #211 = NameAndType        #252:#288     // append:(I)Ljava/lang/StringBuilder;
+  #212 = Utf8               .i
+  #213 = NameAndType        #289:#287     // getIteration:()I
+  #214 = Utf8               .op
+  #215 = NameAndType        #290:#287     // getLoopCnt:()I
+  #216 = Utf8               .error.log
+  #217 = Utf8               Validation failure on line
+  #218 = Utf8               , more output than expected.\n
+  #219 = Utf8               , expected more output.\n
+  #220 = Utf8               .\n
+  #221 = Utf8                   Expected output: \n
+  #222 = Utf8               00
+  #223 = Utf8               0
+  #224 = Utf8
+  #225 = Utf8                   [
+  #226 = Utf8               ]
+  #227 = Utf8               \n
+  #228 = Utf8               ] ...\n\n
+  #229 = Utf8                   Received output: \n
+  #230 = Utf8               java/io/PrintStream
+  #231 = Utf8               java/io/FileOutputStream
+  #232 = NameAndType        #103:#291     // "<init>":(Ljava/io/OutputStream;)V
+  #233 = Utf8               Complete output:
+  #234 = NameAndType        #292:#259     // getCanonicalPath:()Ljava/lang/String;
+  #235 = Utf8               Validation file:
+  #236 = Utf8               \n\n
+  #237 = NameAndType        #293:#259     // getSpecBasePath:()Ljava/lang/String;
+  #238 = Utf8               /resources/
+  #239 = Utf8               validity.
+  #240 = Utf8               .dat
+  #241 = NameAndType        #294:#295     // getOut:()Ljava/io/PrintStream;
+  #242 = Utf8               Opening
+  #243 = NameAndType        #110:#276     // write:([B)V
+  #244 = Utf8               Error creating validity check file:
+  #245 = NameAndType        #252:#296     // append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #246 = Utf8               specjvm.io.validation.debug
+  #247 = Class              #297          // spec/harness/Util
+  #248 = NameAndType        #298:#299     // getBoolProperty:(Ljava/lang/String;Ljava/lang/String;)Z
+  #249 = Utf8               spec/io/ValidityCheckOutputStream
+  #250 = Utf8               java/io/OutputStream
+  #251 = Utf8               flush
+  #252 = Utf8               append
+  #253 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #254 = Utf8               java/lang/Object
+  #255 = Utf8               getClass
+  #256 = Utf8               ()Ljava/lang/Class;
+  #257 = Utf8               java/lang/Class
+  #258 = Utf8               getName
+  #259 = Utf8               ()Ljava/lang/String;
+  #260 = Utf8               getMessage
+  #261 = Utf8               toString
+  #262 = Utf8               spec/harness/results/LoopResult
+  #263 = Utf8               addError
+  #264 = Utf8               exists
+  #265 = Utf8               ()Z
+  #266 = Utf8               spec/harness/Context
+  #267 = Utf8               getFileCache
+  #268 = Utf8               ()Lspec/io/FileCache;
+  #269 = Utf8               spec/io/FileCache
+  #270 = Utf8               getStream
+  #271 = Utf8               (Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+  #272 = Utf8               (Ljava/io/InputStream;)V
+  #273 = Utf8               (Ljava/io/Reader;)V
+  #274 = Utf8               toByteArray
+  #275 = Utf8               ()[B
+  #276 = Utf8               ([B)V
+  #277 = Utf8               readLine
+  #278 = Utf8               java/lang/System
+  #279 = Utf8               err
+  #280 = Utf8               println
+  #281 = Utf8               java/lang/String
+  #282 = Utf8               equals
+  #283 = Utf8               (Ljava/lang/Object;)Z
+  #284 = Utf8               close
+  #285 = Utf8               getResultDirNameCurrent
+  #286 = Utf8               getBmThreadId
+  #287 = Utf8               ()I
+  #288 = Utf8               (I)Ljava/lang/StringBuilder;
+  #289 = Utf8               getIteration
+  #290 = Utf8               getLoopCnt
+  #291 = Utf8               (Ljava/io/OutputStream;)V
+  #292 = Utf8               getCanonicalPath
+  #293 = Utf8               getSpecBasePath
+  #294 = Utf8               getOut
+  #295 = Utf8               ()Ljava/io/PrintStream;
+  #296 = Utf8               (Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #297 = Utf8               spec/harness/Util
+  #298 = Utf8               getBoolProperty
+  #299 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Z
+{
+  java.lang.String benchName;
+    descriptor: Ljava/lang/String;
+    flags: (0x0000)
+
+  java.io.ByteArrayOutputStream ostream;
+    descriptor: Ljava/io/ByteArrayOutputStream;
+    flags: (0x0000)
+
+  int errors;
+    descriptor: I
+    flags: (0x0000)
+
+  public spec.io.ValidityCheckOutputStream(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #1                  // Method java/io/OutputStream."<init>":()V
+         4: aload_0
+         5: new           #2                  // class java/io/ByteArrayOutputStream
+         8: dup
+         9: sipush        4096
+        12: invokespecial #3                  // Method java/io/ByteArrayOutputStream."<init>":(I)V
+        15: putfield      #4                  // Field ostream:Ljava/io/ByteArrayOutputStream;
+        18: aload_0
+        19: iconst_0
+        20: putfield      #5                  // Field errors:I
+        23: aload_0
+        24: aload_1
+        25: putfield      #6                  // Field benchName:Ljava/lang/String;
+        28: return
+      LineNumberTable:
+        line 53: 0
+        line 41: 4
+        line 46: 18
+        line 54: 23
+        line 55: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lspec/io/ValidityCheckOutputStream;
+            0      29     1 benchName   Ljava/lang/String;
+
+  public void write(int) throws java.io.IOException;
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #4                  // Field ostream:Ljava/io/ByteArrayOutputStream;
+         4: iload_1
+         5: invokevirtual #7                  // Method java/io/ByteArrayOutputStream.write:(I)V
+         8: aload_0
+         9: invokevirtual #8                  // Method flush:()V
+        12: return
+      LineNumberTable:
+        line 64: 0
+        line 65: 8
+        line 66: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lspec/io/ValidityCheckOutputStream;
+            0      13     1     b   I
+    Exceptions:
+      throws java.io.IOException
+
+  public boolean validityCheck(spec.harness.results.LoopResult);
+    descriptor: (Lspec/harness/results/LoopResult;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #9                  // Method validityCheck2:(Lspec/harness/results/LoopResult;)V
+         5: goto          62
+         8: astore_2
+         9: new           #11                 // class java/lang/StringBuilder
+        12: dup
+        13: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+        16: ldc           #13                 // String Error in validityCheck.
+        18: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        21: aload_2
+        22: invokevirtual #15                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        25: invokevirtual #16                 // Method java/lang/Class.getName:()Ljava/lang/String;
+        28: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        31: ldc           #17                 // String :
+        33: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        36: aload_2
+        37: invokevirtual #18                 // Method java/io/IOException.getMessage:()Ljava/lang/String;
+        40: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        43: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        46: astore_3
+        47: aload_1
+        48: aload_3
+        49: invokevirtual #20                 // Method spec/harness/results/LoopResult.addError:(Ljava/lang/String;)V
+        52: aload_0
+        53: dup
+        54: getfield      #5                  // Field errors:I
+        57: iconst_1
+        58: iadd
+        59: putfield      #5                  // Field errors:I
+        62: aload_0
+        63: getfield      #5                  // Field errors:I
+        66: ifeq          71
+        69: iconst_0
+        70: ireturn
+        71: iconst_1
+        72: ireturn
+      Exception table:
+         from    to  target type
+             0     5     8   Class java/io/IOException
+      LineNumberTable:
+        line 77: 0
+        line 82: 5
+        line 78: 8
+        line 79: 9
+        line 80: 47
+        line 81: 52
+        line 83: 62
+        line 85: 69
+        line 87: 71
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           47      15     3   msg   Ljava/lang/String;
+            9      53     2     x   Ljava/io/IOException;
+            0      73     0  this   Lspec/io/ValidityCheckOutputStream;
+            0      73     1 lResults   Lspec/harness/results/LoopResult;
+
+  public static java.lang.String getValidityFileName(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #11                 // class java/lang/StringBuilder
+         3: dup
+         4: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+         7: invokestatic  #81                 // Method spec/harness/Context.getSpecBasePath:()Ljava/lang/String;
+        10: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        13: ldc           #82                 // String /resources/
+        15: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        18: aload_0
+        19: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        22: ldc           #50                 // String /
+        24: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        27: ldc           #83                 // String validity.
+        29: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        32: aload_0
+        33: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        36: ldc           #84                 // String .dat
+        38: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        41: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        44: areturn
+      LineNumberTable:
+        line 202: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      45     0 bmName   Ljava/lang/String;
+
+  public void createValidityFile();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #6                  // Field benchName:Ljava/lang/String;
+         4: invokestatic  #21                 // Method getValidityFileName:(Ljava/lang/String;)Ljava/lang/String;
+         7: astore_1
+         8: invokestatic  #85                 // Method spec/harness/Context.getOut:()Ljava/io/PrintStream;
+        11: new           #11                 // class java/lang/StringBuilder
+        14: dup
+        15: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+        18: ldc           #86                 // String Opening
+        20: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        23: aload_1
+        24: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        27: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        30: invokevirtual #44                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        33: new           #74                 // class java/io/FileOutputStream
+        36: dup
+        37: aload_1
+        38: invokespecial #75                 // Method java/io/FileOutputStream."<init>":(Ljava/lang/String;)V
+        41: astore_2
+        42: aload_2
+        43: aload_0
+        44: getfield      #4                  // Field ostream:Ljava/io/ByteArrayOutputStream;
+        47: invokevirtual #37                 // Method java/io/ByteArrayOutputStream.toByteArray:()[B
+        50: invokevirtual #87                 // Method java/io/FileOutputStream.write:([B)V
+        53: aload_2
+        54: invokevirtual #88                 // Method java/io/FileOutputStream.close:()V
+        57: goto          86
+        60: astore_1
+        61: invokestatic  #85                 // Method spec/harness/Context.getOut:()Ljava/io/PrintStream;
+        64: new           #11                 // class java/lang/StringBuilder
+        67: dup
+        68: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+        71: ldc           #89                 // String Error creating validity check file:
+        73: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        76: aload_1
+        77: invokevirtual #90                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        80: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        83: invokevirtual #44                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        86: return
+      Exception table:
+         from    to  target type
+             0    57    60   Class java/io/IOException
+      LineNumberTable:
+        line 211: 0
+        line 212: 8
+        line 213: 33
+        line 214: 42
+        line 215: 53
+        line 218: 57
+        line 216: 60
+        line 217: 61
+        line 219: 86
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            8      49     1 fullName   Ljava/lang/String;
+           42      15     2   out   Ljava/io/FileOutputStream;
+           61      25     1     x   Ljava/io/IOException;
+            0      87     0  this   Lspec/io/ValidityCheckOutputStream;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: ldc           #91                 // String specjvm.io.validation.debug
+         2: aconst_null
+         3: invokestatic  #92                 // Method spec/harness/Util.getBoolProperty:(Ljava/lang/String;Ljava/lang/String;)Z
+         6: putstatic     #40                 // Field DEBUG:Z
+         9: return
+      LineNumberTable:
+        line 33: 0
+}
+SourceFile: "ValidityCheckOutputStream.java"
