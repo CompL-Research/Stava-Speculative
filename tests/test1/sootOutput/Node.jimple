@@ -1,0 +1,59 @@
+class Node extends java.lang.Object
+{
+    static Node a;
+    public static Node global;
+
+    public void <init>()
+    {
+        Node this;
+
+        this := @this: Node;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        <Node: Node a> = this;
+
+        return;
+    }
+
+    void foo(Node)
+    {
+        Node $stack3, p1, this;
+        boolean $stack4;
+
+        this := @this: Node;
+
+        p1 := @parameter0: Node;
+
+        $stack3 = new Node;
+
+        specialinvoke $stack3.<Node: void <init>()>();
+
+        $stack4 = p1 instanceof Node;
+
+        if $stack4 == 0 goto label1;
+
+        virtualinvoke p1.<Node: void bar(Node)>($stack3);
+
+        goto label2;
+
+     label1:
+        virtualinvoke p1.<Node: void bar(Node)>($stack3);
+
+     label2:
+        return;
+    }
+
+    void bar(Node)
+    {
+        Node p2, this;
+
+        this := @this: Node;
+
+        p2 := @parameter0: Node;
+
+        <Node: Node global> = p2;
+
+        return;
+    }
+}

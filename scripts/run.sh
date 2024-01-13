@@ -16,7 +16,7 @@ soot_path=`realpath ../soot/sootclasses-trunk-jar-with-dependencies.jar`
 stava_path=`realpath ..`
 
 # The directory to be analysed.
-test_path=`realpath ../tests/test50/`
+test_path=`realpath ../tests/test2/`
 
 # The directory inside which stava will output the results.
 output_path=`realpath ../out/testcase/`

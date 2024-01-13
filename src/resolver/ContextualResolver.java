@@ -16,39 +16,17 @@ import soot.jimple.InvokeExpr;
 import soot.jimple.internal.*;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.callgraph.Edge;
-// import javafx.util.Pair;
 import java.util.*;
 
 import static java.lang.System.exit;
 
 /*
  *
- * Some notes:
- * 1. We just need to mark object in the function returned as escaping and nothing more, if some object is coming from
- *      callee then it should be marked as escaping in the callee. It is not the responsiblity of caller.
+ * Resolution:
+ * Input: The resolution code takes the dependencies and intraprocedural points to graph as input.
+ * Output: The output is the resolved values of the dependencies.
  *
  */
-class StandardObject2 {
-    private SootMethod method;
-    private ObjectNode obj;
-
-    public StandardObject2(SootMethod m, ObjectNode o) {
-        this.method = m;
-        this.obj = o;
-    }
-
-    public SootMethod getMethod() {
-        return this.method;
-    }
-
-    public ObjectNode getObject() {
-        return this.obj;
-    }
-
-    public String toString() {
-        return "(" + method + "," + obj + ")";
-    }
-}
 
 public class ContextualResolver {
     // Map for storing the static analysis result
@@ -57,19 +35,19 @@ public class ContextualResolver {
     public static Map<ObjectNode, EscapeStatus> copyexistingSummaries;
     //
     public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> allcvs = new HashMap<>();
-    public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> solvedSummaries; // map for storing the final
-                                                                                      // resolved result
+    // map for storing the final resolved result
+    public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> solvedSummaries;
+
     public Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> previoussolvesummaries = new HashMap<>();
     public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries;
     public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries2;
-    public Map<SootMethod, HashMap<ObjectNode, StandardObject2>> objMap;
+
     HashMap<SootMethod, HashMap<ObjectNode, ResolutionStatus>> resolutionStatus;
     public static Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlineSummaries;
     static Map<SootMethod, PointsToGraph> ptgs; // Stores the points to graph for each method
-    Map<StandardObject2, Set<StandardObject2>> graph;
-    Map<StandardObject2, Set<StandardObject2>> revgraph;
+
     List<SootMethod> noBCIMethods;
-    List<StandardObject2> reverseTopoOrder;
+
     boolean debug = false;
     public static boolean printflag = true;
     int i = 0;
@@ -136,32 +114,25 @@ public class ContextualResolver {
         // }
 
         // Initializing the maps
-        this.objMap = new HashMap<>();
+
         solvedSummaries = new HashMap<>();
         solvedContextualSummaries = new HashMap<>();
         solvedContextualSummaries2 = new HashMap<>();
         this.resolutionStatus = new HashMap<>();
         inlineSummaries = new HashMap<>();
-        this.reverseTopoOrder = new ArrayList<>();
-        this.graph = new HashMap<>();
-        this.revgraph = new HashMap<>();
         copyexistingSummaries = new HashMap<>();
 
         for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : existingSummaries.entrySet()) {
             SootMethod method = entry.getKey();
             HashMap<ObjectNode, EscapeStatus> map = entry.getValue();
             HashMap<ObjectNode, ResolutionStatus> q = new HashMap<>();
-            HashMap<ObjectNode, StandardObject2> tobj = new HashMap<>();
+
             for (Map.Entry<ObjectNode, EscapeStatus> e : map.entrySet()) {
                 ObjectNode obj = e.getKey();
                 q.put(obj, ResolutionStatus.UnAttempted);
-                StandardObject2 x = new StandardObject2(method, obj);
-                tobj.put(obj, x);
-                this.graph.put(x, new HashSet<>());
-                this.revgraph.put(x, new HashSet<>());
             }
             resolutionStatus.put(method, q);
-            this.objMap.put(method, tobj);
+
             solvedSummaries.put(method, new HashMap<>());
             solvedContextualSummaries.put(method, new HashMap<>());
             solvedContextualSummaries2.put(method, new HashMap<>());
@@ -238,18 +209,6 @@ public class ContextualResolver {
         // }
         // }
         // }
-    }
-
-    void printGraph(Map<StandardObject2, Set<StandardObject2>> graph) {
-        System.out.println("Printing graph: ");
-        for (StandardObject2 u : graph.keySet()) {
-            System.out.print(u + ": ");
-            for (StandardObject2 v : graph.get(u)) {
-                System.out.print(v + ",");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     // Convert all <caller,<argument,x>> statements to the actual caller functions
@@ -334,7 +293,21 @@ public class ContextualResolver {
                                 if (cstate.object.type == ObjectType.parameter) {
                                     // System.out.println(" CV is of type parameter");
                                     if(debug) {
-                                        System.out.println("1. In paremter : Entered");
+                                        System.out.println("1. In parameter : Entered");
+                                    }
+
+                                    // Check if it a polymorphic callsite
+                                    int counter = 0;
+                                    Iterator<Edge> tmpiter = cg.edgesOutOf(key);
+
+                                    while (tmpiter.hasNext()) {
+                                        Edge e = tmpiter.next();
+                                        counter++;
+                                    }
+                                    if(counter > 2) {
+                                        System.out.println("Object is : "+ obj.toString() + " and the state is "+ cstate.toString() );
+                                        System.out.println("Counter is "+ counter);
+
                                     }
                                     
                                     SootMethod sm = cstate.getMethod(); // the method on which this CV depends
@@ -367,6 +340,7 @@ public class ContextualResolver {
                                             System.out.println("2. Field Access");
                                         }
                                         Iterator<Edge> iter = cg.edgesOutOf(key);
+
                                         while (iter.hasNext()) {
                                             Edge edge = iter.next();
                                             if (edge.getTgt().equals(sm)) {

@@ -1,0 +1,52 @@
+public class Main extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Main this;
+
+        this := @this: Main;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        Node $stack3, $stack6, o2;
+        java.lang.String[] args;
+        int $stack4;
+        ChildNode $stack5;
+
+        args := @parameter0: java.lang.String[];
+
+        $stack3 = new Node;
+
+        specialinvoke $stack3.<Node: void <init>()>();
+
+        $stack4 = lengthof args;
+
+        if $stack4 <= 1 goto label1;
+
+        $stack6 = new Node;
+
+        specialinvoke $stack6.<Node: void <init>()>();
+
+        o2 = $stack6;
+
+        goto label2;
+
+     label1:
+        $stack5 = new ChildNode;
+
+        specialinvoke $stack5.<ChildNode: void <init>()>();
+
+        o2 = $stack5;
+
+     label2:
+        virtualinvoke $stack3.<Node: void foo(Node)>(o2);
+
+        return;
+    }
+}
