@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Speculative-Stack-Allocation.iml" filepath="$PROJECT_DIR$/Speculative-Stack-Allocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benchmarks/benchmarks.iml" filepath="$PROJECT_DIR$/benchmarks/benchmarks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benchmarks/jgf/jgf.iml" filepath="$PROJECT_DIR$/benchmarks/jgf/jgf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tests/micro-bench/micro-bench.iml" filepath="$PROJECT_DIR$/tests/micro-bench/micro-bench.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tests/older/older.iml" filepath="$PROJECT_DIR$/tests/older/older.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benchmarks/spec-jbb/spec-jbb.iml" filepath="$PROJECT_DIR$/benchmarks/spec-jbb/spec-jbb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benchmarks/spec-jvm/spec-jvm.iml" filepath="$PROJECT_DIR$/benchmarks/spec-jvm/spec-jvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tests/tests.iml" filepath="$PROJECT_DIR$/tests/tests.iml" />
+    </modules>
+  </component>
+</project>

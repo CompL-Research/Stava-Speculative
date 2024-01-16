@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xom-1.1-src">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/benchmarks/spec-jvm/redistributable_sources/packages/xom/xom-1.1-src.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

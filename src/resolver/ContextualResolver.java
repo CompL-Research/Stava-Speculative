@@ -236,7 +236,7 @@ public class ContextualResolver {
 //                    System.out.println(key.toString());
 //                    debug = true;
 //                }
-//                System.out.println("\n ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+                System.out.println("\n ********  Resolving Method: " + ++j + "." + key + "  ******** ");
                 // Get the objects in sorted order -- sorted here means analyze parameters first
                 // and then any other type of objects.
                 List<ObjectNode> listofobjects = sortedorder(key);
@@ -298,11 +298,13 @@ public class ContextualResolver {
 
                                     // Check if it a polymorphic callsite
                                     int counter = 0;
+                                    //Iterator<Edge> edges = callGraph.iterator();
                                     Iterator<Edge> tmpiter = cg.edgesOutOf(key);
 
                                     while (tmpiter.hasNext()) {
                                         Edge e = tmpiter.next();
-                                        counter++;
+                                        //if(e.getTgt().size() > 1)
+                                            counter++;
                                     }
                                     if(counter > 2) {
                                         System.out.println("Object is : "+ obj.toString() + " and the state is "+ cstate.toString() );

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="build-tools">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/benchmarks/spec-jvm/build-tools.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sunflow-src-v0.07.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/benchmarks/spec-jvm/redistributable_sources/packages/sunflow/sunflow-src-v0.07.2.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
