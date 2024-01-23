@@ -3,21 +3,21 @@ PTG:
 Vars:{l0=[<parameter,-1>], l1=[<parameter,0>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<<Node: void bar(Node)>,<global,0>,0,[T]>, <caller,<argument,0>,0,[T]>]}
+{<parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>, <<Node: void bar(Node)>,<global,0>,0,[T]>]}
 **************************************** 
 <Node: void <init>()>
 PTG:
 Vars:{l0=[<parameter,-1>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>]}
+{<parameter,-1>=[<<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>, <caller,<argument,-1>,0,[T]>]}
 **************************************** 
 <Node: void foo(Node)>
 PTG:
 Vars:{$stack4=[<internal,7>], l0=[<parameter,-1>], $stack3=[<internal,21>], l1=[<parameter,0>]}
 Fields:{}
 Summary
-{<internal,21>=[<<Node: void bar(Node)>,<parameter,-1>,29,[T]>, <<Node: void <init>()>,<parameter,-1>,25,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <internal,7>=[<<ChildNode: void bar(Node)>,<parameter,-1>,15,[T]>, <<ChildNode: void <init>()>,<parameter,-1>,11,[T]>], <parameter,0>=[<<ChildNode: void bar(Node)>,<parameter,0>,15,[T]>, <<Node: void bar(Node)>,<parameter,0>,29,[T]>, <caller,<argument,0>,0,[T]>]}
+{<internal,7>=[<<ChildNode: void <init>()>,<parameter,-1>,11,[T]>, <<ChildNode: void bar(Node)>,<parameter,-1>,15,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <internal,21>=[<<Node: void <init>()>,<parameter,-1>,25,[T]>, <<Node: void bar(Node)>,<parameter,-1>,29,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>, <<Node: void bar(Node)>,<parameter,0>,29,[T]>, <<ChildNode: void bar(Node)>,<parameter,0>,15,[T]>]}
 **************************************** 
 <Node: void bar(Node)>
 PTG:
@@ -38,5 +38,5 @@ PTG:
 Vars:{$stack4=[<internal,7>], l0=[<parameter,-1>], $stack3=[<internal,21>], l1=[<parameter,0>]}
 Fields:{}
 Summary
-{<internal,21>=[NoEscape], <parameter,-1>=[NoEscape], <internal,7>=[NoEscape], <parameter,0>=[Escape]}
+{<internal,7>=[NoEscape], <parameter,-1>=[NoEscape], <internal,21>=[NoEscape], <parameter,0>=[Escape]}
 **************************************** 

@@ -10,6 +10,8 @@ public class GetSootArgs {
 		 * args[3] -> main class
 		 * args[4] -> output directory
 		 */
+		//return profilenormal(args);
+
 		if (args[3].equals("JDK")) {
 			return jdk(args);
 		}
@@ -255,6 +257,43 @@ public class GetSootArgs {
 		System.out.println("");
 		return sootArgs;
 	}
+
+	private String[] profilenormal(String[] args) {
+		String cp = "/home/adityaanand/Documents/Research-Workspace/JDK/jdk1.8.0_301" + "/jre/lib/rt.jar:" + "/home/adityaanand/Documents/Research-Workspace/JDK/jdk1.8.0_301" + "/jre/lib/jce.jar:" + "/home/adityaanand/Documents/Research-Workspace/static-analysis/Speculative-Stack-Allocation//tests/test1/";
+		String[] sootArgs = {
+				// "-cp", cp,
+				"-whole-program",
+				"-app",
+				"-f", "J",
+				"-p", "jb", "use-original-names:true",
+				"-allow-phantom-refs",
+				"-keep-bytecode-offset",
+				"-p", "cg.spark", "on",
+				"-p", "cg", "all-reachable",
+				"-keep-offset",
+				// "-soot-classpath", cp, //"-prepend-classpath",
+				"-keep-line-number",
+				"-main-class", "Main",
+				// "Main", "A", "B", "C",
+				"-process-dir", "/home/adityaanand/Documents/Research-Workspace/static-analysis/Speculative-Stack-Allocation/tests/test1/",
+				"-output-dir", "/home/adityaanand/Documents/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase/",
+				"-output-format", "jimple",
+				"-x", "jdk.*",
+				"-x", "java.*",
+				"-x", "org.*",
+				"-x", "com.*",
+				"-x", "sun.*",
+				"-x", "javax.*",
+				// "-include", "java.util.HashMap"
+		};
+		System.out.println("Soot Arguments are : ");
+		for (String s : sootArgs) {
+			System.out.print(s + " ");
+		}
+		// System.out.println("Hello");
+		return sootArgs;
+	}
+
 
 	private String[] normal(String[] args) {
 		String cp = args[0] + "/jre/lib/rt.jar:" + args[0] + "/jre/lib/jce.jar:" + args[2];

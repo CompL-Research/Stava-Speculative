@@ -7,6 +7,7 @@ import ptg.ObjectNode;
 import ptg.ObjectType;
 import ptg.PointsToGraph;
 import resolver.ContextualResolver;
+import resolver.SpeculativeResolver;
 import resolver.SummaryResolver;
 import resolver.ReworkedResolver;
 import soot.PackManager;
@@ -148,6 +149,7 @@ public class Main {
 		System.out.println("Time Taken:"+(analysis_end-analysis_start)/1000F);
 		System.out.println("**********************************************************");
 
+		boolean speculativeResolver = true;
 		boolean contextualResolver = true;
 		boolean useNewResolver = true;
 		long res_start = System.currentTimeMillis();
@@ -172,7 +174,50 @@ public class Main {
 		// 	return;
 		// printCFG();
 		System.out.println("2. Contextual Resolution Starts : ");
-		if(contextualResolver) {
+		if(speculativeResolver) {
+			SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
+					StaticAnalyser.ptgs,
+					StaticAnalyser.noBCIMethods);
+			long res_end = System.currentTimeMillis();
+			System.out.println("Resolution is done");
+			System.out.println("Time Taken in phase 1:"+(analysis_end-analysis_start)/1000F);
+			System.out.println("Time Taken in phase 2:"+(res_end-res_start)/1000F);
+
+			// System.out.println(staticAnalyser.summaries.size()+ " "+staticAnalyser.ptgs.size());
+
+
+			HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.solvedSummaries);
+
+			HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.solvedContextualSummaries);
+
+			printAllInfo(StaticAnalyser.ptgs, resolved, args[4]);
+
+			//printContextualInfo(StaticAnalyser.ptgs, cresolved, args[4]);
+
+			//printCombinedInfo(StaticAnalyser.ptgs, resolved, cresolved, args[4]);
+
+			//saveStats(cr.existingSummaries, resolved, args[4], staticAnalyser.ptgs);
+
+			saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
+			if(args[5] != null && args[5].equals("inline")) {
+				printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+			} else {
+				printContResForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+			}
+			//printCVresValues(ContextualResolver.ResolvedCVValue, args[4]);
+			for(SootMethod m : SpeculativeResolver.solvedSummaries.keySet()) {
+				if(Main.ListofMethods.toString().contains(m.getBytecodeSignature().toString())) {
+					System.err.println("Method : " + m);
+					for (ObjectNode o : SpeculativeResolver.solvedSummaries.get(m).keySet()) {
+						if(o.type == ObjectType.internal) {
+							System.err.print(" For object : " + o);
+							System.err.println(SpeculativeResolver.solvedSummaries.get(m).get(o).status);
+						}
+					}
+					System.err.println("----------");
+				}
+			}
+		} else if(contextualResolver) {
 			ContextualResolver cr = new ContextualResolver(StaticAnalyser.summaries,
 					StaticAnalyser.ptgs,
 					StaticAnalyser.noBCIMethods);

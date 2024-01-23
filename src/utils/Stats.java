@@ -7,6 +7,7 @@ import es.EscapeStatus;
 import ptg.ObjectNode;
 import ptg.ObjectType;
 import resolver.ContextualResolver;
+import resolver.SpeculativeResolver;
 import soot.SootField;
 import soot.SootMethod;
 
@@ -74,9 +75,9 @@ public class Stats {
 		count = 0;
 		totalCount = 0;
 		HashMap<SootMethod, Integer> localCount = new HashMap<>();
-		for(SootMethod m : ContextualResolver.solvedSummaries.keySet()) {
+		for(SootMethod m : SpeculativeResolver.solvedSummaries.keySet()) {
 			count = 0;
-			for(ObjectNode o: ContextualResolver.solvedSummaries.get(m).keySet()) {
+			for(ObjectNode o: SpeculativeResolver.solvedSummaries.get(m).keySet()) {
 				if(o.type == ObjectType.internal) {
 					count++;
 				}
