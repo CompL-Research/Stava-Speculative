@@ -1,16 +1,23 @@
+<Main: void main(java.lang.String[])>
+PTG:
+Vars:{$stack7=[<internal,14>], $stack5=[<internal,25>], $stack6=[<internal,39>], $stack3=[<internal,0>], l2=[<internal,14>, <internal,25>], l0=[<parameter,0>]}
+Fields:{<internal,0>={<Node: Node field1>=[<internal,39>]}}
+Summary
+{<internal,0>=[<<Node: void foo(Node)>,<parameter,0>,35,[T]>, <<Node: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void foo(Node)>,<parameter,0>,35,[T]>], <internal,14>=[<<Node: void foo(Node)>,<parameter,-1>,35,[T]>, <<Node: void <init>()>,<parameter,-1>,18,[T]>, <<ChildNode: void foo(Node)>,<parameter,-1>,35,[T]>], <internal,39>=[<<Node: void foo(Node)>,<parameter,0>,35,[F]>, <<Node: void <init>()>,<parameter,-1>,43,[T]>, <<ChildNode: void foo(Node)>,<parameter,0>,35,[F]>], <internal,25>=[<<Node: void foo(Node)>,<parameter,-1>,35,[T]>, <<ChildNode: void <init>()>,<parameter,-1>,29,[T]>, <<ChildNode: void foo(Node)>,<parameter,-1>,35,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
+**************************************** 
 <Main: void <init>()>
 PTG:
 Vars:{l0=[<parameter,-1>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>, <caller,<argument,-1>,0,[T]>]}
+{<parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>]}
 **************************************** 
 <Main: void main(java.lang.String[])>
 PTG:
-Vars:{$stack5=[<internal,25>], $stack3=[<internal,0>], $stack6=[<internal,14>], l2=[<internal,25>, <internal,14>], l0=[<parameter,0>]}
-Fields:{}
+Vars:{$stack7=[<internal,14>], $stack5=[<internal,25>], $stack6=[<internal,39>], $stack3=[<internal,0>], l2=[<internal,14>, <internal,25>], l0=[<parameter,0>]}
+Fields:{<internal,0>={<Node: Node field1>=[<internal,39>]}}
 Summary
-{<internal,0>=[<<Node: void <init>()>,<parameter,-1>,4,[T]>, <<Node: void foo(Node)>,<parameter,0>,35,[T]>, <<ChildNode: void foo(Node)>,<parameter,0>,35,[T]>], <internal,25>=[<<ChildNode: void <init>()>,<parameter,-1>,29,[T]>, <<ChildNode: void foo(Node)>,<parameter,-1>,35,[T]>, <<Node: void foo(Node)>,<parameter,-1>,35,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>], <internal,14>=[<<ChildNode: void foo(Node)>,<parameter,-1>,35,[T]>, <<Node: void <init>()>,<parameter,-1>,18,[T]>, <<Node: void foo(Node)>,<parameter,-1>,35,[T]>]}
+{<internal,0>=[Escape], <internal,14>=[NoEscape], <internal,39>=[Escape], <internal,25>=[NoEscape], <parameter,0>=[Escape]}
 **************************************** 
 <Main: void <init>()>
 PTG:
@@ -18,11 +25,4 @@ Vars:{l0=[<parameter,-1>]}
 Fields:{}
 Summary
 {<parameter,-1>=[NoEscape]}
-**************************************** 
-<Main: void main(java.lang.String[])>
-PTG:
-Vars:{$stack5=[<internal,25>], $stack3=[<internal,0>], $stack6=[<internal,14>], l2=[<internal,25>, <internal,14>], l0=[<parameter,0>]}
-Fields:{}
-Summary
-{<internal,0>=[Escape], <internal,25>=[NoEscape], <parameter,0>=[Escape], <internal,14>=[NoEscape]}
 **************************************** 

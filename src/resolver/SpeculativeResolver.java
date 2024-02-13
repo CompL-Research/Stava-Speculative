@@ -18,6 +18,9 @@ import java.util.*;
 
 import static java.lang.System.exit;
 
+// Analyze the complete code to understand the working of this class.
+// This class is responsible for resolving the speculative values of the dependencies.
+
 /*
  *
  * Resolution:
@@ -257,6 +260,7 @@ public class SpeculativeResolver {
                         copyexistingSummaries.get(o).status.add(e);
                     }
                 }
+                // what is this for?
                 Map<ObjectNode, EscapeStatus> methodInfo = copyexistingSummaries;
                 // HashMap<ObjectNode, EscapeStatus> solvedMethodInfo =
                 // solvedSummaries.get(key);

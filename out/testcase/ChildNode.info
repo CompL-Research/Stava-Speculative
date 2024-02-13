@@ -1,3 +1,10 @@
+<ChildNode: void foo(Node)>
+PTG:
+Vars:{$stack3=[<internal,0>], l1=[<parameter,0>], l0=[<parameter,-1>]}
+Fields:{}
+Summary
+{<internal,0>=[<<ChildNode: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void fb()>,<parameter,-1>,9,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
+**************************************** 
 <ChildNode: void <init>()>
 PTG:
 Vars:{l0=[<parameter,-1>]}
@@ -7,24 +14,17 @@ Summary
 **************************************** 
 <ChildNode: void fb()>
 PTG:
-Vars:{$stack1=[<external,0>], l0=[<parameter,-1>]}
+Vars:{l0=[<parameter,-1>], $stack1=[<external,0>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<<java.io.PrintStream: void println(java.lang.Object)>,<parameter,0>,4,[T]>, <caller,<argument,-1>,0,[T]>], <external,0>=[Escape]}
+{<external,0>=[Escape], <parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<java.io.PrintStream: void println(java.lang.Object)>,<parameter,0>,4,[T]>]}
 **************************************** 
 <ChildNode: void foo(Node)>
 PTG:
-Vars:{$stack4=[<internal,7>], l0=[<parameter,-1>], l1=[<parameter,0>], $stack3=[<internal,21>]}
+Vars:{$stack3=[<internal,0>], l1=[<parameter,0>], l0=[<parameter,-1>]}
 Fields:{}
 Summary
-{<internal,7>=[<<Node: void <init>()>,<parameter,-1>,11,[T]>, <<Node: void bar(Node)>,<parameter,-1>,15,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <internal,21>=[<<ChildNode: void <init>()>,<parameter,-1>,25,[T]>, <<ChildNode: void bar(Node)>,<parameter,-1>,29,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>, <<Node: void bar(Node)>,<parameter,0>,15,[T]>, <<ChildNode: void bar(Node)>,<parameter,0>,29,[T]>]}
-**************************************** 
-<ChildNode: void bar(Node)>
-PTG:
-Vars:{l0=[<parameter,-1>], l1=[<parameter,0>], $stack3=[<internal,0>]}
-Fields:{}
-Summary
-{<internal,0>=[<<ChildNode: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void fb()>,<parameter,-1>,9,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
+{<internal,0>=[NoEscape], <parameter,-1>=[NoEscape], <parameter,0>=[NoEscape]}
 **************************************** 
 <ChildNode: void <init>()>
 PTG:
@@ -35,22 +35,8 @@ Summary
 **************************************** 
 <ChildNode: void fb()>
 PTG:
-Vars:{$stack1=[<external,0>], l0=[<parameter,-1>]}
+Vars:{l0=[<parameter,-1>], $stack1=[<external,0>]}
 Fields:{}
 Summary
-{<parameter,-1>=[NoEscape], <external,0>=[Escape]}
-**************************************** 
-<ChildNode: void foo(Node)>
-PTG:
-Vars:{$stack4=[<internal,7>], l0=[<parameter,-1>], l1=[<parameter,0>], $stack3=[<internal,21>]}
-Fields:{}
-Summary
-{<internal,7>=[NoEscape], <parameter,-1>=[NoEscape], <internal,21>=[NoEscape], <parameter,0>=[Escape]}
-**************************************** 
-<ChildNode: void bar(Node)>
-PTG:
-Vars:{l0=[<parameter,-1>], l1=[<parameter,0>], $stack3=[<internal,0>]}
-Fields:{}
-Summary
-{<internal,0>=[NoEscape], <parameter,-1>=[NoEscape], <parameter,0>=[NoEscape]}
+{<external,0>=[Escape], <parameter,-1>=[NoEscape]}
 **************************************** 
