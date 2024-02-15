@@ -288,7 +288,7 @@ public class SpeculativeResolver {
                         HashSet<EscapeState> newStates = new HashSet<>();
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
-                            if (debug) {
+                            if (true) {
                                 System.out.println(" \nCurrent method is : " + key + "  and  Object : " + obj);
                                 System.out.println("  Conditional value for object is : " + state);
                             }
@@ -313,16 +313,16 @@ public class SpeculativeResolver {
                                     //Iterator<Edge> edges = callGraph.iterator();
                                     Iterator<Edge> tmpiter = cg.edgesOutOf(key);
 
-                                    while (tmpiter.hasNext()) {
-                                        Edge e = tmpiter.next();
-                                        //if(e.getTgt().size() > 1)
-                                            counter++;
-                                    }
-                                    if(counter > 2) {
-                                        System.out.println("Object is : "+ obj.toString() + " and the state is "+ cstate.toString() );
-                                        System.out.println("Counter is "+ counter);
-
-                                    }
+//                                    while (tmpiter.hasNext()) {
+//                                        Edge e = tmpiter.next();
+//                                        //if(e.getTgt().size() > 1)
+//                                            counter++;
+//                                    }
+//                                    if(counter > 2) {
+//                                        System.out.println("Object is : "+ obj.toString() + " and the state is "+ cstate.toString() );
+//                                        System.out.println("Counter is "+ counter);
+//
+//                                    }
                                     
                                     SootMethod sm = cstate.getMethod(); // the method on which this CV depends
                                     ObjectNode o = cstate.object; // the object on which this current object (obj) depends
@@ -338,7 +338,7 @@ public class SpeculativeResolver {
 
 
                                     CallSite c = new CallSite(key, cstate.BCI);
-                                    // System.out.println("CallSite is : "+ c.toString());
+                                    System.out.println("CallSite is : "+ c.toString());
                                     // System.out.println("Values in solvedContextualSummaries : "+
                                     // solvedContextualSummaries.toString());
                                     /*
@@ -379,7 +379,7 @@ public class SpeculativeResolver {
                                             }
                                         }
                                     }
-                                    // System.out.println("Onjects received are : "+objects);
+                                    // System.out.println("Objects received are : "+objects);
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {
                                             if(debug) { 

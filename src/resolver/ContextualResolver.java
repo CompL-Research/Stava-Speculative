@@ -315,7 +315,7 @@ public class ContextualResolver {
                                     SootMethod sm = cstate.getMethod(); // the method on which this CV depends
                                     ObjectNode o = cstate.object; // the object on which this current object (obj) depends
                                                                    
-                                    // System.out.println(" Sent to Method : " + sm + " and object as : " + o);
+                                     System.out.println(" Sent to Method : " + sm + " and object as : " + o);
                                     /*
                                      * Get the callsite and check if the dependency is for field.
                                      * 
@@ -326,7 +326,7 @@ public class ContextualResolver {
 
 
                                     CallSite c = new CallSite(key, cstate.BCI);
-                                    // System.out.println("CallSite is : "+ c.toString());
+                                     System.out.println("CallSite is : "+ c.toString());
                                     // System.out.println("Values in solvedContextualSummaries : "+
                                     // solvedContextualSummaries.toString());
                                     /*
@@ -357,8 +357,8 @@ public class ContextualResolver {
                                                     if(debug) {
                                                         System.out.println("3. Field Access : Object Received"+ objects.toString());
                                                     }
-                                                    // System.out.println("Object Received for parameter is + "+
-                                                    // objects);
+                                                     System.out.println("Object Received for parameter is + "+
+                                                     objects);
                                                 } catch (Exception e) {
                                                     // System.out.println("Cond: " + cstate + " " + cstate.object + " "
                                                     // + cstate.object.ref + " " + parameternumber);

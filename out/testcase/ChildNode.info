@@ -1,30 +1,23 @@
-<ChildNode: void foo(Node)>
-PTG:
-Vars:{$stack3=[<internal,0>], l1=[<parameter,0>], l0=[<parameter,-1>]}
-Fields:{}
-Summary
-{<internal,0>=[<<ChildNode: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void fb()>,<parameter,-1>,9,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
-**************************************** 
 <ChildNode: void <init>()>
 PTG:
 Vars:{l0=[<parameter,-1>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<<Node: void <init>()>,<parameter,-1>,1,[T]>, <caller,<argument,-1>,0,[T]>]}
+{<parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<Node: void <init>()>,<parameter,-1>,1,[T]>]}
 **************************************** 
 <ChildNode: void fb()>
 PTG:
-Vars:{l0=[<parameter,-1>], $stack1=[<external,0>]}
+Vars:{$stack1=[<external,0>], l0=[<parameter,-1>]}
 Fields:{}
 Summary
 {<external,0>=[Escape], <parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<java.io.PrintStream: void println(java.lang.Object)>,<parameter,0>,4,[T]>]}
 **************************************** 
 <ChildNode: void foo(Node)>
 PTG:
-Vars:{$stack3=[<internal,0>], l1=[<parameter,0>], l0=[<parameter,-1>]}
+Vars:{l1=[<parameter,0>], l0=[<parameter,-1>], $stack3=[<internal,0>]}
 Fields:{}
 Summary
-{<internal,0>=[NoEscape], <parameter,-1>=[NoEscape], <parameter,0>=[NoEscape]}
+{<internal,0>=[<<ChildNode: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void fb()>,<parameter,-1>,9,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
 **************************************** 
 <ChildNode: void <init>()>
 PTG:
@@ -35,8 +28,15 @@ Summary
 **************************************** 
 <ChildNode: void fb()>
 PTG:
-Vars:{l0=[<parameter,-1>], $stack1=[<external,0>]}
+Vars:{$stack1=[<external,0>], l0=[<parameter,-1>]}
 Fields:{}
 Summary
 {<external,0>=[Escape], <parameter,-1>=[NoEscape]}
+**************************************** 
+<ChildNode: void foo(Node)>
+PTG:
+Vars:{l1=[<parameter,0>], l0=[<parameter,-1>], $stack3=[<internal,0>]}
+Fields:{}
+Summary
+{<internal,0>=[NoEscape], <parameter,-1>=[Escape], <parameter,0>=[Escape]}
 **************************************** 

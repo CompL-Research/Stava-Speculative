@@ -61,7 +61,7 @@ public class JInvokeStmtHandler {
 		 * point to functions which doesn't exist. This means that handleExpr should have a loop to 
 		 */
 
-		//System.out.println("Process expr: "+expr+" of unit: "+u);
+		System.out.println("Process expr: "+expr+" of unit: "+u);
 		CallGraph cg = Scene.v().getCallGraph();
 		//System.out.println("Size of callGraph is : "+ cg.size());
 
