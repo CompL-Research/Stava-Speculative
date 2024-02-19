@@ -17,6 +17,7 @@ import soot.jimple.internal.*;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.callgraph.Edge;
 import java.util.*;
+import counters.*;
 
 import static java.lang.System.exit;
 
@@ -230,6 +231,7 @@ public class ContextualResolver {
                 if (!existingSummaries.containsKey(key)) {
                     continue;
                 }
+
                 // DEBUG
 //                if (key.getDeclaringClass().toString().contains("HandleCache") && key.toString().contains("cacheHandle")) {
 //                    System.out.println("Debug will be printed for this: ");

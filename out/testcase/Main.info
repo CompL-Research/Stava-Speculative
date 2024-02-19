@@ -3,21 +3,21 @@ PTG:
 Vars:{l0=[<parameter,-1>]}
 Fields:{}
 Summary
-{<parameter,-1>=[<caller,<argument,-1>,0,[T]>, <<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>]}
+{<parameter,-1>=[<<java.lang.Object: void <init>()>,<parameter,-1>,1,[T]>, <caller,<argument,-1>,0,[T]>]}
+**************************************** 
+<Main: Node foo(Node)>
+PTG:
+Vars:{l1=[<parameter,0>], _ret=[<parameter,0>], $stack3=[<internal,0>], l0=[<parameter,-1>]}
+Fields:{}
+Summary
+{<parameter,0>=[<<ChildNode: void bar(Node)>,<parameter,-1>,10,[T]>, <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>, <<Node: void bar(Node)>,<parameter,-1>,10,[T]>, <caller,<argument,0>,0,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <internal,0>=[<<Node: void <init>()>,<parameter,-1>,4,[T]>, <<ChildNode: void bar(Node)>,<parameter,0>,10,[T]>, <<Node: void bar(Node)>,<parameter,0>,10,[T]>]}
 **************************************** 
 <Main: void main(java.lang.String[])>
 PTG:
-Vars:{$stack6=[<internal,16>], $stack4=[<internal,0>], l0=[<parameter,0>], $stack5=[<internal,8>]}
+Vars:{$stack6=[<internal,8>], $stack8=[<internal,24>], l0=[<parameter,0>], $stack7=[<internal,16>], l4=[<external,54>, <external,44>], $stack5=[<internal,0>]}
 Fields:{}
 Summary
-{<internal,8>=[<<Node: void <init>()>,<parameter,-1>,12,[T]>, <<Main: void foo(Node)>,<parameter,0>,32,[T]>], <internal,16>=[<<ChildNode: void <init>()>,<parameter,-1>,20,[T]>, <<Main: void foo(Node)>,<parameter,0>,40,[T]>], <internal,0>=[<<Main: void <init>()>,<parameter,-1>,4,[T]>, <<Main: void foo(Node)>,<parameter,-1>,32,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>]}
-**************************************** 
-<Main: void foo(Node)>
-PTG:
-Vars:{$stack3=[<internal,0>], l0=[<parameter,-1>], l1=[<parameter,0>]}
-Fields:{}
-Summary
-{<internal,0>=[<<Node: void <init>()>,<parameter,-1>,4,[T]>, <<Node: void bar(Node)>,<parameter,0>,10,[T]>], <parameter,-1>=[<caller,<argument,-1>,0,[T]>], <parameter,0>=[<caller,<argument,0>,0,[T]>, <<Node: void bar(Node)>,<parameter,-1>,10,[T]>]}
+{<parameter,0>=[<caller,<argument,0>,0,[T]>], <internal,16>=[<<ChildNode: void <init>()>,<parameter,-1>,20,[T]>, <<Main: Node foo(Node)>,<parameter,0>,54,[T]>], <external,54>=[<<ChildNode: void foobar(Node)>,<parameter,-1>,59,[T]>, <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>, <<Node: void foobar(Node)>,<parameter,-1>,59,[T]>], <internal,8>=[<<Node: void <init>()>,<parameter,-1>,12,[T]>, <<ChildNode: void foobar(Node)>,<parameter,0>,59,[T]>, <<Node: void foobar(Node)>,<parameter,0>,59,[T]>, <<Main: Node foo(Node)>,<parameter,0>,44,[T]>], <internal,0>=[<<Main: void <init>()>,<parameter,-1>,4,[T]>, <<Main: Node foo(Node)>,<parameter,-1>,44,[T]>], <external,44>=[<<ChildNode: void foobar(Node)>,<parameter,-1>,59,[T]>, <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>, <<Node: void foobar(Node)>,<parameter,-1>,59,[T]>], <internal,24>=[<<Node: void <init>()>,<parameter,-1>,28,[T]>]}
 **************************************** 
 <Main: void <init>()>
 PTG:
@@ -26,17 +26,17 @@ Fields:{}
 Summary
 {<parameter,-1>=[NoEscape]}
 **************************************** 
+<Main: Node foo(Node)>
+PTG:
+Vars:{l1=[<parameter,0>], _ret=[<parameter,0>], $stack3=[<internal,0>], l0=[<parameter,-1>]}
+Fields:{}
+Summary
+{<parameter,0>=[Escape], <parameter,-1>=[NoEscape], <internal,0>=[Escape]}
+**************************************** 
 <Main: void main(java.lang.String[])>
 PTG:
-Vars:{$stack6=[<internal,16>], $stack4=[<internal,0>], l0=[<parameter,0>], $stack5=[<internal,8>]}
+Vars:{$stack6=[<internal,8>], $stack8=[<internal,24>], l0=[<parameter,0>], $stack7=[<internal,16>], l4=[<external,54>, <external,44>], $stack5=[<internal,0>]}
 Fields:{}
 Summary
-{<internal,8>=[NoEscape], <internal,16>=[NoEscape], <internal,0>=[NoEscape], <parameter,0>=[Escape]}
-**************************************** 
-<Main: void foo(Node)>
-PTG:
-Vars:{$stack3=[<internal,0>], l0=[<parameter,-1>], l1=[<parameter,0>]}
-Fields:{}
-Summary
-{<internal,0>=[Escape], <parameter,-1>=[NoEscape], <parameter,0>=[NoEscape]}
+{<parameter,0>=[Escape], <external,54>=[Escape], <internal,16>=[Escape], <internal,8>=[Escape], <internal,0>=[NoEscape], <external,44>=[Escape], <internal,24>=[NoEscape]}
 **************************************** 

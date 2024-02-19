@@ -84,7 +84,9 @@ public class Main {
 		/*
 		 * 0. Compute the list of Polymporphic Invokes and affected objects
 		 */
+		//System.out.println("\n 0. Counter before Static Analysis: ");
 		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
+		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 
 		System.out.println("\n 1. Static Analysis starts: ");
 		StaticAnalyser staticAnalyser = new StaticAnalyser();

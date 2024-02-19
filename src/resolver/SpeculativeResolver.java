@@ -2,6 +2,7 @@ package resolver;
 
 import Inlining.InlineCheck;
 import config.StoreEscape;
+import counters.PolymorphicInvokeCounter;
 import es.*;
 import ptg.ObjectNode;
 import ptg.ObjectType;
@@ -239,6 +240,21 @@ public class SpeculativeResolver {
                     continue;
                 }
                 // DEBUG
+//                if(!PolymorphicInvokeCounter.polymorphicInvokes.isEmpty()) {
+//                    for (CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
+//                        System.out.println("Reached a Polymorphic callSite");
+//                        System.out.println("Method: " + c.methodName + " BCI: " + c.BCI);
+//                        System.out.println("Methods: " + PolymorphicInvokeCounter.polymorphicInvokes.get(c));
+//                    }
+//                }
+
+                for(CallSite c: PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
+                    if(c.methodName.equals(key)) {
+                        System.out.println("Polymorphic call site found in : "+ key + " at BCI: "+ c.BCI);
+                        System.out.println("Possible Methods are: "+ PolymorphicInvokeCounter.polymorphicInvokes.get(c));
+                    }
+                }
+                // DEBUG
 //                if (key.getDeclaringClass().toString().contains("HandleCache") && key.toString().contains("cacheHandle")) {
 //                    System.out.println("Debug will be printed for this: ");
 //                    System.out.println(key.toString());
@@ -380,6 +396,8 @@ public class SpeculativeResolver {
                                         }
                                     }
                                     // System.out.println("Objects received are : "+objects);
+                                    
+
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {
                                             if(debug) { 
