@@ -50,6 +50,8 @@ public class SpeculativeResolver {
 
     List<SootMethod> noBCIMethods;
 
+    public static int count = 0;
+
     boolean debug = false;
     public static boolean printflag = true;
     int i = 0;
@@ -305,6 +307,7 @@ public class SpeculativeResolver {
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
                             if (true) {
+                                System.out.println("***********************************");
                                 System.out.println(" \nCurrent method is : " + key + "  and  Object : " + obj);
                                 System.out.println("  Conditional value for object is : " + state);
                             }
@@ -343,7 +346,7 @@ public class SpeculativeResolver {
                                     SootMethod sm = cstate.getMethod(); // the method on which this CV depends
                                     ObjectNode o = cstate.object; // the object on which this current object (obj) depends
                                                                    
-                                    // System.out.println(" Sent to Method : " + sm + " and object as : " + o);
+                                    System.out.println(" Sent to Method : " + sm + " and object as : " + o);
                                     /*
                                      * Get the callsite and check if the dependency is for field.
                                      * 
@@ -354,7 +357,7 @@ public class SpeculativeResolver {
 
 
                                     CallSite c = new CallSite(key, cstate.BCI);
-                                    System.out.println("CallSite is : "+ c.toString());
+                                    //System.out.println("CallSite is : "+ c.toString());
                                     // System.out.println("Values in solvedContextualSummaries : "+
                                     // solvedContextualSummaries.toString());
                                     /*
@@ -395,8 +398,17 @@ public class SpeculativeResolver {
                                             }
                                         }
                                     }
-                                    // System.out.println("Objects received are : "+objects);
-                                    
+                                    System.out.println("Objects received are : "+objects);
+                                    if(PolymorphicInvokeCounter.polymorphicInvokes.containsKey(c)) {
+                                        if (solvedSummaries.containsKey(sm)
+                                            && solvedSummaries.get(sm).containsKey(o)) {
+                                            System.out.println("1. jhashasasg");
+                                            if (solvedSummaries.get(sm).get(o).containsNoEscape()) {
+                                                System.out.println("Found a case: Count Increased");
+                                                count++;
+                                            }
+                                        }
+                                    }
 
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {

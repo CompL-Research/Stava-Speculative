@@ -35,6 +35,13 @@ public class ContextualEscapeStatus {
         }
         return false;
     }
+    public boolean doesnotEscape(CallSite c) {
+        if(this.cescapestat.containsKey(c)) {
+            if(this.cescapestat.get(c) instanceof NoEscape)
+                return true;
+        }
+        return false;
+    }
 
     public boolean isCallerOnly() {
         boolean _ret = true;

@@ -207,6 +207,8 @@ public class Main {
                 System.err.println("----------");
             }
         }
+
+		System.out.println("Count of Polymorphic Invokes: "+ SpeculativeResolver.count);
     }
 
 
