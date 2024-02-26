@@ -209,6 +209,12 @@ public class Main {
         }
 
 		System.out.println("Count of Polymorphic Invokes: "+ SpeculativeResolver.count);
+		for(SootMethod sm : SpeculativeResolver.CountofObjects.keySet()) {
+			System.out.println("Method: "+sm);
+			for(ObjectNode o : SpeculativeResolver.CountofObjects.get(sm).keySet()) {
+				System.out.println("Object: "+o+" Count: "+SpeculativeResolver.CountofObjects.get(sm).get(o));
+			}
+		}
     }
 
 

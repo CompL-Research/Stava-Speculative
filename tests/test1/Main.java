@@ -3,7 +3,7 @@ class Main {
 		Main o1 = new Main();
 		Node o2 = new Node();
 		Node o3 = new ChildNode();
-		Node o4 = new Node();
+		Node o4;
 		if(args.length > 2) {
 			o4 = o1.foo(o2);
 		} else {
@@ -16,7 +16,6 @@ class Main {
 		p1.bar(o4);
 		return p1;
 	}
-
 }
 class Node {
 	public static Node global;
@@ -40,6 +39,7 @@ class Node {
 	}
 	void fb(Node p3) {
 		Node o9 = new Node();
+		global = p3;
 		o9.n = this;
 	}
 }
@@ -56,6 +56,7 @@ class ChildNode extends Node {
 	@Override
 	void fb(Node p5) {
 		Node o10 = new Node();
+		global = p5;
 		o10.n = this;
 	}
 }

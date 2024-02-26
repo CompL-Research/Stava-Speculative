@@ -49,7 +49,7 @@ public class SpeculativeResolver {
     static Map<SootMethod, PointsToGraph> ptgs; // Stores the points to graph for each method
 
     List<SootMethod> noBCIMethods;
-
+    public static Map<SootMethod, HashMap<ObjectNode, Integer>> CountofObjects = new HashMap<>();
     public static int count = 0;
 
     boolean debug = false;
@@ -398,14 +398,29 @@ public class SpeculativeResolver {
                                             }
                                         }
                                     }
-                                    System.out.println("Objects received are : "+objects);
+                                    System.out.println("Objects received are : "+ objects);
                                     if(PolymorphicInvokeCounter.polymorphicInvokes.containsKey(c)) {
                                         if (solvedSummaries.containsKey(sm)
                                             && solvedSummaries.get(sm).containsKey(o)) {
-                                            System.out.println("1. jhashasasg");
                                             if (solvedSummaries.get(sm).get(o).containsNoEscape()) {
+                                                if(!CountofObjects.containsKey(key)) {
+                                                    CountofObjects.put(key, new HashMap<>());
+                                                    CountofObjects.get(key).put(obj, 1);
+                                                } else {
+                                                    if(!CountofObjects.get(key).containsKey(obj)) {
+                                                        CountofObjects.get(key).put(obj, 1);
+                                                    }
+//                                                    else {
+//                                                        int temp = CountofObjects.get(key).get(obj);
+//                                                        CountofObjects.get(key).put(obj, temp+1);
+//                                                    }
+                                                }
                                                 System.out.println("Found a case: Count Increased");
                                                 count++;
+                                        } else if (!solvedSummaries.get(sm).get(o).containsNoEscape()) {
+                                                if (CountofObjects.containsKey(key) && CountofObjects.get(key).containsKey(obj)) {
+                                                    CountofObjects.get(key).remove(obj);
+                                                }
                                             }
                                         }
                                     }
@@ -439,7 +454,7 @@ public class SpeculativeResolver {
                                          * Came here because the <objects> list was empty.
                                          * Now: 
                                          * 
-                                         * First check for check if the paramter for this dependency has a contextual info 
+                                         * First check for check if the parameter for this dependency has a contextual info
                                          *  - if yes then proceed with the result in the contextual summary.
                                          * 
                                          * Second if the above is not true then check for the result in solved summary which will
@@ -539,7 +554,7 @@ public class SpeculativeResolver {
                                 }
 
                                 /*
-                                 * Handling return dependencies of type <class:methodname,<return,number>>
+                                 * Handling return dependencies of type liv<class:methodname,<return,number>>
                                  * As such we are deleting the dependency.
                                  */
                                 else if (cstate.object.type == ObjectType.returnValue) {
@@ -742,8 +757,8 @@ public class SpeculativeResolver {
                                         System.out.println("Reached point 3");
                                     }
                                     EscapeStatus resolvedEscapeStatus = new EscapeStatus(); // This will store the
-                                                                                            // escape status for a
-                                                                                            // particular context.
+                                    // escape status for a
+                                    // particular context.
                                     ContextualEscapeStatus ctemp = new ContextualEscapeStatus();
                                     boolean mappedobjectescape = false;
                                     boolean localStoredInparamtersfield = false;
@@ -936,7 +951,7 @@ public class SpeculativeResolver {
                                                     if (x.type == ObjectType.parameter
                                                             || x.type == ObjectType.external) {
                                                         for (ObjectNode o2 : objects2) {
-                                                            // System.out.println("Second Object Received is : "+
+                                                            // System.out.println("Second Object Receilved is : "+
                                                             // o2.toString());
                                                             if (o2.type == ObjectType.internal) {
                                                                 // System.out.println("Marking as escaping");
