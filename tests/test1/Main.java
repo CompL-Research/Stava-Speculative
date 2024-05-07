@@ -1,19 +1,19 @@
 class Main {
 	public static void main(String[] args) {
-		Main o1 = new Main();
-		Node o2 = new Node();
-		Node o3 = new ChildNode();
+		Main o1 = new Main(); // <internal, 0>
+		Node o2 = new Node(); // <internal, 8>
+		Node o3 = new ChildNode(); // <internal, 16>
 		Node o4;
 		if(args.length > 2) {
 			o4 = o1.foo(o2);
 		} else {
 			o4 = o1.foo(o3);
 		}
-		o4.foobar(o2);
+		o4.foobar(o2); // Polymorphic CallSite
 	}
 	Node foo(Node p1) {
 		Node o4 = new Node();
-		p1.bar(o4);
+		p1.bar(o4); // Polymorphic CallSite
 		return p1;
 	}
 }
@@ -21,7 +21,7 @@ class Node {
 	public static Node global;
 	Node n;
 	void bar(Node p1) {
-		Node o5 = new Node();
+		Node o5 = new Node(); // <internal, 0>
 		if(global != null) {
 			global = p1;
 		}
@@ -29,16 +29,16 @@ class Node {
 	}
 	void foobar(Node p2) {
 		Node o7;
-		Node o8 = new Node();
+		Node o8 = new Node(); // <internal, 0>
 		if(p2 instanceof ChildNode) {
-			o7 = new ChildNode();
+			o7 = new ChildNode(); // <internal, 15>
 		} else {
-			o7 = new Node();
+			o7 = new Node(); // <internal, 26>
 		}
-		o7.fb(o8);
+		o7.fb(o8); // Polymorphic CallSite
 	}
 	void fb(Node p3) {
-		Node o9 = new Node();
+		Node o9 = new Node(); // <internal, 0>
 		global = p3;
 		o9.n = this;
 	}
@@ -46,17 +46,16 @@ class Node {
 
 class ChildNode extends Node {
 	void bar(Node p1) {
-		Node o6 = new Node();
+		Node o6 = new Node(); // <internal, 0>
 		o6.n = p1;
 	}
 	void foobar(Node p4) {
-		Node o11 = new Node();
+		Node o11 = new Node(); // <internal, 0>
 		o11.fb(p4);
 	}
 	@Override
 	void fb(Node p5) {
-		Node o10 = new Node();
-		global = p5;
-		o10.n = this;
+		Node o10 = new Node(); // <internal, 0>
+		o10.n = p5;
 	}
 }

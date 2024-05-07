@@ -14,13 +14,9 @@ import soot.jimple.internal.JAssignStmt;
 import soot.jimple.internal.JInvokeStmt;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import soot.jimple.toolkits.callgraph.Edge;
-
+import java.util.logging.*;
 import java.util.*;
-
 import static java.lang.System.exit;
-
-// Analyze the complete code to understand the working of this class.
-// This class is responsible for resolving the speculative values of the dependencies.
 
 /*
  *
@@ -35,22 +31,24 @@ public class SpeculativeResolver {
     public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> existingSummaries;
     // Map for storing a copy of static analysis result
     public static Map<ObjectNode, EscapeStatus> copyexistingSummaries;
-    //
+    // Map for storing all the conditional values
     public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> allcvs = new HashMap<>();
-    // map for storing the final resolved result
+    // Map for storing the final resolved result
     public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> solvedSummaries;
-
+    // Map for storing the previously solved result. This is used for fix-point implementation.
     public Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> previoussolvesummaries = new HashMap<>();
+    // Map for storing the contextual summaries
     public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries;
     public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries2;
-
-    HashMap<SootMethod, HashMap<ObjectNode, ResolutionStatus>> resolutionStatus;
+    // Map for storing the inline summaries for each callsite
     public static Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlineSummaries;
-    static Map<SootMethod, PointsToGraph> ptgs; // Stores the points to graph for each method
-
+    // Stores the points to graph for each method
+    static Map<SootMethod, PointsToGraph> ptgs;
+    // Stores the list of methods with noBCI
     List<SootMethod> noBCIMethods;
-    public static Map<SootMethod, HashMap<ObjectNode, Integer>> CountofObjects = new HashMap<>();
     public static int count = 0;
+
+    public static Map<SootMethod, HashMap<ObjectNode, HashMap<EscapeState, EscapeStatus>>> CVfinalES;
 
     boolean debug = false;
     public static boolean printflag = true;
@@ -59,12 +57,27 @@ public class SpeculativeResolver {
     public static Map<SootMethod, Map<ObjectNode, Boolean>> storedMergedStatus = new HashMap<>();
     public boolean fieldEscape = false;
     public boolean globalEscape = false;
-
-    public SootMethod debugsootmethod;
+    // Used for logging
+    public static final Logger logger = Logger.getLogger(SpeculativeResolver.class.getName());
+    // Mao for storing objects that have polymorphic callsites
+    public static Map<SootMethod, ObjectNode> IntrestingObjects = new HashMap<>();
 
     public SpeculativeResolver(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> existingSummaries,
                                Map<SootMethod, PointsToGraph> ptgs,
                                List<SootMethod> escapingMethods) {
+        // Set the logger to write logs to a file named debug.log
+        FileHandler fh;
+        try {
+            fh = new FileHandler("../logs/debug.log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error creating log file", e);
+        }
+
+
+
         // We get three things from static analysis
         // 1. The summaries (Escape Statuses)
         // 2. Points to graph
@@ -122,9 +135,9 @@ public class SpeculativeResolver {
         solvedSummaries = new HashMap<>();
         solvedContextualSummaries = new HashMap<>();
         solvedContextualSummaries2 = new HashMap<>();
-        this.resolutionStatus = new HashMap<>();
         inlineSummaries = new HashMap<>();
         copyexistingSummaries = new HashMap<>();
+        CVfinalES = new HashMap<>();
 
         for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : existingSummaries.entrySet()) {
             SootMethod method = entry.getKey();
@@ -135,7 +148,7 @@ public class SpeculativeResolver {
                 ObjectNode obj = e.getKey();
                 q.put(obj, ResolutionStatus.UnAttempted);
             }
-            resolutionStatus.put(method, q);
+//            resolutionStatus.put(method, q);
 
             solvedSummaries.put(method, new HashMap<>());
             solvedContextualSummaries.put(method, new HashMap<>());
@@ -202,17 +215,19 @@ public class SpeculativeResolver {
         // }
         // }
         // }
-        // System.out.println(" **************FINAL RESULT ***************** ");
-        // for (SootMethod s : solvedSummaries.keySet()) {
-        // if (!s.isJavaLibraryMethod()) {
-        // System.out.println("For method " + s);
-        // for (ObjectNode o : solvedSummaries.get(s).keySet()) {
-        // System.out.println("Object is " + o + " and its summary is " +
-        // solvedSummaries.get(s).get(o));
-        // }
-        // }
-        // }
-        // }
+
+        // Final Result:
+        logger.info("\n **************FINAL RESULT ***************** \n");
+        for (SootMethod s : solvedSummaries.keySet()) {
+            if (!s.isJavaLibraryMethod()) {
+                logger.info("For method " + s);
+                for (ObjectNode o : solvedSummaries.get(s).keySet()) {
+                    logger.info("Object is " + o + " and its summary is " +
+                            solvedSummaries.get(s).get(o));
+               }
+                logger.info("*************************************** \n");
+            }
+        }
     }
 
     // Convert all <caller,<argument,x>> statements to the actual caller functions
@@ -221,8 +236,7 @@ public class SpeculativeResolver {
 
     void resolveSummaries() {
         //Debug
-        if(debug)
-            System.out.println("We are starting with resolving summaries");
+        logger.info("We are starting with resolving summaries");
         // CallGraph
         CallGraph cg = Scene.v().getCallGraph();
         // Get the list of methods for which static results are generated
@@ -241,6 +255,9 @@ public class SpeculativeResolver {
                 if (!existingSummaries.containsKey(key)) {
                     continue;
                 }
+
+                // CV Final Status
+
                 // DEBUG
 //                if(!PolymorphicInvokeCounter.polymorphicInvokes.isEmpty()) {
 //                    for (CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
@@ -262,7 +279,13 @@ public class SpeculativeResolver {
 //                    System.out.println(key.toString());
 //                    debug = true;
 //                }
-                System.out.println("\n ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+                logger.info("***************************************************************");
+                logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+                logger.info("***************************************************************");
+//                System.out.println("***************************************************************");
+//                System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+//                System.out.println("***************************************************************");
+
                 /* Get the objects in sorted order. --
                  * Sorted here means analyze parameters first and then any other type of objects.
                  */
@@ -307,46 +330,25 @@ public class SpeculativeResolver {
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
                             if (true) {
-                                System.out.println("***********************************");
-                                System.out.println(" \nCurrent method is : " + key + "  and  Object : " + obj);
-                                System.out.println("  Conditional value for object is : " + state);
+                                System.out.println(" ** Current method is : " + key + "  and  Object : " + obj);
+                                System.out.println(" ** Conditional value for object is : " + state);
                             }
                             if (state instanceof ConditionalValue) {
-                                if (debug) {
-                                    System.out.println("Reached point 1");
-                                }
+
                                 ConditionalValue cstate = (ConditionalValue) state;
-                                // System.out.println("Solved Summaries: "+ solvedSummaries.toString());
                                 /*
                                  * Handling parameter dependencies of type <class:methodname,<parameter,number>>
                                  * As such we are deleting the dependency.
                                  */
                                 if (cstate.object.type == ObjectType.parameter) {
-                                    // System.out.println(" CV is of type parameter");
-                                    if(debug) {
-                                        System.out.println("1. In parameter : Entered");
-                                    }
+                                    logger.info("CV is of type parameter");
+                                    // Method on which this CV depends
+                                    SootMethod sm = cstate.getMethod();
+                                    // Object on which this current object (obj) depends
+                                    ObjectNode o = cstate.object;
 
-                                    // Check if it a polymorphic callsite
-                                    int counter = 0;
-                                    //Iterator<Edge> edges = callGraph.iterator();
-                                    Iterator<Edge> tmpiter = cg.edgesOutOf(key);
+                                    logger.info(" Sent to Method : " + sm + " and object as : " + o);
 
-//                                    while (tmpiter.hasNext()) {
-//                                        Edge e = tmpiter.next();
-//                                        //if(e.getTgt().size() > 1)
-//                                            counter++;
-//                                    }
-//                                    if(counter > 2) {
-//                                        System.out.println("Object is : "+ obj.toString() + " and the state is "+ cstate.toString() );
-//                                        System.out.println("Counter is "+ counter);
-//
-//                                    }
-                                    
-                                    SootMethod sm = cstate.getMethod(); // the method on which this CV depends
-                                    ObjectNode o = cstate.object; // the object on which this current object (obj) depends
-                                                                   
-                                    System.out.println(" Sent to Method : " + sm + " and object as : " + o);
                                     /*
                                      * Get the callsite and check if the dependency is for field.
                                      * 
@@ -398,32 +400,36 @@ public class SpeculativeResolver {
                                             }
                                         }
                                     }
-                                    System.out.println("Objects received are : "+ objects);
-                                    if(PolymorphicInvokeCounter.polymorphicInvokes.containsKey(c)) {
-                                        if (solvedSummaries.containsKey(sm)
-                                            && solvedSummaries.get(sm).containsKey(o)) {
-                                            if (solvedSummaries.get(sm).get(o).containsNoEscape()) {
-                                                if(!CountofObjects.containsKey(key)) {
-                                                    CountofObjects.put(key, new HashMap<>());
-                                                    CountofObjects.get(key).put(obj, 1);
-                                                } else {
-                                                    if(!CountofObjects.get(key).containsKey(obj)) {
-                                                        CountofObjects.get(key).put(obj, 1);
-                                                    }
-//                                                    else {
-//                                                        int temp = CountofObjects.get(key).get(obj);
-//                                                        CountofObjects.get(key).put(obj, temp+1);
+
+                                    // Polymorphic Call Site
+
+
+                                    //System.out.println("Objects received are : "+ objects);
+//                                    if(PolymorphicInvokeCounter.polymorphicInvokes.containsKey(c)) {
+//                                        if (solvedSummaries.containsKey(sm)
+//                                            && solvedSummaries.get(sm).containsKey(o)) {
+//                                            if (solvedSummaries.get(sm).get(o).containsNoEscape()) {
+//                                                if(!CountofObjects.containsKey(key)) {
+//                                                    CountofObjects.put(key, new HashMap<>());
+//                                                    CountofObjects.get(key).put(obj, 1);
+//                                                } else {
+//                                                    if(!CountofObjects.get(key).containsKey(obj)) {
+//                                                        CountofObjects.get(key).put(obj, 1);
 //                                                    }
-                                                }
-                                                System.out.println("Found a case: Count Increased");
-                                                count++;
-                                        } else if (!solvedSummaries.get(sm).get(o).containsNoEscape()) {
-                                                if (CountofObjects.containsKey(key) && CountofObjects.get(key).containsKey(obj)) {
-                                                    CountofObjects.get(key).remove(obj);
-                                                }
-                                            }
-                                        }
-                                    }
+////                                                    else {
+////                                                        int temp = CountofObjects.get(key).get(obj);
+////                                                        CountofObjects.get(key).put(obj, temp+1);
+////                                                    }
+//                                                }
+//                                                //System.out.println("Found a case: Count Increased");
+//                                                count++;
+//                                        } else if (!solvedSummaries.get(sm).get(o).containsNoEscape()) {
+//                                                if (CountofObjects.containsKey(key) && CountofObjects.get(key).containsKey(obj)) {
+//                                                    CountofObjects.get(key).remove(obj);
+//                                                }
+//                                            }
+//                                        }
+//                                    }
 
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {
@@ -474,11 +480,11 @@ public class SpeculativeResolver {
                                             }
                                             for (ContextualEscapeStatus ces : solvedContextualSummaries.get(sm)
                                                     .get(o)) {
-                                                // System.out.println("ces value : "+ ces.toString());
+                                                 System.out.println("ces value : "+ ces.toString());
                                                 if (ces.cescapestat.containsKey(c)) {
                                                     checkflag = true;
                                                     if (ces.doesEscape(c)) {
-                                                        // System.out.println("1.5. Escaping in Parameter");
+                                                         System.out.println("1.5. Escaping in Parameter");
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                     } else {
@@ -493,13 +499,13 @@ public class SpeculativeResolver {
                                                     if (solvedSummaries.get(sm).get(o).doesEscape()) {
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
-                                                                if(debug) {
+                                                                if(true) {
                                                                     System.out.println("7. No Contextual Summary: ESCAPE");
                                                                 }
                                                     } else if (!solvedSummaries.get(sm).get(o).doesEscape()) {
                                                         solvedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
-                                                            if(debug) {
+                                                            if(true) {
                                                                 System.out.println("8. No Contextual Summary: NOESCAPE");
                                                             }
                                                     }
@@ -507,7 +513,7 @@ public class SpeculativeResolver {
                                                     // if the parameter object was not there in the solvedSummaries as well.
                                                     solvedSummaries.get(key).put(obj,
                                                         new EscapeStatus(NoEscape.getInstance()));
-                                                        if(debug) {
+                                                        if(true) {
                                                             System.out.println("9. No Contextual Summary: NOESCAPE");
                                                         }
                                                     }
@@ -547,7 +553,7 @@ public class SpeculativeResolver {
 
                                     allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
                                     allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
-                                    if (debug) {
+                                    if (true) {
                                         System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
                                     }
                                     continue;
@@ -824,7 +830,7 @@ public class SpeculativeResolver {
                                     }
                                     if (objects == null || objects.isEmpty()) {
                                         if (debug) {
-                                            System.out.println("Object received is null");
+                                        System.out.println("Object received is null");
                                         }
                                         if (solvedSummaries.containsKey(key)
                                                 && solvedSummaries.get(key).containsKey(obj)
@@ -1118,18 +1124,20 @@ public class SpeculativeResolver {
                                         solvedSummaries.get(key).get(obj).status.add(Escape.getInstance());
                                         nothandled = false;
                                     }
+                                    allresolvedstatusforthisobject.put(state, solvedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
                                 } else if (state instanceof NoEscape) {
                                     if (solvedSummaries.get(key).containsKey(obj)) {
                                         if (!solvedSummaries.get(key).get(obj).doesEscape()) {
                                             solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                            allresolvedstatusforthisobject.put(state,new EscapeStatus(NoEscape.getInstance()));
+                                            allresolvedstatusforthisobject2.add(new EscapeStatus(NoEscape.getInstance()));
                                         }
                                     } else {
                                         solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                     }
                                     nothandled = false;
                                 }
-                                allresolvedstatusforthisobject.put(state, solvedSummaries.get(key).get(obj));
-                                allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
                                 if (debug) {
                                     System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
                                 }
@@ -1180,6 +1188,32 @@ public class SpeculativeResolver {
                         // if(solvedSummaries.get(key).get(obj).equals(Escape.getInstance())) {
                         // System.out.println("all: "+ allresolvedstatusforthisobject.toString());
                         // System.out.println("1. Reaching here");
+                        System.out.println("Current Method is : "+ key);
+                        System.out.println("Object is : "+ obj);
+                        if(CVfinalES.containsKey(key)) {
+                            if(CVfinalES.get(key).containsKey(obj)) {
+                                for(EscapeState e: allresolvedstatusforthisobject.keySet()) {
+                                    CVfinalES.get(key).get(obj).put(e, allresolvedstatusforthisobject.get(e));
+                                    System.err.println("Escape State is : " + e.toString() + " and its value is : "+ allresolvedstatusforthisobject.get(e).toString());
+                                }
+                            } else {
+                                CVfinalES.get(key).put(obj, new HashMap<>());
+                                for(EscapeState e: allresolvedstatusforthisobject.keySet()) {
+                                    CVfinalES.get(key).get(obj).put(e, allresolvedstatusforthisobject.get(e));
+                                    System.err.println("Escape State is : " + e.toString() + " and its value is : "+ allresolvedstatusforthisobject.get(e).toString());
+                                }
+                            }
+                        } else {
+                            CVfinalES.put(key, new HashMap<>());
+                            CVfinalES.get(key).put(obj, new HashMap<>());
+                            for(EscapeState e: allresolvedstatusforthisobject.keySet()) {
+                                CVfinalES.get(key).get(obj).put(e, allresolvedstatusforthisobject.get(e));
+                                System.err.println("Escape State is : " + e.toString() + " and its value is : "+ allresolvedstatusforthisobject.get(e).toString());
+                            }
+                        }
+
+
+
                         for (EscapeState e1 : allresolvedstatusforthisobject.keySet()) {
                             // System.out.println("2. Reaching here");
                             if (allresolvedstatusforthisobject.get(e1) != null) {
@@ -1486,6 +1520,43 @@ public class SpeculativeResolver {
         // System.out.println("Obj has "+ objs.toString());
         return objs;
     }
+
+//    public static List<ObjectNode> GetParmNoFieldObjects(ObjectNode ob, int num, SootMethod tgt) {
+//        List<ObjectNode> objs = new ArrayList<>();
+//        try {
+//            // System.out.println("Reaching here with source: "+ tgt.toString() + "and
+//            // fieldlist : "+ fieldList);
+////            if (fieldList != null) {
+//                if (ptgs.containsKey(tgt)) {
+//                    if (ptgs.get(tgt).containsKey(ob)) {
+//                        // System.out.println("Reached Inside");
+//                        Set<ObjectNode> obj = new HashSet<>();
+//                        Set<ObjectNode> obj1 = new HashSet<>();
+//                        obj1.add(ob);
+//                        if (obj != null) {
+//                            objs.addAll(obj);
+//                            return objs;
+//                        } else {
+//                            return null;
+//                        }
+//                    }
+//                }
+////            } else {
+////                objs.add(ob);
+////            }
+//        } catch (Exception e) {
+//            // System.out.println(src + " " + arg + " " + u + " " + num);
+//            e.printStackTrace();
+//            exit(0);
+//        }
+//        // System.out.println("Obj has "+ objs.toString());
+//        return objs;
+//    }
+
+
+
+
+
 
     public static Set<ObjectNode> getfieldObject(SootMethod src, Set<ObjectNode> obj, SootField f) {
         Set<ObjectNode> tmpobj = new HashSet<>();

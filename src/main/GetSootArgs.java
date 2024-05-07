@@ -64,7 +64,7 @@ public class GetSootArgs {
 				// "-x", "jdk.*",
 				// "-x", "org.eclipse.jdt.internal.*",
 				// "-include", "org.apache.batik.*",
-				// "-x", "org.apache.crimson.*",
+				// "-x", "org.apache.crimson.*s",
 				// "-include", "org.w3c.*",
 				// "-include", "org.apache.*",
 				"-i", "jdt.*",

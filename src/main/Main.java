@@ -88,7 +88,7 @@ public class Main {
 		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
 		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 
-		System.out.println("\n 1. Static Analysis starts: ");
+		System.out.println("\n 1. Generating CV's and PTG(s): ");
 		StaticAnalyser staticAnalyser = new StaticAnalyser();
 		CHATransform prepass = new CHATransform();
 		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
@@ -140,8 +140,8 @@ public class Main {
 		PackManager.v().runPacks();
 		// soot.Main.main(sootArgs);
 		long analysis_end = System.currentTimeMillis();
-		System.out.println("Static Analysis is done!");
-		System.out.println("Time Taken:"+(analysis_end-analysis_start)/1000F);
+		System.out.println(" CV and PTG(s) Generated!");
+		System.out.println(" Time Taken: " +(analysis_end-analysis_start)/1000F);
 		System.out.println("**********************************************************");
 		long res_start = System.currentTimeMillis();
 
@@ -164,14 +164,14 @@ public class Main {
 		// if (true)
 		// 	return;
 		// printCFG();
-		System.out.println("2. Contextual Resolution Starts : ");
+		System.out.println("2. Resolving the Dependencies : ");
         SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
 															StaticAnalyser.ptgs,
 															StaticAnalyser.noBCIMethods);
         long res_end = System.currentTimeMillis();
-        System.out.println("Resolution is done");
-        System.out.println("Time Taken in phase 1:"+(analysis_end-analysis_start)/1000F);
-        System.out.println("Time Taken in phase 2:"+(res_end-res_start)/1000F);
+        System.out.println(" Resolution is done");
+        System.out.println(" Time Taken in phase 1:"+(analysis_end-analysis_start)/1000F);
+        System.out.println(" Time Taken in phase 2:"+(res_end-res_start)/1000F);
 
         // System.out.println(staticAnalyser.summaries.size()+ " "+staticAnalyser.ptgs.size());
 
@@ -208,13 +208,60 @@ public class Main {
             }
         }
 
-		System.out.println("Count of Polymorphic Invokes: "+ SpeculativeResolver.count);
-		for(SootMethod sm : SpeculativeResolver.CountofObjects.keySet()) {
-			System.out.println("Method: "+sm);
-			for(ObjectNode o : SpeculativeResolver.CountofObjects.get(sm).keySet()) {
-				System.out.println("Object: "+o+" Count: "+SpeculativeResolver.CountofObjects.get(sm).get(o));
+		for(CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
+			 for(SootMethod mt : StaticAnalyser.summaries.keySet()) {
+				if(c.methodName.equals(mt)) {
+					System.out.println("Method: "+mt);
+					for(ObjectNode o : StaticAnalyser.summaries.get(mt).keySet()) {
+						if(o.type != ObjectType.internal) {
+							continue;
+						}
+						HashSet<EscapeState> tmp =  StaticAnalyser.summaries.get(mt).get(o).status;
+						for(EscapeState es1 : tmp) {
+							if (es1 instanceof ConditionalValue) {
+								if(((ConditionalValue) es1).object.type == ObjectType.parameter) {
+									for(EscapeState es2 : StaticAnalyser.summaries.get(mt).get(o).status) {
+										if(es2 instanceof ConditionalValue) {
+											if(((ConditionalValue) es2).object.type == ObjectType.parameter &&
+												((ConditionalValue) es1).object.ref == ((ConditionalValue) es2).object.ref &&
+												((ConditionalValue) es1).method == ((ConditionalValue) es2).method &&
+												((ConditionalValue) es1).BCI == ((ConditionalValue) es2).BCI) {
+												SpeculativeResolver.IntrestingObjects.put(mt, o);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
+
+
+		for(SootMethod sm: SpeculativeResolver.CVfinalES.keySet()) {
+			if(SpeculativeResolver.IntrestingObjects.containsKey(sm)) {
+				System.out.println(" ************************  Method: " + sm + " ************************");
+				for (ObjectNode o : SpeculativeResolver.CVfinalES.get(sm).keySet()) {
+					if(o.type == ObjectType.internal && SpeculativeResolver.IntrestingObjects.get(sm).equals(o)) {
+						System.out.println("Object: " + o.toString());
+						SpeculativeResolver.count++;
+						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(o).keySet()) {
+							System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(o).get(es));
+						}
+					}
+				}
+			}
+		}
+
+
+//		for(SootMethod sm : SpeculativeResolver.CountofObjects.keySet()) {
+//			System.out.println("Method: "+sm);
+//			for(ObjectNode o : SpeculativeResolver.CountofObjects.get(sm).keySet()) {
+//
+//				System.out.println("Object: "+o+" Count: "+SpeculativeResolver.CountofObjects.get(sm).get(o));
+//			}
+//		}
     }
 
 
