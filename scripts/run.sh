@@ -37,6 +37,7 @@ find ${stava_path}/src -type f -name '*.class' -delete
 find $output_path -type f -name '*.info' -delete
 find $output_path -type f -name '*.res' -delete
 find $output_path -type f -name 'stats.txt' -delete
+find ${stava_path}/logs -type f -name '*.log' -delete
 
 echo -ne "$(tstamp) Compiling the Static Analyser for OSASAD...\033[0K\r"
 $java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>/dev/null

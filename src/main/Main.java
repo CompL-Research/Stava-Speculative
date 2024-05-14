@@ -208,46 +208,44 @@ public class Main {
             }
         }
 
-		for(CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
-			 for(SootMethod mt : StaticAnalyser.summaries.keySet()) {
-				if(c.methodName.equals(mt)) {
-					System.out.println("Method: "+mt);
-					for(ObjectNode o : StaticAnalyser.summaries.get(mt).keySet()) {
-						if(o.type != ObjectType.internal) {
-							continue;
-						}
-						HashSet<EscapeState> tmp =  StaticAnalyser.summaries.get(mt).get(o).status;
-						for(EscapeState es1 : tmp) {
-							if (es1 instanceof ConditionalValue) {
-								if(((ConditionalValue) es1).object.type == ObjectType.parameter) {
-									for(EscapeState es2 : StaticAnalyser.summaries.get(mt).get(o).status) {
-										if(es2 instanceof ConditionalValue) {
-											if(((ConditionalValue) es2).object.type == ObjectType.parameter &&
-												((ConditionalValue) es1).object.ref == ((ConditionalValue) es2).object.ref &&
-												((ConditionalValue) es1).method == ((ConditionalValue) es2).method &&
-												((ConditionalValue) es1).BCI == ((ConditionalValue) es2).BCI) {
-												SpeculativeResolver.IntrestingObjects.put(mt, o);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-
+//		for(CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
+//			 for(SootMethod mt : StaticAnalyser.summaries.keySet()) {
+//				if(c.methodName.equals(mt)) {
+//					System.out.println("Method: "+mt);
+//					for(ObjectNode o : StaticAnalyser.summaries.get(mt).keySet()) {
+//						if(o.type != ObjectType.internal) {
+//							continue;
+//						}
+//						HashSet<EscapeState> tmp =  StaticAnalyser.summaries.get(mt).get(o).status;
+//						for(EscapeState es1 : tmp) {
+//							if (es1 instanceof ConditionalValue) {
+//								if(((ConditionalValue) es1).object.type == ObjectType.parameter) {
+//									for(EscapeState es2 : StaticAnalyser.summaries.get(mt).get(o).status) {
+//										if(es2 instanceof ConditionalValue) {
+//											if(((ConditionalValue) es2).object.type == ObjectType.parameter &&
+//												((ConditionalValue) es1).object.ref == ((ConditionalValue) es2).object.ref &&
+//												((ConditionalValue) es1).method == ((ConditionalValue) es2).method &&
+//												((ConditionalValue) es1).BCI == ((ConditionalValue) es2).BCI) {
+//												SpeculativeResolver.IntrestingObjects.put(mt, o);
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 		for(SootMethod sm: SpeculativeResolver.CVfinalES.keySet()) {
 			if(SpeculativeResolver.IntrestingObjects.containsKey(sm)) {
 				System.out.println(" ************************  Method: " + sm + " ************************");
-				for (ObjectNode o : SpeculativeResolver.CVfinalES.get(sm).keySet()) {
-					if(o.type == ObjectType.internal && SpeculativeResolver.IntrestingObjects.get(sm).equals(o)) {
-						System.out.println("Object: " + o.toString());
+				for(ObjectNode obj : SpeculativeResolver.IntrestingObjects.get(sm)) {
+					if(obj.type == ObjectType.internal) {
+						System.out.println("Object: " + obj.toString());
 						SpeculativeResolver.count++;
-						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(o).keySet()) {
-							System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(o).get(es));
+						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
+							System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es));
 						}
 					}
 				}

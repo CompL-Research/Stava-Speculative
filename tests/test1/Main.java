@@ -1,7 +1,7 @@
 class Main {
 	public static void main(String[] args) {
 		Main o1 = new Main(); // <internal, 0>
-		Node o2 = new Node(); // <internal, 8>
+		Node o2 = new Node(); // <internal, 8> // Note: It should NOT come as interesting objects
 		Node o3 = new ChildNode(); // <internal, 16>
 		Node o4;
 		if(args.length > 2) {
@@ -12,7 +12,7 @@ class Main {
 		o4.foobar(o2); // Polymorphic CallSite
 	}
 	Node foo(Node p1) {
-		Node o4 = new Node();
+		Node o4 = new Node(); // Note: It should come as interesting objects
 		p1.bar(o4); // Polymorphic CallSite
 		return p1;
 	}
@@ -29,7 +29,7 @@ class Node {
 	}
 	void foobar(Node p2) {
 		Node o7;
-		Node o8 = new Node(); // <internal, 0>
+		Node o8 = new Node(); // <internal, 0> [Note: It should not come as interesting objects]
 		if(p2 instanceof ChildNode) {
 			o7 = new ChildNode(); // <internal, 15>
 		} else {
