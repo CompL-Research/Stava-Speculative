@@ -68,7 +68,7 @@ public class SpeculativeResolver extends Formatter {
     // Used for logging
     public static final Logger logger = Logger.getLogger(SpeculativeResolver.class.getName());
     // Mao for storing objects that have polymorphic callsites
-    public static Map<SootMethod, List<ObjectNode>> IntrestingObjects = new HashMap<>();
+    public static Map<SootMethod, Map<ObjectNode, SootMethod>> InterstingObjects = new HashMap<>();
 
     @Override
     public String format(LogRecord record) {
@@ -299,15 +299,15 @@ public class SpeculativeResolver extends Formatter {
                                         for(SootMethod m : PolymorphicInvokeCounter.polymorphicInvokes.get(c)) {
                                             if(((ConditionalValue) e).method.equals(m)) {
                                                 System.out.println("Found a match");
-                                                if(SpeculativeResolver.IntrestingObjects.containsKey(key)) {
-                                                    if(SpeculativeResolver.IntrestingObjects.get(key).contains(o)) {
+                                                if(SpeculativeResolver.InterstingObjects.containsKey(key)) {
+                                                    if(SpeculativeResolver.InterstingObjects.get(key).containsKey(o)) {
                                                         continue;
                                                     } else {
-                                                        SpeculativeResolver.IntrestingObjects.get(key).add(o);
+                                                        SpeculativeResolver.InterstingObjects.get(key).put(o, m);
                                                     }
                                                 } else {
-                                                    SpeculativeResolver.IntrestingObjects.put(key, new ArrayList<>());
-                                                    SpeculativeResolver.IntrestingObjects.get(key).add(o);
+                                                    SpeculativeResolver.InterstingObjects.put(key, new HashMap<>());
+                                                    SpeculativeResolver.InterstingObjects.get(key).put(o, m);
                                                 }
                                             }
                                         }

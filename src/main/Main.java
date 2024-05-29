@@ -8,11 +8,8 @@ import ptg.ObjectNode;
 import ptg.ObjectType;
 import ptg.PointsToGraph;
 import resolver.SpeculativeResolver;
-import soot.PackManager;
-import soot.Scene;
+import soot.*;
 import soot.options.Options;
-import soot.SootMethod;
-import soot.Transform;
 import utils.GetListOfNoEscapeObjects;
 import utils.Stats;
 import Inlining.PrintInlineInfo;
@@ -27,64 +24,38 @@ import java.util.Map;
 import java.util.*;
 import java.io.*;
 import java.lang.*;
+
+import static java.lang.System.exit;
 import static utils.KillCallerOnly.kill;
 
 public class Main {
 
 	public static int i = 0;
 	public static Set<String> ListofMethods = new HashSet<>();
-	static void setStoreEscapeOptions(String[] args) {
-		if (args.length >=6 ) {
-            StoreEscape.ReduceParamDependence = args[5].equals("true");
-		}
-		if (args.length >= 7) {
-            StoreEscape.MarkParamReturnEscaping = args[6].equals("true");
-		}
-	}
+	public static HashMap<SootMethod, List<ObjectNode>> finalObjects = new HashMap<>();
+//	static void setStoreEscapeOptions(String[] args) {
+//		if (args.length >=6 ) {
+//            StoreEscape.ReduceParamDependence = args[5].equals("true");
+//		}
+//		if (args.length >= 7) {
+//            StoreEscape.MarkParamReturnEscaping = args[6].equals("true");
+//		}
+//	}
 	public static void main(String[] args) {
 
 		GetSootArgs g = new GetSootArgs();
 		String[] sootArgs = g.get(args);
-		setStoreEscapeOptions(args);
+
+		//setStoreEscapeOptions(args);
+
 		if (sootArgs == null) {
 			System.out.println("Unable to generate args for soot!");
 			return;
 		}
-		// File path is passed as parameter
 
-////
-//		try {
-//			File file = new File("/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/fft-jitc-methodlist.txt");
-//			BufferedReader br = null;
-//			br = new BufferedReader(new FileReader(file));
-//			String st;
-//			while ((st = br.readLine()) != null) {
-//				ListofMethods.add(st);
-//			}
-//		} catch (IOException e) {
-//			throw new RuntimeException(e);
-//		}
-//		try {
-//			File file = new File("/home/aditya/Documents/Research-Workspace/Stava/stava-contextual/fft-jitc-methodlist.txt");
-//			BufferedReader br = null;
-//			br = new BufferedReader(new FileReader(file));
-//			String st;
-//			while ((st = br.readLine()) != null) {
-//				ListofMethods.add(st);
-//			}
-//		} catch (IOException e) {
-//			throw new RuntimeException(e);
-//		}
-//		System.out.println("Read from file: ");
-//		int j =0;
-//		for(String s : ListofMethods) {
-//			System.out.println(j++ + ". Method : "+ s);
-//		}
-//		System.out.println();
 		/*
 		 * 0. Compute the list of Polymporphic Invokes and affected objects
 		 */
-		//System.out.println("\n 0. Counter before Static Analysis: ");
 		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
 		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 
@@ -94,155 +65,80 @@ public class Main {
 		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
 		PackManager.v().getPack("jtp").add(new Transform("jtp.sample", staticAnalyser));
 		long analysis_start = System.currentTimeMillis();
+
 		Options.v().parse(sootArgs);
 		Scene.v().loadNecessaryClasses();
 		Scene.v().loadDynamicClasses();
-		//List<SootMethod> entryPoints = Scene.v().getEntryPoints();
-		// SootClass sc = Scene.v().loadClassAndSupport("java.lang.CharacterData");
-		// System.out.println(sc.getMethods());
-		// Scene.v().forceResolve(sc.getName(), SootClass.BODIES);
-		// SootMethod tobeAdded = sc.getMethodByName("toUpperCaseEx");
-		// System.out.println("Method: "+tobeAdded);
-		// // SootMethod tobeAdded = Scene.v().getMethod("<java.lang.CharacterData: toUpperCaseEx(I)I>");
-		// entryPoints.add(tobeAdded);
-
-//		Chain<SootClass> appClasses = Scene.v().getClasses();
-//		Iterator<SootClass> appClassItertator = appClasses.iterator();
-//		SootClass objclass = Scene.v().getSootClass("java.lang.Object");
-//		while(appClassItertator.hasNext()) {
-//			SootClass aclass = appClassItertator.next();
-//			if (aclass.getName().contains("spec.")) {
-//				aclass.setApplicationClass();
-//				if (aclass.hasSuperclass() == false) {
-//					if (aclass == objclass) {
-//						continue;
-//					}
-//					else aclass.setSuperclass(objclass);
-//				}
-//				else {
-//					// System.out.println("SuperClass: "+aclass.getSuperclass());
-//				}
-//			}
-		// 	aclass = Scene.v().loadClassAndSupport(aclass.getName());
-		// 	aclass = Scene.v().forceResolve(aclass.getName(), SootClass.BODIES);
-		// 	// if (aclass.getName().contains("spec.validity.Digests")) {
-		// 	// 	System.out.println("Aclass spec: "+aclass.getName()+" : "+aclass.getMethodByName("crunch_jars"));
-		// 	// }
-		// 	System.out.println("Aclass: "+aclass.getName()+ " phantom: "+aclass.isPhantomClass()+" app: "+aclass.isApplicationClass()+" Concrete: "+
-		// 		aclass.isConcrete()+" : " + aclass.getMethods());
-		// 	// System.out.println(aclass.getMethods());
-			// entryPoints.addAll(aclass.getMethods());
-		//}
-		// System.out.println(entryPoints);
-		// if (true) 
-		// 	return;
-		//Scene.v().setEntryPoints(entryPoints);
 		PackManager.v().runPacks();
 		// soot.Main.main(sootArgs);
+
 		long analysis_end = System.currentTimeMillis();
 		System.out.println(" CV and PTG(s) Generated!");
-		System.out.println(" Time Taken: " +(analysis_end-analysis_start)/1000F);
+		System.out.println(" Time Taken: " + (analysis_end - analysis_start) / 1000F);
 		System.out.println("**********************************************************");
 		long res_start = System.currentTimeMillis();
 
-//		for(SootMethod m : StaticAnalyser.summaries.keySet()) {
-//			if(!m.isJavaLibraryMethod()) {
-//				System.out.println("Method : " + m);
-//				for (ObjectNode o : StaticAnalyser.summaries.get(m).keySet()) {
-//					System.out.println(" For object : " + o);
-//					System.out.println(" Summaries : ");
-//					System.out.println(StaticAnalyser.summaries.get(m).get(o).status);
-//				}
-//				System.out.println("----------");
-//			}
-//		}
-
-
-		// printSummary(staticAnalyser.summaries);
-		// System.err.println(staticAnalyser.ptgs);
 		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
-		// if (true)
-		// 	return;
-		// printCFG();
+
 		System.out.println("2. Resolving the Dependencies : ");
-        SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
-															StaticAnalyser.ptgs,
-															StaticAnalyser.noBCIMethods);
-        long res_end = System.currentTimeMillis();
-        System.out.println(" Resolution is done");
-        System.out.println(" Time Taken in phase 1:"+(analysis_end-analysis_start)/1000F);
-        System.out.println(" Time Taken in phase 2:"+(res_end-res_start)/1000F);
+		SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
+				StaticAnalyser.ptgs,
+				StaticAnalyser.noBCIMethods);
+		long res_end = System.currentTimeMillis();
+		System.out.println(" Resolution is done");
+		System.out.println(" Time Taken in phase 1:" + (analysis_end - analysis_start) / 1000F);
+		System.out.println(" Time Taken in phase 2:" + (res_end - res_start) / 1000F);
 
-        // System.out.println(staticAnalyser.summaries.size()+ " "+staticAnalyser.ptgs.size());
+		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.solvedSummaries);
 
+		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.solvedContextualSummaries);
 
-        HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.solvedSummaries);
+		printAllInfo(StaticAnalyser.ptgs, resolved, args[4]);
 
-        HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.solvedContextualSummaries);
+		/*
+		 * Getting the final list of objects that directly needs the new CV to be added.
+		 * CVFinalES: contains the final escape status of each CV for each object.
+		 * InterestingObjects: contains the list of objects that have CV with polymorphic call site for each method (Caller Method, Object, Callee method).
+		 * FinalObjects: contains the list of objects that have CV with polymorphic call site and the object is escaping only due to that CV.
+		 */
+		for (SootMethod sm : SpeculativeResolver.CVfinalES.keySet()) {
+			if (SpeculativeResolver.InterstingObjects.containsKey(sm)) {
+				for (ObjectNode obj : SpeculativeResolver.InterstingObjects.get(sm).keySet()) {
+					if (obj.type == ObjectType.internal) {
+//						System.out.println("Method is "+ sm + " and Object: " + obj.toString());
+						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
+							if (es instanceof ConditionalValue) {
+								if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
+									boolean Suitable = Is_Suitable_Object(sm, obj);
+									//System.out.println("CV is : "+ es + " and Suitable : "+Suitable);
+									if(Suitable) {
+										if (SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
+											if (finalObjects.containsKey(sm)) {
+												finalObjects.get(sm).add(obj);
+											} else {
+												List<ObjectNode> l = new ArrayList<>();
+												l.add(obj);
+												finalObjects.put(sm, l);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		// List of objects that depends on these direct objects.
 
-        printAllInfo(StaticAnalyser.ptgs, resolved, args[4]);
+		System.out.println();
+		System.out.println("Final Objects: " + finalObjects.toString());
 
-        //printContextualInfo(StaticAnalyser.ptgs, cresolved, args[4]);
-
-        //printCombinedInfo(StaticAnalyser.ptgs, resolved, cresolved, args[4]);
-
-        //saveStats(cr.existingSummaries, resolved, args[4], staticAnalyser.ptgs);
-
-        saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
-        if(args[5] != null && args[5].equals("inline")) {
-            printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
-        } else {
-            printContResForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
-        }
-        //printCVresValues(ContextualResolver.ResolvedCVValue, args[4]);
-        for(SootMethod m : SpeculativeResolver.solvedSummaries.keySet()) {
-            if(Main.ListofMethods.toString().contains(m.getBytecodeSignature().toString())) {
-                System.err.println("Method : " + m);
-                for (ObjectNode o : SpeculativeResolver.solvedSummaries.get(m).keySet()) {
-                    if(o.type == ObjectType.internal) {
-                        System.err.print(" For object : " + o);
-                        System.err.println(SpeculativeResolver.solvedSummaries.get(m).get(o).status);
-                    }
-                }
-                System.err.println("----------");
-            }
-        }
-
-//		for(CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
-//			 for(SootMethod mt : StaticAnalyser.summaries.keySet()) {
-//				if(c.methodName.equals(mt)) {
-//					System.out.println("Method: "+mt);
-//					for(ObjectNode o : StaticAnalyser.summaries.get(mt).keySet()) {
-//						if(o.type != ObjectType.internal) {
-//							continue;
-//						}
-//						HashSet<EscapeState> tmp =  StaticAnalyser.summaries.get(mt).get(o).status;
-//						for(EscapeState es1 : tmp) {
-//							if (es1 instanceof ConditionalValue) {
-//								if(((ConditionalValue) es1).object.type == ObjectType.parameter) {
-//									for(EscapeState es2 : StaticAnalyser.summaries.get(mt).get(o).status) {
-//										if(es2 instanceof ConditionalValue) {
-//											if(((ConditionalValue) es2).object.type == ObjectType.parameter &&
-//												((ConditionalValue) es1).object.ref == ((ConditionalValue) es2).object.ref &&
-//												((ConditionalValue) es1).method == ((ConditionalValue) es2).method &&
-//												((ConditionalValue) es1).BCI == ((ConditionalValue) es2).BCI) {
-//												SpeculativeResolver.IntrestingObjects.put(mt, o);
-//											}
-//										}
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-		for(SootMethod sm: SpeculativeResolver.CVfinalES.keySet()) {
-			if(SpeculativeResolver.IntrestingObjects.containsKey(sm)) {
-				System.out.println(" ************************  Method: " + sm + " ************************");
-				for(ObjectNode obj : SpeculativeResolver.IntrestingObjects.get(sm)) {
-					if(obj.type == ObjectType.internal) {
-						System.out.println("Object: " + obj.toString());
+		for (SootMethod sm : SpeculativeResolver.CVfinalES.keySet()) {
+			if (SpeculativeResolver.InterstingObjects.containsKey(sm)) {
+				for (ObjectNode obj : SpeculativeResolver.InterstingObjects.get(sm).keySet()) {
+					if (obj.type == ObjectType.internal && finalObjects.containsKey(sm) && finalObjects.get(sm).contains(obj)) {
+						System.out.println("******* In Method: "+ sm + " Object: " + obj.toString() + " *******");
 						SpeculativeResolver.count++;
 						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
 							System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es));
@@ -252,15 +148,131 @@ public class Main {
 			}
 		}
 
+		System.out.println();
+		// Add new Dependency to these polymorphic call-site objects.
+		// First find the receiver object
+		for(SootMethod sm : finalObjects.keySet()) {
+			for(ObjectNode obj : finalObjects.get(sm)) {
+				int bci;
+				SootMethod caller_method;
+				SootClass type;
+				ObjectNode ob = null;
 
-//		for(SootMethod sm : SpeculativeResolver.CountofObjects.keySet()) {
-//			System.out.println("Method: "+sm);
-//			for(ObjectNode o : SpeculativeResolver.CountofObjects.get(sm).keySet()) {
-//
-//				System.out.println("Object: "+o+" Count: "+SpeculativeResolver.CountofObjects.get(sm).get(o));
+				for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
+					if (es instanceof ConditionalValue) {
+						if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
+							if (!SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
+								bci = ((ConditionalValue) es).BCI;
+								caller_method = sm;
+								type = ((ConditionalValue) es).method.getDeclaringClass();
+								//System.out.println("BCI: "+ bci + " caller_method: " + caller_method + " type: "+ type );
+								for(ObjectNode o : StaticAnalyser.summaries.get(sm).keySet()) {
+									for(EscapeState e : StaticAnalyser.summaries.get(sm).get(o).status) {
+										if(e instanceof ConditionalValue) {
+											if(((ConditionalValue) e).method != null) {
+												if (((ConditionalValue) e).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString()) &&
+														((ConditionalValue) e).object.type == ObjectType.parameter &&
+														((ConditionalValue) e).BCI == bci) {
+													ob = o;
+												}
+											}
+										}
+									}
+								}
+								if(ob != null && ob.type != ObjectType.internal) {
+
+								}
+								PolymorphicConditionalValue pcv = new PolymorphicConditionalValue(obj.ref, caller_method, ob.ref, bci, type);
+								System.out.println("New CV Generated: "+ sm + " ["+ pcv.toString() + "]");
+								//SpeculativeResolver.solvedSummaries.get(sm).get(obj).status.add(pcv);
+							}
+						}
+					}
+				}
+
+			}
+		}
+		System.out.println();
+		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
+		if (args[5] != null && args[5].equals("inline")) {
+			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+		} else {
+			printContResForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+		}
+
+
+	}
+
+
+	/*
+	 * -- Function: Is_Suitable_Object --
+	 * Check if the object is suitable for the new CV to be added.
+	 * It just checks if the object is escaping only due to the polymorphic CV.
+ 	 */
+	private static boolean Is_Suitable_Object(SootMethod sm, ObjectNode obj) {
+			if (SpeculativeResolver.InterstingObjects.containsKey(sm)) {
+				for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
+					if(SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
+						if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
+//							System.out.println("Fine in Suitable Object: "+obj);
+							continue;
+						} else {
+//							System.out.println("Not Suitable Object: "+obj);
+							return false;
+						}
+					}
+				}
+			}
+		return true;
+	}
+
+
+//	public static List<ObjectNode> GetParmObjects(ObjectNode ob, int num, SootMethod tgt, List<SootField> fieldList) {
+//		List<ObjectNode> objs = new ArrayList<>();
+//		try {
+//			// System.out.println("Reaching here with source: "+ tgt.toString() + "and
+//			// fieldlist : "+ fieldList);
+//			if (fieldList != null) {
+//				if (ptgs.containsKey(tgt)) {
+//					if (ptgs.get(tgt).fields.containsKey(ob)) {
+//						// System.out.println("Reached Inside");
+//						Set<ObjectNode> obj = new HashSet<>();
+//						Set<ObjectNode> obj1 = new HashSet<>();
+//						obj1.add(ob);
+//						for (SootField f : fieldList) {
+//							// System.out.println("Object is : "+ ob.toString());
+//							// System.out.println("Reaching inside as field list is : "+
+//							// fieldList.toString());
+//							// System.out.println("Field is "+ f.toString());
+//							obj = getfieldObject(tgt, obj1, f);
+//							if (obj.isEmpty()) {
+//								// objs.add(o);
+//								return null;
+//							}
+//							// System.out.println("Obj is "+ obj.toString());
+//							obj1 = obj;
+//						}
+//						if (obj != null) {
+//							objs.addAll(obj);
+//							return objs;
+//						} else {
+//							return null;
+//						}
+//					}
+//				}
+//			} else {
+//				objs.add(ob);
 //			}
+//		} catch (Exception e) {
+//			// System.out.println(src + " " + arg + " " + u + " " + num);
+//			e.printStackTrace();
+//			exit(0);
 //		}
-    }
+//		// System.out.println("Obj has "+ objs.toString());
+//		return objs;
+//	}
+
+
 
 
 
@@ -306,7 +318,7 @@ public class Main {
 					// if (es instanceof ConditionalValue)
 				}
 				f.write("\n");
-				
+
 			}
             f.close();
         }
@@ -447,8 +459,8 @@ public class Main {
 		}
 	}
 	static void printContResForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
-							   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
-							   String ipDir, String opDir) {
+								   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+								   String ipDir, String opDir) {
 		// Open File
 		Path p_ipDir = Paths.get(ipDir);
 		Path p_opDir = Paths.get(opDir);
@@ -462,36 +474,15 @@ public class Main {
 				continue;
 			}
 			//if(!method.isJavaLibraryMethod()) {
-				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
-				String sbtemp = GetListOfNoEscapeObjects.get(summary);
-				if(sbtemp != null) {
-					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
-					sb.append(transformFuncSignature(method.getBytecodeSignature()));
-					sb.append(" ");
-					sb.append(GetListOfNoEscapeObjects.get(summary));
-					sb.append("\n");
-//					sb.append(" ");
-//					sb.append("[");
-//					i = 0;
-//					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
-//					for(CallSite cs : c) {
-//						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
-//					}
-//					sb.append("]");
-//					sb.append("\n");
-				}
-
-//				sb.append(" ");
-//				sb.append("[");
-//				i = 0;
-//				List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
-//				for(CallSite cs : c) {
-//					sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
-//				}
-//				sb.append("]");
-//				sb.append("\n");
-			//}
-
+			HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+			String sbtemp = GetListOfNoEscapeObjects.get(summary);
+			if(sbtemp != null) {
+				//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+				sb.append(transformFuncSignature(method.getBytecodeSignature()));
+				sb.append(" ");
+				sb.append(GetListOfNoEscapeObjects.get(summary));
+				sb.append("\n");
+			}
 		}
 		try {
 			System.out.println("Trying to write to:" + p_opFile);

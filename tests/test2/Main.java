@@ -1,10 +1,4 @@
-/* Testcase 2: Check mutilevel of the polymorphic call-sites.
- * Currently if escapes at any level it makes all its dependencies and dependees escape.
- *
- * Objective: Statically the objective over here wil be at line 38 if speculate that at runtime
- * the object pointer to by o2 at line 38 will be of type ChildNode, in that case these list
- * of objects will not escape.
- */
+
 class Node {
 	public static Node global;
 	Node field1;

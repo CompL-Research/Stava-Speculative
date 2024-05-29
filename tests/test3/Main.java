@@ -21,21 +21,26 @@ class Node {
 	public static Node global;
 	Node n;
 	void bar(Node p1) {
-		Node o6 = new Node(); // <internal, 0>
-		o6.n = p1;
+		Node o5 = new Node(); // <internal, 0>
+		if(global != null) {
+			global = p1;
+		}
+		p1.n = o5;
 	}
-
 	void foobar(Node p2) {
-		Node o7;
-		Node o8 = new Node(); // <internal, 0> [Note: It should come as interesting objects]
+		Node o7 = new ChildNode(); ;
+		Node o8 = new Node();
 		if(p2 instanceof ChildNode) {
-			o7 = new ChildNode(); // <internal, 15>
+			o7.n = new Node();
+			o8 = o7.n;
+			System.out.println(o8);
 		} else {
-			o7 = new Node(); // <internal, 26>
+			global = o7;
+			o7.n = new Node();
+			o8 = o7.n;
 		}
 		o7.fb(o8); // Polymorphic CallSite
-		Node o12 = new Node();
-		o12.n = o8;
+
 	}
 	void fb(Node p3) {
 		Node o9 = new Node(); // <internal, 0>
@@ -46,11 +51,8 @@ class Node {
 
 class ChildNode extends Node {
 	void bar(Node p1) {
-		Node o5 = new Node(); // <internal, 0>
-		if(global != null) {
-			global = p1;
-		}
-		p1.n = o5;
+		Node o6 = new Node(); // <internal, 0>
+		o6.n = p1;
 	}
 	void foobar(Node p4) {
 		Node o11 = new Node(); // <internal, 0>
