@@ -9,7 +9,7 @@ tstamp() { date +[%T]; }
 # Installed path of Java 8 JDK
 #java_install_path="/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301"
 
-java_install_path="/home/adityaanand/Documents/Research-Workspace/JDK/jdk1.8.0_301"
+java_install_path="/home/adityaanand/PhD/Research-Workspace/JDK/jdk1.8.0_301"
 
 # The soot jar to be used.
 
@@ -43,4 +43,4 @@ echo -ne "$(tstamp) Compiling the Static Analyser for OSASAD...\033[0K\r"
 $java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>/dev/null
 echo -e "$(tstamp) Compiled...\033[0K\r"
 echo "$(tstamp) Generating the .res file..."
-$java_vm -Xmx10g -Xss2m -classpath $soot_path:${stava_path}/src main.Main $java_install_path false $test_path Main $output_path $2 | tee >(grep -v '^\\[Debug\\]' > $output_path/log.txt)
+$java_vm -Xmx10g -Xss2m -classpath $soot_path:${stava_path}/src main.Main $java_install_path false $test_path $2 $output_path $3 | tee >(grep -v '^\\[Debug\\]' > $output_path/log.txt)

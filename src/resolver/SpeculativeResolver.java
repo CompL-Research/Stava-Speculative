@@ -58,7 +58,7 @@ public class SpeculativeResolver extends Formatter {
 
     public static Map<SootMethod, HashMap<ObjectNode, HashMap<EscapeState, EscapeStatus>>> CVfinalES;
 
-    boolean debug = true;
+    boolean debug = false;
     public static boolean printflag = true;
     int i = 0;
     int j = 0;
@@ -243,9 +243,9 @@ public class SpeculativeResolver extends Formatter {
         for(SootMethod sm: reasonForEscape.keySet()) {
             for(ObjectNode o: reasonForEscape.get(sm).keySet()) {
                 if(!reasonForEscape.get(sm).get(o).isEmpty()) {
-                    System.out.println("Method: "+ sm + " Object: "+ o);
+                    //System.out.println("Method: "+ sm + " Object: "+ o);
                     for(EscapeState e: reasonForEscape.get(sm).get(o)) {
-                        System.out.println("Reason: "+ e);
+                        //System.out.println("Reason: "+ e);
                     }
                 }
             }
@@ -260,7 +260,7 @@ public class SpeculativeResolver extends Formatter {
     void resolveSummaries() {
         //Debug
 
-        System.out.println(" Resolution of CV's");
+        //System.out.println(" Resolution of CV's");
         // CallGraph
         CallGraph cg = Scene.v().getCallGraph();
         // Get the list of methods for which static results are generated
@@ -273,7 +273,7 @@ public class SpeculativeResolver extends Formatter {
             // For each method in lisofmethods data-structure process all the dependencies.
             for (SootMethod key : listofMethods) {
                 // [DEBUG] Var to print the debug statements.
-                debug = true;
+                //debug = true;
                 // Note: Key is the current method
                 // Proceed only if the there are dependencies available from the phase 1: static analysis
                 if (!existingSummaries.containsKey(key)) {
@@ -287,18 +287,18 @@ public class SpeculativeResolver extends Formatter {
                 //
                 for(CallSite c : PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
                     if (c.methodName.equals(key)) {
-                        System.out.println("---------------------------------------------");
-                        System.out.println("Found a method: " + c + " with polymorphic callsite.");
+                        //System.out.println("---------------------------------------------");
+                        //System.out.println("Found a method: " + c + " with polymorphic callsite.");
                         for(ObjectNode o : existingSummaries.get(key).keySet()) {
-                            System.out.println("Object: " + o);
-                            System.out.println("Summary: " + existingSummaries.get(key).get(o));
+                            //System.out.println("Object: " + o);
+                            //System.out.println("Summary: " + existingSummaries.get(key).get(o));
                             for(EscapeState e : existingSummaries.get(key).get(o).status) {
-                                System.out.println("State: " + e);
+                                //System.out.println("State: " + e);
                                 if(e instanceof ConditionalValue && ((ConditionalValue) e).object.type == ObjectType.parameter){
                                     if(!PolymorphicInvokeCounter.polymorphicInvokes.isEmpty()){
                                         for(SootMethod m : PolymorphicInvokeCounter.polymorphicInvokes.get(c)) {
                                             if(((ConditionalValue) e).method.equals(m)) {
-                                                System.out.println("Found a match");
+                                                //System.out.println("Found a match");
                                                 if(SpeculativeResolver.InterstingObjects.containsKey(key)) {
                                                     if(SpeculativeResolver.InterstingObjects.get(key).containsKey(o)) {
                                                         continue;
@@ -315,7 +315,7 @@ public class SpeculativeResolver extends Formatter {
                                 }
                             }
                         }
-                        System.out.println("---------------------------------------------");
+                        //System.out.println("---------------------------------------------");
                     }
                 }
 //                for(CallSite c: PolymorphicInvokeCounter.polymorphicInvokes.keySet()) {
@@ -333,9 +333,9 @@ public class SpeculativeResolver extends Formatter {
 //                logger.info("***************************************************************");
 //                logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
 //                logger.info("***************************************************************");
-                System.out.println("***************************************************************");
-                System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
-                System.out.println("***************************************************************");
+//                System.out.println("***************************************************************");
+//                System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+//                System.out.println("***************************************************************");
 
                 /* Get the objects in sorted order. --
                  * Sorted here means analyze parameters first and then any other type of objects.
@@ -386,8 +386,8 @@ public class SpeculativeResolver extends Formatter {
                         }
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
-                            System.out.println(" --> Current method is : " + key + "  and  Object : " + obj);
-                            System.out.println(" -----> Conditional value for object is : " + state);
+//                            System.out.println(" --> Current method is : " + key + "  and  Object : " + obj);
+//                            System.out.println(" -----> Conditional value for object is : " + state);
 //                            logger.info(" ** Current method is : " + key + "  and  Object : " + obj);
 //                            logger.info(" ** Conditional value for object is : " + state);
                             if (state instanceof ConditionalValue) {
@@ -398,13 +398,13 @@ public class SpeculativeResolver extends Formatter {
                                  * As such we are deleting the dependency.
                                  */
                                 if (cstate.object.type == ObjectType.parameter) {
-                                    System.out.println("-------> CV is of type parameter");
+//                                    System.out.println("-------> CV is of type parameter");
 //                                    logger.info("CV is of type parameter");
                                     // Method on which this CV depends
                                     SootMethod sm = cstate.getMethod();
                                     // Object on which this current object (obj) depends
                                     ObjectNode o = cstate.object;
-                                    System.out.println("-------> Sent to Method : " + sm + " and object as : " + o);
+//                                    System.out.println("-------> Sent to Method : " + sm + " and object as : " + o);
 
                                     //logger.info(" Sent to Method : " + sm + " and object as : " + o);
 
@@ -417,7 +417,7 @@ public class SpeculativeResolver extends Formatter {
                                      */
 
                                     CallSite c = new CallSite(key, cstate.BCI);
-                                    System.out.println("-------> CallSite is : " + c.toString());
+//                                    System.out.println("-------> CallSite is : " + c.toString());
                                     //logger.info("CallSite is : " + c.toString());
 
                                     /*
@@ -427,7 +427,7 @@ public class SpeculativeResolver extends Formatter {
                                      */
                                     List<ObjectNode> objects = null;
                                     if (cstate.fieldList != null) {
-                                        System.out.println("-------> Field Access");
+//                                        System.out.println("-------> Field Access");
                                         //logger.info("Field Access");
                                         Iterator<Edge> iter = cg.edgesOutOf(key);
                                         while (iter.hasNext()) {
@@ -436,7 +436,7 @@ public class SpeculativeResolver extends Formatter {
                                                 try {
                                                     objects = GetParmObjects(o, cstate.object.ref, sm,
                                                             cstate.fieldList);
-                                                    System.out.println("-------> Field Access : Object Received" + objects.toString());
+//                                                    System.out.println("-------> Field Access : Object Received" + objects.toString());
 //                                                    logger.info("Field Access : Object Received" + objects.toString());
                                                 } catch (Exception e) {
                                                     throw e;
@@ -447,16 +447,16 @@ public class SpeculativeResolver extends Formatter {
 
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {
-                                            System.out.println("-------> Objects are not null: Mapped Object " + mappedobject.toString());
+                                            //System.out.println("-------> Objects are not null: Mapped Object " + mappedobject.toString());
                                             //logger.info("Objects are not null: Mapped Object " + mappedobject.toString());
                                             if (solvedContextualSummaries.containsKey(sm)
                                                     && solvedContextualSummaries.get(sm).containsKey(mappedobject)) {
-                                                System.out.println("-------> Value:" + solvedContextualSummaries.get(sm).get(mappedobject));
+                                                //System.out.println("-------> Value:" + solvedContextualSummaries.get(sm).get(mappedobject));
                                                 //logger.info("Value:"+ solvedContextualSummaries.get(sm).get(mappedobject));
                                                 for (ContextualEscapeStatus ces : solvedContextualSummaries.get(sm)
                                                         .get(mappedobject)) {
                                                     if (ces.cescapestat.containsKey(c) && ces.doesEscape(c)) {
-                                                        System.out.println("-------> Escaping in Parameter");
+                                                        //System.out.println("-------> Escaping in Parameter");
                                                         //logger.info("Escaping in Parameter");
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
@@ -486,15 +486,15 @@ public class SpeculativeResolver extends Formatter {
                                                 && solvedContextualSummaries.get(sm).containsKey(o)) {
                                             boolean checkflag = false;
                                             if(true) {
-                                                System.out.println("-------> Not a field, sCS Value: "+ solvedContextualSummaries.get(sm).get(o));
+                                                //System.out.println("-------> Not a field, sCS Value: "+ solvedContextualSummaries.get(sm).get(o));
                                             }
                                             for (ContextualEscapeStatus ces : solvedContextualSummaries.get(sm)
                                                     .get(o)) {
-                                                 System.out.println("-------> ces value : "+ ces.toString());
+                                                 //System.out.println("-------> ces value : "+ ces.toString());
                                                 if (ces.cescapestat.containsKey(c)) {
                                                     checkflag = true;
                                                     if (ces.doesEscape(c)) {
-                                                         System.out.println("-------> Escaping in Parameter");
+                                                         //System.out.println("-------> Escaping in Parameter");
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                     } else {
@@ -510,13 +510,13 @@ public class SpeculativeResolver extends Formatter {
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                                 if(true) {
-                                                                    System.out.println("-------> No Contextual Summary: ESCAPE");
+//                                                                    System.out.println("-------> No Contextual Summary: ESCAPE");
                                                                 }
                                                     } else if (!solvedSummaries.get(sm).get(o).doesEscape()) {
                                                         solvedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
                                                             if(true) {
-                                                                System.out.println("-------> No Contextual Summary: NOESCAPE");
+//                                                                System.out.println("-------> No Contextual Summary: NOESCAPE");
                                                             }
                                                     }
                                                     else {
@@ -524,7 +524,7 @@ public class SpeculativeResolver extends Formatter {
                                                     solvedSummaries.get(key).put(obj,
                                                         new EscapeStatus(NoEscape.getInstance()));
                                                         if(true) {
-                                                            System.out.println("-------> No Contextual Summary: NOESCAPE");
+//                                                            System.out.println("-------> No Contextual Summary: NOESCAPE");
                                                         }
                                                     }
                                                 }
@@ -537,13 +537,13 @@ public class SpeculativeResolver extends Formatter {
                                                         solvedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                                 if(debug) {
-                                                                    System.out.println("-------> No Contextual Summary: ESCAPE");
+//                                                                    System.out.println("-------> No Contextual Summary: ESCAPE");
                                                                 }
                                                     } else if (!solvedSummaries.get(sm).get(o).doesEscape()) {
                                                         solvedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
                                                             if(debug) {
-                                                                System.out.println("-------> No Contextual Summary: NOESCAPE");
+//                                                                System.out.println("-------> No Contextual Summary: NOESCAPE");
                                                             }
                                                     }
                                                 } else {
@@ -551,23 +551,28 @@ public class SpeculativeResolver extends Formatter {
                                                     solvedSummaries.get(key).put(obj,
                                                         new EscapeStatus(NoEscape.getInstance()));
                                                         if(debug) {
-                                                            System.out.println("-------> No Contextual Summary: NOESCAPE");
+//                                                            System.out.println("-------> No Contextual Summary: NOESCAPE");
                                                         }
                                                 }
                                             }
                                         }
                                         if(debug) {
-                                            System.out.println("-------> No Contextual Summary");
+//                                            System.out.println("-------> No Contextual Summary");
                                         }
                                     }
 
                                     allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
                                     allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
                                     if (true) {
-                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
+//                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
                                     }
-                                    if(solvedSummaries.get(key).get(obj).doesEscape()) {
-                                        reasonForEscape.get(key).get(obj).add(cstate);
+                                    if(solvedSummaries.containsKey(key)) {
+                                      if(solvedSummaries.get(key).containsKey(obj)) {
+                                      
+                                        if(solvedSummaries.get(key).get(obj).doesEscape()) {
+                                            reasonForEscape.get(key).get(obj).add(cstate);
+                                        }
+                                      }
                                     }
                                     continue;
                                 }
@@ -579,8 +584,8 @@ public class SpeculativeResolver extends Formatter {
                                 else if (cstate.object.type == ObjectType.returnValue) {
                                     SootMethod sm = cstate.getMethod();
                                     ObjectNode o = cstate.object;
-                                    System.out.println("-------> CV is of type return and returned from method : " + sm +
-                                            " and object as : " + o);
+//                                    System.out.println("-------> CV is of type return and returned from method : " + sm +
+//                                            " and object as : " + o);
 //                                    logger.info(" CV is of type return and returned from method : " + sm +
 //                                            " and object as : " + o);
 
@@ -658,7 +663,7 @@ public class SpeculativeResolver extends Formatter {
 
                                     }
                                     if (debug) {
-                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
+//                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
                                     }
                                     // System.out.println(" Object is : " + obj + " and its Summary is : " +
                                     // solvedSummaries.get(key).get(obj));
@@ -698,7 +703,7 @@ public class SpeculativeResolver extends Formatter {
                                     }
                                     nothandled = false;
                                     if (debug) {
-                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
+//                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
                                     }
                                     if(solvedSummaries.get(key).get(obj).doesEscape()) {
                                         reasonForEscape.get(key).get(obj).add(cstate);
@@ -722,7 +727,7 @@ public class SpeculativeResolver extends Formatter {
                                 // Get all the callers of the current method (current method: "Key" which define
                                 // the object having caller, arg dependency)
                                 if (debug) {
-                                    System.out.println("Reached point 2");
+//                                    System.out.println("Reached point 2");
                                 }
                                 Iterator<Edge> iter = cg.edgesInto(key);
                                 solvedContextualSummaries.get(key).put(obj, new ArrayList<>());
@@ -731,9 +736,9 @@ public class SpeculativeResolver extends Formatter {
                                 int numberofcaller = 0;
                                 if (debug) {
                                     if (iter.hasNext()) {
-                                        System.out.println("" + iter.getClass().toString());
+//                                        System.out.println("" + iter.getClass().toString());
                                     } else {
-                                        System.out.println("Callee is null : " + iter.getClass().toString());
+//                                        System.out.println("Callee is null : " + iter.getClass().toString());
                                     }
                                 }
                                 if (!iter.hasNext()) {
@@ -746,7 +751,7 @@ public class SpeculativeResolver extends Formatter {
                                 }
                                 while (iter.hasNext()) {
                                     if (debug) {
-                                        System.out.println("Reached point 3");
+//                                        System.out.println("Reached point 3");
                                     }
                                     EscapeStatus resolvedEscapeStatus = new EscapeStatus(); // This will store the
                                     // escape status for a
@@ -776,7 +781,7 @@ public class SpeculativeResolver extends Formatter {
                                         }
                                     }
                                     if (debug) {
-                                        System.out.println("Reached point 4");
+//                                        System.out.println("Reached point 4");
                                     }
                                     List<ObjectNode> objects;
                                     try {
@@ -786,7 +791,7 @@ public class SpeculativeResolver extends Formatter {
                                         objects = GetObjects(edge.srcUnit(), parameternumber, edge.src(),
                                                 cstate.fieldList);
                                         if (debug) {
-                                            System.out.println("1. Object Received is + " + objects);
+//                                            System.out.println("1. Object Received is + " + objects);
                                         }
                                     } catch (Exception e) {
                                         // System.out.println("Cond: " + cstate + " " + cstate.object + " " +
@@ -813,11 +818,11 @@ public class SpeculativeResolver extends Formatter {
                                      **
                                      */
                                     if (debug) {
-                                        System.out.println("Reached point 5");
+//                                        System.out.println("Reached point 5");
                                     }
                                     if (objects == null || objects.isEmpty()) {
                                         if (debug) {
-                                        System.out.println("Object received is null");
+//                                        System.out.println("Object received is null");
                                         }
                                         if (solvedSummaries.containsKey(key)
                                                 && solvedSummaries.get(key).containsKey(obj)
@@ -877,8 +882,7 @@ public class SpeculativeResolver extends Formatter {
                                              */
 
                                             if (debug) {
-                                                System.out
-                                                        .println("Object received are not null: " + objects.toString());
+//                                                System.out.println("Object received are not null: " + objects.toString());
                                             }
                                             if (solvedSummaries.get(edge.src()) != null) {
                                                 if (solvedSummaries.get(edge.src()).get(x) != null) {
@@ -889,12 +893,12 @@ public class SpeculativeResolver extends Formatter {
                                                         if (reasonForEscape.containsKey(edge.src()) && reasonForEscape.get(edge.src()).containsKey(x)) {
                                                             for (EscapeState e : reasonForEscape.get(edge.src()).get(x)) {
                                                                 if (e instanceof ConditionalValue) {
-                                                                    System.out.println("Reason for escape: "+ e);
+//                                                                    System.out.println("Reason for escape: "+ e);
                                                                     if (((ConditionalValue) e).object.type != ObjectType.parameter) {
                                                                         resolvedEscapeStatus = new EscapeStatus(Escape.getInstance());
                                                                         mappedobjectescape = true;
                                                                         if (debug) {
-                                                                            System.out.println("Escaping at Case 1 in <caller,arg>: Type Non Parameter");
+//                                                                            System.out.println("Escaping at Case 1 in <caller,arg>: Type Non Parameter");
                                                                         }
                                                                     } else if (((ConditionalValue) e).object.type == ObjectType.parameter &&
                                                                             !((ConditionalValue) e).method.getName().toString().equals(key.getName().toString())) {
@@ -911,7 +915,7 @@ public class SpeculativeResolver extends Formatter {
                                                             resolvedEscapeStatus = new EscapeStatus(NoEscape.getInstance());
                                                             polymerge = true;
                                                             if (debug) {
-                                                                System.out.println("Non Escaping at Case 1 in <caller,arg> -- Poly Merge");
+                                                                //System.out.println("Non Escaping at Case 1 in <caller,arg> -- Poly Merge");
                                                             }
                                                         }
 
@@ -1124,7 +1128,7 @@ public class SpeculativeResolver extends Formatter {
                                 allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
                                 allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
                                 if (debug) {
-                                    System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
+                                    //System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
                                 }
                                 if(solvedSummaries.get(key).get(obj).doesEscape()) {
                                     reasonForEscape.get(key).get(obj).add(cstate);
@@ -1153,7 +1157,7 @@ public class SpeculativeResolver extends Formatter {
                                     nothandled = false;
                                 }
                                 if (debug) {
-                                    System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
+                                    //System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
                                 }
                                 continue;
                             }
@@ -1279,7 +1283,7 @@ public class SpeculativeResolver extends Formatter {
                         }
                         // }
                         if (debug) {
-                            System.out.println("Final Resolved Value in this iteration is : " + solvedSummaries.get(key).get(obj));
+                            //System.out.println("Final Resolved Value in this iteration is : " + solvedSummaries.get(key).get(obj));
                         }
 
                         // for (EscapeStatus es : allresolvedstatusforthisobject) {
@@ -1353,16 +1357,17 @@ public class SpeculativeResolver extends Formatter {
                         // propagateStatustofields(key, obj, visited);
                     }
                 }
+                // Newer
                 //System.out.println("Solved Summaries: "+ solvedSummaries.toString());
-                for(SootMethod sm : solvedSummaries.keySet()) {
-                    System.out.println("Method is : "+ sm.toString());
-                    System.out.println("Objects are : "+ solvedSummaries.get(sm).toString());
-                }
-                System.out.println("");
-                for(SootMethod sm : solvedContextualSummaries.keySet()) {
-                    System.out.println("Method is : "+ sm.toString());
-                    System.out.println("Objects are : "+ solvedContextualSummaries.get(sm).toString());
-                }
+//                for(SootMethod sm : solvedSummaries.keySet()) {
+//                    System.out.println("Method is : "+ sm.toString());
+//                    System.out.println("Objects are : "+ solvedSummaries.get(sm).toString());
+//                }
+//                System.out.println("");
+//                for(SootMethod sm : solvedContextualSummaries.keySet()) {
+//                    System.out.println("Method is : "+ sm.toString());
+//                    System.out.println("Objects are : "+ solvedContextualSummaries.get(sm).toString());
+//                }
                 //System.out.println("Values in solvedContextualSummaries : "+ solvedContextualSummaries.toString());
             }
             System.out.println();

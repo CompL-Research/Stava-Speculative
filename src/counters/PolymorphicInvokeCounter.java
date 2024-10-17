@@ -69,7 +69,7 @@ public class PolymorphicInvokeCounter extends BodyTransformer {
                             methods.add(method);
                         }
                         // Debug
-                        System.out.println(" Method: "+ body.getMethod()+ "BCI: "+ getBCI.get(u));
+                        //System.out.println(" Method: "+ body.getMethod()+ "BCI: "+ getBCI.get(u));
                         polymorphicInvokes.get(new CallSite(body.getMethod(), getBCI.get(u))).addAll(methods);
                         flag = true;
                     }

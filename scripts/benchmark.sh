@@ -4,7 +4,7 @@
 # Arguments: 1) name of benchmark
 # Installed path of Java 8 JDK
 
-java_install_path="/home/adityaanand/Documents/Research-Workspace/JDK/openj9-stava/openj9-base/openj9-openjdk-jdk8/build/linux-x86_64-normal-server-release/images/j2sdk-image"
+java_install_path="/home/adityaanand/PhD/Research-Workspace/JDK/jdk1.8.0_301"
 
 #java_install_path="/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301"
 # java_install_path=""

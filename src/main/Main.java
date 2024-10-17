@@ -4,6 +4,7 @@ import analyser.StaticAnalyser;
 import config.StoreEscape;
 import counters.PolymorphicInvokeCounter;
 import es.*;
+import ppg.spec.Spec;
 import ptg.ObjectNode;
 import ptg.ObjectType;
 import ptg.PointsToGraph;
@@ -108,17 +109,22 @@ public class Main {
 //						System.out.println("Method is "+ sm + " and Object: " + obj.toString());
 						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
 							if (es instanceof ConditionalValue) {
-								if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
-									boolean Suitable = Is_Suitable_Object(sm, obj);
-									//System.out.println("CV is : "+ es + " and Suitable : "+Suitable);
-									if(Suitable) {
-										if (SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
-											if (finalObjects.containsKey(sm)) {
-												finalObjects.get(sm).add(obj);
-											} else {
-												List<ObjectNode> l = new ArrayList<>();
-												l.add(obj);
-												finalObjects.put(sm, l);
+								if(SpeculativeResolver.InterstingObjects.get(sm).containsKey(obj)) {
+									if(((ConditionalValue) es).object.type != ObjectType.argument) {
+//										System.out.println("The current es is : "+ es.toString());
+										if (((ConditionalValue) es).method.getName().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName())) {
+											boolean Suitable = Is_Suitable_Object(sm, obj);
+											//System.out.println("CV is : "+ es + " and Suitable : "+Suitable);
+											if (Suitable) {
+												if (SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
+													if (finalObjects.containsKey(sm)) {
+														finalObjects.get(sm).add(obj);
+													} else {
+														List<ObjectNode> l = new ArrayList<>();
+														l.add(obj);
+														finalObjects.put(sm, l);
+													}
+												}
 											}
 										}
 									}
@@ -132,16 +138,16 @@ public class Main {
 		// List of objects that depends on these direct objects.
 
 		System.out.println();
-		System.out.println("Final Objects: " + finalObjects.toString());
+		//System.out.println("Final Objects: " + finalObjects.toSjava.awt.GraphicsEnvironment$$Lambda$1tring());
 
 		for (SootMethod sm : SpeculativeResolver.CVfinalES.keySet()) {
 			if (SpeculativeResolver.InterstingObjects.containsKey(sm)) {
 				for (ObjectNode obj : SpeculativeResolver.InterstingObjects.get(sm).keySet()) {
 					if (obj.type == ObjectType.internal && finalObjects.containsKey(sm) && finalObjects.get(sm).contains(obj)) {
-						System.out.println("******* In Method: "+ sm + " Object: " + obj.toString() + " *******");
+//						System.out.println("******* In Method: "+ sm + " Object: " + obj.toString() + " *******");
 						SpeculativeResolver.count++;
 						for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
-							System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es));
+							//System.out.println("CV is : " + es + " and its Status is : " + SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es));
 						}
 					}
 				}
@@ -149,11 +155,14 @@ public class Main {
 		}
 
 		System.out.println();
+		int number_obj = 0;
 		// Add new Dependency to these polymorphic call-site objects.
 		// First find the receiver object
+		Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT = new HashMap<>();
 		for(SootMethod sm : finalObjects.keySet()) {
 			for(ObjectNode obj : finalObjects.get(sm)) {
 				int bci;
+				boolean flag = false;
 				SootMethod caller_method;
 				SootClass type;
 				ObjectNode ob = null;
@@ -182,8 +191,51 @@ public class Main {
 								if(ob != null && ob.type != ObjectType.internal) {
 
 								}
-								PolymorphicConditionalValue pcv = new PolymorphicConditionalValue(obj.ref, caller_method, ob.ref, bci, type);
-								System.out.println("New CV Generated: "+ sm + " ["+ pcv.toString() + "]");
+								boolean tmpflag = false;
+								if(!SPEC_OPT.containsKey(sm)) {
+									List<SootClass> type_tmp = new ArrayList<>();
+									type_tmp.add(type);
+									List<Integer> obj_tmp = new ArrayList<>();
+									obj_tmp.add(obj.ref);
+									List<PolymorphicConditionalValue> tmp_pcv = new ArrayList<>();
+									PolymorphicConditionalValue pcv = new PolymorphicConditionalValue(bci, type_tmp, obj_tmp);
+									//System.out.println("First time: Method: "+sm.toString() + "BCI: "+ bci + "type: "+ type_tmp.toString() + "obj: "+ obj.toString());
+									tmp_pcv.add(pcv);
+									SPEC_OPT.put(sm,tmp_pcv);
+								} else {
+									List<PolymorphicConditionalValue> plist = SPEC_OPT.get(sm);
+									PolymorphicConditionalValue existing = null;
+
+									for (PolymorphicConditionalValue p : plist) {
+										if (p.BCI == bci) {
+											existing = p;
+											break;
+										}
+									}
+
+									if (existing != null) {
+										if (!existing.types.contains(type)) {
+											existing.types.add(type);
+											tmpflag = true;
+										}
+										if (!existing.object.contains(obj.ref)) {
+											existing.object.add(obj.ref);
+											tmpflag = true;
+										}
+									} else {
+										List<Integer> obj_tmp = new ArrayList<>();
+										obj_tmp.add(obj.ref);
+										List<SootClass> type_tmp = new ArrayList<>();
+										type_tmp.add(type);
+										PolymorphicConditionalValue pcv = new PolymorphicConditionalValue(bci, type_tmp, obj_tmp);
+										//System.out.println("BCI was not there!!  : Method: " + sm.toString() + " BCI: " + bci + " type: " + type_tmp.toString() + " obj: " + obj.toString());
+										plist.add(pcv);
+									}
+								}
+								if(!flag) {
+									number_obj++;
+									flag = true;
+								}
 								//SpeculativeResolver.solvedSummaries.get(sm).get(obj).status.add(pcv);
 							}
 						}
@@ -192,10 +244,20 @@ public class Main {
 
 			}
 		}
-		System.out.println();
+//		System.out.println();
+//		for(SootMethod sm : SPEC_OPT.keySet()) {
+//			System.out.println("Method is : "+ sm.toString());
+//			for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+//				System.out.println(p.toString());
+//			}
+//		}
+
+		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
 		if (args[5] != null && args[5].equals("inline")) {
 			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+		} else if (args[5] != null && args[5].equals("spec_opt")) {
+			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
 		} else {
 			printContResForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
 		}
@@ -212,15 +274,27 @@ public class Main {
 	private static boolean Is_Suitable_Object(SootMethod sm, ObjectNode obj) {
 			if (SpeculativeResolver.InterstingObjects.containsKey(sm)) {
 				for (EscapeState es : SpeculativeResolver.CVfinalES.get(sm).get(obj).keySet()) {
-					if(SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
-						if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
+					if(SpeculativeResolver.CVfinalES.containsKey(sm)) {
+						if (SpeculativeResolver.CVfinalES.get(sm).containsKey(obj)) {
+							if (SpeculativeResolver.CVfinalES.get(sm).get(obj).containsKey(es) && SpeculativeResolver.CVfinalES.get(sm).get(obj).get(es).doesEscape()) {
+
+
+							if (es instanceof ConditionalValue && SpeculativeResolver.InterstingObjects.get(sm).containsKey(obj) && ((ConditionalValue) es).object.type != ObjectType.argument) {
+								if (((ConditionalValue) es).method.getName().toString().equals(SpeculativeResolver.InterstingObjects.get(sm).get(obj).getName().toString())) {
 //							System.out.println("Fine in Suitable Object: "+obj);
-							continue;
-						} else {
+									continue;
+								} else {
 //							System.out.println("Not Suitable Object: "+obj);
-							return false;
+									return false;
+								}
+							} else {
+								return false;
+							}
 						}
 					}
+					}
+
+
 				}
 			}
 		return true;
@@ -448,6 +522,78 @@ public class Main {
 			//}
 
 		}
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
+	static void printContReswithSPECTForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+								   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+								   String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					if(SPEC_OPT.containsKey(method)) {
+						for(SootMethod sm : SPEC_OPT.keySet()) {
+							if(method.equals(sm)) {
+								sb.append("[");
+								for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+									sb.append(p.toString());
+								}
+								sb.append("]");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					for(SootMethod sm : SPEC_OPT.keySet()) {
+						int count = 0;
+						if(method.equals(sm)) {
+							sb.append("[");
+							for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+								count++;
+								if(count > 1) {
+									sb.append(" | ");
+								}
+								sb.append(p.toString());
+							}
+							sb.append("]");
+						}
+					}
+					sb.append("\n");
+				}
+			}
+		}
+
 		try {
 			System.out.println("Trying to write to:" + p_opFile);
 			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),

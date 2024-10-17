@@ -7,5 +7,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jaxen-1.1.6" level="project" />
+    <orderEntry type="library" name="cassandra" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="xercesImpl-2.12.0.SP03" level="project" />
+    <orderEntry type="library" name="jar" level="project" />
+    <orderEntry type="library" name="fop" level="project" />
+    <orderEntry type="library" name="build" level="project" />
+    <orderEntry type="library" name="h2o" level="project" />
+    <orderEntry type="library" name="rt" level="project" />
+    <orderEntry type="library" name="sunflow-0.07.2" level="project" />
+    <orderEntry type="library" name="xerces" level="project" />
+    <orderEntry type="library" name="xom-1.3.7" level="project" />
   </component>
 </module>
