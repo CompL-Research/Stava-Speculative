@@ -25,14 +25,22 @@ class SpecOpt {
             } else {
                 o2 = new SpecOpt();
             }
-            o2.bar(new SpecOpt());// Callsite 2 with two types: SpecOpt and Child.
+            new SpecOpt().bar(new SpecOpt());
+            o2.bar(new SpecOpt());// Callsite 2 with three types: SpecOpt, Child and Child2.
+            SpecOpt o3 = new SpecOpt().foobar(new SpecOpt());
         }
     }
 
     void bar(SpecOpt p1) {
         SpecOpt o3 = new SpecOpt();
-        o3.f1 = p1;
+        p1.f1 = new SpecOpt();
+        p1.f1.f1 = new SpecOpt();
     }
+     SpecOpt foobar (SpecOpt p2) {
+        p2.f1 = new SpecOpt();
+        return p2;
+     }
+
 }
 
 class Child extends SpecOpt {
@@ -42,7 +50,7 @@ class Child extends SpecOpt {
     }
     void bar(SpecOpt p3) {
         SpecOpt o4 = new SpecOpt();
-        o4.f1 = p3;
+        p3.f1 = o4;
     }
 }
 
@@ -53,7 +61,6 @@ class Child2 extends SpecOpt {
         o2.bar(new SpecOpt());
     }
     void bar(SpecOpt p3) {
-
         SpecOpt o4 = new SpecOpt();
         global = p3;
         p3.f1 = new SpecOpt();

@@ -30,7 +30,13 @@ java_vm="${java_install_path}/bin/java"
 # find $test_path -type f -name '*.class' -delete
 # echo compiling test...
 echo -ne "$(tstamp) Compiling Test-Case: $1 \033[0K\r"
-$java_compiler -cp $test_path ${test_path}/*.java  2>/dev/null
+error_output=$($java_compiler -cp $test_path ${test_path}/*.java 2>&1)
+if [ $? -ne 0 ]; then
+  echo "!!! Error in compiling Test CASE"
+  echo "$error_output"  # Print the captured error output
+  exit 1
+fi
+
 echo -e "$(tstamp) Compiled Test-Case: $1 \033[0K\r"
 
 find ${stava_path}/src -type f -name '*.class' -delete

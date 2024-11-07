@@ -252,14 +252,21 @@ public class Main {
 //			}
 //		}
 
+		for(CallSite cs :  SpeculativeResolver.inlineSummaries.keySet()) {
+			System.out.println("CallSite: "+ cs.toString());
+			for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
+				System.out.println("SootMethod: "+ sm.toString() + "List of BCIs: "+ SpeculativeResolver.inlineSummaries.get(cs).get(sm).toString());
+			}
+		}
+
 		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
 		if (args[5] != null && args[5].equals("inline")) {
 			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
 		} else if (args[5] != null && args[5].equals("spec_opt")) {
-			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
+			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4],SPEC_OPT);
 		} else {
-			printContResForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+			printContResForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4]);
 		}
 
 
@@ -533,7 +540,6 @@ public class Main {
 		}
 	}
 	static void printContReswithSPECTForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
-								   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
 								   String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
 		// Open File
 		Path p_ipDir = Paths.get(ipDir);
@@ -605,7 +611,6 @@ public class Main {
 		}
 	}
 	static void printContResForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
-								   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
 								   String ipDir, String opDir) {
 		// Open File
 		Path p_ipDir = Paths.get(ipDir);
@@ -656,6 +661,7 @@ public class Main {
 			if(method.toString().contains("methodType")) {
 				continue;
 			}
+
 			//if(!method.isJavaLibraryMethod()) {
 			HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
 			String sbtemp = GetListOfNoEscapeObjects.get(summary);
@@ -669,6 +675,7 @@ public class Main {
 				i = 0;
 				List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
 				for(CallSite cs : c) {
+					System.out.println("CS is : "+ cs.toString());
 					sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 				}
 				sb.append("]");

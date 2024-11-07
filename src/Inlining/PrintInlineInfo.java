@@ -17,8 +17,11 @@ public class PrintInlineInfo {
             for(CallSite cs : inlineSummary.keySet()) {
                 if(cs.methodName.equals(method)) {
                         c2.add(cs);
+                        c1.add(cs.BCI);
+                        System.out.println("Method is :"+ method.toString());
                 }
             }
+            System.out.println("C1: "+ c1.toString());
             Collections.sort(c1);
             for(Integer i : c1) {
                 for(CallSite c : c2) {
