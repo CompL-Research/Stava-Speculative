@@ -28,6 +28,7 @@ import java.util.regex.*;
 
 
 public class StaticAnalyser extends BodyTransformer {
+
 	private boolean allNonEscaping;
 	public static Map<SootMethod, PointsToGraph> ptgs;
 	public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries;

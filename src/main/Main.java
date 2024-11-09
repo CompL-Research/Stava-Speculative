@@ -79,7 +79,7 @@ public class Main {
 		System.out.println("**********************************************************");
 		long res_start = System.currentTimeMillis();
 
-		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
+//		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
 
 		System.out.println("2. Resolving the Dependencies : ");
 		SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,

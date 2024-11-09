@@ -49,4 +49,6 @@ echo -ne "$(tstamp) Compiling the Static Analyser for OSASAD...\033[0K\r"
 $java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>/dev/null
 echo -e "$(tstamp) Compiled...\033[0K\r"
 echo "$(tstamp) Generating the .res file..."
-$java_vm -Xmx10g -Xss2m -classpath $soot_path:${stava_path}/src main.Main $java_install_path false $test_path $2 $output_path $3 | tee >(grep -v '^\\[Debug\\]' > $output_path/log.txt)
+$java_vm -Xmx10g -Xss2m -classpath $soot_path:${stava_path}/src main.Main $java_install_path false $test_path $2 $output_path $3 | tee >(grep -v '^\\[INFO\\]' > $output_path/log.txt)
+$java_compiler ${stava_path}/src/utils/LogCleaner.java
+$java_vm ${stava_path}/src/utils/LogCleaner $stava_path

@@ -63,6 +63,7 @@ public class SpeculativeResolver extends Formatter {
     int i = 0;
     int j = 0;
     public static Map<SootMethod, Map<ObjectNode, Boolean>> storedMergedStatus = new HashMap<>();
+
     public boolean fieldEscape = false;
     public boolean globalEscape = false;
     // Used for logging
@@ -78,23 +79,21 @@ public class SpeculativeResolver extends Formatter {
     public SpeculativeResolver(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> existingSummaries,
                                Map<SootMethod, PointsToGraph> ptgs,
                                List<SootMethod> escapingMethods) {
-        // Set the logger to write logs to a file named debug.log
+
         FileHandler fh;
         try {
             fh = new FileHandler("../logs/debug.log");
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);} catch (Exception e) {
-            logger.log(Level.SEVERE, "Error creating log file", e);
+            logger.log(Level.FINE, "Error creating log file", e);
         }
 
-
-
-        // We get three things from static analysis
-        // 1. The summaries (Escape Statuses)
-        // 2. Points to graph
-        // 3. Methods which do not have bci
-
+        /* We got three things from static analysis
+         * 1. The summaries (Escape Statuses)
+         * 2. Points to graph
+         * 3. Methods which do not have bci
+        */
         for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> ent : existingSummaries.entrySet()) {
             // if (!ent.getKey().isJavaLibraryMethod()) {
             allcvs.put(ent.getKey(), new HashMap<>());
@@ -112,34 +111,34 @@ public class SpeculativeResolver extends Formatter {
         SpeculativeResolver.existingSummaries = existingSummaries;
         this.ptgs = ptgs;
         this.noBCIMethods = escapingMethods;
+
         /*
-         * Debug Code
+         * Debug Code : PRINT STATIC ANALYSIS AND PTG
          */
-        // if (debug) {
-        // System.out.println(" 1. SUMMARIES : STATIC ANALYSIS");
-        // for (SootMethod m : existingSummaries.keySet()) {
-        // if (!m.isJavaLibraryMethod()) {
-        // System.out.println("Method : " + m);
-        // for (ObjectNode o : existingSummaries.get(m).keySet()) {
-        // System.out.println(" For object : " + o);
-        // System.out.println(" Summaries : ");
-        // System.out.println(existingSummaries.get(m).get(o).status);
-        // }
-        // System.out.println("----------");
-        // }
-        // }
-        // //System.out.println(this.existingSummaries);
-        // System.out.println("***************************************");
-        // System.out.println(" 2. POINTS TO GRAPH : STATIC ANALYSIS");
-        // for (SootMethod method : this.ptgs.keySet()) {
-        // if (!method.isJavaLibraryMethod()) {
-        // System.out.println("Method : " + method);
-        // System.out.println("Points to graph : ");
-        // System.out.println(this.ptgs.get(method).toString());
-        // }
-        // }
-        // System.out.println("----------");
-        // }
+         if (debug) {
+             logger.info(" 1. SUMMARIES : STATIC ANALYSIS");
+            for (SootMethod m : existingSummaries.keySet()) {
+                if (!m.isJavaLibraryMethod()) {
+                    logger.info("Method : " + m);
+                    for (ObjectNode o : existingSummaries.get(m).keySet()) {
+                        logger.info(" For object : " + o);
+                        logger.info(" Summaries : ");
+                        logger.info("\t"+ existingSummaries.get(m).get(o).status);
+                    }
+                    logger.info("----------");
+                }
+            }
+            logger.info("***************************************");
+            logger.info(" 2. POINTS TO GRAPH : STATIC ANALYSIS");
+            for (SootMethod method : this.ptgs.keySet()) {
+                if (!method.isJavaLibraryMethod()) {
+                    logger.info("Method : " + method);
+                    logger.info("Points to graph : ");
+                    logger.info(this.ptgs.get(method).toString());
+                }
+            }
+             logger.info("----------");
+         }
 
         // Initializing the maps
 
@@ -160,73 +159,40 @@ public class SpeculativeResolver extends Formatter {
                 ObjectNode obj = e.getKey();
                 q.put(obj, ResolutionStatus.UnAttempted);
             }
-//            resolutionStatus.put(method, q);
-
             solvedSummaries.put(method, new HashMap<>());
             solvedContextualSummaries.put(method, new HashMap<>());
             solvedContextualSummaries2.put(method, new HashMap<>());
         }
+
         /*
          * Next, we traverse all function calls and add mapping from caller to the
-         * objects passed. We are just moving towards inter-procedural resolution :P
-         *
+         * objects passed. We are just moving towards inter-procedural resolution.
          */
-        // for (SootMethod sm : existingSummaries.keySet()) {
-        //     solvedSummaries.put(sm, new HashMap<>());
-        //     for(ObjectNode obj : existingSummaries.get(sm).keySet()) {
-        //         //System.out.println("Object Type: "+ obj.toString());
-        //         if(sm.isJavaLibraryMethod()) {
-        //             solvedSummaries.get(sm).put(obj, new EscapeStatus(Escape.getInstance()));
-        //         } else {
-        //             solvedSummaries.get(sm).put(obj, new EscapeStatus(NoEscape.getInstance()));
-        //         }
-        //     }
-        // }
+
         resolveSummaries();
 
-        // for (CallSite c : inlineSummaries.keySet()) {
-        //     // if (!c.methodName.isJavaLibraryMethod()) {
-        //     if (!inlineSummaries.get(c).isEmpty()) {
-        //         for (SootMethod s : inlineSummaries.get(c).keySet()) {
-        //             // for(SootMethod sm: solvedSummaries.get())
-        //             ArrayList<Integer> arr = new ArrayList<>();
-        //             for (Map.Entry<ObjectNode, EscapeStatus> entry : solvedSummaries.get(s).entrySet()) {
-        //                 ObjectNode obj = entry.getKey();
-        //                 if (obj.type != ObjectType.internal)
-        //                     continue;
-        //                 EscapeStatus es = entry.getValue();
-        //                 if (es.containsNoEscape())
-        //                     arr.add(obj.ref);
-        //             }
-        //             for (Integer i : arr) {
-        //                 inlineSummaries.get(c).get(s).add(i);
-        //             }
-        //         }
-        //     }
-        //     // }jh
-        // }
-
         /*
-         * Debug Code for printing the final result
+         * Debug Code : PRINT FINAL INLINING CODE
          */
 
-        // if (debug) {
-        // System.out.println("Inline Summaries");
-        // for (CallSite c : inlineSummaries.keySet()) {
-        // if (!c.methodName.isJavaLibraryMethod()) {
-        // if (!inlineSummaries.get(c).isEmpty()) {
-        // System.out.println("CallSite : <" + c.methodName + "," + c.BCI + ">");
-        // for (SootMethod s : inlineSummaries.get(c).keySet()) {
-        // System.out.println(s + " can be inlined at bci " + c.BCI);
-        // for (Integer i2 : inlineSummaries.get(c).get(s)) {
-        // System.out.print(" with objects : " + i2);
-        // }
-        // System.out.println("");
-        // }
-        // System.out.println("");
-        // }
-        // }
-        // }
+         if (debug) {
+             System.out.println("Inline Summaries");
+             for (CallSite c : inlineSummaries.keySet()) {
+                 if (!c.methodName.isJavaLibraryMethod()) {
+                     if (!inlineSummaries.get(c).isEmpty()) {
+                         System.out.println("CallSite : <" + c.methodName + "," + c.BCI + ">");
+                         for (SootMethod s : inlineSummaries.get(c).keySet()) {
+                             System.out.println(s + " can be inlined at bci " + c.BCI);
+                             for (Integer i2 : inlineSummaries.get(c).get(s)) {
+                                 System.out.print(" with objects : " + i2);
+                             }
+                             System.out.println("");
+                         }
+                         System.out.println("");
+                     }
+                 }
+             }
+         }
 
 //        // Final Result:
 //        logger.info("\n **************FINAL RESULT ***************** \n");
@@ -243,9 +209,9 @@ public class SpeculativeResolver extends Formatter {
         for(SootMethod sm: reasonForEscape.keySet()) {
             for(ObjectNode o: reasonForEscape.get(sm).keySet()) {
                 if(!reasonForEscape.get(sm).get(o).isEmpty()) {
-                    //System.out.println("Method: "+ sm + " Object: "+ o);
+                    System.out.println("Method: "+ sm + " Object: "+ o);
                     for(EscapeState e: reasonForEscape.get(sm).get(o)) {
-                        //System.out.println("Reason: "+ e);
+                        System.out.println("Reason: "+ e);
                     }
                 }
             }
@@ -330,9 +296,11 @@ public class SpeculativeResolver extends Formatter {
 //                    System.out.println(key.toString());
 //                    debug = true;
 //                }
-//                logger.info("***************************************************************");
-//                logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
-//                logger.info("***************************************************************");
+                if(debug) {
+                    logger.info("***************************************************************");
+                    logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+                    logger.info("***************************************************************");
+                }
 //                System.out.println("***************************************************************");
 //                System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
 //                System.out.println("***************************************************************");
