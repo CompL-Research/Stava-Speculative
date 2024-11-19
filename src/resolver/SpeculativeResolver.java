@@ -206,16 +206,17 @@ public class SpeculativeResolver extends Formatter {
 //                logger.info("*************************************** \n");
 //            }
 //        }
-        for(SootMethod sm: reasonForEscape.keySet()) {
-            for(ObjectNode o: reasonForEscape.get(sm).keySet()) {
-                if(!reasonForEscape.get(sm).get(o).isEmpty()) {
-                    System.out.println("Method: "+ sm + " Object: "+ o);
-                    for(EscapeState e: reasonForEscape.get(sm).get(o)) {
-                        System.out.println("Reason: "+ e);
-                    }
-                }
-            }
-        }
+
+//        for(SootMethod sm: reasonForEscape.keySet()) {
+//            for(ObjectNode o: reasonForEscape.get(sm).keySet()) {
+//                if(!reasonForEscape.get(sm).get(o).isEmpty()) {
+//                    System.out.println("Method: "+ sm + " Object: "+ o);
+//                    for(EscapeState e: reasonForEscape.get(sm).get(o)) {
+//                        System.out.println("Reason: "+ e);
+//                    }
+//                }
+//            }
+//        }
 
     }
 
@@ -349,9 +350,9 @@ public class SpeculativeResolver extends Formatter {
                         if(!reasonForEscape.get(key).containsKey(obj)) {
                             reasonForEscape.get(key).put(obj, new ArrayList<>());
                         }
-                        if(!reasonForEscape.get(key).containsKey(obj)) {
-                            reasonForEscape.get(key).put(obj, new ArrayList<>());
-                        }
+//                        if(!reasonForEscape.get(key).containsKey(obj)) {
+//                            reasonForEscape.get(key).put(obj, new ArrayList<>());
+//                        }
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
 //                            System.out.println(" --> Current method is : " + key + "  and  Object : " + obj);
@@ -1338,7 +1339,7 @@ public class SpeculativeResolver extends Formatter {
 //                }
                 //System.out.println("Values in solvedContextualSummaries : "+ solvedContextualSummaries.toString());
             }
-            System.out.println();
+//            System.out.println();
             listofMethods.clear();
             listofMethods.addAll(tmpWorklistofMethods);
 //            System.out.println("Methods getting re-analyzed " + listofMethods.toString());

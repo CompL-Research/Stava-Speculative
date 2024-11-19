@@ -217,7 +217,7 @@ public class ContextualResolver {
     // to parameter passed.
 
     void AddCallerSummaries() {
-        System.out.println("Coming here");
+//        System.out.println("Coming here");
         // CallGraph
         CallGraph cg = Scene.v().getCallGraph();
         // Get the list of methods for which static results are generated

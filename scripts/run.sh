@@ -29,7 +29,8 @@ java_vm="${java_install_path}/bin/java"
 
 # find $test_path -type f -name '*.class' -delete
 # echo compiling test...
-echo -ne "$(tstamp) Compiling Test-Case: $1 \033[0K\r"
+echo -ne "$(tstamp) \e[32mCompiling Test-Case: $1 \033[0K\r\e[0m"
+#rm $test_path ${test_path}/*.class 2>&1
 error_output=$($java_compiler -cp $test_path ${test_path}/*.java 2>&1)
 if [ $? -ne 0 ]; then
   echo "!!! Error in compiling Test CASE"
@@ -37,7 +38,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo -e "$(tstamp) Compiled Test-Case: $1 \033[0K\r"
+echo -e "$(tstamp) \e[32mCompiled Test-Case: $1 \033[0K\r\e[0m"
 
 find ${stava_path}/src -type f -name '*.class' -delete
 find $output_path -type f -name '*.info' -delete
@@ -45,10 +46,13 @@ find $output_path -type f -name '*.res' -delete
 find $output_path -type f -name 'stats.txt' -delete
 find ${stava_path}/logs -type f -name '*.log' -delete
 
-echo -ne "$(tstamp) Compiling the Static Analyser for OSASAD...\033[0K\r"
+echo -ne "$(tstamp) \e[32mCompiling the Static Analyser for OSASAD...\033[0K\r\e[0m"
 $java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>/dev/null
-echo -e "$(tstamp) Compiled...\033[0K\r"
-echo "$(tstamp) Generating the .res file..."
+echo -e "$(tstamp) \e[32mCompiled...\033[0K\r\e[0m"
+echo -e "$(tstamp) \e[32mGenerating the .res file...\e[0m"
+echo -e "\e[32m==================================================================\e[0m"
 $java_vm -Xmx10g -Xss2m -classpath $soot_path:${stava_path}/src main.Main $java_install_path false $test_path $2 $output_path $3 | tee >(grep -v '^\\[INFO\\]' > $output_path/log.txt)
-$java_compiler ${stava_path}/src/utils/LogCleaner.java
-$java_vm ${stava_path}/src/utils/LogCleaner $stava_path
+echo -e "\e[32m==================================================================\e[0m"
+
+#$java_compiler ${stava_path}/src/utils/LogCleaner.java
+#$java_vm ${stava_path}/src/utils/LogCleaner $stava_path

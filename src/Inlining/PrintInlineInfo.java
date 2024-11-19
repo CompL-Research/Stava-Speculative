@@ -18,10 +18,10 @@ public class PrintInlineInfo {
                 if(cs.methodName.equals(method)) {
                         c2.add(cs);
                         c1.add(cs.BCI);
-                        System.out.println("Method is :"+ method.toString());
+//                        System.out.println("Method is :"+ method.toString());
                 }
             }
-            System.out.println("C1: "+ c1.toString());
+//            System.out.println("C1: "+ c1.toString());
             Collections.sort(c1);
             for(Integer i : c1) {
                 for(CallSite c : c2) {
@@ -41,7 +41,7 @@ public class PrintInlineInfo {
         if(Main.i == 0){
             _ret.append("");
         } else{
-            _ret.append(" |");
+            _ret.append(" | ");
         }
 
         _ret.append(c.BCI);
@@ -53,7 +53,7 @@ public class PrintInlineInfo {
                 _ret.append(" ");
                 k++;
             } else {
-                _ret.append(", ");
+                _ret.append(" ! ");
             }
             _ret.append(transformFuncSignature(e.getKey().getBytecodeSignature()));
             ArrayList<Integer> arr = new ArrayList<>(e.getValue());

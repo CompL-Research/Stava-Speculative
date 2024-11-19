@@ -74,21 +74,23 @@ public class Main {
 		// soot.Main.main(sootArgs);
 
 		long analysis_end = System.currentTimeMillis();
-		System.out.println(" CV and PTG(s) Generated!");
-		System.out.println(" Time Taken: " + (analysis_end - analysis_start) / 1000F);
+		System.out.println(" :> CV and PTG(s) Generated!");
+		System.out.println(" :> Time Taken in phase 1: [" + (analysis_end - analysis_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
 		long res_start = System.currentTimeMillis();
 
-//		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
+		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
 
-		System.out.println("2. Resolving the Dependencies : ");
+		System.out.println(" 2. Resolving the Dependencies: ");
 		SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
 				StaticAnalyser.ptgs,
 				StaticAnalyser.noBCIMethods);
 		long res_end = System.currentTimeMillis();
-		System.out.println(" Resolution is done");
-		System.out.println(" Time Taken in phase 1:" + (analysis_end - analysis_start) / 1000F);
-		System.out.println(" Time Taken in phase 2:" + (res_end - res_start) / 1000F);
+		System.out.println(" :> Resolution is done!");
+		System.out.println(" :> Time Taken in phase 2: [" + (res_end - res_start) / 1000F + "]seconds");
+		System.out.println("**********************************************************");
+		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + "]seconds");
+		System.out.println("**********************************************************");
 
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.solvedSummaries);
 
@@ -137,7 +139,7 @@ public class Main {
 		}
 		// List of objects that depends on these direct objects.
 
-		System.out.println();
+//		System.out.println();
 		//System.out.println("Final Objects: " + finalObjects.toSjava.awt.GraphicsEnvironment$$Lambda$1tring());
 
 		for (SootMethod sm : SpeculativeResolver.CVfinalES.keySet()) {
@@ -252,12 +254,12 @@ public class Main {
 //			}
 //		}
 
-		for(CallSite cs :  SpeculativeResolver.inlineSummaries.keySet()) {
-			System.out.println("CallSite: "+ cs.toString());
-			for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
-				System.out.println("SootMethod: "+ sm.toString() + "List of BCIs: "+ SpeculativeResolver.inlineSummaries.get(cs).get(sm).toString());
-			}
-		}
+//		for(CallSite cs :  SpeculativeResolver.inlineSummaries.keySet()) {
+//			System.out.println("CallSite: "+ cs.toString());
+//			for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
+//				System.out.println("SootMethod: "+ sm.toString() + "List of BCIs: "+ SpeculativeResolver.inlineSummaries.get(cs).get(sm).toString());
+//			}
+//		}
 
 		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
@@ -265,6 +267,8 @@ public class Main {
 			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
 		} else if (args[5] != null && args[5].equals("spec_opt")) {
 			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4],SPEC_OPT);
+		} else if (args[5] != null && args[5].equals("specoptini")) {
+			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.solvedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
 		} else {
 			printContResForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4]);
 		}
@@ -422,7 +426,10 @@ public class Main {
 			output.append("PTG:\n");
 			output.append(ptg.toString());
 			output.append("\nSummary\n");
-			output.append(summaries.get(method).toString() + "\n");
+			for(ObjectNode sm : summaries.get(method).keySet()) {
+				output.append("Object: "+ sm + " "+ summaries.get(method).get(sm).toString() + "\n");
+			}
+//			output.append(summaries.get(method).toString() + "\n");
 			output.append("**************************************** \n");
 			try {
 				Files.write(p_opFile, output.toString().getBytes(StandardCharsets.UTF_8),
@@ -610,6 +617,106 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	static void printContReswithSPECTAndInlineForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+											String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+//		System.out.println("Coming here");
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					if(SPEC_OPT.containsKey(method)) {
+						for(SootMethod sm : SPEC_OPT.keySet()) {
+							int count = 0;
+							if(method.equals(sm)) {
+								sb.append("[");
+								for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+									count ++;
+									if(count > 1) {
+										sb.append(" | ");
+									}
+									sb.append(p.toString());
+								}
+								sb.append("]");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
+
+					sb.append(" ! ");
+					sb.append("[");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+//						System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("]");
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					for(SootMethod sm : SPEC_OPT.keySet()) {
+						int count = 0;
+						if(method.equals(sm)) {
+							sb.append("[");
+							for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+								count++;
+								if(count > 1) {
+									sb.append(" | ");
+								}
+								sb.append(p.toString());
+							}
+							sb.append("]");
+						}
+					}
+					sb.append(" ! ");
+					sb.append("[");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+						System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("]");
+					sb.append("\n");
+				}
+			}
+		}
+
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
+
+
+
+
 	static void printContResForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
 								   String ipDir, String opDir) {
 		// Open File
