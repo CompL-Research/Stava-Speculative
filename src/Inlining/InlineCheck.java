@@ -16,7 +16,7 @@ import java.util.*;
 public class InlineCheck {
     public static void inlineinfo(SootMethod key, ObjectNode obj) {
         /*
-         * We got three parameters
+         * We got two parameters
          *      i) the current method and
          *     ii) the current object (type of object is local always)
          * Our objective is to find out that from all the places from which this method is can be
@@ -24,9 +24,9 @@ public class InlineCheck {
          * allocated on the caller's stack or not.
          */
         // Get all the callers of this method
-        //System.out.println("Inline Checking");
+        System.out.println("Inline Checking");
         CallGraph cg = Scene.v().getCallGraph();
-        Iterator<Edge> it = cg.edgesInto(key);
+        Iterator<Edge> it = cg.edgesInto(key); // Get all the methods that call the current method.
         while (it.hasNext()) {
             HashSet<Integer> setofbj = new HashSet<>();
             Edge edge = it.next();

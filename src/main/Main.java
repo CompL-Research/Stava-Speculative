@@ -623,7 +623,8 @@ public class Main {
 		// Open File
 		Path p_ipDir = Paths.get(ipDir);
 		Path p_opDir = Paths.get(opDir);
-//		System.out.println("Coming here");
+		System.out.println("Coming here");
+		System.out.println("The inline Summary: "+ inlinesummaries.toString());
 		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
 		StringBuilder sb = new StringBuilder();
 		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
@@ -665,7 +666,7 @@ public class Main {
 					i = 0;
 					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
 					for(CallSite cs : c) {
-//						System.out.println("CS is : "+ cs.toString());
+						System.out.println("CS is : "+ cs.toString());
 						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 					}
 					sb.append("]");

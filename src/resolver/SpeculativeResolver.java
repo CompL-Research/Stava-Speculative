@@ -175,7 +175,7 @@ public class SpeculativeResolver extends Formatter {
          * Debug Code : PRINT FINAL INLINING CODE
          */
 
-         if (debug) {
+         if (true) {
              System.out.println("Inline Summaries");
              for (CallSite c : inlineSummaries.keySet()) {
                  if (!c.methodName.isJavaLibraryMethod()) {
