@@ -1,2 +1,1 @@
 Main.main([Ljava/lang/String;)V [8]
-Main.bar(LNode;)V [0]

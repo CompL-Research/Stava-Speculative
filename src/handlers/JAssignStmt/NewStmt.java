@@ -45,6 +45,7 @@ public class NewStmt {
 		// check if rhs is runnable
 		Value rhs = ((JAssignStmt) u).getRightOp();
 		Value lhs = ((JAssignStmt) u).getLeftOp();
+//		System.out.println("lhs: "+ lhs.getType() + " rhs: "+  rhs.getType());
 		EscapeStatus es = new EscapeStatus();
 		if (IsMultiThreadedClass.check(((JNewExpr) rhs).getBaseType().getSootClass())) es.setEscape();
 

@@ -1,29 +1,17 @@
+// Check handling of inlining case
 
 public class Main {
 	public static Node A;
+
 	public static void main(String[] args) {
 		Node B = new Node(); // <internal,0>
         Node C = new Node(); // <internal,8>
+		A = B;
 		foo(B);
-        bar(B);
-        func(B);
+		foo(C);
 	}
 
-	public static void foo(Node p1){
-        Node D = new Node();
-		bar(D);
-		A = p1;
-		p1.n = D;
-	}
-
-	public static void bar(Node p2) {
-		Node F = new Node(); // <internal,0>
-		//p2 = F;
-	}
-
-    public static void func(Node p3){
-        //Node G = new Node();
-        bar(p3);
-    }
-	
+	public static void foo(Node p1) { bar(p1); }
+	public static void bar(Node p2) { foobar(p2); }
+	public static void foobar(Node p3) { foo(p3); }
 }

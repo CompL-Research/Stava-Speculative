@@ -1,16 +1,17 @@
 package utils;
 
+import soot.Local;
 import soot.Unit;
 import soot.Value;
 import soot.ValueBox;
-import soot.jimple.internal.JNewArrayExpr;
-import soot.jimple.internal.JNewMultiArrayExpr;
+import soot.jimple.internal.*;
 import soot.tagkit.BytecodeOffsetTag;
 import soot.tagkit.Tag;
 
 public class getBCI {
 	public static int get(Unit u) throws IllegalBCIException{
 		int _ret = -1;
+		boolean invokeflag = false;
 
 		/*
 			We are splitting the unit into "boxes" and for semi-boxes we check if any one of 
@@ -21,8 +22,8 @@ public class getBCI {
 
 			Do We need to include JNew in this?
 		*/
-		// System.err.println("[GETBCI]: for "+u);
-		// System.err.println("Boxes: "+u.getUseBoxes());
+//		System.out.println("[GETBCI]: for "+u);
+//		System.out.println("Boxes: "+u.getUseBoxes());
 		for(ValueBox ub: u.getUseBoxes() ) {
 			/*
 				This loop is to get the BCI specifically in the case of JNewArrayExpr and JNewMultiArrayExpr.
@@ -30,22 +31,44 @@ public class getBCI {
 				statements. We were getting problems only in AssignStmts and we need to get BCI of statement
 				on the right side of "=". This below line filters only the right side of an Assignment Statement.
 			*/
-			if ( !ub.getClass().toString().equals("class soot.jimple.internal.JAssignStmt$LinkedRValueBox") )
-				continue;
+//			if ( !ub.getClass().toString().equals("class soot.jimple.internal.JAssignStmt$LinkedRValueBox") )
+//				continue;
 	
 			/*
 				Next get the value contained in this box. If this value is a New Array/MultiArray Expr only
 				then we need to move further.
 			 */
             Value v = ub.getValue();
-            if (v == null)
+//			System.out.println(v.getClass().getName());
+			if (v == null)
 				continue;
+//			System.out.println(v.getClass().getName());
+			if(v instanceof  JAssignStmt) {
+				Value lhs = ((JAssignStmt) v).getLeftOp();
+				Value rhs = ((JAssignStmt) v).getRightOp();
+				if(rhs instanceof JVirtualInvokeExpr) {
+					invokeflag = true;
+					continue;
+				}
+			}
+
+			if(v instanceof JVirtualInvokeExpr) {
+//				System.out.println("UseBox : "+ v.getUseBoxes().toString());
+//				System.out.println("Base Box: "+ ((JVirtualInvokeExpr) v).getBaseBox());
+				if(((JVirtualInvokeExpr) v).getBaseBox().toString().contains("$")) {
+//					System.out.println("True");
+					invokeflag = true;
+					continue;
+				}
+			}
+
 
 			// System.err.println(v.getClass().getName());
-            if ( ! (v instanceof JNewArrayExpr || v instanceof JNewMultiArrayExpr ) )
+            if ( ! (v instanceof JNewArrayExpr || v instanceof JNewMultiArrayExpr) )
                 continue;
-			// System.err.println("This is a new ArrayEXpr, tags: "+ub.getTags());
-			/*
+			 System.out.println("This is a new/JVirtualInvoke Expr, tags: "+ub.getTags());
+
+			 /*
 				Because multiple statements in the Java classfile can be combined together to form 
 				one JimpleStatment, BCI is linked to each box rather than the Unit. BCI of a Unit is 
 				the BCI of last box processed in the Unit. Now, we get the BCI of this
@@ -72,6 +95,10 @@ public class getBCI {
 			throw e;
 
 		}
+		if(invokeflag) {
+			_ret = _ret - 3;
+		}
+//		System.out.println("The returned BCI is: "+ _ret);
 		return _ret;
 	}
 }

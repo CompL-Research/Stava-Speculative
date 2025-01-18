@@ -265,7 +265,7 @@ public class Main {
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
 		if (args[5] != null && args[5].equals("inline")) {
 			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
-		} else if (args[5] != null && args[5].equals("spec_opt")) {
+		} else if (args[5] != null && args[5].equals("specopt")) {
 			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4],SPEC_OPT);
 		} else if (args[5] != null && args[5].equals("specoptini")) {
 			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.solvedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
@@ -623,8 +623,8 @@ public class Main {
 		// Open File
 		Path p_ipDir = Paths.get(ipDir);
 		Path p_opDir = Paths.get(opDir);
-		System.out.println("Coming here");
-		System.out.println("The inline Summary: "+ inlinesummaries.toString());
+//		System.out.println("Coming here");
+//		System.out.println("The inline Summary: "+ inlinesummaries.toString());
 		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
 		StringBuilder sb = new StringBuilder();
 		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
@@ -666,7 +666,7 @@ public class Main {
 					i = 0;
 					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
 					for(CallSite cs : c) {
-						System.out.println("CS is : "+ cs.toString());
+//						System.out.println("CS is : "+ cs.toString());
 						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 					}
 					sb.append("]");

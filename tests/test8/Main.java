@@ -1,41 +1,29 @@
+
 public class Main {
 	public static Node A;
 	public static void main(String[] args) {
-		Main B = new Main(); // <internal,0>
-		if(args.length > 0 ) {
-			B = new Main();
-		} else {
-			B = new A();
-		}
-		Node C = B.foo(new Node());
-		Node F = B.bar(new Node());
+		Node B = new Node(); // <internal,0>
+        Node C = new Node(); // <internal,8>
+		foo(B);
+        bar(B);
+        func(B);
 	}
 
-	public Node foo(Node p1) {
-		Node D = new Node();
-		D.n = new Node();
+	public static void foo(Node p1){
+        Node D = new Node();
+		bar(D);
+		A = p1;
 		p1.n = D;
-		return  new Node();
 	}
 
-	public Node bar(Node p2) {
-
-		p2.n = new Node();
-		return p2;
+	public static void bar(Node p2) {
+		Node F = new Node(); // <internal,0>
+		//p2 = F;
 	}
+
+    public static void func(Node p3){
+        //Node G = new Node();
+        bar(p3);
+    }
+	
 }
-
-class A extends Main {
-	public Node foo(Node p1) {
-		Node D = new Node();
-		D.n = new Node();
-		p1.n = D;
-		return  new Node();
-	}
-	public Node bar(Node p2) {
-
-		p2.n = new Node();
-		return p2;
-	}
-}
-
