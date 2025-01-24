@@ -1,2 +1,0 @@
-[11:59:19] Compiling Test-Case: 1 [0K[11:59:20] Compiled Test-Case: 1 [0K
-[11:59:20] Compiling the Static Analyser for OSASAD...[0K

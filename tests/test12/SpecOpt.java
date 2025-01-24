@@ -22,6 +22,7 @@ class SpecOpt {
             o3 = new SpecOpt();
             SpecOpt o4 = new SpecOpt();
             SpecOpt o6 = o3.foobar(o4);
+            o6.f1 = new SpecOpt();
         }
     }
     // Method foobar

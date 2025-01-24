@@ -54,16 +54,21 @@ public class Main {
 			return;
 		}
 
-		/*
-		 * 0. Compute the list of Polymporphic Invokes and affected objects
-		 */
-		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
-		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
-
 		System.out.println("\n 1. Generating CV's and PTG(s): ");
-		StaticAnalyser staticAnalyser = new StaticAnalyser();
 		CHATransform prepass = new CHATransform();
-		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
+		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
+		StaticAnalyser staticAnalyser = new StaticAnalyser();
+
+		Pack wjapPack = PackManager.v().getPack("wjap");
+		if (wjapPack.get("wjap.guards") != null) {
+			// Phase already exists, handle accordingly
+		} else {
+			wjapPack.add(new Transform("wjap.pre", prepass));
+		}
+
+
+//		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
+		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 		PackManager.v().getPack("jtp").add(new Transform("jtp.sample", staticAnalyser));
 		long analysis_start = System.currentTimeMillis();
 
@@ -92,9 +97,9 @@ public class Main {
 		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + "]seconds");
 		System.out.println("**********************************************************");
 
-		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.solvedSummaries);
+		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
 
-		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.solvedContextualSummaries);
+		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.PassedCallsiteValues);
 
 		printAllInfo(StaticAnalyser.ptgs, resolved, args[4]);
 
@@ -238,7 +243,7 @@ public class Main {
 									number_obj++;
 									flag = true;
 								}
-								//SpeculativeResolver.solvedSummaries.get(sm).get(obj).status.add(pcv);
+								//SpeculativeResolver.MergedSummaries.get(sm).get(obj).status.add(pcv);
 							}
 						}
 					}
@@ -264,13 +269,13 @@ public class Main {
 		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
 		if (args[5] != null && args[5].equals("inline")) {
-			printContReswitinlineForJVM(SpeculativeResolver.solvedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+			printContReswitinlineForJVM(SpeculativeResolver.MergedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
 		} else if (args[5] != null && args[5].equals("specopt")) {
-			printContReswithSPECTForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4],SPEC_OPT);
+			printContReswithSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
 		} else if (args[5] != null && args[5].equals("specoptini")) {
-			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.solvedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
+			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
 		} else {
-			printContResForJVM(SpeculativeResolver.solvedSummaries, args[2], args[4]);
+			printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
 		}
 
 
@@ -810,7 +815,7 @@ public class Main {
 						  String opDir,
 						  Map<SootMethod, PointsToGraph> ptg) {
 		Stats beforeResolution = new Stats(unresolved, ptg);
-		System.out.println("calculating stats for solvedsummaries");
+		System.out.println("calculating stats for MergedSummaries");
 		Stats afterResolution = new Stats(resolved, null);
 		Path p_opFile = Paths.get(opDir + "/stats.txt");
 		StringBuilder sb = new StringBuilder();
@@ -856,7 +861,7 @@ public class Main {
 						  String opDir,
 						  Map<SootMethod, PointsToGraph> ptg) {
 		Stats beforeResolution = new Stats(unresolved, ptg);
-		System.out.println("calculating stats for solvedsummaries");
+		System.out.println("calculating stats for MergedSummaries");
 		Stats afterResolution = new Stats(resolved, null);
 		System.out.println("calculating stats for inline summaries");
 		Stats afterInline= new Stats(inlinesummaries);

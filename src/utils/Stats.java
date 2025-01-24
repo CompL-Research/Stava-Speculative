@@ -75,9 +75,9 @@ public class Stats {
 		count = 0;
 		totalCount = 0;
 		HashMap<SootMethod, Integer> localCount = new HashMap<>();
-		for(SootMethod m : SpeculativeResolver.solvedSummaries.keySet()) {
+		for(SootMethod m : SpeculativeResolver.MergedSummaries.keySet()) {
 			count = 0;
-			for(ObjectNode o: SpeculativeResolver.solvedSummaries.get(m).keySet()) {
+			for(ObjectNode o: SpeculativeResolver.MergedSummaries.get(m).keySet()) {
 				if(o.type == ObjectType.internal) {
 					count++;
 				}

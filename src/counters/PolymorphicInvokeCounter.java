@@ -47,9 +47,11 @@ public class PolymorphicInvokeCounter extends BodyTransformer {
 //                }
             } else if (u instanceof  JInvokeStmt) {
                 boolean flag = false;
+                // Get the callgraph -- This will return the CG by SPARK
                 CallGraph cg = Scene.v().getCallGraph();
                 Iterator<Edge> iedges = cg.edgesOutOf(u);
                 List<Edge> edges = new ArrayList<>();
+                // If the iedges are empty. Get the edges from CHA -- BIT IMPRECISE BUT BETTER THAN NOTHING!!
                 if (!iedges.hasNext()) {
                     iedges = CHATransform.getCHA().edgesOutOf(u);
                 }

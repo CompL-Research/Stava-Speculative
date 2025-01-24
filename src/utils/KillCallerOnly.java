@@ -14,9 +14,9 @@ public class KillCallerOnly {
 	/*
 	 * Meant to kill all the CallerOnly conditional values.
 	 */
-	public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> kill(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> solvedSummaries) {
+	public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> kill(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> MergedSummaries) {
 		Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> _ret = new HashMap<>();
-		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : solvedSummaries.entrySet()) {
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : MergedSummaries.entrySet()) {
 			SootMethod method = entry.getKey();
 			HashMap<ObjectNode, EscapeStatus> map = entry.getValue();
 			HashMap<ObjectNode, EscapeStatus> q = new HashMap<>();
@@ -30,9 +30,9 @@ public class KillCallerOnly {
 		return _ret;
 	}
 
-	public static Map<SootMethod, HashMap<ObjectNode, ContextualEscapeStatus>> ckill(Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedSummaries) {
+	public static Map<SootMethod, HashMap<ObjectNode, ContextualEscapeStatus>> ckill(Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> MergedSummaries) {
 		Map<SootMethod, HashMap<ObjectNode, ContextualEscapeStatus>> _ret = new HashMap<>();
-		for (Map.Entry<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> entry : solvedSummaries.entrySet()) {
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> entry : MergedSummaries.entrySet()) {
 			SootMethod method = entry.getKey();
 			HashMap<ObjectNode, List<ContextualEscapeStatus>> map = entry.getValue();
 			HashMap<ObjectNode, ContextualEscapeStatus> q = new HashMap<>();

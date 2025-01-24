@@ -66,7 +66,7 @@ public class getBCI {
 			// System.err.println(v.getClass().getName());
             if ( ! (v instanceof JNewArrayExpr || v instanceof JNewMultiArrayExpr) )
                 continue;
-			 System.out.println("This is a new/JVirtualInvoke Expr, tags: "+ub.getTags());
+//			 System.out.println("This is a new/JVirtualInvoke Expr, tags: "+ub.getTags());
 
 			 /*
 				Because multiple statements in the Java classfile can be combined together to form 
@@ -84,7 +84,7 @@ public class getBCI {
 		if (t == null) {
 			return -1;
 //			String error = u.toString() + " doesn't have bytecodeoffset!";
-//			//System.out.println("[utils.getBCI] [Warn] " + error);
+//			System.out.println("[utils.getBCI] [Warn] " + error);
 //			throw new IllegalBCIException(error);
 		}
 		try {

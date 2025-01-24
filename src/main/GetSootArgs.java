@@ -75,10 +75,12 @@ public class GetSootArgs {
 				"-i", "sun.*",
 				// "-i", "javax.*",
 		};
+		System.out.print("Soot Arguments are : [");
 		for (String s : sootArgs) {
 			System.out.print(s + " ");
 		}
-		System.out.println("");
+		System.out.println("]");
+		System.out.print("**********************************************************");
 		return sootArgs;
 	}
 

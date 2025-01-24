@@ -39,16 +39,16 @@ public class SpeculativeResolver extends Formatter {
     // Map for storing all the conditional values
     public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> allcvs = new HashMap<>();
     // Map for storing the final resolved result
-    public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> solvedSummaries;
+    public static Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> MergedSummaries;
     // Map for storing the previously solved result. This is used for fix-point implementation.
     public Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> previoussolvesummaries = new HashMap<>();
     // Map for storing the contextual summaries
-    public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries;
-    public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> solvedContextualSummaries2;
+    public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> PassedCallsiteValues;
+    public static Map<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> PassedCallsiteValues2;
     // Map for storing the reason for an object to escape
     public static Map<SootMethod, HashMap<ObjectNode, List<EscapeState>>> reasonForEscape;
     // Map for storing the reason for an object to escape
-    public static Map<SootMethod, HashMap<ObjectNode, List<EscapeReason>>> reasonForEscape2;
+    public static Map<SootMethod, HashMap<ObjectNode, List<EscapeReason>>> escapeReason;
 
     // Map for storing the inline summaries for each callsite
     public static Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlineSummaries;
@@ -61,6 +61,7 @@ public class SpeculativeResolver extends Formatter {
     public static Map<SootMethod, HashMap<ObjectNode, HashMap<EscapeState, EscapeStatus>>> CVfinalES;
 
     boolean debug = false;
+    boolean inlinedebug = false;
     public static boolean printflag = true;
     int i = 0;
     int j = 0;
@@ -144,14 +145,14 @@ public class SpeculativeResolver extends Formatter {
 
         // Initializing the maps
 
-        solvedSummaries = new HashMap<>();
-        solvedContextualSummaries = new HashMap<>();
-        solvedContextualSummaries2 = new HashMap<>();
+        MergedSummaries = new HashMap<>();
+        PassedCallsiteValues = new HashMap<>();
+        PassedCallsiteValues2 = new HashMap<>();
         inlineSummaries = new HashMap<>();
         copyexistingSummaries = new HashMap<>();
         CVfinalES = new HashMap<>();
         reasonForEscape = new HashMap<>();
-        reasonForEscape2 = new HashMap<>();
+        escapeReason = new HashMap<>();
 
         for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : existingSummaries.entrySet()) {
             SootMethod method = entry.getKey();
@@ -162,9 +163,9 @@ public class SpeculativeResolver extends Formatter {
                 ObjectNode obj = e.getKey();
                 q.put(obj, ResolutionStatus.UnAttempted);
             }
-            solvedSummaries.put(method, new HashMap<>());
-            solvedContextualSummaries.put(method, new HashMap<>());
-            solvedContextualSummaries2.put(method, new HashMap<>());
+            MergedSummaries.put(method, new HashMap<>());
+            PassedCallsiteValues.put(method, new HashMap<>());
+            PassedCallsiteValues2.put(method, new HashMap<>());
         }
 
         /*
@@ -178,7 +179,7 @@ public class SpeculativeResolver extends Formatter {
          * Debug Code : PRINT FINAL INLINING CODE
          */
 
-         if (true) {
+         if (inlinedebug) {
              System.out.println("Inline Summaries");
              for (CallSite c : inlineSummaries.keySet()) {
                  if (!c.methodName.isJavaLibraryMethod()) {
@@ -199,12 +200,12 @@ public class SpeculativeResolver extends Formatter {
 
 //        // Final Result:
 //        logger.info("\n **************FINAL RESULT ***************** \n");
-//        for (SootMethod s : solvedSummaries.keySet()) {
+//        for (SootMethod s : MergedSummaries.keySet()) {
 //            if (!s.isJavaLibraryMethod()) {
 //                logger.info("For method " + s);
-//                for (ObjectNode o : solvedSummaries.get(s).keySet()) {
+//                for (ObjectNode o : MergedSummaries.get(s).keySet()) {
 //                    logger.info("Object is " + o + " and its summary is " +
-//                            solvedSummaries.get(s).get(o));
+//                            MergedSummaries.get(s).get(o));
 //               }
 //                logger.info("*************************************** \n");
 //            }
@@ -220,6 +221,19 @@ public class SpeculativeResolver extends Formatter {
 //                }
 //            }
 //        }
+
+
+        for(SootMethod sm: escapeReason.keySet()) {
+            for(ObjectNode o: escapeReason.get(sm).keySet()) {
+                if(!escapeReason.get(sm).get(o).isEmpty()) {
+                    System.out.println("Method: "+ sm + " Object: "+ o);
+                    List<EscapeReason> er = escapeReason.get(sm).get(o);
+                    for(EscapeReason e: er) {
+                        System.out.println("Reason: "+ e);
+                    }
+                }
+            }
+        }
 
     }
 
@@ -253,8 +267,8 @@ public class SpeculativeResolver extends Formatter {
                 if(!reasonForEscape.containsKey(key)) {
                     reasonForEscape.put(key, new HashMap<>());
                 }
-                if(!reasonForEscape2.containsKey(key)) {
-                    reasonForEscape2.put(key, new HashMap<>());
+                if(!escapeReason.containsKey(key)) {
+                    escapeReason.put(key, new HashMap<>());
                 }
 
                 //
@@ -308,9 +322,9 @@ public class SpeculativeResolver extends Formatter {
                     logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
                     logger.info("***************************************************************");
                 }
-                System.out.println("***************************************************************");
-                System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
-                System.out.println("***************************************************************");
+                if(debug) { System.out.println("***************************************************************");
+                            System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
+                            System.out.println("***************************************************************"); }
 
                 /*
                  * Get the objects in sorted order.
@@ -337,15 +351,15 @@ public class SpeculativeResolver extends Formatter {
                 if (!methodInfo.isEmpty() && !listofobjects.isEmpty()) {
                     for (ObjectNode obj : listofobjects) {
                         // Check if the object is already marked as Escaping
-                        // if(solvedSummaries.containsKey(key) &&
-                        // solvedSummaries.get(key).containsKey(obj)
-                        // &&solvedSummaries.get(key).get(obj).doesEscape()) {
+                        // if(MergedSummaries.containsKey(key) &&
+                        // MergedSummaries.get(key).containsKey(obj)
+                        // &&MergedSummaries.get(key).get(obj).doesEscape()) {
                         // continue;
                         // }
                         // if not escaping then proceed.
                         if (key.toString().contains("<init>") &&
                                 obj.type == ObjectType.parameter && obj.ref == -1) {
-                            solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                            MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                             continue;
                         }
                         boolean nothandled = true;
@@ -356,45 +370,38 @@ public class SpeculativeResolver extends Formatter {
                         if(!reasonForEscape.get(key).containsKey(obj)) {
                             reasonForEscape.get(key).put(obj, new ArrayList<>());
                         }
-                        if(!reasonForEscape2.get(key).containsKey(obj)) {
-                            reasonForEscape2.get(key).put(obj, new ArrayList<>());
+                        if(!escapeReason.get(key).containsKey(obj)) {
+                            escapeReason.get(key).put(obj, new ArrayList<>());
                         }
                         for (EscapeState state : status.status) {
                             HashSet<EscapeStatus> resolvedStatuses = new HashSet<>();
-                            System.out.println(" === Current method is : " + key + "  and  Object : " + obj);
-                            System.out.println(" ----> Conditional value for object is : " + state);
-//                            logger.info(" ** Current method is : " + key + "  and  Object : " + obj);
-//                            logger.info(" ** Conditional value for object is : " + state);
+                            if(debug) {    System.out.println(" ===== Current method is : " + key + "  and  Object : " + obj);
+                                           System.out.println(" ===== Conditional value for object is :  -----> " + state); }
                             if (state instanceof ConditionalValue) {
 
                                 ConditionalValue cstate = (ConditionalValue) state;
                                 /*
+                                 * 1. PARAMETER
                                  * Handling of "parameter" dependencies of type [<class:methodname,<parameter,BCI>>]
                                  */
                                 if (cstate.object.type == ObjectType.parameter) {
-                                    System.out.println("     CV is of type parameter");
-//                                    logger.info("CV is of type parameter");
+                                    if(debug) { System.out.println(" ====== HANDLING PARAMETER ====== "); }
                                     // Method on which this CV depends
                                     SootMethod sm = cstate.getMethod();
                                     // Object on which this current object (obj) depends
                                     ObjectNode o = cstate.object;
-                                    System.out.println("     Sent to Method : " + sm + " and object as : " + o);
-                                    //logger.info(" Sent to Method : " + sm + " and object as : " + o);
-                                    /*
-                                     * Get the callsite.
-                                     */
+                                    if(debug) { System.out.println("Sent to Method: " + sm + " and object as : " + o); }
+                                    // Get the callsite.
                                     CallSite c = new CallSite(key, cstate.BCI);
-                                    System.out.println("     CallSite is : " + c.toString());
-                                    //logger.info("CallSite is : " + c.toString());
+                                    if(debug) { System.out.println("CallSite is : " + c.toString()); }
                                     /*
                                      * Check which object to look into:
-                                     * if the dependency has field dependency the map the correct object for in the callee
+                                     * Note: If the dependency has field dependency the map the correct object for in the callee
                                      * Get the list of object and based on the resolved value of those resolve the dependency.
                                      */
                                     List<ObjectNode> objects = null;
                                     if (cstate.fieldList != null) {
-                                        System.out.println("     Field Access");
-                                        //logger.info("Field Access");
+                                        if(debug) { System.out.println("Field Access"); }
                                         Iterator<Edge> iter = cg.edgesOutOf(key);
                                         while (iter.hasNext()) {
                                             Edge edge = iter.next();
@@ -402,8 +409,7 @@ public class SpeculativeResolver extends Formatter {
                                                 try {
                                                     objects = GetParmObjects(o, cstate.object.ref, sm,
                                                             cstate.fieldList);
-                                                    System.out.println("     Field Access : Object Received" + objects.toString());
-//                                                    logger.info("Field Access : Object Received" + objects.toString());
+//                                                    System.out.println("Field Access : Object Received" + objects.toString());
                                                 } catch (Exception e) {
                                                     throw e;
                                                 }
@@ -417,18 +423,15 @@ public class SpeculativeResolver extends Formatter {
                                      */
                                     if (objects != null) {
                                         for (ObjectNode mappedobject : objects) {
-                                            System.out.println("     Objects are not null: Mapped Object " + mappedobject.toString());
-                                            //logger.info("Objects are not null: Mapped Object " + mappedobject.toString());
-                                            if (solvedContextualSummaries.containsKey(sm)
-                                                    && solvedContextualSummaries.get(sm).containsKey(mappedobject)) {
-                                                System.out.println("     Value:" + solvedContextualSummaries.get(sm).get(mappedobject));
-                                                //logger.info("Value:"+ solvedContextualSummaries.get(sm).get(mappedobject));
-                                                for (ContextualEscapeStatus ces : solvedContextualSummaries.get(sm)
+                                            if(debug) { System.out.println("Objects are not null: Mapped Object " + mappedobject.toString()); }
+                                            if (PassedCallsiteValues.containsKey(sm)
+                                                    && PassedCallsiteValues.get(sm).containsKey(mappedobject)) {
+                                                if(debug) { System.out.println("Value:" + PassedCallsiteValues.get(sm).get(mappedobject)); }
+                                                for (ContextualEscapeStatus ces : PassedCallsiteValues.get(sm)
                                                         .get(mappedobject)) {
                                                     if (ces.cescapestat.containsKey(c) && ces.doesEscape(c)) {
-                                                        //System.out.println("-------> Escaping in Parameter");
-                                                        //logger.info("Escaping in Parameter");
-                                                        solvedSummaries.get(key).put(obj,
+                                                        //System.out.println("Escaping in Parameter");
+                                                        MergedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                     }
                                                 }
@@ -440,7 +443,7 @@ public class SpeculativeResolver extends Formatter {
                                          * Came here because the <objects> list was empty.
                                          * Now: 
                                          * 
-                                         * First check for check if the parameter for this dependency has a contextual info
+                                         * First check the status of for check if the parameter for this dependency
                                          *  - if yes then proceed with the result in the contextual summary.
                                          * 
                                          * Second if the above is not true then check for the result in solved summary which will
@@ -451,103 +454,65 @@ public class SpeculativeResolver extends Formatter {
                                          * escaped the store NOESCAPE and resolved value for this dependency.
                                          */
 
-                                        // Case 1: Check for result in contextual summary.
-                                        if (solvedContextualSummaries.containsKey(sm)
-                                                && solvedContextualSummaries.get(sm).containsKey(o)) {
-                                            boolean checkflag = false;
-                                            if(true) {
-                                                System.out.println("     Not a field, sCS Value: "+ solvedContextualSummaries.get(sm).get(o));
-                                            }
-                                            for (ContextualEscapeStatus ces : solvedContextualSummaries.get(sm)
-                                                    .get(o)) {
-                                                 System.out.println("     ces value : "+ ces.toString());
-                                                if (ces.cescapestat.containsKey(c)) {
-                                                    checkflag = true;
-                                                    if (ces.doesEscape(c)) {
-                                                         System.out.println("     Escaping in Parameter");
-                                                        solvedSummaries.get(key).put(obj,
-                                                                new EscapeStatus(Escape.getInstance()));
-                                                    } else {
-                                                        solvedSummaries.get(key).put(obj,
-                                                                new EscapeStatus(NoEscape.getInstance()));
-                                                    }
-                                                }
-                                            }
-                                            // if the context was not there in contextual summary then look in to merged summary.
-                                            if(!checkflag) {
-                                                if (solvedSummaries.get(sm).containsKey(o)) {
-                                                    if (solvedSummaries.get(sm).get(o).doesEscape()) {
-                                                        solvedSummaries.get(key).put(obj,
-                                                                new EscapeStatus(Escape.getInstance()));
-                                                                if(true) {
-                                                                    System.out.println("     No Contextual Summary: ESCAPE");
+                                        // Case 1: Merged Summary has the result.
+                                        if (MergedSummaries.containsKey(sm)
+                                                && MergedSummaries.get(sm).containsKey(o)) {
+                                            if(debug) { System.out.println("Not a field, PassedCallsite Value: "+ MergedSummaries.get(sm).get(o)); }
+                                            // If the Merged Summary is Escaping.
+                                            if (MergedSummaries.get(sm).get(o).doesEscape()) {
+                                                /*
+                                                 * Check the escapeReason of the object.
+                                                 *  1. If doesn't escaped due to
+                                                 *          (i) global and argument: Then mostly due to merge so check what was passed and allot that as final status.
+                                                 *  2. Else globaEscape --> goto else branch --> Mark the current object as E
+                                                 */
+                                                if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_global)) {
+                                                    if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_argument)) {
+                                                        for (ContextualEscapeStatus ces : PassedCallsiteValues.get(sm).get(o)) {
+                                                            if(debug) { System.out.println("     ces value : "+ ces.toString()); }
+                                                            if (ces.cescapestat.containsKey(c)) {
+                                                                if (ces.doesEscape(c)) {
+                                                                    if(debug) { System.out.println("     Escaping in Parameter"); }
+                                                                    MergedSummaries.get(key).put(obj,
+                                                                            new EscapeStatus(Escape.getInstance()));
+                                                                } else {
+                                                                    MergedSummaries.get(key).put(obj,
+                                                                            new EscapeStatus(NoEscape.getInstance()));
                                                                 }
-                                                    } else if (!solvedSummaries.get(sm).get(o).doesEscape()) {
-                                                        solvedSummaries.get(key).put(obj,
-                                                            new EscapeStatus(NoEscape.getInstance()));
-                                                            if(true) {
-                                                                System.out.println("     No Contextual Summary: NOESCAPE");
                                                             }
-                                                    }
-                                                    else {
-                                                    // if the parameter object was not there in the solvedSummaries as well.
-                                                    solvedSummaries.get(key).put(obj,
-                                                        new EscapeStatus(NoEscape.getInstance()));
-                                                        if(true) {
-                                                            System.out.println("     No Contextual Summary: NOESCAPE");
                                                         }
-                                                    }
-                                                }
-                                            } 
-                                        } else {
-                                            // Case 2: if the object is not there in the contextual summary 
-                                            if(solvedSummaries.containsKey(sm)) {
-                                                if (solvedSummaries.get(sm).containsKey(o)) {
-                                                    if (solvedSummaries.get(sm).get(o).doesEscape()) {
-                                                        solvedSummaries.get(key).put(obj,
-                                                                new EscapeStatus(Escape.getInstance()));
-                                                                if(true) {
-                                                                    System.out.println("     No Contextual Summary: ESCAPE");
-                                                                }
-                                                    } else if (!solvedSummaries.get(sm).get(o).doesEscape()) {
-                                                        solvedSummaries.get(key).put(obj,
-                                                            new EscapeStatus(NoEscape.getInstance()));
-                                                            if(true) {
-                                                                System.out.println("     No Contextual Summary: NOESCAPE");
-                                                            }
+                                                    } else {
+                                                        MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                                        if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_argument)) escapeReason.get(key).get(obj).add(EscapeReason.escape_argument);
                                                     }
                                                 } else {
-                                                    // if the parameter object was not there in the solvedSummaries as well.
-                                                    solvedSummaries.get(key).put(obj,
-                                                        new EscapeStatus(NoEscape.getInstance()));
-                                                        if(debug) {
-                                                            System.out.println("     No Contextual Summary: NOESCAPE");
-                                                        }
+                                                    MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                                    if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_global)) escapeReason.get(key).get(obj).add(EscapeReason.escape_global);
                                                 }
+                                            } else {
+                                                MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                             }
-                                        }
-                                        if(debug) {
-//                                            System.out.println("-------> No Contextual Summary");
+                                        } else {
+                                            // Case 2: If Merged Summary doesn't have resolved value. ** Callee ** not yet resolved.
+                                            MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                            if(debug) {System.out.println("No Summary: NOESCAPE"); }
                                         }
                                     }
-
-                                    allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
-                                    allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
-                                    if (true) {
-                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
-                                    }
-                                    if(solvedSummaries.containsKey(key)) {
-                                      if(solvedSummaries.get(key).containsKey(obj)) {
-
-                                        if(solvedSummaries.get(key).get(obj).doesEscape()) {
+                                    allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
+                                    if(debug) { System.out.println("Resolution of the Dependency "+ cstate.toString() +" is: " + MergedSummaries.get(key).get(obj)); }
+                                    if(MergedSummaries.containsKey(key)) {
+                                      if(MergedSummaries.get(key).containsKey(obj)) {
+                                        if(MergedSummaries.get(key).get(obj).doesEscape()) {
                                             reasonForEscape.get(key).get(obj).add(cstate);
                                         }
                                       }
                                     }
-                                    if(solvedSummaries.containsKey(key)) {
-                                        if(solvedSummaries.get(key).containsKey(obj)) {
-                                            if(solvedSummaries.get(key).get(obj).doesEscape()) {
-                                                reasonForEscape2.get(key).get(obj).add(EscapeReason.escape_parameter);
+                                    if(MergedSummaries.containsKey(key)) {
+                                        if(MergedSummaries.get(key).containsKey(obj)) {
+                                            if(MergedSummaries.get(key).get(obj).doesEscape()) {
+                                                if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_parameter))
+                                                    escapeReason.get(key).get(obj).add(EscapeReason.escape_parameter);
                                             }
                                         }
                                     }
@@ -555,97 +520,108 @@ public class SpeculativeResolver extends Formatter {
                                 }
 
                                 /*
-                                 * Handling return dependencies of type liv<class:methodname,<return,number>>
-                                 * As such we are deleting the dependency.
+                                 * 2. RETURN 
+                                 * Handling return dependencies of type <class:methodname,<return,number> bci>
                                  */
                                 else if (cstate.object.type == ObjectType.returnValue) {
                                     SootMethod sm = cstate.getMethod();
                                     ObjectNode o = cstate.object;
-//                                    System.out.println("-------> CV is of type return and returned from method : " + sm +
-//                                            " and object as : " + o);
-//                                    logger.info(" CV is of type return and returned from method : " + sm +
-//                                            " and object as : " + o);
-
+                                    if(debug) {System.out.println(" ====== HANDLING RETURN ====== ");}
+                                    if(debug) {System.out.println("CV is of type return and returned from method : " + sm + " and object as : " + o);}
                                     /*
                                      * We have two types of return type dependencies
-                                     * 1. return o1; 2. o1 = foo();
-                                     * Case 1: if the object is returned from the method;
-                                     * The method in conditional value is same as the current method in this case.
-                                     * First directly mark the Object as escaping
+                                     *      1. return o1;
+                                     *      2. o1 = foo();
+                                     * Case 1: If a local object is returned from the method; Immediately mark for escaping -- inlining case will be checked later.
+                                     * Case 2: Otherwise:
+                                     *          (i) If we are in current method where the object is being returned -- don't mark the object for escaping because of return.
+                                     *          Next we need to find corresponding object back in caller, update the status and delete the dependency.
+                                     *          (ii) If the caller gets processed before the callee the dependency would have not been deleted. So mark it non escaping and it will get later.
                                      */
-                                    if (sm.equals(key)) {
-                                        // Mark as Escaping
-                                        // System.out.println("1. Escaping in Return");
-                                        solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
-                                        // Get the CallGraph
-                                        CallGraph c = Scene.v().getCallGraph();
-                                        Iterator<Edge> itr = c.edgesInto(key);
-                                        while (itr.hasNext()) {
-                                            Edge e = itr.next();
-                                            // For all the objects in the caller check which object has a return
-                                            // dependency on the current method.
-                                            // Mark the corresponding object also ESCAPING and delete the dependency,
-                                            if (allcvs.containsKey(e.src())) {
-                                                for (ObjectNode object : allcvs.get(e.src()).keySet()) {
-                                                    Iterator<EscapeState> it = allcvs.get(e.src()).get(object).status
-                                                            .iterator();
-                                                    while (it.hasNext()) {
-                                                        EscapeState es = it.next();
-                                                        if (es instanceof ConditionalValue) {
-                                                            if (((ConditionalValue) es).object.type == ObjectType.returnValue
-                                                                    &&
-                                                                    ((ConditionalValue) es).getMethod().equals(key) &&
-                                                                    ((ConditionalValue) es).object.ref == cstate.object.ref) {
-                                                                if (solvedSummaries.get(e.src()).containsKey(object)) {
-                                                                    solvedSummaries.get(e.src()).get(object)
-                                                                            .addEscapeStatus(new EscapeStatus(
-                                                                                    Escape.getInstance()));
-                                                                    // System.out.println("returned from to object : "+
-                                                                    // object + " in method : "+ e.src() );
-                                                                    existingSummaries.get(e.src()).get(object).status
-                                                                            .remove(es);
-                                                                } else {
-                                                                    // System.out.println("returned from to object : "+
-                                                                    // object + " in method : "+ e.src() );
-                                                                    // System.out.println("2. Escaping in Return :
-                                                                    // object"+ object.toString());
-                                                                    solvedSummaries.get(e.src()).put(object,
-                                                                            new EscapeStatus(Escape.getInstance()));
-                                                                    existingSummaries.get(e.src()).get(object).status
-                                                                            .remove(es);
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
+
+                                    /* Case 1: Checking if the current object is a local object */
+                                    if(obj.type == ObjectType.internal || obj.type == ObjectType.parameter) {
+                                        //  Mark as Escaping
+                                        if(debug) {System.out.println("Local Object in return marked for escaping!!!");}
+                                        MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));  
+                                    }
+                                    // Case 2: If the object is not local then check for the return dependency.
+                                     if (sm.equals(key)) {
+                                         CallGraph c = Scene.v().getCallGraph();
+                                         Iterator<Edge> itr = c.edgesInto(key);
+                                         while (itr.hasNext()) {
+                                             Edge e = itr.next();
+                                             // For all the objects in the caller check which object has a return dependency on the current method.
+                                             // Update the corresponding object also with the same status as this object and delete the dependency,
+                                             if (allcvs.containsKey(e.src())) {
+                                                 for (ObjectNode object : allcvs.get(e.src()).keySet()) {
+                                                     Iterator<EscapeState> it = allcvs.get(e.src()).get(object).status.iterator();
+                                                     while (it.hasNext()) {
+                                                         EscapeState es = it.next();
+                                                         if (es instanceof ConditionalValue) {
+                                                             if (((ConditionalValue) es).object.type == ObjectType.returnValue &&
+                                                                     ((ConditionalValue) es).getMethod().equals(key) &&
+                                                                     ((ConditionalValue) es).object.ref == cstate.object.ref) {
+                                                                 // We found the corresponding object -- method : e.src() and name: object
+                                                                 if(MergedSummaries.get(key).containsKey(obj)) {
+                                                                     if(MergedSummaries.get(key).get(obj).doesEscape() && !checkIfEscapesJustBecauseofMerge(key,obj)) {
+                                                                         // The current object escapes and not because of just merge
+                                                                         if (MergedSummaries.get(e.src()).containsKey(object)) {
+                                                                             MergedSummaries.get(e.src()).get(object).addEscapeStatus(new EscapeStatus(Escape.getInstance()));
+                                                                             if(existingSummaries.get(e.src()).get(object).status.contains(es)) {
+                                                                                 existingSummaries.get(e.src()).get(object).status.remove(es);
+                                                                             }
+                                                                             if(debug) { System.out.println("Marked the "+ object + " in method : "+ e.src() + " as escaping."); }
+                                                                         } else {
+                                                                             MergedSummaries.get(e.src()).put(object, new EscapeStatus(Escape.getInstance()));
+                                                                             if(existingSummaries.get(e.src()).get(object).status.contains(es)) {
+                                                                                 existingSummaries.get(e.src()).get(object).status.remove(es);
+                                                                             }
+                                                                             if(debug) { System.out.println("Marked the "+ object + " in method : "+ e.src() + " as escaping."); }
+                                                                         }
+                                                                     } else {
+                                                                         MergedSummaries.get(e.src()).put(object, new EscapeStatus(Escape.getInstance()));
+                                                                         if(existingSummaries.get(e.src()).get(object).status.contains(es)) {
+                                                                             existingSummaries.get(e.src()).get(object).status.remove(es);
+                                                                         }
+                                                                     }
+                                                                 }
+
+                                                             }
+                                                         }
+                                                     }
+                                                 }
+                                             }
+                                         }
+
+
+                                     } else {
+                                         // Reached here because the callee has not yet resolved and hence waiting for this CV to be deleted. S
+                                         if (!MergedSummaries.get(key).containsKey(obj)) {
+                                             MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                         } else {
+                                             if(!MergedSummaries.get(key).get(obj).doesEscape()) {
+                                                 MergedSummaries.get(key).get(obj).status.add(NoEscape.getInstance());
+                                             }
+                                         }
+                                     }
+
+                                    nothandled = false;
+                                    allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
+                                    
+                                    if(debug) { System.out.println("Resolution of the Dependency "+ cstate.toString() +" is: " + MergedSummaries.get(key).get(obj));}
+
+                                    if(MergedSummaries.get(key).get(obj).doesEscape()) {
+                                        reasonForEscape.get(key).get(obj).add(cstate);
+                                    }
+                                    // Storing the reason
+                                    if(MergedSummaries.containsKey(key)) {
+                                        if(MergedSummaries.get(key).containsKey(obj)) {
+                                            if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_return)) {
+                                                    escapeReason.get(key).get(obj).add(EscapeReason.escape_return);
                                             }
                                         }
-                                        nothandled = false;
-                                        // allresolvedstatusforthisobject.add(solvedSummaries.get(key).get(obj));
-                                        allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
-                                        allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
-
-                                    } else {
-                                        // System.out.println("Here the control should never reach, as all these
-                                        // dependencies should have been deleted by now");
-                                        // TODO: Check if still reachable for some benchmark
-                                        if (!solvedSummaries.get(key).containsKey(obj)) {
-                                            solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
-                                        } else {
-                                            solvedSummaries.get(key).get(obj).status.add(Escape.getInstance());
-                                        }
-                                        // allresolvedstatusforthisobject.add(new EscapeStatus(Escape.getInstance()));
-                                        allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
-                                        allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
-
-                                    }
-                                    if (debug) {
-//                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
-                                    }
-                                    // System.out.println(" Object is : " + obj + " and its Summary is : " +
-                                    // solvedSummaries.get(key).get(obj));
-                                    if(solvedSummaries.get(key).get(obj).doesEscape()) {
-                                        reasonForEscape.get(key).get(obj).add(cstate);
                                     }
                                     continue;
                                 }
@@ -655,38 +631,52 @@ public class SpeculativeResolver extends Formatter {
                                  * If the object is of type parameter then propagate to other (caller)
                                  */
                                 else if (cstate.object.type == ObjectType.global) {
-                                    // System.out.println("1. Escaping in Global");
-                                    solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
-                                    // allresolvedstatusforthisobject.add(solvedSummaries.get(key).get(obj));
-                                    allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
-                                    allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
+                                    if(debug) {System.out.println(" ====== HANDLING GLOBAL ====== ");}
+                                    if(debug) {System.out.println(" CV is of type global ");}
+                                    
+                                    // Mark it for escaping
+                                    MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                    
+                                    // allresolvedstatusforthisobject.add(MergedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
                                     // Tell to all its caller
-                                    if (obj.type == ObjectType.parameter) {
-                                        Iterator<Edge> iter = cg.edgesInto(key);
-                                        while (iter.hasNext()) {
-                                            Edge edge = iter.next();
-                                            List<ObjectNode> objects = GetObjects(edge.srcUnit(), cstate.object.ref,
-                                                    edge.src(), cstate.fieldList);
-                                            if (objects != null) {
-                                                for (ObjectNode o : objects) {
-                                                    // System.out.println("Object received is global escape at parameter
-                                                    // is :"+ o.toString() );
-                                                    // System.out.println("2. Escaping in Global");
-                                                    solvedSummaries.get(edge.src()).put(o,
-                                                            new EscapeStatus(Escape.getInstance()));
-                                                }
+//                                    if (obj.type == ObjectType.parameter) {
+//                                        Iterator<Edge> iter = cg.edgesInto(key);
+//                                        while (iter.hasNext()) {
+//                                            Edge edge = iter.next();
+//                                            List<ObjectNode> objects = GetObjects(edge.srcUnit(), cstate.object.ref,
+//                                                    edge.src(), cstate.fieldList);
+//                                            if (objects != null) {
+//                                                for (ObjectNode o : objects) {
+//                                                    // System.out.println("Object received is global escape at parameter
+//                                                    // is :"+ o.toString() );
+//                                                    // System.out.println("2. Escaping in Global");
+//                                                    MergedSummaries.get(edge.src()).put(o,
+//                                                            new EscapeStatus(Escape.getInstance()));
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+                                    nothandled = false;
+                                    
+                                    if(debug) { System.out.println("Resolution of the Dependency "+ cstate.toString() +" is: " + MergedSummaries.get(key).get(obj));}
+
+                                    if(MergedSummaries.get(key).get(obj).doesEscape()) {
+                                        reasonForEscape.get(key).get(obj).add(cstate);
+                                    }
+                                    // Storing the reason
+                                    if(MergedSummaries.containsKey(key)) {
+                                        if(MergedSummaries.get(key).containsKey(obj)) {
+                                            if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_global)) {
+                                                    escapeReason.get(key).get(obj).add(EscapeReason.escape_global);
                                             }
                                         }
                                     }
-                                    nothandled = false;
-                                    if (debug) {
-//                                        System.out.println("-------> Resolution is: " + solvedSummaries.get(key).get(obj));
-                                    }
-                                    if(solvedSummaries.get(key).get(obj).doesEscape()) {
-                                        reasonForEscape.get(key).get(obj).add(cstate);
-                                    }
                                     continue;
                                 }
+                                if(debug) {System.out.println(" ====== HANDLING CALLER DEPENDENCY ====== ");}
+                                if(debug) {System.out.println(" CV is of type global ");}
                                 /*
                                  * Handling caller dependencies of type <<caller,argument>, number>
                                  * Resolve the dependency for each context (caller) separately.
@@ -707,8 +697,8 @@ public class SpeculativeResolver extends Formatter {
 //                                    System.out.println("Reached point 2");
                                 }
                                 Iterator<Edge> iter = cg.edgesInto(key);
-                                solvedContextualSummaries.get(key).put(obj, new ArrayList<>());
-                                solvedContextualSummaries2.get(key).put(obj, new ArrayList<>());
+                                PassedCallsiteValues.get(key).put(obj, new ArrayList<>());
+                                PassedCallsiteValues2.get(key).put(obj, new ArrayList<>());
                                 i = 0;
                                 int numberofcaller = 0;
                                 if (debug) {
@@ -719,20 +709,18 @@ public class SpeculativeResolver extends Formatter {
                                     }
                                 }
                                 if (!iter.hasNext()) {
-                                    solvedSummaries.get(key).put(obj,
+                                    MergedSummaries.get(key).put(obj,
                                             new EscapeStatus(Escape.getInstance()));
                                     // allresolvedstatusforthisobject.put(cstate,
-                                    // solvedSummaries.get(key).get(obj));
-                                    // allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
+                                    // MergedSummaries.get(key).get(obj));
+                                    // allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
                                     // continue;
                                 }
                                 while (iter.hasNext()) {
                                     if (debug) {
 //                                        System.out.println("Reached point 3");
                                     }
-                                    EscapeStatus resolvedEscapeStatus = new EscapeStatus(); // This will store the
-                                    // escape status for a
-                                    // particular context.
+                                    EscapeStatus resolvedEscapeStatus = new EscapeStatus(); // This will store the escape status for a particular context.
                                     ContextualEscapeStatus ctemp = new ContextualEscapeStatus();
                                     boolean mappedobjectescape = false;
                                     boolean localStoredInparamtersfield = false;
@@ -801,13 +789,13 @@ public class SpeculativeResolver extends Formatter {
                                         if (debug) {
 //                                        System.out.println("Object received is null");
                                         }
-                                        if (solvedSummaries.containsKey(key)
-                                                && solvedSummaries.get(key).containsKey(obj)
-                                                && !solvedSummaries.get(key).get(obj).doesEscape()) {
+                                        if (MergedSummaries.containsKey(key)
+                                                && MergedSummaries.get(key).containsKey(obj)
+                                                && !MergedSummaries.get(key).get(obj).doesEscape()) {
                                             if (cstate.object.type == ObjectType.argument
                                                     && obj.type == ObjectType.internal) {
                                                 // System.out.println("1. Escaping in Caller,arg where object is null");
-                                                solvedSummaries.get(key).get(obj)
+                                                MergedSummaries.get(key).get(obj)
                                                         .addEscapeStatus(new EscapeStatus(Escape.getInstance()));
                                             } else if (cstate.object.type == ObjectType.argument
                                                     && cstate.object.ref != obj.ref
@@ -817,32 +805,32 @@ public class SpeculativeResolver extends Formatter {
                                                 // System.out.println("2. Object Received is : "+ objects2);
                                                 if (objects2 != null) {
                                                     for (ObjectNode o2 : objects2) {
-                                                        solvedSummaries.get(edge.src()).put(o2,
+                                                        MergedSummaries.get(edge.src()).put(o2,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                         // System.out.println("Stored Escape");
                                                     }
                                                 }
                                             } else {
-                                                if (!solvedSummaries.get(key).get(obj).doesEscape()) {
-                                                    solvedSummaries.get(key).get(obj)
+                                                if (!MergedSummaries.get(key).get(obj).doesEscape()) {
+                                                    MergedSummaries.get(key).get(obj)
                                                             .addEscapeStatus(new EscapeStatus(NoEscape.getInstance()));
                                                 }
                                             }
                                         } else {
-                                            if (!solvedSummaries.get(key).containsKey(obj)) {
+                                            if (!MergedSummaries.get(key).containsKey(obj)) {
                                                 if (cstate.object.type == ObjectType.argument
                                                         && obj.type == ObjectType.internal) {
                                                     // System.out.println("1. Escaping in Caller,arg where object is
                                                     // null");
-                                                    solvedSummaries.get(key).put(obj,
+                                                    MergedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
                                                 } else {
-                                                    solvedSummaries.get(key).put(obj,
+                                                    MergedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
                                                 }
                                             } else {
-                                                if (!solvedSummaries.get(key).get(obj).doesEscape()) {
-                                                    solvedSummaries.get(key).put(obj,
+                                                if (!MergedSummaries.get(key).get(obj).doesEscape()) {
+                                                    MergedSummaries.get(key).put(obj,
                                                             new EscapeStatus(NoEscape.getInstance()));
                                                 }
                                             }
@@ -861,12 +849,12 @@ public class SpeculativeResolver extends Formatter {
                                             if (debug) {
 //                                                System.out.println("Object received are not null: " + objects.toString());
                                             }
-                                            if (solvedSummaries.get(edge.src()) != null) {
-                                                if (solvedSummaries.get(edge.src()).get(x) != null) {
+                                            if (MergedSummaries.get(edge.src()) != null) {
+                                                if (MergedSummaries.get(edge.src()).get(x) != null) {
                                                     // System.out.println("1. Value of solved summaries for is "+
                                                     // edge.src() + " is :" +
-                                                    // solvedSummaries.get(edge.src()).get(x).status);
-                                                    if (solvedSummaries.get(edge.src()).get(x).doesEscape()) {
+                                                    // MergedSummaries.get(edge.src()).get(x).status);
+                                                    if (MergedSummaries.get(edge.src()).get(x).doesEscape()) {
                                                         if (reasonForEscape.containsKey(edge.src()) && reasonForEscape.get(edge.src()).containsKey(x)) {
                                                             for (EscapeState e : reasonForEscape.get(edge.src()).get(x)) {
                                                                 if (e instanceof ConditionalValue) {
@@ -930,14 +918,14 @@ public class SpeculativeResolver extends Formatter {
                                                 // System.out.println("Second object received is : "+
                                                 // objects2.toString());
                                                 if (objects != null && objects2 != null) {
-                                                    if (solvedSummaries.containsKey(edge.src()) &&
-                                                            solvedSummaries.get(edge.src()).containsKey(x) &&
-                                                            solvedSummaries.get(edge.src()).get(x).doesEscape()) {
+                                                    if (MergedSummaries.containsKey(edge.src()) &&
+                                                            MergedSummaries.get(edge.src()).containsKey(x) &&
+                                                            MergedSummaries.get(edge.src()).get(x).doesEscape()) {
                                                         resolvedEscapeStatus = new EscapeStatus(Escape.getInstance());
                                                         mappedinternalescaping = true;
 
                                                         // for(ObjectNode o2 : objects2) {
-                                                        // solvedSummaries.get(edge.src()).put(o2, new
+                                                        // MergedSummaries.get(edge.src()).put(o2, new
                                                         // EscapeStatus(Escape.getInstance()));
                                                         // }
                                                         // // In this the possibility of that <parameter,0> may have
@@ -953,12 +941,12 @@ public class SpeculativeResolver extends Formatter {
                                                             // o2.toString());
                                                             if (o2.type == ObjectType.internal) {
                                                                 // System.out.println("Marking as escaping");
-                                                                solvedSummaries.get(edge.src()).put(o2,
+                                                                MergedSummaries.get(edge.src()).put(o2,
                                                                         new EscapeStatus(Escape.getInstance()));
                                                                 // System.out.println("Escaping at Case 3 in
                                                                 // <caller,arg>");
                                                             } else if (o2.type == ObjectType.parameter) {
-                                                                // if(solvedSummaries.containsKey(edge.))
+                                                                // if(MergedSummaries.containsKey(edge.))
                                                                 if (!existingSummaries.get(edge.src()).get(o2).status
                                                                         .contains(cstate)) {
                                                                     existingSummaries.get(edge.src()).get(o2).status
@@ -989,7 +977,7 @@ public class SpeculativeResolver extends Formatter {
                                                             // argument is :" + x.toString());
                                                             resolvedEscapeStatus = new EscapeStatus(
                                                                     Escape.getInstance());
-                                                            solvedSummaries.get(edge.src()).put(x,
+                                                            MergedSummaries.get(edge.src()).put(x,
                                                                     new EscapeStatus(Escape.getInstance()));
                                                             HashSet<ObjectNode> visited = new HashSet<>();
                                                             propagateStatustofields(edge.src(), x, visited);
@@ -1017,18 +1005,18 @@ public class SpeculativeResolver extends Formatter {
                                             if (resolvedEscapeStatus.containsNoEscape()) {
                                                 if (ctemp.cescapestat != null) {
                                                     ctemp.cescapestat.put(c, NoEscape.getInstance());
-                                                    if (!solvedContextualSummaries.get(key).get(obj).contains(ctemp))
-                                                        solvedContextualSummaries.get(key).get(obj).add(ctemp);
-                                                    solvedContextualSummaries2.get(key).get(obj).add(ctemp);
+                                                    if (!PassedCallsiteValues.get(key).get(obj).contains(ctemp))
+                                                        PassedCallsiteValues.get(key).get(obj).add(ctemp);
+                                                    PassedCallsiteValues2.get(key).get(obj).add(ctemp);
                                                     // System.out.println(" Stored : for method "+ key +
                                                     // ctemp.cescapestat.toString());
                                                 }
                                             } else {
                                                 if (ctemp.cescapestat != null) {
                                                     ctemp.cescapestat.put(c, Escape.getInstance());
-                                                    if (!solvedContextualSummaries.get(key).get(obj).contains(ctemp))
-                                                        solvedContextualSummaries.get(key).get(obj).add(ctemp);
-                                                    solvedContextualSummaries.get(key).get(obj).add(ctemp);
+                                                    if (!PassedCallsiteValues.get(key).get(obj).contains(ctemp))
+                                                        PassedCallsiteValues.get(key).get(obj).add(ctemp);
+                                                    PassedCallsiteValues.get(key).get(obj).add(ctemp);
                                                     // System.out.println("Stored : for method "+ key +
                                                     // ctemp.cescapestat.toString());
                                                 }
@@ -1053,7 +1041,7 @@ public class SpeculativeResolver extends Formatter {
                                             } else {
                                                 for (EscapeState es : e.status) {
                                                     if (es.equals(Escape.getInstance())) {
-                                                        solvedSummaries.get(key).put(obj,
+                                                        MergedSummaries.get(key).put(obj,
                                                                 new EscapeStatus(Escape.getInstance()));
                                                         if (numberofcaller > 1) {
                                                             if (storedMergedStatus.containsKey(key)) {
@@ -1068,13 +1056,14 @@ public class SpeculativeResolver extends Formatter {
                                                         // System.out.println(" Meet for all callsites resolved value
                                                         // for object : " + obj + " Status :" +
                                                         // solvedMethodInfo.get(obj));
+                                                        escapeReason.get(key).get(obj).add(EscapeReason.escape_merge);
                                                         escapeExitFlag = true;
                                                         break;
                                                     } else if (es.equals(NoEscape.getInstance())) {
                                                         // System.out.println("Came Inside meet");
-                                                        if (solvedSummaries.containsKey(key)
-                                                                && !solvedSummaries.get(key).containsKey(obj)) {
-                                                            solvedSummaries.get(key).put(obj,
+                                                        if (MergedSummaries.containsKey(key)
+                                                                && !MergedSummaries.get(key).containsKey(obj)) {
+                                                            MergedSummaries.get(key).put(obj,
                                                                     new EscapeStatus(NoEscape.getInstance()));
                                                         }
                                                         if (numberofcaller > 1) {
@@ -1096,64 +1085,65 @@ public class SpeculativeResolver extends Formatter {
                                         }
                                     }
                                 } else if (obj.type == ObjectType.parameter && cstate.object.ref != obj.ref) {
-                                    solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                    MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                    escapeReason.get(key).get(obj).add(EscapeReason.escape_argument);
                                 } else {
-                                    if (!solvedSummaries.get(key).containsKey(obj)) {
-                                        solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                    if (!MergedSummaries.get(key).containsKey(obj)) {
+                                        MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                     }
                                 }
-                                allresolvedstatusforthisobject.put(cstate, solvedSummaries.get(key).get(obj));
-                                allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
+                                allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
+                                allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
                                 if (debug) {
-                                    //System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
+                                    //System.out.println("Resolution is: " + MergedSummaries.get(key).get(obj));
                                 }
-                                if(solvedSummaries.get(key).get(obj).doesEscape()) {
+                                if(MergedSummaries.get(key).get(obj).doesEscape()) {
                                     reasonForEscape.get(key).get(obj).add(cstate);
                                 }
                             } else {
                                 if (state instanceof Escape) {
-                                    if (!solvedSummaries.get(key).containsKey(obj)) {
-                                        solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                    if (!MergedSummaries.get(key).containsKey(obj)) {
+                                        MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
                                         nothandled = false;
-                                    } else if (solvedSummaries.get(key).containsKey(obj)) {
-                                        solvedSummaries.get(key).get(obj).status.add(Escape.getInstance());
+                                    } else if (MergedSummaries.get(key).containsKey(obj)) {
+                                        MergedSummaries.get(key).get(obj).status.add(Escape.getInstance());
                                         nothandled = false;
                                     }
-                                    allresolvedstatusforthisobject.put(state, solvedSummaries.get(key).get(obj));
-                                    allresolvedstatusforthisobject2.add(solvedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject.put(state, MergedSummaries.get(key).get(obj));
+                                    allresolvedstatusforthisobject2.add(MergedSummaries.get(key).get(obj));
                                 } else if (state instanceof NoEscape) {
-                                    if (solvedSummaries.get(key).containsKey(obj)) {
-                                        if (!solvedSummaries.get(key).get(obj).doesEscape()) {
-                                            solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                    if (MergedSummaries.get(key).containsKey(obj)) {
+                                        if (!MergedSummaries.get(key).get(obj).doesEscape()) {
+                                            MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                             allresolvedstatusforthisobject.put(state,new EscapeStatus(NoEscape.getInstance()));
                                             allresolvedstatusforthisobject2.add(new EscapeStatus(NoEscape.getInstance()));
                                         }
                                     } else {
-                                        solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                        MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                     }
                                     nothandled = false;
                                 }
                                 if (debug) {
-                                    //System.out.println("Resolution is: " + solvedSummaries.get(key).get(obj));
+                                    //System.out.println("Resolution is: " + MergedSummaries.get(key).get(obj));
                                 }
                                 continue;
                             }
-                            // allresolvedstatusforthisobject.add(solvedSummaries.get(key).get(obj))
+                            // allresolvedstatusforthisobject.add(MergedSummaries.get(key).get(obj))
                         }
                         if (nothandled) {
                             // System.out.println(" Reached where the status was not CV ");
-                            if (solvedSummaries.get(key).containsKey(obj)
-                                    && solvedSummaries.get(key).get(obj).doesEscape()) {
+                            if (MergedSummaries.get(key).containsKey(obj)
+                                    && MergedSummaries.get(key).get(obj).doesEscape()) {
 
                             } else {
-                                solvedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                             }
                             // GenerateGraphFromSummary();
                             // FindSCC(key, obj);
-                            // allresolvedstatusforthisobject.put(state, solvedSummaries.get(key).get(obj));
-                            // allresolvedstatusforthisobject.add(solvedSummaries.get(key).get(obj));
+                            // allresolvedstatusforthisobject.put(state, MergedSummaries.get(key).get(obj));
+                            // allresolvedstatusforthisobject.add(MergedSummaries.get(key).get(obj));
                             // System.out.println(" Value for object : " + obj + " Status :" +
-                            // solvedSummaries.get(key).get(obj));
+                            // MergedSummaries.get(key).get(obj));
                         }
                         // Take a meet for the case when multiple CV's are there and one all may
                         // different types (parm,ret and caller<arg>)
@@ -1161,9 +1151,9 @@ public class SpeculativeResolver extends Formatter {
                             if (es != null) {
                                 for (EscapeState e : es.status) {
                                     if (e.equals(Escape.getInstance())) {
-                                        solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                        MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
                                         // System.out.println(" Meet for all the CV's : " +
-                                        // solvedSummaries.get(key).get(obj).status);
+                                        // MergedSummaries.get(key).get(obj).status);
                                         break;
                                     }
                                 }
@@ -1172,15 +1162,15 @@ public class SpeculativeResolver extends Formatter {
                         // for (EscapeState es : allresolvedstatusforthisobject.keySet()) {
                         // for (EscapeState e : allresolvedstatusforthisobject.get(es).status) {
                         // if (e.equals(Escape.getInstance())) {
-                        // solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                        // MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
                         // System.out.println(" Meet for all the CV's : " +
-                        // solvedSummaries.get(key).get(obj).status);
+                        // MergedSummaries.get(key).get(obj).status);
                         // break;
                         // }
                         // }
                         // }
                         //
-                        // if(solvedSummaries.get(key).get(obj).equals(Escape.getInstance())) {
+                        // if(MergedSummaries.get(key).get(obj).equals(Escape.getInstance())) {
                         // System.out.println("all: "+ allresolvedstatusforthisobject.toString());
                         // System.out.println("1. Reaching here");
                         //System.out.println("Current Method is : "+ key);
@@ -1217,15 +1207,15 @@ public class SpeculativeResolver extends Formatter {
                                     // System.out.println("4. Reaching here");
                                     if (e2.equals(Escape.getInstance())) {
                                         // System.out.println("5. Reaching here");
-                                        // solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                        // MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
                                         if (e1 instanceof ConditionalValue) {
                                             // System.out.println("6. Reaching here");
                                             if (((ConditionalValue) e1).object.type != ObjectType.argument) {
                                                 // System.out.println("7. Reaching here");
-                                                if (solvedContextualSummaries.containsKey(key)
-                                                        && solvedContextualSummaries.get(key).containsKey(obj)) {
+                                                if (PassedCallsiteValues.containsKey(key)
+                                                        && PassedCallsiteValues.get(key).containsKey(obj)) {
                                                     // System.out.println("8. Reaching here");
-                                                    for (ContextualEscapeStatus es1 : solvedContextualSummaries.get(key)
+                                                    for (ContextualEscapeStatus es1 : PassedCallsiteValues.get(key)
                                                             .get(obj)) {
                                                         // System.out.println("9. Reaching here");
                                                         for (CallSite c : es1.cescapestat.keySet()) {
@@ -1238,10 +1228,10 @@ public class SpeculativeResolver extends Formatter {
                                             } else {
                                                 if (((ConditionalValue) e1).object.ref != obj.ref) {
                                                     // System.out.println("7.1 Reaching here");
-                                                    if (solvedContextualSummaries.containsKey(key)
-                                                            && solvedContextualSummaries.get(key).containsKey(obj)) {
+                                                    if (PassedCallsiteValues.containsKey(key)
+                                                            && PassedCallsiteValues.get(key).containsKey(obj)) {
                                                         // System.out.println("8.1 Reaching here");
-                                                        for (ContextualEscapeStatus es1 : solvedContextualSummaries
+                                                        for (ContextualEscapeStatus es1 : PassedCallsiteValues
                                                                 .get(key).get(obj)) {
                                                             // System.out.println("9.1 Reaching here");
                                                             for (CallSite c : es1.cescapestat.keySet()) {
@@ -1259,17 +1249,15 @@ public class SpeculativeResolver extends Formatter {
                             }
                         }
                         // }
-                        if (true) {
-                            System.out.println("Final Resolved Value in this iteration is : " + solvedSummaries.get(key).get(obj));
-                        }
+                        if (debug) { System.out.println("Final Resolved Value in this iteration is : " + MergedSummaries.get(key).get(obj)); }
 
                         // for (EscapeStatus es : allresolvedstatusforthisobject) {
                         // if (es != null) {
                         // for (EscapeState e : es.status) {
                         // if (e.equals(Escape.getInstance())) {
-                        // solvedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                        // MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
                         //// System.out.println(" Meet for all the CV's : " +
-                        // solvedSummaries.get(key).get(obj).status);
+                        // MergedSummaries.get(key).get(obj).status);
                         // break;
                         // }
                         // }
@@ -1278,7 +1266,7 @@ public class SpeculativeResolver extends Formatter {
 
                         // assert
 //                        if (previoussolvesummaries.get(key).get(obj).doesEscape()
-//                                && !solvedSummaries.get(key).get(obj).doesEscape()) {
+//                                && !MergedSummaries.get(key).get(obj).doesEscape()) {
 //                            System.out.println("Things Going Wrong Here");
 //                            System.out.println("Method is : " + key.toString() + "Object is : " + obj.toString());
 //                            System.out.println(
@@ -1291,10 +1279,10 @@ public class SpeculativeResolver extends Formatter {
                         // method
                         // (object passed as parameter might be escaping now)
                         // System.out.println("1. Coming here");
-                        if (solvedSummaries.get(key).containsKey(obj) && previoussolvesummaries.containsKey(key)
+                        if (MergedSummaries.get(key).containsKey(obj) && previoussolvesummaries.containsKey(key)
                                 && previoussolvesummaries.get(key).containsKey(obj)) {
                             // System.out.println("2. Coming here");
-                            if (!solvedSummaries.get(key).get(obj).status
+                            if (!MergedSummaries.get(key).get(obj).status
                                     .equals(previoussolvesummaries.get(key).get(obj).status)) {
                                 for (EscapeState e : allcvs.get(key).get(obj).status) {
                                     // System.out.println("3. Coming here");
@@ -1323,10 +1311,10 @@ public class SpeculativeResolver extends Formatter {
                                     }
                                 }
                             }
-                            previoussolvesummaries.get(key).put(obj, solvedSummaries.get(key).get(obj));
+                            previoussolvesummaries.get(key).put(obj, MergedSummaries.get(key).get(obj));
                         }
                         // System.out.println(" Value for object : " + obj + " Status :" +
-                        // solvedSummaries.get(key).get(obj));
+                        // MergedSummaries.get(key).get(obj));
 
                         if (obj.type == ObjectType.internal)
                             InlineCheck.inlineinfo(key, obj);
@@ -1335,17 +1323,17 @@ public class SpeculativeResolver extends Formatter {
                     }
                 }
                 // Newer
-                //System.out.println("Solved Summaries: "+ solvedSummaries.toString());
-//                for(SootMethod sm : solvedSummaries.keySet()) {
+                //System.out.println("Solved Summaries: "+ MergedSummaries.toString());
+//                for(SootMethod sm : MergedSummaries.keySet()) {
 //                    System.out.println("Method is : "+ sm.toString());
-//                    System.out.println("Objects are : "+ solvedSummaries.get(sm).toString());
+//                    System.out.println("Objects are : "+ MergedSummaries.get(sm).toString());
 //                }
 //                System.out.println("");
-//                for(SootMethod sm : solvedContextualSummaries.keySet()) {
+//                for(SootMethod sm : PassedCallsiteValues.keySet()) {
 //                    System.out.println("Method is : "+ sm.toString());
-//                    System.out.println("Objects are : "+ solvedContextualSummaries.get(sm).toString());
+//                    System.out.println("Objects are : "+ PassedCallsiteValues.get(sm).toString());
 //                }
-                //System.out.println("Values in solvedContextualSummaries : "+ solvedContextualSummaries.toString());
+                //System.out.println("Values in PassedCallsiteValues : "+ PassedCallsiteValues.toString());
             }
 //            System.out.println();
             listofMethods.clear();
@@ -1365,7 +1353,7 @@ public class SpeculativeResolver extends Formatter {
         for (SootField f : this.ptgs.get(key).fields.get(x).keySet()) {
             Set<ObjectNode> tmpobj = this.ptgs.get(key).fields.get(x).get(f);
             for (ObjectNode ob : tmpobj) {
-                solvedSummaries.get(key).put(ob, new EscapeStatus(Escape.getInstance()));
+                MergedSummaries.get(key).put(ob, new EscapeStatus(Escape.getInstance()));
                 // System.out.println("Object is : "+ ob.toString());
                 if (!visited.contains(ob))
                     propagateStatustofields(key, ob, visited);
@@ -1585,6 +1573,19 @@ public class SpeculativeResolver extends Formatter {
                     return true;
             }
         }
+        return false;
+    }
+
+    public boolean checkIfEscapesJustBecauseofMerge(SootMethod m, ObjectNode obj) {
+            if(escapeReason.containsKey(m)) {
+                if(escapeReason.get(m).containsKey(obj)) {
+                    if(escapeReason.get(m).get(obj).size() == 1 && escapeReason.get(m).get(obj).contains(EscapeReason.escape_merge)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
         return false;
     }
 

@@ -61,11 +61,11 @@ public class InlineCheck {
                                             //System.out.println("TmpObj is  : " + tmpobj + "from : " + edge.src());
                                             boolean tmpflag = true;
                                             // Check if the contextual summaries is present in the map
-                                            if (SpeculativeResolver.solvedContextualSummaries2.containsKey(edge.src())) {
-                                                if (SpeculativeResolver.solvedContextualSummaries2.get(edge.src()).containsKey(tmpobj)) {
+                                            if (SpeculativeResolver.PassedCallsiteValues2.containsKey(edge.src())) {
+                                                if (SpeculativeResolver.PassedCallsiteValues2.get(edge.src()).containsKey(tmpobj)) {
                                                     // Now for each context for this object find out the status
                                                     //System.out.println("No parameter or parameter doesn't escape :  inside Argument");
-                                                    for (ContextualEscapeStatus ces : SpeculativeResolver.solvedContextualSummaries2.get(edge.src()).get(tmpobj)) {
+                                                    for (ContextualEscapeStatus ces : SpeculativeResolver.PassedCallsiteValues2.get(edge.src()).get(tmpobj)) {
                                                         if (ces.cescapestat.containsKey(c)) {
                                                             EscapeState es = ces.cescapestat.get(c);
                                                             // Check for the escape status if it doesnot escape in the context then only add to the set of object
@@ -91,12 +91,12 @@ public class InlineCheck {
                                                 }
                                             }
                                             if (tmpflag) {
-//                                                System.out.println("Contextual Summary: "+ SpeculativeResolver.solvedContextualSummaries.toString());
-                                                if (SpeculativeResolver.solvedSummaries.containsKey(edge.src())) {
-                                                    if (SpeculativeResolver.solvedSummaries.get(edge.src()).containsKey(tmpobj)) {
+//                                                System.out.println("Contextual Summary: "+ SpeculativeResolver.PassedCallsiteValues.toString());
+                                                if (SpeculativeResolver.MergedSummaries.containsKey(edge.src())) {
+                                                    if (SpeculativeResolver.MergedSummaries.get(edge.src()).containsKey(tmpobj)) {
                                                         // Now for each context for this object find out the status
                                                         //System.out.println("No parameter or parameter doesn't escape :  inside Argument");
-                                                        for (EscapeState es : SpeculativeResolver.solvedSummaries.get(edge.src()).get(tmpobj).status) {
+                                                        for (EscapeState es : SpeculativeResolver.MergedSummaries.get(edge.src()).get(tmpobj).status) {
                                                             if (es instanceof NoEscape && !CheckGlobalEscape(key, obj)) {
                                                                 // For the first time the context is being added to the inline summaries
                                                                 // create a new entry for this context and this object as the first object in the set
@@ -170,12 +170,12 @@ public class InlineCheck {
         for (EscapeState es : SpeculativeResolver.allcvs.get(key).get(obj).status) {
             if (es instanceof ConditionalValue) {
                 if (((ConditionalValue) es).object.type == ObjectType.parameter) {
-                    if (SpeculativeResolver.solvedSummaries.containsKey(((ConditionalValue) es).getMethod())) {
-                            if (!SpeculativeResolver.solvedSummaries.get(((ConditionalValue) es).getMethod()).isEmpty()) {
+                    if (SpeculativeResolver.MergedSummaries.containsKey(((ConditionalValue) es).getMethod())) {
+                            if (!SpeculativeResolver.MergedSummaries.get(((ConditionalValue) es).getMethod()).isEmpty()) {
                                 //ObjectNode oj = new ObjectNode(((ConditionalValue) es).object.ref, ObjectType.parameter);
                                 ObjectNode oj = getParameterObject(((ConditionalValue) es).getMethod(), es);
-                                if (SpeculativeResolver.solvedSummaries.get(((ConditionalValue) es).getMethod()).containsKey(oj) &&
-                                        SpeculativeResolver.solvedSummaries.get(((ConditionalValue) es).getMethod()).get(oj).doesEscape()) {
+                                if (SpeculativeResolver.MergedSummaries.get(((ConditionalValue) es).getMethod()).containsKey(oj) &&
+                                        SpeculativeResolver.MergedSummaries.get(((ConditionalValue) es).getMethod()).get(oj).doesEscape()) {
                                     return false;
                                 }
                             }

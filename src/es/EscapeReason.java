@@ -25,9 +25,15 @@ public enum EscapeReason {
     escape_return,
 
     /*
-     * escape_argument: It shows the object is escaping because its global dependency. It is stored to a static field.
+     * escape_global: It shows the object is escaping because its global dependency. It is stored to a static field.
      * For eg: foo (A p1) { a = new A(); global = a;} // a will have a global dependency.
      */
-    escape_global
+    escape_global,
+
+    /*
+     * escape_merge: It shows the object is escaping because it merged the values coming from two different places. Formal parameters for a polymorphic callsite.
+     * For eg: foo1() { //o1 escapes; a.bar(o1); }  foo2(){ a.bar(o2); }  bar(p1) { }  // p1 will escape due to merge.
+     */
+    escape_merge
 
 }
