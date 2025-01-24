@@ -1,4 +1,7 @@
 .vscode
+benchmarks/*
+.idea
+out/*
 *.aux
 *.bbl
 *.blg
