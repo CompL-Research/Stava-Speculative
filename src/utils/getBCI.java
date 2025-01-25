@@ -4,6 +4,7 @@ import soot.Local;
 import soot.Unit;
 import soot.Value;
 import soot.ValueBox;
+import soot.jimple.VirtualInvokeExpr;
 import soot.jimple.internal.*;
 import soot.tagkit.BytecodeOffsetTag;
 import soot.tagkit.Tag;
@@ -22,7 +23,7 @@ public class getBCI {
 
 			Do We need to include JNew in this?
 		*/
-//		System.out.println("[GETBCI]: for "+u);
+		System.out.println("[GETBCI]: for "+u);
 //		System.out.println("Boxes: "+u.getUseBoxes());
 		for(ValueBox ub: u.getUseBoxes() ) {
 			/*
@@ -46,7 +47,7 @@ public class getBCI {
 			if(v instanceof  JAssignStmt) {
 				Value lhs = ((JAssignStmt) v).getLeftOp();
 				Value rhs = ((JAssignStmt) v).getRightOp();
-				if(rhs instanceof JVirtualInvokeExpr) {
+				if(rhs instanceof VirtualInvokeExpr) {
 					invokeflag = true;
 					continue;
 				}
@@ -55,7 +56,7 @@ public class getBCI {
 			if(v instanceof JVirtualInvokeExpr) {
 //				System.out.println("UseBox : "+ v.getUseBoxes().toString());
 //				System.out.println("Base Box: "+ ((JVirtualInvokeExpr) v).getBaseBox());
-				if(((JVirtualInvokeExpr) v).getBaseBox().toString().contains("$")) {
+				if(((VirtualInvokeExpr) v).getBaseBox().toString().contains("$")) {
 //					System.out.println("True");
 					invokeflag = true;
 					continue;
@@ -98,7 +99,7 @@ public class getBCI {
 		if(invokeflag) {
 			_ret = _ret - 3;
 		}
-//		System.out.println("The returned BCI is: "+ _ret);
+		System.out.println("The returned BCI is: "+ _ret);
 		return _ret;
 	}
 }

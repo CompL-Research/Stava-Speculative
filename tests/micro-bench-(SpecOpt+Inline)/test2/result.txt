@@ -1,0 +1,7 @@
+SpecOpt.main([Ljava/lang/String;)V [14, 31, 42, 50] [] ! []
+SpecOpt.foo(LSpecOpt;)V [16, 34, 45, 53, 79] [77 {Child,SpecOpt} [62] | 112 {Child,SpecOpt} [97]] ! [77 SecondChild.bar(LSpecOpt;)LSpecOpt;[0,13] ! SpecOpt.bar(LSpecOpt;)LSpecOpt;[0] ! Child.bar(LSpecOpt;)LSpecOpt;[0] | 92 SpecOpt.foobar(LSpecOpt;)LSpecOpt;[0,9] | 112 SecondChild.bar(LSpecOpt;)LSpecOpt;[0,13] ! SpecOpt.bar(LSpecOpt;)LSpecOpt;[0] ! Child.bar(LSpecOpt;)LSpecOpt;[0]]
+Child2.foo(LSpecOpt;)V [0, 9] [] ! []
+Child.foo(LSpecOpt;)V [0, 9] [] ! [13 SpecOpt.bar(LSpecOpt;)LSpecOpt;[0]]
+SecondChild.foo(LSpecOpt;)V [0, 9] [] ! [13 SpecOpt.bar(LSpecOpt;)LSpecOpt;[0]]
+Child2.bar(LSpecOpt;)V [0] [] ! []
+

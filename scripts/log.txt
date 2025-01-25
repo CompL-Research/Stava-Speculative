@@ -1,41 +1,504 @@
-[19:15:49] [32mCompiling Test-Case: 0 [0K[0m[19:15:49] [32mCompiled Test-Case: 0 [0K[0m
-[19:15:49] [32mCompiling the Static Analyser for OSASAD...[0K[0m[19:15:50] [32mCompiled...[0K[0m
-[19:15:50] [32mGenerating the .res file...[0m
+[12:43:35] [32mCompiling Test-Case: 21 [0K[0m[12:43:36] [32mCompiled Test-Case: 21 [0K[0m
+[12:43:36] [32mCompiling the Static Analyser for OSASAD...[0K[0m[12:43:37] [32mCompiled...[0K[0m
+[12:43:37] [32mGenerating the .res file...[0m
 [32m==================================================================[0m
-Soot Arguments are : [-whole-program -app -f J -p jb use-original-names:true -allow-phantom-refs -keep-bytecode-offset -p cg.spark on -p cg all-reachable -keep-offset -keep-line-number -main-class Main -process-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/tests/micro-bench/test0 -output-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase -output-format jimple -x jdk.* -x java.* -x org.* -x com.* -x sun.* -x javax.* ]
+Soot Arguments are : [-whole-program -app -f J -p jb use-original-names:true -allow-phantom-refs -keep-bytecode-offset -p cg.spark on -p cg all-reachable -keep-offset -keep-line-number -main-class Main -process-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/tests/micro-bench/test21 -output-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase -output-format jimple -x jdk.* -x java.* -x org.* -x com.* -x sun.* -x javax.* ]
 **********************************************************
  1. Generating CV's and PTG(s): 
  :> CV and PTG(s) Generated!
- :> Time Taken in phase 1: [13.957]seconds
+ :> Time Taken in phase 1: [13.436]seconds
 **********************************************************
  2. Resolving the Dependencies: 
-Method: <Main: Node foo()> Object: <internal,0>
+***************************************************************
+ ********  Resolving Method: 1.<Main: Node bar(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: Node bar(Node)>,4>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node bar(Node)>,13>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,0>,13,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Main: Node bar(Node)>,<returnValue,0>,0,[F]>
+ ====== HANDLING RETURN ====== 
+CV is of type return and returned from method : <Main: Node bar(Node)> and object as : <returnValue,0>
+Local Object in return marked for escaping!!!
+Marked the <external,16> in method : <Main: Node foo(Node)> as escaping.
+Resolution of the Dependency <<Main: Node bar(Node)>,<returnValue,0>,0,[F]> is: [Escape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: Node bar(Node)>,13>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,-1>,13,[T]> is: [NoEscape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+***************************************************************
+ ********  Resolving Method: 2.<Main: Node foo(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+ ===== Conditional value for object is :  -----> <caller,<argument,-1>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,9>]
+Object received are not null: [<internal,9>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>
+ ====== HANDLING RETURN ====== 
+CV is of type return and returned from method : <Main: Node foo(Node)> and object as : <returnValue,0>
+Resolution of the Dependency <<Main: Node foo(Node)>,<returnValue,0>,0,[F]> is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: Node foo(Node)>,4>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node foo(Node)>,13>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,0>,13,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Main: Node bar(Node)>,<parameter,0>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node bar(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node foo(Node)>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node bar(Node)>,<parameter,0>,16,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: Node foo(Node)>,13>
+No Summary: NOESCAPE
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,-1>,13,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+***************************************************************
+ ********  Resolving Method: 3.<Node: void <init>(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,-1>,0,[F]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <java.lang.Object: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Node: void <init>(Node)>,1>
+No Summary: NOESCAPE
+Resolution of the Dependency <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]> is: [NoEscape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+***************************************************************
+ ********  Resolving Method: 4.<Node: void <init>()>  ******** 
+***************************************************************
+***************************************************************
+ ********  Resolving Method: 5.<Main: void <init>()>  ******** 
+***************************************************************
+***************************************************************
+ ********  Resolving Method: 6.<Main: void main(java.lang.String[])>  ******** 
+***************************************************************
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+Resolution is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<parameter,-1>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node foo(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node foo(Node)>,<parameter,-1>,16,[T]> is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Main: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,4>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,13>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,13,[T]> is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<parameter,0>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node foo(Node)> and object as : <parameter,0>
+CallSite is : <<Main: void main(java.lang.String[])>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node foo(Node)>,<parameter,0>,16,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+***************************************************************
+ ********  Resolving Method: 7.<Main: Node foo(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,-1>
+ ===== Conditional value for object is :  -----> <caller,<argument,-1>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,9>]
+Object received are not null: [<internal,9>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <external,16>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<returnValue,0>,0,[F]>
+ ====== HANDLING RETURN ====== 
+CV is of type return and returned from method : <Main: Node foo(Node)> and object as : <returnValue,0>
+Resolution of the Dependency <<Main: Node foo(Node)>,<returnValue,0>,0,[F]> is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: Node foo(Node)>,4>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node foo(Node)>,13>
+Not a field, PassedCallsite Value: [Escape]
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,0>,13,[T]> is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Main: Node bar(Node)>,<parameter,0>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node bar(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node foo(Node)>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node bar(Node)>,<parameter,0>,16,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node foo(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: Node foo(Node)>,13>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,-1>,13,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+***************************************************************
+ ********  Resolving Method: 8.<Node: void <init>()>  ******** 
+***************************************************************
+***************************************************************
+ ********  Resolving Method: 9.<Node: void <init>(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,-1>,0,[F]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <java.lang.Object: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Node: void <init>(Node)>,1>
+No Summary: NOESCAPE
+Resolution of the Dependency <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]> is: [NoEscape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+***************************************************************
+ ********  Resolving Method: 10.<Main: void main(java.lang.String[])>  ******** 
+***************************************************************
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+Resolution is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<parameter,-1>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node foo(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node foo(Node)>,<parameter,-1>,16,[T]> is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Main: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,4>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: void main(java.lang.String[])>,13>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,13,[T]> is: [NoEscape]
+ ===== Current method is : <Main: void main(java.lang.String[])>  and  Object : <internal,9>
+ ===== Conditional value for object is :  -----> <<Main: Node foo(Node)>,<parameter,0>,16,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Main: Node foo(Node)> and object as : <parameter,0>
+CallSite is : <<Main: void main(java.lang.String[])>,16>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Main: Node foo(Node)>,<parameter,0>,16,[T]> is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+***************************************************************
+ ********  Resolving Method: 11.<Main: Node bar(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+Resolution is: [NoEscape]
+Final Resolved Value in this iteration is : [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>()>,<parameter,-1>,4,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Main: Node bar(Node)>,4>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>()>,<parameter,-1>,4,[T]> is: [NoEscape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,0>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,0>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,0>
+CallSite is : <<Main: Node bar(Node)>,13>
+Not a field, PassedCallsite Value: [Escape]
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,0>,13,[T]> is: [Escape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Main: Node bar(Node)>,<returnValue,0>,0,[F]>
+ ====== HANDLING RETURN ====== 
+CV is of type return and returned from method : <Main: Node bar(Node)> and object as : <returnValue,0>
+Local Object in return marked for escaping!!!
+Marked the <external,16> in method : <Main: Node foo(Node)> as escaping.
+Resolution of the Dependency <<Main: Node bar(Node)>,<returnValue,0>,0,[F]> is: [Escape]
+ ===== Current method is : <Main: Node bar(Node)>  and  Object : <internal,8>
+ ===== Conditional value for object is :  -----> <<Node: void <init>(Node)>,<parameter,-1>,13,[T]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <Node: void <init>(Node)> and object as : <parameter,-1>
+CallSite is : <<Main: Node bar(Node)>,13>
+Not a field, PassedCallsite Value: [NoEscape]
+Resolution of the Dependency <<Node: void <init>(Node)>,<parameter,-1>,13,[T]> is: [NoEscape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+***************************************************************
+ ********  Resolving Method: 12.<Main: void <init>()>  ******** 
+***************************************************************
+***************************************************************
+ ********  Resolving Method: 13.<Node: void <init>()>  ******** 
+***************************************************************
+***************************************************************
+ ********  Resolving Method: 14.<Node: void <init>(Node)>  ******** 
+***************************************************************
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> NoEscape
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,-1>,0,[F]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+1. Object Received is + [<internal,8>]
+Object received are not null: [<internal,8>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <caller,<argument,0>,0,[T]>
+ ====== HANDLING CALLER DEPENDENCY ====== 
+ CV is of type caller,arg 
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+1. Object Received is + [<internal,0>]
+Object received are not null: [<internal,0>]
+Resolution is: [Escape]
+ ===== Current method is : <Node: void <init>(Node)>  and  Object : <parameter,0>
+ ===== Conditional value for object is :  -----> <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]>
+ ====== HANDLING PARAMETER ====== 
+Sent to Method: <java.lang.Object: void <init>()> and object as : <parameter,-1>
+CallSite is : <<Node: void <init>(Node)>,1>
+No Summary: NOESCAPE
+Resolution of the Dependency <<java.lang.Object: void <init>()>,<parameter,-1>,1,[F]> is: [NoEscape]
+ Meet for all the CV's : [Escape]
+Final Resolved Value in this iteration is : [Escape]
+Method: <Main: Node bar(Node)> Object: <internal,0>
 Reason: escape_argument
 Reason: escape_parameter
-Method: <Main: Node foo()> Object: <external,7>
+Method: <Main: Node bar(Node)> Object: <internal,8>
 Reason: escape_return
-Method: <Main: Node foobar(Node)> Object: <parameter,0>
-Reason: escape_return
-Method: <Node: void <init>(Node)> Object: <parameter,0>
-Reason: escape_argument
-Reason: escape_argument
 Method: <Main: Node bar(Node)> Object: <parameter,0>
 Reason: escape_argument
-Reason: escape_parameter
-Method: <Main: Node bar(Node)> Object: <external,8>
+Method: <Main: Node foo(Node)> Object: <external,16>
 Reason: escape_return
+Method: <Main: Node foo(Node)> Object: <internal,0>
+Reason: escape_argument
+Reason: escape_parameter
+Method: <Main: Node foo(Node)> Object: <parameter,-1>
+Reason: escape_argument
+Method: <Main: Node foo(Node)> Object: <parameter,0>
+Reason: escape_argument
+Method: <Node: void <init>(Node)> Object: <parameter,0>
+Reason: escape_argument
+Method: <Main: void main(java.lang.String[])> Object: <parameter,0>
+Reason: escape_argument
  :> Resolution is done!
- :> Time Taken in phase 2: [0.032]seconds
+ :> Time Taken in phase 2: [0.017]seconds
 **********************************************************
- :> Overall Time Taken: [13.988999]seconds
+ :> Overall Time Taken: [13.453]seconds
 **********************************************************
 
-Stat Count: 0 4 0
+Stat Count: 0 6 0
 calculating stats for MergedSummaries
 Stat Count: 0 0 0
 calculating stats for inline summaries
 Trying to write to:/home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase/stats.txt
 Stats have been written.
-Trying to write to:/home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase/test0.res
+Trying to write to:/home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase/test21.res
 Results have been written.
 [32m==================================================================[0m

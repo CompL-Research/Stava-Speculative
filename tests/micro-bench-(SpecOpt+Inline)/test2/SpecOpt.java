@@ -33,7 +33,6 @@ class SpecOpt {
             SpecOpt o6 = o3.foobar(o5);
             SpecOpt o7 = new SpecOpt();
             temp = o2.bar(o7);
-            System.out.println(temp);
         }
     }
     // Method bar

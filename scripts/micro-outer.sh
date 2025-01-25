@@ -14,7 +14,7 @@ done
 #==============================#
 # Execute the micro-benchmarks
 
-for j in {0..0}
+for j in {10..21}
 do
 echo -n " Micro-bench $j executing..."
 
