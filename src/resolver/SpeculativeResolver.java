@@ -223,10 +223,6 @@ public class SpeculativeResolver extends Formatter {
 
     }
 
-    // Convert all <caller,<argument,x>> statements to the actual caller functions
-    // and replace <argument,x>
-    // to parameter passed.
-
     void resolveSummaries() {
         //Debug
 
@@ -299,11 +295,6 @@ public class SpeculativeResolver extends Formatter {
 //                    System.out.println("Debug will be printed for this: ");
 //                    System.out.println(key.toString());
 //                    debug = true;
-//                }
-//                if(debug) {
-//                    logger.info("***************************************************************");
-//                    logger.info(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
-//                    logger.info("***************************************************************");
 //                }
                 if(debug) { System.out.println("***************************************************************");
                             System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
@@ -422,7 +413,7 @@ public class SpeculativeResolver extends Formatter {
                                          * Came here because the <objects> list was empty.
                                          * Now: 
                                          * 
-                                         * First check the status of for check if the parameter for this dependency
+                                         * First check the status of for the parameter of this dependency present in t
                                          *  - if yes then proceed with the result in the contextual summary.
                                          * 
                                          * Second if the above is not true then check for the result in solved summary which will
@@ -437,38 +428,52 @@ public class SpeculativeResolver extends Formatter {
                                         if (MergedSummaries.containsKey(sm)
                                                 && MergedSummaries.get(sm).containsKey(o)) {
                                             if(debug) { System.out.println("Not a field, PassedCallsite Value: "+ MergedSummaries.get(sm).get(o)); }
-                                            // If the Merged Summary is Escaping.
+                                            
+                                            // (1.If) If the Merged Summary is Escaping.
                                             if (MergedSummaries.get(sm).get(o).doesEscape()) {
                                                 /*
                                                  * Check the escapeReason of the object.
-                                                 *  1. If doesn't escaped due to
+                                                 *  1. If the object doesn't escape due to
                                                  *          (i) global and argument: Then mostly due to merge so check what was passed and allot that as final status.
-                                                 *  2. Else globaEscape --> goto else branch --> Mark the current object as E
+                                                 *  2. Else globalEscape --> goto else branch --> Mark the current object as E
                                                  */
-                                                if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_global)) {
-                                                    if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_argument)) {
-                                                        for (ContextualEscapeStatus ces : PassedCallsiteValues.get(sm).get(o)) {
-                                                            if(debug) { System.out.println("     ces value : "+ ces.toString()); }
-                                                            if (ces.cescapestat.containsKey(c)) {
-                                                                if (ces.doesEscape(c)) {
-                                                                    if(debug) { System.out.println("     Escaping in Parameter"); }
-                                                                    MergedSummaries.get(key).put(obj,
-                                                                            new EscapeStatus(Escape.getInstance()));
-                                                                } else {
-                                                                    MergedSummaries.get(key).put(obj,
-                                                                            new EscapeStatus(NoEscape.getInstance()));
+                                                if(escapeReason.containsKey(sm) && escapeReason.get(sm).containsKey(o)) {
+                                                    if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_global)) {
+                                                        if(!escapeReason.get(sm).get(o).contains(EscapeReason.escape_argument)) {
+                                                            if(PassedCallsiteValues.containsKey(sm) && PassedCallsiteValues.get(sm).containsKey(o)) {
+                                                                for (ContextualEscapeStatus ces : PassedCallsiteValues.get(sm).get(o)) {
+                                                                    if(debug) { System.out.println("     ces value : "+ ces.toString()); }
+                                                                    if (ces.cescapestat.containsKey(c)) {
+                                                                        if (ces.doesEscape(c)) {
+                                                                            if(debug) { System.out.println("     Escaping in Parameter"); }
+                                                                            MergedSummaries.get(key).put(obj,
+                                                                                    new EscapeStatus(Escape.getInstance()));
+                                                                        } else {
+                                                                            MergedSummaries.get(key).put(obj,
+                                                                                    new EscapeStatus(NoEscape.getInstance()));
+                                                                        }
+                                                                    }
                                                                 }
+                                                            } else {
+                                                                MergedSummaries.get(key).put(obj,
+                                                                        new EscapeStatus(Escape.getInstance()));
                                                             }
+                                                        } else {
+                                                            MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
+                                                            if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_argument)) escapeReason.get(key).get(obj).add(EscapeReason.escape_argument);
                                                         }
                                                     } else {
                                                         MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
-                                                        if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_argument)) escapeReason.get(key).get(obj).add(EscapeReason.escape_argument);
+                                                        if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_global)) escapeReason.get(key).get(obj).add(EscapeReason.escape_global);
                                                     }
                                                 } else {
                                                     MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));
-                                                    if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_global)) escapeReason.get(key).get(obj).add(EscapeReason.escape_global);
+                                                            if(!escapeReason.get(key).get(obj).contains(EscapeReason.escape_argument)) escapeReason.get(key).get(obj).add(EscapeReason.escape_argument);
                                                 }
-                                            } else {
+
+                                            }
+                                            // (1.else) Mark as non escaping.
+                                            else {
                                                 MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                             }
                                         } else {

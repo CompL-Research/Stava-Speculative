@@ -1,5 +1,9 @@
-[12:43:35] [32mCompiling Test-Case: 21 [0K[0m[12:43:36] [32mCompiled Test-Case: 21 [0K[0m
-[12:43:36] [32mCompiling the Static Analyser for OSASAD...[0K[0m[12:43:37] [32mCompiled...[0K[0m
+[12:43:35] [32mCompiling Test-Case: 21 [0K
+[0m[12:43:36] [32mCompiled Test-Case: 21 [0K
+[0m
+[12:43:36] [32mCompiling the Static Analyser for OSASAD...[0K
+[0m[12:43:37] [32mCompiled...[0K
+[0m
 [12:43:37] [32mGenerating the .res file...[0m
 [32m==================================================================[0m
 Soot Arguments are : [-whole-program -app -f J -p jb use-original-names:true -allow-phantom-refs -keep-bytecode-offset -p cg.spark on -p cg all-reachable -keep-offset -keep-line-number -main-class Main -process-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/tests/micro-bench/test21 -output-dir /home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase -output-format jimple -x jdk.* -x java.* -x org.* -x com.* -x sun.* -x javax.* ]
@@ -494,7 +498,7 @@ Reason: escape_argument
 **********************************************************
 
 Stat Count: 0 6 0
-calculating stats for MergedSummaries
+calculating stats for solvedSummaries
 Stat Count: 0 0 0
 calculating stats for inline summaries
 Trying to write to:/home/adityaanand/PhD/Research-Workspace/static-analysis/Speculative-Stack-Allocation/out/testcase/stats.txt

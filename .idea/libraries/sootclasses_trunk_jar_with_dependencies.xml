@@ -4,8 +4,6 @@
       <root url="jar://$PROJECT_DIR$/soot/sootclasses-trunk-jar-with-dependencies.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/soot/sootclasses-trunk-jar-with-dependencies.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

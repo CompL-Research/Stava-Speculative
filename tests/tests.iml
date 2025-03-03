@@ -5,7 +5,25 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/multi1" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test1" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test10" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test11" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test12" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test13" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test14" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test15" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test16" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test17" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test18" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test19" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test2" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test20" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test3" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test4" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test5" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test6" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test7" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test8" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test9" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

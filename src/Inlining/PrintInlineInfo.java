@@ -64,12 +64,12 @@ public class PrintInlineInfo {
             _ret.append(transformFuncSignature(e.getKey().getBytecodeSignature()));
             ArrayList<Integer> arr = new ArrayList<>(e.getValue());
             Collections.sort(arr);
-            _ret.append("[");
+            _ret.append("{");
             int j= 1;
             StringJoiner joiner = new StringJoiner(",");
             arr.forEach(item -> joiner.add(item.toString()));
             _ret.append(joiner.toString());
-            _ret.append("]");
+            _ret.append("}");
             //_ret.append(">");
             Main.i++;
         }

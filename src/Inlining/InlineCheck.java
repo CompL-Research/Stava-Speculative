@@ -24,8 +24,8 @@ public class InlineCheck {
          * allocated on the caller's stack or not.
          */
         // Get all the callers of this method
-        System.out.println(" == Inline Checking == ");
-        System.out.println("Current Method and Object: "+ key.toString() + obj.toString());
+        // System.out.println(" == Inline Checking == ");
+        // System.out.println("Current Method and Object: "+ key.toString() + obj.toString());
         CallGraph cg = Scene.v().getCallGraph();
         Iterator<Edge> it = cg.edgesInto(key); // Get all the methods that call the current method.
         while (it.hasNext()) {
@@ -60,7 +60,7 @@ public class InlineCheck {
                                     //tmpobj= getParameterObject(key, obj, e) ;
                                     if(objs != null) {
                                         for (ObjectNode tmpobj : objs) {
-                                            System.out.println("TmpObj is  : " + tmpobj + "from : " + edge.src());
+                                            // System.out.println("TmpObj is  : " + tmpobj + "from : " + edge.src());
                                             boolean tmpflag = true;
                                             // Check if the contextual summaries is present in the map
                                             if (SpeculativeResolver.PassedCallsiteValues2.containsKey(edge.src())) {
@@ -76,14 +76,14 @@ public class InlineCheck {
                                                                 // For the first time the context is being added to the inline summaries
                                                                 // create a new entry for this context and this object as the first object in the set
                                                                 SpeculativeResolver.inlineSummaries.get(c).get(key).add(obj.ref);
-                                                                System.out.println("Added object : " + obj + " inside argument");
+                                                                // System.out.println("Added object : " + obj + " inside argument");
                                                                 tmpflag = false;
                                                             } else {
                                                                 // Suppose earlier when the object was not escaping we added the object in list for a particular context now it escapes
                                                                 // We need to remove the object form the list
                                                                 if (SpeculativeResolver.inlineSummaries.get(c).containsKey(key) &&
                                                                         SpeculativeResolver.inlineSummaries.get(c).get(key).contains(obj.ref)) {
-                                                                    System.out.println("1. Deleting object : "+ obj  +" inside argument");
+                                                                    // System.out.println("1. Deleting object : "+ obj  +" inside argument");
                                                                     SpeculativeResolver.inlineSummaries.get(c).get(key).remove(obj.ref);
                                                                 }
                                                                 tmpflag = false;
@@ -93,7 +93,7 @@ public class InlineCheck {
                                                 }
                                             }
                                             if (tmpflag) {
-//                                                System.out.println("Contextual Summary: "+ SpeculativeResolver.PassedCallsiteValues.toString());
+                                            //    System.out.println("Contextual Summary: "+ SpeculativeResolver.PassedCallsiteValues.toString());
                                                 if (SpeculativeResolver.MergedSummaries.containsKey(edge.src())) {
                                                     if (SpeculativeResolver.MergedSummaries.get(edge.src()).containsKey(tmpobj)) {
                                                         // Now for each context for this object find out the status
@@ -103,13 +103,13 @@ public class InlineCheck {
                                                                 // For the first time the context is being added to the inline summaries
                                                                 // create a new entry for this context and this object as the first object in the set
                                                                 SpeculativeResolver.inlineSummaries.get(c).get(key).add(obj.ref);
-                                                                System.out.println("Added object : " + obj + " inside argument");
+                                                                // System.out.println("Added object : " + obj + " inside argument");
                                                             } else {
                                                                 // Suppose earlier when the object was not escaping we added the object in list for a particular context now it escapes
                                                                 // We need to remove the object form the list
                                                                 if (SpeculativeResolver.inlineSummaries.get(c).containsKey(key) &&
                                                                         SpeculativeResolver.inlineSummaries.get(c).get(key).contains(obj.ref)) {
-                                                                    System.out.println("2. Deleting object : "+ obj  +" inside argument");
+                                                                    // System.out.println("2. Deleting object : "+ obj  +" inside argument");
                                                                     SpeculativeResolver.inlineSummaries.get(c).get(key).remove(obj.ref);
                                                                 }
                                                             }
@@ -123,7 +123,7 @@ public class InlineCheck {
                                 } else {
                                     if (SpeculativeResolver.inlineSummaries.get(c).containsKey(key)) {
                                         if(SpeculativeResolver.inlineSummaries.get(c).get(key).contains(obj.ref)) {
-                                            System.out.println("3. Deleting object : "+ obj  +" outside");
+                                            // System.out.println("3. Deleting object : "+ obj  +" outside");
                                             SpeculativeResolver.inlineSummaries.get(c).get(key).remove(obj.ref);
                                         }
                                     }
@@ -139,11 +139,11 @@ public class InlineCheck {
                                 //System.out.println("Reached inside return with flag "+ flag);
                                 if (flag && !CheckGlobalEscape(key, obj)) {
                                         SpeculativeResolver.inlineSummaries.get(c).get(key).add(obj.ref);
-                                        System.out.println("Added object : "+ obj  +" inside return");
+                                        // System.out.println("Added object : "+ obj  +" inside return");
                                 } else {
                                     if (SpeculativeResolver.inlineSummaries.get(c).containsKey(key) &&
                                             SpeculativeResolver.inlineSummaries.get(c).get(key).contains(obj.ref)) {
-                                        System.out.println("Deleting object : "+ obj  +" inside return");
+                                        // System.out.println("Deleting object : "+ obj  +" inside return");
                                         SpeculativeResolver.inlineSummaries.get(c).get(key).remove(obj.ref);
                                     }
                                 }

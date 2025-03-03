@@ -23,7 +23,7 @@ public class getBCI {
 
 			Do We need to include JNew in this?
 		*/
-		System.out.println("[GETBCI]: for "+u);
+//		System.out.println("[GETBCI]: for "+u);
 //		System.out.println("Boxes: "+u.getUseBoxes());
 		for(ValueBox ub: u.getUseBoxes() ) {
 			/*
@@ -39,24 +39,26 @@ public class getBCI {
 				Next get the value contained in this box. If this value is a New Array/MultiArray Expr only
 				then we need to move further.
 			 */
-            Value v = ub.getValue();
-//			System.out.println(v.getClass().getName());
-			if (v == null)
-				continue;
-//			System.out.println(v.getClass().getName());
-			if(v instanceof  JAssignStmt) {
-				Value lhs = ((JAssignStmt) v).getLeftOp();
-				Value rhs = ((JAssignStmt) v).getRightOp();
-				if(rhs instanceof VirtualInvokeExpr) {
+
+
+			if(u instanceof  JAssignStmt) {
+//				System.out.println("Inside Assignment");
+				Value lhs = ((JAssignStmt) u).getLeftOp();
+				Value rhs = ((JAssignStmt) u).getRightOp();
+				if(rhs instanceof JVirtualInvokeExpr) {
 					invokeflag = true;
+//					System.out.println("Its true");
 					continue;
 				}
 			}
-
-			if(v instanceof JVirtualInvokeExpr) {
+			Value v = ub.getValue();
+//			System.out.println(v.getClass().getName());
+			if (v == null)
+				continue;
+			if(u instanceof JVirtualInvokeExpr) {
 //				System.out.println("UseBox : "+ v.getUseBoxes().toString());
 //				System.out.println("Base Box: "+ ((JVirtualInvokeExpr) v).getBaseBox());
-				if(((VirtualInvokeExpr) v).getBaseBox().toString().contains("$")) {
+				if(((JVirtualInvokeExpr) v).getBaseBox().toString().contains("$")) {
 //					System.out.println("True");
 					invokeflag = true;
 					continue;
@@ -96,10 +98,11 @@ public class getBCI {
 			throw e;
 
 		}
+//		System.out.println("Before: "+ _ret);
 		if(invokeflag) {
 			_ret = _ret - 3;
 		}
-		System.out.println("The returned BCI is: "+ _ret);
+//		System.out.println("The returned BCI is: "+ _ret);
 		return _ret;
 	}
 }

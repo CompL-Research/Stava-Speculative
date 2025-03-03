@@ -1,5 +1,6 @@
 package main;
 
+import analyser.PostResolutionAnalyser;
 import analyser.StaticAnalyser;
 import config.StoreEscape;
 import counters.PolymorphicInvokeCounter;
@@ -14,14 +15,12 @@ import soot.options.Options;
 import utils.GetListOfNoEscapeObjects;
 import utils.Stats;
 import Inlining.PrintInlineInfo;
-import java.io.IOException;
+
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -53,48 +52,55 @@ public class Main {
 			System.out.println("Unable to generate args for soot!");
 			return;
 		}
+		
+		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
+		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 
 		System.out.println("\n 1. Generating CV's and PTG(s): ");
-		CHATransform prepass = new CHATransform();
-		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
 		StaticAnalyser staticAnalyser = new StaticAnalyser();
-
-		Pack wjapPack = PackManager.v().getPack("wjap");
-		if (wjapPack.get("wjap.guards") != null) {
-			// Phase already exists, handle accordingly
-		} else {
-			wjapPack.add(new Transform("wjap.pre", prepass));
-		}
-
-
-//		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
-		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
+		CHATransform prepass = new CHATransform();
+		PackManager.v().getPack("wjap").add(new Transform("wjap.pre", prepass));
 		PackManager.v().getPack("jtp").add(new Transform("jtp.sample", staticAnalyser));
+		// -- 1.
 		long analysis_start = System.currentTimeMillis();
-
 		Options.v().parse(sootArgs);
 		Scene.v().loadNecessaryClasses();
 		Scene.v().loadDynamicClasses();
 		PackManager.v().runPacks();
 		// soot.Main.main(sootArgs);
-
 		long analysis_end = System.currentTimeMillis();
+		// -- 1.
 		System.out.println(" :> CV and PTG(s) Generated!");
 		System.out.println(" :> Time Taken in phase 1: [" + (analysis_end - analysis_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
-		long res_start = System.currentTimeMillis();
 
 		printAllInfo(StaticAnalyser.ptgs, StaticAnalyser.summaries, args[4]);
-
+		// -- 2.
+		long res_start = System.currentTimeMillis();
 		System.out.println(" 2. Resolving the Dependencies: ");
 		SpeculativeResolver sr = new SpeculativeResolver(StaticAnalyser.summaries,
 				StaticAnalyser.ptgs,
 				StaticAnalyser.noBCIMethods);
 		long res_end = System.currentTimeMillis();
+		// -- 2.
 		System.out.println(" :> Resolution is done!");
 		System.out.println(" :> Time Taken in phase 2: [" + (res_end - res_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
-		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + "]seconds");
+		// -- 3.
+		long postresolution_start = System.currentTimeMillis();
+		PostResolutionAnalyser ps = new PostResolutionAnalyser(StaticAnalyser.ptgs);
+		PackManager.v().getPack("jtp").add(new Transform("jtp.postres", ps));
+		Options.v().parse(sootArgs);
+		Scene.v().loadNecessaryClasses();
+		Scene.v().loadDynamicClasses();
+		PackManager.v().runPacks();
+		long postresolution_end = System.currentTimeMillis();
+		// -- 3.
+		System.out.println(" :> Post Resolution Phase is done!");
+		System.out.println(" :> Time Taken in phase 3: [" + (postresolution_end - postresolution_start) / 1000F + "]seconds");
+		System.out.println("**********************************************************");
+
+		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + (postresolution_end - postresolution_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
 
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
@@ -259,12 +265,18 @@ public class Main {
 //			}
 //		}
 
-//		for(CallSite cs :  SpeculativeResolver.inlineSummaries.keySet()) {
-//			System.out.println("CallSite: "+ cs.toString());
-//			for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
-//				System.out.println("SootMethod: "+ sm.toString() + "List of BCIs: "+ SpeculativeResolver.inlineSummaries.get(cs).get(sm).toString());
-//			}
-//		}
+		// System.out.println( " INLINE RESULTS " );
+		// for(CallSite cs :  SpeculativeResolver.inlineSummaries.keySet()) {
+		// 	for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
+		// 		if(SpeculativeResolver.inlineSummaries.get(cs).get(sm).isEmpty()) {
+		// 			continue;
+		// 		}
+		// 	}			
+		// 	System.out.println("CallSite: "+ cs.toString());
+		// 	for(SootMethod sm : SpeculativeResolver.inlineSummaries.get(cs).keySet()) {
+		// 		System.out.println("SootMethod: "+ sm.toString() + "List of BCIs: "+ SpeculativeResolver.inlineSummaries.get(cs).get(sm).toString());
+		// 	}
+		// }
 
 		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
@@ -576,9 +588,14 @@ public class Main {
 					sb.append(" ");
 					if(SPEC_OPT.containsKey(method)) {
 						for(SootMethod sm : SPEC_OPT.keySet()) {
+							int count = 0;
 							if(method.equals(sm)) {
 								sb.append("[");
 								for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+									count ++;
+									if(count > 1) {
+										sb.append(" | ");
+									}
 									sb.append(p.toString());
 								}
 								sb.append("]");
@@ -587,6 +604,8 @@ public class Main {
 					} else {
 						sb.append("[]");
 					}
+					sb.append(" ! ");
+					sb.append("[]");
 					sb.append("\n");
 				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
 					sb.append(transformFuncSignature(method.getBytecodeSignature()));
@@ -607,6 +626,8 @@ public class Main {
 							sb.append("]");
 						}
 					}
+					sb.append(" ! ");
+					sb.append("[]");
 					sb.append("\n");
 				}
 			}
@@ -667,14 +688,14 @@ public class Main {
 					}
 
 					sb.append(" ! ");
-					sb.append("[");
+					sb.append("{");
 					i = 0;
 					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
 					for(CallSite cs : c) {
 //						System.out.println("CS is : "+ cs.toString());
 						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 					}
-					sb.append("]");
+					sb.append("}");
 					sb.append("\n");
 				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
 					sb.append(transformFuncSignature(method.getBytecodeSignature()));
@@ -696,14 +717,14 @@ public class Main {
 						}
 					}
 					sb.append(" ! ");
-					sb.append("[");
+					sb.append("{");
 					i = 0;
 					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
 					for(CallSite cs : c) {
-						System.out.println("CS is : "+ cs.toString());
+						// System.out.println("CS is : "+ cs.toString());
 						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 					}
-					sb.append("]");
+					sb.append("}");
 					sb.append("\n");
 				}
 			}

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="poa-trunk">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/tests/older/test17/poa-trunk.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
