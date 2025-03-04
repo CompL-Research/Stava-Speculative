@@ -90,7 +90,6 @@ public class Main {
 		long postresolution_start = System.currentTimeMillis();
 		PostResolutionAnalyser ps = new PostResolutionAnalyser(StaticAnalyser.ptgs);
 		PackManager.v().getPack("jtp").add(new Transform("jtp.postres", ps));
-		Options.v().parse(sootArgs);
 		Scene.v().loadNecessaryClasses();
 		Scene.v().loadDynamicClasses();
 		PackManager.v().runPacks();
@@ -102,7 +101,13 @@ public class Main {
 
 		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + (postresolution_end - postresolution_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
-
+		
+		for(SootMethod sm : PostResolutionAnalyser.finalBranchResult.keySet()) {
+			if(!PostResolutionAnalyser.finalBranchResult.get(sm).isEmpty()) {
+				System.out.println("Method is : "+ sm.toString());
+				System.out.println(PostResolutionAnalyser.finalBranchResult.get(sm).toString());
+			}
+		}
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
 
 		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.PassedCallsiteValues);

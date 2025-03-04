@@ -209,17 +209,17 @@ public class SpeculativeResolver extends Formatter {
 //            }
 //        }
 
-        for(SootMethod sm: escapeReason.keySet()) {
-            for(ObjectNode o: escapeReason.get(sm).keySet()) {
-                if(!escapeReason.get(sm).get(o).isEmpty()) {
-                    System.out.println("Method: "+ sm + " Object: "+ o);
-                    List<EscapeReason> er = escapeReason.get(sm).get(o);
-                    for(EscapeReason e: er) {
-                        System.out.println("Reason: "+ e);
-                    }
-                }
-            }
-        }
+        // for(SootMethod sm: escapeReason.keySet()) {
+        //     for(ObjectNode o: escapeReason.get(sm).keySet()) {
+        //         if(!escapeReason.get(sm).get(o).isEmpty()) {
+        //             System.out.println("Method: "+ sm + " Object: "+ o);
+        //             List<EscapeReason> er = escapeReason.get(sm).get(o);
+        //             for(EscapeReason e: er) {
+        //                 System.out.println("Reason: "+ e);
+        //             }
+        //         }
+        //     }
+        // }
 
     }
 
