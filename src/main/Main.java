@@ -27,6 +27,7 @@ import java.lang.*;
 
 import static java.lang.System.exit;
 import static utils.KillCallerOnly.kill;
+import javafx.util.Pair;
 
 public class Main {
 
@@ -102,12 +103,21 @@ public class Main {
 		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + (postresolution_end - postresolution_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
 		
-		for(SootMethod sm : PostResolutionAnalyser.finalBranchResult.keySet()) {
-			if(!PostResolutionAnalyser.finalBranchResult.get(sm).isEmpty()) {
+		for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
+			if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
 				System.out.println("Method is : "+ sm.toString());
-				System.out.println(PostResolutionAnalyser.finalBranchResult.get(sm).toString());
+				System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
 			}
 		}
+		for (Map.Entry<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> entry : PostResolutionAnalyser.FinalBranchResult.entrySet()) {
+			SootMethod method = entry.getKey();
+			System.out.println("Method: " + method);
+		
+			for (Pair<List<Integer>, Pair<String, List<Integer>>> pair : entry.getValue()) {
+				System.out.println("  [" + pair.getKey() + ", \"" + pair.getValue().getKey() + "\", " + pair.getValue().getValue() + "]");
+			}
+		}
+		
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
 
 		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.PassedCallsiteValues);
@@ -332,56 +342,6 @@ public class Main {
 			}
 		return true;
 	}
-
-
-//	public static List<ObjectNode> GetParmObjects(ObjectNode ob, int num, SootMethod tgt, List<SootField> fieldList) {
-//		List<ObjectNode> objs = new ArrayList<>();
-//		try {
-//			// System.out.println("Reaching here with source: "+ tgt.toString() + "and
-//			// fieldlist : "+ fieldList);
-//			if (fieldList != null) {
-//				if (ptgs.containsKey(tgt)) {
-//					if (ptgs.get(tgt).fields.containsKey(ob)) {
-//						// System.out.println("Reached Inside");
-//						Set<ObjectNode> obj = new HashSet<>();
-//						Set<ObjectNode> obj1 = new HashSet<>();
-//						obj1.add(ob);
-//						for (SootField f : fieldList) {
-//							// System.out.println("Object is : "+ ob.toString());
-//							// System.out.println("Reaching inside as field list is : "+
-//							// fieldList.toString());
-//							// System.out.println("Field is "+ f.toString());
-//							obj = getfieldObject(tgt, obj1, f);
-//							if (obj.isEmpty()) {
-//								// objs.add(o);
-//								return null;
-//							}
-//							// System.out.println("Obj is "+ obj.toString());
-//							obj1 = obj;
-//						}
-//						if (obj != null) {
-//							objs.addAll(obj);
-//							return objs;
-//						} else {
-//							return null;
-//						}
-//					}
-//				}
-//			} else {
-//				objs.add(ob);
-//			}
-//		} catch (Exception e) {
-//			// System.out.println(src + " " + arg + " " + u + " " + num);
-//			e.printStackTrace();
-//			exit(0);
-//		}
-//		// System.out.println("Obj has "+ objs.toString());
-//		return objs;
-//	}
-
-
-
-
 
 	static void printCFG() {
 		try {

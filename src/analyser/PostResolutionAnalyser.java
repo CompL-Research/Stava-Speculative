@@ -11,6 +11,8 @@ import soot.jimple.*;
 import soot.jimple.internal.*;
 import soot.toolkits.graph.ExceptionalUnitGraph;
 import utils.IllegalBCIException;
+import javafx.util.Pair;
+
 
 import java.util.*;
 
@@ -23,12 +25,15 @@ public class PostResolutionAnalyser extends BodyTransformer {
 	public static Map<SootMethod, BranchUnits> BranchInfo;
 	static Map<SootMethod, PointsToGraph> ptgs;
 	
-	public static Map<SootMethod, List<Map.Entry<Map<Integer, String>, Integer>>> finalBranchResult;
+	public static Map<SootMethod, Map<Integer, List<Map<Integer, String>>>> BranchResult;
+	public static Map<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> FinalBranchResult;
+
 	// public static Map<SootMethod, Map.Entry<Map<Integer, String>, List<Integer>>> mergedBranchResult;
 	public PostResolutionAnalyser ( Map<SootMethod, PointsToGraph> ptgs) {
 		super();
 		BranchInfo = new HashMap<>();
-		finalBranchResult = new HashMap<>();
+		BranchResult = new HashMap<>();
+		FinalBranchResult = new HashMap<>();
 		PostResolutionAnalyser.ptgs = ptgs;
 	}
 	
@@ -153,12 +158,69 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				}
 			}
 
-			finalBranchResult.putIfAbsent(curr_met, new ArrayList<>());
+			BranchResult.putIfAbsent(curr_met, new HashMap<>());
 			// Store the final results for this method.
 			for(ObjectNode o : objectWiseResult.keySet()) {
+				List<Map<Integer, String>> temp = new ArrayList<>();
 				for(Map<Integer, String> m : objectWiseResult.get(o)) {
-					Map.Entry<Map<Integer, String>, Integer> entry = new AbstractMap.SimpleEntry<Map<Integer, String>, Integer>(m, o.ref);
-					finalBranchResult.get(curr_met).add(entry);
+					temp.add(m);
+				}
+				if(temp.size() > 0) {
+					BranchResult.get(curr_met).put(o.ref,temp);
+				}
+			}
+
+			// Refine the Results.
+			for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
+				if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
+					System.out.println("Method is : "+ sm.toString());
+					System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
+					for(Integer obj : PostResolutionAnalyser.BranchResult.get(sm).keySet()) {
+						boolean elsebranch = false;
+						// To store final Object Data
+						List<Pair<List<Integer>, Pair<String, List<Integer>>>> ObjectData  = new ArrayList<>(); 
+						// To store intemediate bci of if-elseif-else branches where it doesn't escape
+						List<Integer> bciOfIfElseBranchWhereDoesntEscape = new ArrayList<>();
+						List<Map<Integer, String>> objectInfo = PostResolutionAnalyser.BranchResult.get(sm).get(obj);
+						for(Map<Integer, String> m : objectInfo) {
+							if(!m.keySet().contains(bu.ifpart.BCI)) {
+								// Does not escape in IF PART
+								if(!bciOfIfElseBranchWhereDoesntEscape.contains(bu.ifpart.BCI)) {
+									bciOfIfElseBranchWhereDoesntEscape.add(bu.ifpart.BCI);
+								}
+							}
+							for(Integer elseifbcis: bu.elseifpart.keySet()) {
+								if(!m.keySet().contains(elseifbcis)) {
+									// Does not escape in ELSEIF PART
+									if(!bciOfIfElseBranchWhereDoesntEscape.contains(elseifbcis)) {
+										bciOfIfElseBranchWhereDoesntEscape.add(elseifbcis);
+									}
+								}
+							}
+							if(!m.keySet().toString().contains("-5")) {
+								// Does not escape in ELSE PART
+								if(!bciOfIfElseBranchWhereDoesntEscape.contains(-5)) {
+									bciOfIfElseBranchWhereDoesntEscape.add(-5);
+									elsebranch =true;
+								}
+							}
+						}
+						// Check for else branch
+						// if(elsebranch) {
+							List<Integer> temp1 = new ArrayList<>();
+							temp1.add(obj);
+							Pair<String, List<Integer>> temp2 = new Pair<String,List<Integer>>("Taken", temp1);
+							Pair<List<Integer>,Pair<String, List<Integer>>> temp3 = new Pair<List<Integer>,Pair<String,List<Integer>>>(bciOfIfElseBranchWhereDoesntEscape, temp2);
+							ObjectData.add(temp3);
+						// }
+						if(FinalBranchResult.containsKey(curr_met)) {
+							FinalBranchResult.get(curr_met).addAll(ObjectData);
+						} else {
+							FinalBranchResult.put(curr_met, ObjectData);
+						}
+						
+					}
+					
 				}
 			}
 		} else {
