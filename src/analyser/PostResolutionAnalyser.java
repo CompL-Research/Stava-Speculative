@@ -11,10 +11,13 @@ import soot.jimple.*;
 import soot.jimple.internal.*;
 import soot.toolkits.graph.ExceptionalUnitGraph;
 import utils.IllegalBCIException;
-import javafx.util.Pair;
+//import javafx.util.Pair;
+import branch.Pair;
+
 
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import branch.BranchUnits;
 import branch.BranchUnits.Ifpart;
@@ -32,8 +35,8 @@ public class PostResolutionAnalyser extends BodyTransformer {
 	public PostResolutionAnalyser ( Map<SootMethod, PointsToGraph> ptgs) {
 		super();
 		BranchInfo = new HashMap<>();
-		BranchResult = new HashMap<>();
-		FinalBranchResult = new HashMap<>();
+		BranchResult = new ConcurrentHashMap<>();
+		FinalBranchResult = new ConcurrentHashMap<>();
 		PostResolutionAnalyser.ptgs = ptgs;
 	}
 	
@@ -54,7 +57,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 //		System.out.println(body);
 
 		PatchingChain<Unit> units = body.getUnits();
-		ExceptionalUnitGraph cfg = new ExceptionalUnitGraph(body);
+
 		// Get the resolved values from Resolver:
 		/*
 			1. Check if the current method has a internal method which is escaping.
@@ -65,31 +68,32 @@ public class PostResolutionAnalyser extends BodyTransformer {
 		// Check 1:  If Method has a escaping internal object.
 		List<ObjectNode> objectList;
 		objectList = checkIfEscapingObjectPresent(curr_met, SpeculativeResolver.MergedSummaries);
-		for(ObjectNode o : objectList) {
-			System.out.println(" Escaping Local Object: <"+ o.type + "," + o.ref + ">");
-		}
+//		for(ObjectNode o : objectList) {
+//			System.out.println(" Escaping Local Object: <"+ o.type + "," + o.ref + ">");
+//		}
 
 		// Check 2: If Method has conditional "IF" Statement.
 		boolean hasIF = false;
 		hasIF = checkIfHasConditionalIFStatment(units);
 		if(hasIF) {
+			ExceptionalUnitGraph cfg = new ExceptionalUnitGraph(body);
 			BranchUnits bu;
 			bu = getBranchUnits(curr_met, units, cfg);
-			if(bu != null && bu.ifpart.toString() != null && bu.elseifpart.toString() != null && bu.elsepart.toString() != null) {
-				System.out.println("Branch Units: ");
-				System.out.println(bu.ifpart.toString());
-				System.out.println(bu.elseifpart.toString());
-				System.out.println(bu.elsepart.toString() + " ");
-			}
+//			if(bu != null && bu.ifpart.toString() != null && bu.elseifpart.toString() != null && bu.elsepart.toString() != null) {
+//				System.out.println("Branch Units: ");
+//				System.out.println(bu.ifpart.toString());
+//				System.out.println(bu.elseifpart.toString());
+//				System.out.println(bu.elsepart.toString() + " ");
+//			}
 			// Store Branch Unit Per Method For Future References.
-			BranchInfo.put(curr_met, bu);
+			// BranchInfo.put(curr_met, bu);
 			// Iterate Over all Objects Escaping and Find If all reasons that makes its escapes are inside this if-else block.
 			Map<ObjectNode, List<Map<Integer, String>>> objectWiseResult = new HashMap<>();
 			for(ObjectNode o : objectList) {
-				System.out.println("\nChecking for Object: <"+ o.type + "," + o.ref + ">");
+//				System.out.println("\nChecking for Object: <"+ o.type + "," + o.ref + ">");
 				List<Map<Integer, String>> forEachReason = new ArrayList<>();
 				Local lo = getLocalObject(o, curr_met); 
-				System.out.println("Received Corresponding Local Object: "+ lo.toString());
+//				System.out.println("Received Corresponding Local Object: "+ lo.toString());
 				List<EscapeReason> reasons = SpeculativeResolver.escapeReason.get(curr_met).get(o);
 				for(EscapeReason er : reasons) {
 					if(er == EscapeReason.escape_argument) {
@@ -100,7 +104,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 							forEachReason.add(result);
 						}
 						for(Integer i : result.keySet()){
-							System.out.println("ARG: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+//							System.out.println("ARG: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
 						}
 					} else if(er == EscapeReason.escape_global) {
 						forEachReason = new ArrayList<>();
@@ -110,7 +114,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 							forEachReason.add(result);
 						}
 						for(Integer i : result.keySet()){
-							System.out.println("GLBL: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+//							System.out.println("GLBL: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
 						}
 					} else if(er == EscapeReason.escape_parameter) {
 						forEachReason = new ArrayList<>();
@@ -120,7 +124,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 							forEachReason.add(result);
 						}
 						for(Integer i : result.keySet()){
-							System.out.println("PARM: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+//							System.out.println("PARM: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
 						}
 					} else if(er == EscapeReason.escape_return) {
 						forEachReason = new ArrayList<>();
@@ -130,7 +134,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 							forEachReason.add(result);
 						}
 						for(Integer i : result.keySet()){
-							System.out.println("RET: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+//							System.out.println("RET: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
 						}
 					}
 					if(objectWiseResult.containsKey(o)) {
@@ -143,20 +147,20 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				List<ObjectNode> pointedBy = new ArrayList<>();
 				pointedBy = GetObjectsPointedBy(o, curr_met);
 				if(pointedBy.size() > 0) {
-					System.out.println("Objects Pointed By: "+ pointedBy.toString());
+//					System.out.println("Objects Pointed By: "+ pointedBy.toString());
 					for(ObjectNode pb : pointedBy) {
 						objectWiseResult.put(pb, objectWiseResult.get(o));
 					}	
 				}
 			}
-			for(ObjectNode o : objectWiseResult.keySet()) {
-				System.out.println("Object: <"+ o.type + "," + o.ref + ">");
-				for(Map<Integer, String> m : objectWiseResult.get(o)) {
-					for(Integer i : m.keySet()) {
-						System.out.println("AT BCI: "+ i + " IF: "+ m.get(i) + " IT ESCAPES.");
-					}
-				}
-			}
+//			for(ObjectNode o : objectWiseResult.keySet()) {
+//				System.out.println("Object: <"+ o.type + "," + o.ref + ">");
+//				for(Map<Integer, String> m : objectWiseResult.get(o)) {
+//					for(Integer i : m.keySet()) {
+//						System.out.println("AT BCI: "+ i + " IF: "+ m.get(i) + " IT ESCAPES.");
+//					}
+//				}
+//			}
 
 			BranchResult.putIfAbsent(curr_met, new HashMap<>());
 			// Store the final results for this method.
@@ -171,10 +175,11 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			}
 
 			// Refine the Results.
-			for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
+			// for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
+			for(SootMethod sm : new HashSet<>(PostResolutionAnalyser.BranchResult.keySet())) {
 				if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
-					System.out.println("Method is : "+ sm.toString());
-					System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
+//					System.out.println("Method is : "+ sm.toString());
+//					System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
 					for(Integer obj : PostResolutionAnalyser.BranchResult.get(sm).keySet()) {
 						boolean elsebranch = false;
 						// To store final Object Data
@@ -182,27 +187,37 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						// To store intemediate bci of if-elseif-else branches where it doesn't escape
 						List<Integer> bciOfIfElseBranchWhereDoesntEscape = new ArrayList<>();
 						List<Map<Integer, String>> objectInfo = PostResolutionAnalyser.BranchResult.get(sm).get(obj);
-						for(Map<Integer, String> m : objectInfo) {
-							if(!m.keySet().contains(bu.ifpart.BCI)) {
-								// Does not escape in IF PART
-								if(!bciOfIfElseBranchWhereDoesntEscape.contains(bu.ifpart.BCI)) {
-									bciOfIfElseBranchWhereDoesntEscape.add(bu.ifpart.BCI);
+//						System.out.println("Object Info: "+ objectInfo.toString());
+						boolean IfkeyExists = objectInfo.stream()
+								.anyMatch(map -> map.containsKey(bu.ifpart.BCI));
+						if(!IfkeyExists) {
+//							System.out.println("Came inside if beacuse the previous result doesn't this bci: " + bu.ifpart.BCI);
+							// Does not escape in IF PART
+							if (!bciOfIfElseBranchWhereDoesntEscape.contains(bu.ifpart.BCI)) {
+								bciOfIfElseBranchWhereDoesntEscape.add(bu.ifpart.BCI);
+							}
+						}
+						for(Integer elseifbcis: bu.elseifpart.keySet()) {
+//							System.out.println("Elseif BCI: " + elseifbcis);
+							boolean ElsifkeyExists = objectInfo.stream()
+									.anyMatch(map -> map.containsKey(elseifbcis));
+//							System.out.println("Key Exists: " + ElsifkeyExists);
+							// Does not escape in ELSEIF PART
+							if(!ElsifkeyExists){
+//								System.out.println("Came inside elseif beacuse the previous result doesn't this bci: " + elseifbcis);
+								if (!bciOfIfElseBranchWhereDoesntEscape.contains(elseifbcis)) {
+									bciOfIfElseBranchWhereDoesntEscape.add(elseifbcis);
 								}
 							}
-							for(Integer elseifbcis: bu.elseifpart.keySet()) {
-								if(!m.keySet().contains(elseifbcis)) {
-									// Does not escape in ELSEIF PART
-									if(!bciOfIfElseBranchWhereDoesntEscape.contains(elseifbcis)) {
-										bciOfIfElseBranchWhereDoesntEscape.add(elseifbcis);
-									}
-								}
-							}
-							if(!m.keySet().toString().contains("-5")) {
-								// Does not escape in ELSE PART
-								if(!bciOfIfElseBranchWhereDoesntEscape.contains(-5)) {
-									bciOfIfElseBranchWhereDoesntEscape.add(-5);
-									elsebranch =true;
-								}
+						}
+						boolean ElsekeyExists = objectInfo.stream()
+									.anyMatch(map -> map.containsKey(-5));
+						// Does not escape in ELSE PART
+						if(!ElsekeyExists) {
+//							System.out.println("Came inside else beacuse the previous result doesn't this bci: "+ -5);
+							if(!bciOfIfElseBranchWhereDoesntEscape.contains(-5)) {
+								bciOfIfElseBranchWhereDoesntEscape.add(-5);
+								elsebranch =true;;
 							}
 						}
 						// Check for else branch
@@ -218,11 +233,59 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						} else {
 							FinalBranchResult.put(curr_met, ObjectData);
 						}
-						
 					}
-					
 				}
 			}
+
+
+			for (SootMethod sm : FinalBranchResult.keySet()) {
+				List<Pair<List<Integer>, Pair<String, List<Integer>>>> branchList = FinalBranchResult.get(sm);
+
+				// Use LinkedHashMap to maintain insertion order while merging
+				Map<Pair<List<Integer>, String>, Pair<String, List<Integer>>> seen = new LinkedHashMap<>();
+				// Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = branchList.iterator();
+
+				List<Pair<List<Integer>, Pair<String, List<Integer>>>> copy = new ArrayList<>(branchList);
+				Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = copy.iterator();
+
+				while (iterator.hasNext()) {
+					Pair<List<Integer>, Pair<String, List<Integer>>> entry = iterator.next();
+					if (entry == null || entry.getKey() == null || entry.getKey().isEmpty()) {
+						continue;
+					}
+					List<Integer> firstList = entry.getKey();  // Extract first List<Integer>
+					String branchType = entry.getValue().getKey();  // Extract branch type (String)
+					List<Integer> lastList = entry.getValue().getValue();  // Extract last List<Integer>
+
+					// Use a custom wrapper to compare lists correctly
+					Pair<List<Integer>, String> key = new Pair<>(new ArrayList<>(firstList), branchType);
+
+					if (seen.containsKey(key)) {
+						// Get the existing lastList
+						List<Integer> existingLastList = seen.get(key).getValue();
+
+						// Merge lastList into the one that has more values, or into the first if equal
+						if (existingLastList.size() >= lastList.size()) {
+							existingLastList.addAll(lastList);
+						} else {
+							if (lastList != null && existingLastList != null) {
+								lastList.addAll(existingLastList);
+							}
+							seen.put(key, new Pair<>(branchType, lastList)); // Update reference
+						}
+						iterator.remove(); // Remove the duplicate entry
+					} else {
+						seen.put(key, new Pair<>(branchType, new ArrayList<>(lastList))); // Store a copy
+					}
+				}
+
+				// Update the FinalBranchResult with the merged data
+				branchList.clear();
+				for (Map.Entry<Pair<List<Integer>, String>, Pair<String, List<Integer>>> e : seen.entrySet()) {
+					branchList.add(new Pair<>(e.getKey().getKey(), e.getValue()));
+				}
+			}
+//			printFinalBranchResult();
 		} else {
 			System.out.println("No Conditional IF Statement Found.");
 		}
@@ -261,7 +324,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				// Unit targetUnit = targetBox.getUnit();
 				IfStmt ifStmt = (IfStmt) unit;
 				Unit targetUnit = ifStmt.getTarget();
-				System.out.println("Unit: " + unit.toString() + " Target: " + targetUnit.toString());
+//				System.out.println("Unit: " + unit.toString() + " Target: " + targetUnit.toString());
 				// if (targetUnit == null || targetUnit.toString().contains("return")) {
 				// 	continue;
 				// }
@@ -269,11 +332,11 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				boolean backEdge = false;
 				for (Unit pred : cfg.getPredsOf(unit)) {
 					// If a predecessor contains a goto to this unit → back edge found
-					System.out.println("Pred Unit: " + pred + "Succ Unit: " + unit);
+//					System.out.println("Pred Unit: " + pred + "Succ Unit: " + unit);
 					if (pred instanceof GotoStmt) {
 						GotoStmt gotoStmt = (GotoStmt) pred;
 						if (gotoStmt.getTarget() == unit) {
-							System.out.println("Back Edge Detected at: " + ifStmt);
+//							System.out.println("Back Edge Detected at: " + ifStmt);
 							backEdge = true;
 						}
 					}
@@ -283,7 +346,10 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				}
 				target = targetUnit;
 				bci = utils.getBCI.get(unit); // Ensure valid BCI
-				
+				if(bci == -1) {
+					continue;
+				}
+
 				if (count == 0) {
 					count++;
 					currentBranch = BranchType.IF;
@@ -304,7 +370,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if (currentBranch == BranchType.IF) {
 					bu.ifpart.IfUnits.add(unit);
 				} else if (currentBranch == BranchType.ELSEIF) {
-					bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+					if (bu.elseifpart.containsKey(bci)) {
+						bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+					}
 				} else if (currentBranch == BranchType.ELSE) {
 					bu.elsepart.ElseUnits.add(unit);
 				}
@@ -367,7 +435,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JAssignStmt) {
 					Value rhs = ((JAssignStmt)u).getRightOp();
 					Value lhs = ((JAssignStmt)u).getLeftOp();
-					if(rhs.toString().contains(lo.toString())) { 
+					if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 						if (lhs instanceof StaticFieldRef) {
 							result.put(bu.ifpart.BCI, "Taken");
 						}
@@ -380,7 +448,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 					if(u instanceof JAssignStmt) {
 						Value rhs = ((JAssignStmt)u).getRightOp();
 						Value lhs = ((JAssignStmt)u).getLeftOp();
-						if(rhs.toString().contains(lo.toString())) {
+						if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 							if (lhs instanceof StaticFieldRef) {
 								result.put(bci, "Taken");
 							}
@@ -393,7 +461,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JAssignStmt) {
 					Value rhs = ((JAssignStmt)u).getRightOp();
 					Value lhs = ((JAssignStmt)u).getLeftOp();
-					if(rhs.toString().contains(lo.toString())) {
+					if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 						if (lhs instanceof StaticFieldRef) {
 							result.put(bu.elsepart.BCI, "Taken");
 						}
@@ -408,7 +476,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JAssignStmt) {
 					Value rhs = ((JAssignStmt)u).getRightOp();
 					Value lhs = ((JAssignStmt)u).getLeftOp();
-					if(rhs.toString().contains(lo.toString())) { 
+					if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 						if (lhs instanceof JInstanceFieldRef) {
 							Local lhsBase = (Local) ((JInstanceFieldRef)lhs).getBase();
 							if(lhsBase instanceof Local) {
@@ -425,7 +493,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 					if(u instanceof JAssignStmt) {
 						Value rhs = ((JAssignStmt)u).getRightOp();
 						Value lhs = ((JAssignStmt)u).getLeftOp();
-						if(rhs.toString().contains(lo.toString())) {
+						if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 							if (lhs instanceof JInstanceFieldRef) {
 								Local lhsBase = (Local) ((JInstanceFieldRef)lhs).getBase();
 								if(lhsBase instanceof Local) {
@@ -442,7 +510,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JAssignStmt) {
 					Value rhs = ((JAssignStmt)u).getRightOp();
 					Value lhs = ((JAssignStmt)u).getLeftOp();
-					if(rhs.toString().contains(lo.toString())) {
+					if(rhs != null && lo != null && rhs.toString().contains(lo.toString())) {
 						if (lhs instanceof JInstanceFieldRef) {
 							Local lhsBase = (Local) ((JInstanceFieldRef)lhs).getBase();
 							if(lhsBase instanceof Local) {
@@ -461,7 +529,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JInvokeStmt) {
 					Value invokestmt = ((JInvokeStmt)u).getInvokeExpr();
 					invokestmt.getUseBoxes().forEach(use -> {
-						if(use.getValue().toString().contains(lo.toString())) {
+						if(use.getValue() != null && use.getValue().equals(lo)) {
 							result.put(bu.ifpart.BCI, "Taken");
 						}
 					});
@@ -473,7 +541,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 					if(u instanceof JInvokeStmt) {
 						Value invokestmt = ((JInvokeStmt)u).getInvokeExpr();
 						invokestmt.getUseBoxes().forEach(use -> {
-							if(use.getValue().toString().contains(lo.toString())) {
+							if(use.getValue() != null && use.getValue().equals(lo)) {
 								result.put(bci, "Taken");
 							}
 						});
@@ -485,7 +553,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				if(u instanceof JInvokeStmt) {
 					Value invokestmt = ((JInvokeStmt)u).getInvokeExpr();
 					invokestmt.getUseBoxes().forEach(use -> {
-						if(use.getValue().toString().contains(lo.toString())) {
+						if(use.getValue() != null && use.getValue().equals(lo)) {
 							result.put(bu.elsepart.BCI, "Taken");
 						}
 					});
@@ -498,7 +566,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			for(Unit u: bu.ifpart.IfUnits) {
 				if(u instanceof JReturnStmt) {
 					Value ret = ((JReturnStmt)u).getOp();
-					if(ret.toString().contains(lo.toString())) {
+					if(ret != null && lo != null && ret.toString().contains(lo.toString())) {
 							result.put(bu.ifpart.BCI, "Taken");
 					}
 				}
@@ -508,7 +576,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				for(Unit u: bu.elseifpart.get(bci).ElseIfUnits) {
 					if(u instanceof JReturnStmt) {
 						Value ret = ((JReturnStmt)u).getOp();
-						if(ret.toString().contains(lo.toString())) {
+						if(ret != null && lo != null && ret.toString().contains(lo.toString())) {
 							result.put(bci, "Taken");
 						}
 					}
@@ -518,7 +586,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			for(Unit u: bu.elsepart.ElseUnits) {
 				if(u instanceof JReturnStmt) {
 					Value ret = ((JReturnStmt)u).getOp();
-					if(ret.toString().contains(lo.toString())) {
+					if(ret != null && lo != null && ret.toString().contains(lo.toString())) {
 						result.put(bu.elsepart.BCI, "Taken");
 					}
 				}
@@ -553,4 +621,21 @@ public class PostResolutionAnalyser extends BodyTransformer {
 		}
 		return true;
 	}
+
+	public static void printFinalBranchResult() {
+		for (Map.Entry<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> entry : FinalBranchResult.entrySet()) {
+			System.out.println("Method: " + entry.getKey());
+
+			for (Pair<List<Integer>, Pair<String, List<Integer>>> pair : entry.getValue()) {
+				List<Integer> firstList = pair.getKey();
+				String branchType = pair.getValue().getKey();
+				List<Integer> mergedList = pair.getValue().getValue();
+
+				System.out.println("  First List: " + firstList +
+						" -> Branch Type: " + branchType +
+						" -> Merged List: " + mergedList);
+			}
+		}
+	}
+
 }

@@ -27,7 +27,7 @@ import java.lang.*;
 
 import static java.lang.System.exit;
 import static utils.KillCallerOnly.kill;
-import javafx.util.Pair;
+import branch.Pair;
 
 public class Main {
 
@@ -103,21 +103,22 @@ public class Main {
 		System.out.println(" :> Overall Time Taken: [" + ((analysis_end - analysis_start) / 1000F + (res_end - res_start) / 1000F) + (postresolution_end - postresolution_start) / 1000F + "]seconds");
 		System.out.println("**********************************************************");
 		
-		for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
-			if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
-				System.out.println("Method is : "+ sm.toString());
-				System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
-			}
-		}
-		for (Map.Entry<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> entry : PostResolutionAnalyser.FinalBranchResult.entrySet()) {
-			SootMethod method = entry.getKey();
-			System.out.println("Method: " + method);
-		
-			for (Pair<List<Integer>, Pair<String, List<Integer>>> pair : entry.getValue()) {
-				System.out.println("  [" + pair.getKey() + ", \"" + pair.getValue().getKey() + "\", " + pair.getValue().getValue() + "]");
-			}
-		}
-		
+//		for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
+//			if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
+//				System.out.println("Method is : "+ sm.toString());
+//				System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
+//			}
+//		}
+//		for (Map.Entry<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> entry : PostResolutionAnalyser.FinalBranchResult.entrySet()) {
+//			SootMethod method = entry.getKey();
+//			System.out.println("Method: " + method);
+//
+//			for (Pair<List<Integer>, Pair<String, List<Integer>>> pair : entry.getValue()) {
+//				System.out.println("  [" + pair.getKey() + ", \"" + pair.getValue().getKey() + "\", " + pair.getValue().getValue() + "]");
+//			}
+//		}
+		PostResolutionAnalyser.printFinalBranchResult();
+
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
 
 		HashMap<SootMethod, HashMap<ObjectNode, List<ContextualEscapeStatus>>> cresolved = (HashMap) (SpeculativeResolver.PassedCallsiteValues);
@@ -301,10 +302,11 @@ public class Main {
 			printContReswithSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
 		} else if (args[5] != null && args[5].equals("specoptini")) {
 			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
+		}  else if (args[5] != null && args[5].equals("specoptinibranch")) {
+			printContReswithSPECTAndInlineAndBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
 		} else {
 			printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
 		}
-
 
 	}
 
@@ -690,6 +692,138 @@ public class Main {
 						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
 					}
 					sb.append("}");
+					sb.append("\n");
+				}
+			}
+		}
+
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
+
+	static void printContReswithSPECTAndInlineAndBranchForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+													 String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT,
+													  Map<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> FinalBranchResult ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+//		System.out.println("Coming here");
+//		System.out.println("The inline Summary: "+ inlinesummaries.toString());
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					if(SPEC_OPT.containsKey(method)) {
+						for(SootMethod sm : SPEC_OPT.keySet()) {
+							int count = 0;
+							if(method.equals(sm)) {
+								sb.append("[");
+								for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+									count ++;
+									if(count > 1) {
+										sb.append(" | ");
+									}
+									sb.append(p.toString());
+								}
+								sb.append("]");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
+
+					sb.append(" ! ");
+					sb.append("{");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+//						System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("}");
+					sb.append(" ~ ");
+					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					if(entry2 != null) {
+						int size = entry2.size();
+						for (int i = 0; i < size; i++) {
+							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
+							sb.append("[").append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue()).append("]");
+
+							// Append " | " only if this is not the last entry
+							if (i < size - 1) {
+								sb.append(" | ");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
+
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					for(SootMethod sm : SPEC_OPT.keySet()) {
+						int count = 0;
+						if(method.equals(sm)) {
+							sb.append("[");
+							for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+								count++;
+								if(count > 1) {
+									sb.append(" | ");
+								}
+								sb.append(p.toString());
+							}
+							sb.append("]");
+						}
+					}
+					sb.append(" ! ");
+					sb.append("{");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+						// System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("}");
+					sb.append(" ~ ");
+					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					if(entry2 != null) {
+						int size = entry2.size();
+						for (int i = 0; i < size; i++) {
+							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
+							sb.append("[").append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue()).append("]");
+
+							// Append " | " only if this is not the last entry
+							if (i < size - 1) {
+								sb.append(" | ");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
 					sb.append("\n");
 				}
 			}

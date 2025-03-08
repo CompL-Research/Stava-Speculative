@@ -11,18 +11,18 @@ class BranchSpecOpt3 {
     BranchSpecOpt3 foo(BranchSpecOpt3 p1) {
         BranchSpecOpt3 o1 = new BranchSpecOpt3();
         BranchSpecOpt3 o2 = new BranchSpecOpt3();
-        BranchSpecOpt3 o3;
+        BranchSpecOpt3 o3 = new BranchSpecOpt3();
         for(int i = 0; i<100000; i++) {
             if(i%2==0) {
                 o2 = new BranchSpecOpt3();
-                o3 = o1;
+//                o3 = o1;
 //                return o1;
             } else if(i%3==0) {
                 o2 = new Child2();
                 o2.bar(o1);
             } else {
                 o2 = new Child();
-                global2 = o1;
+                global2 = o3;
             }
             o2.bar(new BranchSpecOpt3()); // Polymorphic Callsite: 3 types
         }
