@@ -764,20 +764,20 @@ public class Main {
 					sb.append("}");
 					sb.append(" ~ ");
 					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					sb.append("[");
 					if(entry2 != null) {
 						int size = entry2.size();
 						for (int i = 0; i < size; i++) {
 							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
-							sb.append("[").append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue()).append("]");
+							sb.append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue());
 
 							// Append " | " only if this is not the last entry
 							if (i < size - 1) {
 								sb.append(" | ");
 							}
 						}
-					} else {
-						sb.append("[]");
 					}
+					sb.append("]");
 
 					sb.append("\n");
 				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
@@ -810,20 +810,20 @@ public class Main {
 					sb.append("}");
 					sb.append(" ~ ");
 					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					sb.append("[");
 					if(entry2 != null) {
 						int size = entry2.size();
 						for (int i = 0; i < size; i++) {
 							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
-							sb.append("[").append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue()).append("]");
+							sb.append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue());
 
 							// Append " | " only if this is not the last entry
 							if (i < size - 1) {
 								sb.append(" | ");
 							}
 						}
-					} else {
-						sb.append("[]");
 					}
+					sb.append("]");
 					sb.append("\n");
 				}
 			}

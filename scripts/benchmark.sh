@@ -96,8 +96,12 @@ else
 fi
 clean $output_path
 echo -e "$(tstamp) \e[32mCompiling Stava -- Benchmark-Suite: \"$benchmark_name\" \033[0K\r\e[0m"
-echo -ne "$(tstamp) \e[32mCompiling... \033[0K\r\e[0m"
-$java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java
+output=$($java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>&1)
+if [ $? -ne 0 ]; then
+  echo "$output"  # Show full output, including "Note:" warnings when there's an error
+  echo -e "$(tstamp) \e[31m!!! Error in compiling the Static Analyser !!! \033[0m"
+  exit 1
+fi
 echo -e "$(tstamp) \e[32mCompiled!!!\033[0K\r\e[0m"
 echo -e "$(tstamp) \e[32mGenerating the .res file...\e[0m"
 echo -e "\e[32m==================================================================\e[0m"
