@@ -13,7 +13,7 @@ import soot.toolkits.graph.ExceptionalUnitGraph;
 import utils.IllegalBCIException;
 //import javafx.util.Pair;
 import branch.Pair;
-
+import branch.ListStringKey;
 
 
 import java.util.*;
@@ -25,19 +25,21 @@ import branch.BranchUnits.Ifpart;
 
 public class PostResolutionAnalyser extends BodyTransformer {
 	// Store Branch Info Per method.
-	public static Map<SootMethod, BranchUnits> BranchInfo;
+	public Map<SootMethod, BranchUnits> BranchInfo;
+	public static HashSet<SootMethod> processedMethod;
 	static Map<SootMethod, PointsToGraph> ptgs;
 	
-	public static Map<SootMethod, Map<Integer, List<Map<Integer, String>>>> BranchResult;
+	// public static Map<SootMethod, Map<Integer, List<Map<Integer, String>>>> BranchResult;
 	public static Map<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> FinalBranchResult;
 
 	// public static Map<SootMethod, Map.Entry<Map<Integer, String>, List<Integer>>> mergedBranchResult;
 	public PostResolutionAnalyser ( Map<SootMethod, PointsToGraph> ptgs) {
 		super();
-		BranchInfo = new HashMap<>();
-		BranchResult = new ConcurrentHashMap<>();
+		// BranchInfo = new HashMap<>();
+		// BranchResult = new ConcurrentHashMap<>();
 		FinalBranchResult = new ConcurrentHashMap<>();
 		PostResolutionAnalyser.ptgs = ptgs;
+		processedMethod = new HashSet<>();
 	}
 	
 	enum BranchType {
@@ -52,11 +54,13 @@ public class PostResolutionAnalyser extends BodyTransformer {
         }
 		// Current Method
 		SootMethod curr_met = body.getMethod();
+		if(processedMethod.contains(curr_met)) {
+			return;
+		}
+		processedMethod.add(curr_met);
 		//[Debug]
 		System.out.println("==== Analyzing Method Name: " + curr_met.getBytecodeSignature() + " ==== " );
 //		System.out.println(body);
-
-		PatchingChain<Unit> units = body.getUnits();
 
 		// Get the resolved values from Resolver:
 		/*
@@ -68,17 +72,24 @@ public class PostResolutionAnalyser extends BodyTransformer {
 		// Check 1:  If Method has a escaping internal object.
 		List<ObjectNode> objectList;
 		objectList = checkIfEscapingObjectPresent(curr_met, SpeculativeResolver.MergedSummaries);
+		if (objectList.isEmpty()) {
+			return;
+		}
 //		for(ObjectNode o : objectList) {
 //			System.out.println(" Escaping Local Object: <"+ o.type + "," + o.ref + ">");
 //		}
+
+		PatchingChain<Unit> units = body.getUnits();
+		ExceptionalUnitGraph cfg = new ExceptionalUnitGraph(body);
 
 		// Check 2: If Method has conditional "IF" Statement.
 		boolean hasIF = false;
 		hasIF = checkIfHasConditionalIFStatment(units);
 		if(hasIF) {
-			ExceptionalUnitGraph cfg = new ExceptionalUnitGraph(body);
+
 			BranchUnits bu;
 			bu = getBranchUnits(curr_met, units, cfg);
+			Map<SootMethod, Map<Integer, List<Map<Integer, String>>>> BranchResult = new ConcurrentHashMap<>();
 //			if(bu != null && bu.ifpart.toString() != null && bu.elseifpart.toString() != null && bu.elsepart.toString() != null) {
 //				System.out.println("Branch Units: ");
 //				System.out.println(bu.ifpart.toString());
@@ -103,9 +114,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						if(!result.isEmpty()) {
 							forEachReason.add(result);
 						}
-						for(Integer i : result.keySet()){
-//							System.out.println("ARG: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
-						}
+						// for(Integer i : result.keySet()){
+						// 	System.out.println("ARG: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+						// }
 					} else if(er == EscapeReason.escape_global) {
 						forEachReason = new ArrayList<>();
 						Map<Integer, String> result; 
@@ -113,9 +124,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						if(!result.isEmpty()) {
 							forEachReason.add(result);
 						}
-						for(Integer i : result.keySet()){
-//							System.out.println("GLBL: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
-						}
+						// for(Integer i : result.keySet()){
+						// 	System.out.println("GLBL: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+						// }
 					} else if(er == EscapeReason.escape_parameter) {
 						forEachReason = new ArrayList<>();
 						Map<Integer, String> result; 
@@ -123,9 +134,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						if(!result.isEmpty()) {
 							forEachReason.add(result);
 						}
-						for(Integer i : result.keySet()){
-//							System.out.println("PARM: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
-						}
+						// for(Integer i : result.keySet()){
+						// 	System.out.println("PARM: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+						// }
 					} else if(er == EscapeReason.escape_return) {
 						forEachReason = new ArrayList<>();
 						Map<Integer, String> result; 
@@ -133,9 +144,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						if(!result.isEmpty()) {
 							forEachReason.add(result);
 						}
-						for(Integer i : result.keySet()){
-//							System.out.println("RET: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
-						}
+						// for(Integer i : result.keySet()){
+						// 	System.out.println("RET: AT BCI: "+ i + " IF: "+ result.get(i) + " IT ESCAPES.");
+						// }
 					}
 					if(objectWiseResult.containsKey(o)) {
 						objectWiseResult.get(o).addAll(forEachReason);
@@ -166,27 +177,29 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			// Store the final results for this method.
 			for(ObjectNode o : objectWiseResult.keySet()) {
 				List<Map<Integer, String>> temp = new ArrayList<>();
-				for(Map<Integer, String> m : objectWiseResult.get(o)) {
-					temp.add(m);
-				}
-				if(temp.size() > 0) {
-					BranchResult.get(curr_met).put(o.ref,temp);
+				if (objectWiseResult.get(o) != null) {
+					for(Map<Integer, String> m : objectWiseResult.get(o)) {
+						temp.add(m);
+					}
+					if(temp.size() > 0) {
+						BranchResult.get(curr_met).put(o.ref,temp);
+					}
 				}
 			}
 
 			// Refine the Results.
 			// for(SootMethod sm : PostResolutionAnalyser.BranchResult.keySet()) {
-			for(SootMethod sm : new HashSet<>(PostResolutionAnalyser.BranchResult.keySet())) {
-				if(!PostResolutionAnalyser.BranchResult.get(sm).isEmpty()) {
+			for(SootMethod sm : new HashSet<>(BranchResult.keySet())) {
+				if(!BranchResult.get(sm).isEmpty()) {
 //					System.out.println("Method is : "+ sm.toString());
 //					System.out.println(PostResolutionAnalyser.BranchResult.get(sm).toString());
-					for(Integer obj : PostResolutionAnalyser.BranchResult.get(sm).keySet()) {
+					for(Integer obj : BranchResult.get(sm).keySet()) {
 						boolean elsebranch = false;
 						// To store final Object Data
 						List<Pair<List<Integer>, Pair<String, List<Integer>>>> ObjectData  = new ArrayList<>(); 
 						// To store intemediate bci of if-elseif-else branches where it doesn't escape
 						List<Integer> bciOfIfElseBranchWhereDoesntEscape = new ArrayList<>();
-						List<Map<Integer, String>> objectInfo = PostResolutionAnalyser.BranchResult.get(sm).get(obj);
+						List<Map<Integer, String>> objectInfo = BranchResult.get(sm).get(obj);
 //						System.out.println("Object Info: "+ objectInfo.toString());
 						boolean IfkeyExists = objectInfo.stream()
 								.anyMatch(map -> map.containsKey(bu.ifpart.BCI));
@@ -238,56 +251,116 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			}
 
 
+			// for (SootMethod sm : FinalBranchResult.keySet()) {
+			// 	List<Pair<List<Integer>, Pair<String, List<Integer>>>> branchList = FinalBranchResult.get(sm);
+
+			// 	// Use LinkedHashMap to maintain insertion order while merging
+			// 	Map<Pair<List<Integer>, String>, Pair<String, List<Integer>>> seen = new LinkedHashMap<>();
+			// 	// Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = branchList.iterator();
+
+			// 	List<Pair<List<Integer>, Pair<String, List<Integer>>>> copy = new ArrayList<>(branchList);
+			// 	Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = copy.iterator();
+
+			// 	while (iterator.hasNext()) {
+			// 		Pair<List<Integer>, Pair<String, List<Integer>>> entry = iterator.next();
+			// 		if (entry == null || entry.getKey() == null || entry.getKey().isEmpty()) {
+			// 			continue;
+			// 		}
+			// 		List<Integer> firstList = entry.getKey();  // Extract first List<Integer>
+			// 		String branchType = entry.getValue().getKey();  // Extract branch type (String)
+			// 		List<Integer> lastList = entry.getValue().getValue();  // Extract last List<Integer>
+
+			// 		// Use a custom wrapper to compare lists correctly
+			// 		Pair<List<Integer>, String> key = new Pair<>(new ArrayList<>(firstList), branchType);
+
+			// 		if (seen.containsKey(key)) {
+			// 			// Get the existing lastList
+			// 			List<Integer> existingLastList = seen.get(key).getValue();
+
+			// 			// Merge lastList into the one that has more values, or into the first if equal
+			// 			if (existingLastList != null && lastList != null) {
+			// 				List<Integer> mergedList = new ArrayList<>(existingLastList);
+			// 				mergedList.addAll(lastList);
+			// 				seen.put(key, new Pair<>(branchType, mergedList)); // Update reference
+			// 			}
+			// 			iterator.remove(); // Remove the duplicate entry
+			// 		} else {
+			// 			seen.put(key, new Pair<>(branchType, new ArrayList<>(lastList))); // Store a copy
+			// 		}
+			// 	}
+
+			// 	// Update the FinalBranchResult with the merged data
+			// 	branchList.clear();
+			// 	for (Map.Entry<Pair<List<Integer>, String>, Pair<String, List<Integer>>> e : seen.entrySet()) {
+			// 		branchList.add(new Pair<>(e.getKey().getKey(), e.getValue()));
+			// 	}
+			// }
+			// for (SootMethod sm : FinalBranchResult.keySet()) {
+			// 	List<Pair<List<Integer>, Pair<String, List<Integer>>>> branchList = FinalBranchResult.get(sm);
+			
+			// 	// Use LinkedHashMap to maintain insertion order while merging
+			// 	Map<Pair<List<Integer>, String>, Pair<String, List<Integer>>> seen = new LinkedHashMap<>();
+			
+			// 	// Create a copy to safely iterate and modify the original list
+			// 	List<Pair<List<Integer>, Pair<String, List<Integer>>>> copy = new ArrayList<>(branchList);
+			// 	branchList.clear(); // Clear original list before updating
+			
+			// 	for (Pair<List<Integer>, Pair<String, List<Integer>>> entry : copy) {
+			// 		if (entry == null || entry.getKey() == null || entry.getKey().isEmpty()) {
+			// 			continue;
+			// 		}
+			// 		List<Integer> firstList = entry.getKey();
+			// 		String branchType = entry.getValue().getKey();
+			// 		List<Integer> lastList = entry.getValue().getValue();
+			
+			// 		// Ensure we create a new copy of firstList to avoid aliasing issues
+			// 		Pair<List<Integer>, String> key = new Pair<>(new ArrayList<>(firstList), branchType);
+			
+			// 		// Efficiently merge using computeIfAbsent()
+			// 		seen.computeIfAbsent(key, k -> new Pair<>(branchType, new ArrayList<>())).getValue().addAll(lastList);
+			// 	}
+			
+			// 	// Reconstruct the branchList from merged results
+			// 	for (Map.Entry<Pair<List<Integer>, String>, Pair<String, List<Integer>>> e : seen.entrySet()) {
+			// 		branchList.add(new Pair<>(e.getKey().getKey(), e.getValue()));
+			// 	}
+			// }
+
 			for (SootMethod sm : FinalBranchResult.keySet()) {
 				List<Pair<List<Integer>, Pair<String, List<Integer>>>> branchList = FinalBranchResult.get(sm);
-
-				// Use LinkedHashMap to maintain insertion order while merging
-				Map<Pair<List<Integer>, String>, Pair<String, List<Integer>>> seen = new LinkedHashMap<>();
-				// Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = branchList.iterator();
-
+			
+				// Use LinkedHashMap to maintain order and avoid duplication issues
+				Map<ListStringKey, Pair<String, Set<Integer>>> seen = new LinkedHashMap<>();
+			
+				// Copy to safely iterate and modify
 				List<Pair<List<Integer>, Pair<String, List<Integer>>>> copy = new ArrayList<>(branchList);
-				Iterator<Pair<List<Integer>, Pair<String, List<Integer>>>> iterator = copy.iterator();
-
-				while (iterator.hasNext()) {
-					Pair<List<Integer>, Pair<String, List<Integer>>> entry = iterator.next();
+				branchList.clear(); // Clear original list before updating
+			
+				for (Pair<List<Integer>, Pair<String, List<Integer>>> entry : copy) {
 					if (entry == null || entry.getKey() == null || entry.getKey().isEmpty()) {
 						continue;
 					}
-					List<Integer> firstList = entry.getKey();  // Extract first List<Integer>
-					String branchType = entry.getValue().getKey();  // Extract branch type (String)
-					List<Integer> lastList = entry.getValue().getValue();  // Extract last List<Integer>
-
-					// Use a custom wrapper to compare lists correctly
-					Pair<List<Integer>, String> key = new Pair<>(new ArrayList<>(firstList), branchType);
-
-					if (seen.containsKey(key)) {
-						// Get the existing lastList
-						List<Integer> existingLastList = seen.get(key).getValue();
-
-						// Merge lastList into the one that has more values, or into the first if equal
-						if (existingLastList.size() >= lastList.size()) {
-							existingLastList.addAll(lastList);
-						} else {
-							if (lastList != null && existingLastList != null) {
-								lastList.addAll(existingLastList);
-							}
-							seen.put(key, new Pair<>(branchType, lastList)); // Update reference
-						}
-						iterator.remove(); // Remove the duplicate entry
-					} else {
-						seen.put(key, new Pair<>(branchType, new ArrayList<>(lastList))); // Store a copy
-					}
+					List<Integer> firstList = entry.getKey();
+					String branchType = entry.getValue().getKey();
+					List<Integer> lastList = entry.getValue().getValue();
+			
+					// Create key using the new wrapper class
+					ListStringKey key = new ListStringKey(firstList, branchType);
+			
+					// Merge values using Set to avoid duplicates
+					seen.computeIfAbsent(key, k -> new Pair<>(branchType, new LinkedHashSet<>())).getValue().addAll(lastList);
 				}
-
-				// Update the FinalBranchResult with the merged data
-				branchList.clear();
-				for (Map.Entry<Pair<List<Integer>, String>, Pair<String, List<Integer>>> e : seen.entrySet()) {
-					branchList.add(new Pair<>(e.getKey().getKey(), e.getValue()));
+			
+				// Reconstruct the branchList from merged results
+				for (Map.Entry<ListStringKey, Pair<String, Set<Integer>>> e : seen.entrySet()) {
+					branchList.add(new Pair<>(new ArrayList<>(e.getKey().list), new Pair<>(e.getValue().getKey(), new ArrayList<>(e.getValue().getValue()))));
 				}
 			}
+			
+			// Print the final results			
 //			printFinalBranchResult();
 		} else {
-			System.out.println("No Conditional IF Statement Found.");
+			// System.out.println("No Conditional IF Statement Found.");
 		}
 	}
 	public static List<ObjectNode> checkIfEscapingObjectPresent(SootMethod m, Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> MergedSummaries) {
@@ -331,7 +404,7 @@ public class PostResolutionAnalyser extends BodyTransformer {
 				// Check all predecessors of this if-statement
 				boolean backEdge = false;
 				for (Unit pred : cfg.getPredsOf(unit)) {
-					// If a predecessor contains a goto to this unit → back edge found
+					// If a predecessor contains a goto to this unit  back edge found
 //					System.out.println("Pred Unit: " + pred + "Succ Unit: " + unit);
 					if (pred instanceof GotoStmt) {
 						GotoStmt gotoStmt = (GotoStmt) pred;
@@ -371,7 +444,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 					bu.ifpart.IfUnits.add(unit);
 				} else if (currentBranch == BranchType.ELSEIF) {
 					if (bu.elseifpart.containsKey(bci)) {
-						bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+						if (bu.elseifpart.get(bci) != null) {
+							bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+						}
 					}
 				} else if (currentBranch == BranchType.ELSE) {
 					bu.elsepart.ElseUnits.add(unit);
@@ -391,7 +466,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 						currentBranch = BranchType.ELSE;
 					}
 				} else if (currentBranch == BranchType.ELSEIF) {
-					bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+					if (bu.elseifpart.containsKey(bci)) {
+						bu.elseifpart.get(bci).ElseIfUnits.add(unit);
+					}
 					Unit nextUnit = units.getSuccOf(unit);
 					if(nextUnit instanceof JIfStmt) {
 						currentBranch = BranchType.ELSEIF;

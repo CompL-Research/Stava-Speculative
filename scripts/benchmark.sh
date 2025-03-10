@@ -8,7 +8,7 @@ tstamp() { date +[%T]; }
 # Arguments: 1) name of benchmark eg: bash benchmark.sh dacapo
 
 # Installed path of Java 8 JDK
-java_install_path="/home/adityaanand/PhD/Research-Workspace/JDK/jdk1.8.0_301"
+java_install_path="/home/aditya/wd/JDK/jdk1.8.0_301"
 
 # Path to the directory containing all benchmarks. The subdirectories here must
 # contain individual benchmarks 
@@ -97,9 +97,9 @@ fi
 clean $output_path
 echo -e "$(tstamp) \e[32mCompiling Stava -- Benchmark-Suite: \"$benchmark_name\" \033[0K\r\e[0m"
 echo -ne "$(tstamp) \e[32mCompiling... \033[0K\r\e[0m"
-$java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java 2>/dev/null
+$java_compiler -cp $soot_path:${stava_path}/src ${stava_path}/src/main/Main.java
 echo -e "$(tstamp) \e[32mCompiled!!!\033[0K\r\e[0m"
 echo -e "$(tstamp) \e[32mGenerating the .res file...\e[0m"
 echo -e "\e[32m==================================================================\e[0m"
-$java_vm -Xmx10g -Xss2m -classpath $soot_path:$stava_run main.Main $java_install_path true $benchmark_path $main_class $output_path $2
+$java_vm -Xmx32g -Xss10m -classpath $soot_path:$stava_run main.Main $java_install_path true $benchmark_path $main_class $output_path $2
 echo -e "\e[32m==================================================================\e[0m"

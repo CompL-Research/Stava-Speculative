@@ -91,8 +91,10 @@ public class PolymorphicInvokeCounter extends BodyTransformer {
                         }
         
                         // Fix 5: Ensure polymorphicInvokes entry exists
-                        polymorphicInvokes.get(callSite).addAll(methods);
-                        flag = true;
+                        if(!methods.contains(null)) {
+                            polymorphicInvokes.get(callSite).addAll(methods);
+                            flag = true;
+                        }
                     }
                 }
                 // if(!edges.isEmpty()) {

@@ -9,7 +9,7 @@ tstamp() { date +[%T]; }
 # Installed path of Java 8 JDK
 #java_install_path="/home/aditya/Documents/Research-Workspace/JDK/jdk1.8.0_301"
 
-java_install_path="/home/adityaanand/PhD/Research-Workspace/JDK/jdk1.8.0_301"
+java_install_path="/home/aditya/wd/JDK/jdk1.8.0_301"
 
 # The soot jar to be used.
 

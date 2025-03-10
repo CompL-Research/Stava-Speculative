@@ -117,7 +117,7 @@ public class Main {
 //				System.out.println("  [" + pair.getKey() + ", \"" + pair.getValue().getKey() + "\", " + pair.getValue().getValue() + "]");
 //			}
 //		}
-		PostResolutionAnalyser.printFinalBranchResult();
+		// PostResolutionAnalyser.printFinalBranchResult();
 
 		HashMap<SootMethod, HashMap<ObjectNode, EscapeStatus>> resolved = (HashMap) kill(SpeculativeResolver.MergedSummaries);
 
