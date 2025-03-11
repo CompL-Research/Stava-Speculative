@@ -41,6 +41,10 @@ if [[ $1 == "dacapo" ]]; then
     output_path="${output_base_path}/dacapo"
     main_class="Harness"
     benchmark_name="DaCapo"
+elif [[ $1 == "newDacapo" ]]; then
+    benchmark_path="${benchmarks_base_path}/dacapo-chopin/dacapo-23.11-chopin"
+    output_path="${output_base_path}/dacapo-chopin"
+    main_class="Harness"
 elif [[ $1 == "jbb" ]]; then
     benchmark_path="${benchmarks_base_path}/spec-jbb/"
     output_path="${output_base_path}/spec-jbb/"
@@ -105,5 +109,5 @@ fi
 echo -e "$(tstamp) \e[32mCompiled!!!\033[0K\r\e[0m"
 echo -e "$(tstamp) \e[32mGenerating the .res file...\e[0m"
 echo -e "\e[32m==================================================================\e[0m"
-$java_vm -Xmx32g -Xss10m -classpath $soot_path:$stava_run main.Main $java_install_path true $benchmark_path $main_class $output_path $2
+$java_vm -Xmx32g -Xss10m -classpath $soot_path:$stava_run main.Main $java_install_path true $benchmark_path $main_class $output_path $2 $3
 echo -e "\e[32m==================================================================\e[0m"

@@ -22,7 +22,11 @@ public class GetSootArgs {
 			// this is a benchmark
 			if (args[3].contains("Harness")) {
 				// the benchmark is dacapo
-				return dacapo(args);
+				if(args[6].contains("newDacapo")) {
+					return newdacapo(args);
+				} else {
+					return dacapo(args);
+				}
 			} else if (args[3].contains("org.renaissance.core.Launcher")) {
 				return ren(args);
 			} else if (args[3].contains("JBB")) {
@@ -81,6 +85,46 @@ public class GetSootArgs {
 		}
 		System.out.println("]");
 		System.out.print("**********************************************************");
+		return sootArgs;
+	}
+
+	private String[] newdacapo(String[] args) {
+		String dir = args[2] + "/out";
+		String refl_log = "reflection-log:" + dir + "/refl.log";
+		// String cp = args[0] + "/jre/lib/rt.jar:" + args[0] + "/jre/lib/jce.jar:" +
+		// dir + ":" + args[2] + "/dacapo-9.12-MR1-bach.jar";
+		String cp = dir + ":" + args[2] + "/dacapo-23.11-chopin.jar";
+		System.out.print(" Came here ");
+
+		String[] sootArgs = {
+				"-whole-program",
+				"-app",
+				"-allow-phantom-refs",
+				"-keep-bytecode-offset",
+				"-no-bodies-for-excluded",
+				"-keep-offset",
+				"-soot-classpath", cp,
+				"-prepend-classpath",
+				"-keep-line-number",
+				"-main-class", args[3],
+				"-process-dir", dir,
+				"-p", "cg.spark", "on",
+				"-p", "cg", refl_log,
+				"-output-dir", args[4],
+				"-output-format", "jimple",
+				"-ire",
+				"-i", "jdt.*",
+				"-i", "jdk.*",
+				"-i", "java.*",
+				"-i", "org.*",
+				"-i", "com.*",
+				"-i", "sun.*",
+				// "-i", "javax.*",
+		};
+		for (String s : sootArgs) {
+			System.out.print(s + " ");
+		}
+		System.out.println("");
 		return sootArgs;
 	}
 

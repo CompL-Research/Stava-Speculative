@@ -89,6 +89,7 @@ public class Main {
 		System.out.println("**********************************************************");
 		// -- 3.
 		long postresolution_start = System.currentTimeMillis();
+		System.out.println(" 3. Starting Post Resolution Phase: ");
 		PostResolutionAnalyser ps = new PostResolutionAnalyser(StaticAnalyser.ptgs);
 		PackManager.v().getPack("jtp").add(new Transform("jtp.postres", ps));
 		Scene.v().loadNecessaryClasses();

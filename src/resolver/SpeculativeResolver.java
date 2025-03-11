@@ -296,9 +296,9 @@ public class SpeculativeResolver extends Formatter {
 //                    System.out.println(key.toString());
 //                    debug = true;
 //                }
-                if(debug) { System.out.println("***************************************************************");
+                if(true) { 
                             System.out.println(" ********  Resolving Method: " + ++j + "." + key + "  ******** ");
-                            System.out.println("***************************************************************"); }
+                         }
 
                 /*
                  * Get the objects in sorted order.
