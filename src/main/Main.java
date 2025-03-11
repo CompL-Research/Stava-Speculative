@@ -53,7 +53,20 @@ public class Main {
 			System.out.println("Unable to generate args for soot!");
 			return;
 		}
+		// New DaCapo Includes.
+
+		//kafka
+		Scene.v().addBasicClass("scala.runtime.java8.JFunction1$mcJJ$sp",SootClass.HIERARCHY);
+		Scene.v().addBasicClass("scala.runtime.java8.JFunction1$mcZJ$sp",SootClass.HIERARCHY);
+		Scene.v().addBasicClass("scala.runtime.java8.JFunction0$mcD$sp",SootClass.HIERARCHY);
+		Scene.v().addBasicClass("scala.runtime.java8.JFunction2$mcZII$sp",SootClass.HIERARCHY);
+		Scene.v().addBasicClass("scala.runtime.java8.JFunction1$mcVD$sp",SootClass.HIERARCHY);
 		
+		// h2o
+		Scene.v().addBasicClass("water.codegen.CodeGenerator",SootClass.HIERARCHY);
+
+
+
 		PolymorphicInvokeCounter pic = new PolymorphicInvokeCounter();
 		PackManager.v().getPack("jtp").add(new Transform("jtp.pic", pic));
 

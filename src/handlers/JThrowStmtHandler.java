@@ -20,6 +20,8 @@ public class JThrowStmtHandler {
 			} else {
 				// throw new IllegalArgumentException("No ptset for " + u.toString() + " found!");
 			}
+		} else if(op instanceof soot.jimple.NullConstant) {
+			// Do nothing
 		} else {
 			throw new IllegalArgumentException("op is not a local: " + op.getClass() + " in " + u.toString());
 		}

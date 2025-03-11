@@ -45,6 +45,7 @@ elif [[ $1 == "newDacapo" ]]; then
     benchmark_path="${benchmarks_base_path}/dacapo-chopin/dacapo-23.11-chopin"
     output_path="${output_base_path}/dacapo-chopin"
     main_class="Harness"
+    benchmark_name="New DaCapo"
 elif [[ $1 == "jbb" ]]; then
     benchmark_path="${benchmarks_base_path}/spec-jbb/"
     output_path="${output_base_path}/spec-jbb/"

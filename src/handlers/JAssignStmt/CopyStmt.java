@@ -43,9 +43,15 @@ public class CopyStmt {
 			}
 			return;
 		}
-		Local rhs;
+		Local rhs = null;
 		try {
-			rhs = (Local) op;
+			if (op instanceof Local) {
+				rhs = (Local) op;
+			} else {
+				// rhs = (soot.jimple.StringConstant) op;
+				// System.out.println("rhs is not an instance of Local at: " + u.toString());
+				// return;
+			}
 		} catch (Exception e) {
 			System.out.println("Unable to cast rhs to Local at: " + u.toString());
 			throw e;

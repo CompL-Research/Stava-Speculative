@@ -168,6 +168,10 @@ public class JInvokeStmtHandler {
 			}
 		}
 		else if (expr instanceof JStaticInvokeExpr) {
+		
+		} 
+		else if (expr instanceof JDynamicInvokeExpr) {
+
 		}
 		else {
 			System.err.println("Unidentified invoke expr: " + expr.toString());
