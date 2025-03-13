@@ -83,7 +83,7 @@ public class getBCI {
 				if (tg != null)
 					return tg.getBytecodeOffset();
 			}
-		}
+		
 		Tag t = u.getTag("BytecodeOffsetTag");
 		if (t == null) {
 			return -1;
@@ -105,5 +105,7 @@ public class getBCI {
 		}
 //		System.out.println("The returned BCI is: "+ _ret);
 		return _ret;
+	}
+	return _ret;
 	}
 }

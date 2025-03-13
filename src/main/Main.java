@@ -319,8 +319,20 @@ public class Main {
 		}  else if (args[5] != null && args[5].equals("specoptinibranch")) {
 			printContReswithSPECTAndInlineAndBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
 		} else {
-			printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
+			// printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
 		}
+
+		// if (args[5] != null && args[5].equals("specopt")) {
+		// 	printjustSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
+		// } else if (args[5] != null && args[5].equals("specoptini")) {
+		// 	printjusInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
+		// }  else if (args[5] != null && args[5].equals("specoptinibranch")) {
+		// 	printjustBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
+		// } else if(args[5] != null && args[5].equals("printpldi")) {
+		// 	printPLDI(SpeculativeResolver.MergedSummaries, args[2], args[4]);
+		// } else {
+		// 	printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
+		// }
 
 	}
 
@@ -624,6 +636,94 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+
+
+	// 1st Contribution
+
+
+	static void printjustSPECTForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+								   String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					if(SPEC_OPT.containsKey(method)) {
+						for(SootMethod sm : SPEC_OPT.keySet()) {
+							int count = 0;
+							if(method.equals(sm)) {
+								sb.append("[");
+								for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+									count ++;
+									if(count > 1) {
+										sb.append(" | ");
+									}
+									sb.append(p.toString());
+								}
+								sb.append("]");
+							}
+						}
+					} else {
+						sb.append("[]");
+					}
+					sb.append(" ! ");
+					sb.append("[]");
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					for(SootMethod sm : SPEC_OPT.keySet()) {
+						int count = 0;
+						if(method.equals(sm)) {
+							sb.append("[");
+							for(PolymorphicConditionalValue p : SPEC_OPT.get(sm)) {
+								count++;
+								if(count > 1) {
+									sb.append(" | ");
+								}
+								sb.append(p.toString());
+							}
+							sb.append("]");
+						}
+					}
+					sb.append(" ! ");
+					sb.append("{}");
+					sb.append(" ~ ");
+					sb.append("[]");
+					sb.append("\n");
+				}
+			}
+		}
+
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
+
 	static void printContReswithSPECTAndInlineForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
 													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
 											String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
@@ -721,6 +821,79 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+
+	// 2nd Contribution
+	static void printjusInlineForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+											String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+//		System.out.println("Coming here");
+//		System.out.println("The inline Summary: "+ inlinesummaries.toString());
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ! ");
+					sb.append("{");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+//						System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("}");
+					sb.append(" ~ ");
+					sb.append("[]");
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ! ");
+					sb.append("{");
+					i = 0;
+					List<CallSite> c = PrintInlineInfo.getSortedCallSites(method, inlinesummaries);
+					for(CallSite cs : c) {
+						// System.out.println("CS is : "+ cs.toString());
+						sb.append(PrintInlineInfo.get(cs, inlinesummaries.get(cs)));
+					}
+					sb.append("}");
+					sb.append(" ~ ");
+					sb.append("[]");
+					sb.append("\n");
+				}
+			}
+		}
+
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
+
 
 	static void printContReswithSPECTAndInlineAndBranchForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
 													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
@@ -855,6 +1028,95 @@ public class Main {
 	}
 
 
+	// 3rd Contribution 
+	static void printjustBranchForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+													 Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
+													 String ipDir, String opDir, Map<SootMethod, List<PolymorphicConditionalValue>> SPEC_OPT,
+													  Map<SootMethod, List<Pair<List<Integer>, Pair<String, List<Integer>>>>> FinalBranchResult ) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+//		System.out.println("Coming here");
+//		System.out.println("The inline Summary: "+ inlinesummaries.toString());
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			if(method != null) {
+				HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+				String sbtemp = GetListOfNoEscapeObjects.get(summary);
+				if(sbtemp != null) {
+					//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append(GetListOfNoEscapeObjects.get(summary));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ! ");
+					sb.append("{");
+					sb.append("}");
+					sb.append(" ~ ");
+					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					sb.append("[");
+					if(entry2 != null) {
+						int size = entry2.size();
+						for (int i = 0; i < size; i++) {
+							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
+							sb.append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue());
+
+							// Append " | " only if this is not the last entry
+							if (i < size - 1) {
+								sb.append(" | ");
+							}
+						}
+					}
+					sb.append("]");
+
+					sb.append("\n");
+				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
+					sb.append(transformFuncSignature(method.getBytecodeSignature()));
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ");
+					sb.append("[]");
+					sb.append(" ! ");
+					sb.append("{");
+					sb.append("}");
+					sb.append(" ~ ");
+					List<Pair<List<Integer>, Pair<String, List<Integer>>>> entry2 = FinalBranchResult.get(method);
+					sb.append("[");
+					if(entry2 != null) {
+						int size = entry2.size();
+						for (int i = 0; i < size; i++) {
+							Pair<List<Integer>, Pair<String, List<Integer>>> pair = entry2.get(i);
+							sb.append(pair.getKey()).append(" ").append(pair.getValue().getKey()).append(" ").append(pair.getValue().getValue());
+
+							// Append " | " only if this is not the last entry
+							if (i < size - 1) {
+								sb.append(" | ");
+							}
+						}
+					}
+					sb.append("]");
+					sb.append("\n");
+				}
+			}
+		}
+
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
 
 
 	static void printContResForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
@@ -893,6 +1155,49 @@ public class Main {
 		}
 	}
 
+
+	static void printPLDI(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
+								   String ipDir, String opDir) {
+		// Open File
+		Path p_ipDir = Paths.get(ipDir);
+		Path p_opDir = Paths.get(opDir);
+
+		Path p_opFile = Paths.get(p_opDir.toString() + "/" + p_ipDir.getFileName() + ".res");
+
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<SootMethod, HashMap<ObjectNode, EscapeStatus>> entry : summaries.entrySet()) {
+			SootMethod method = entry.getKey();
+			if(method.toString().contains("methodType")) {
+				continue;
+			}
+			//if(!method.isJavaLibraryMethod()) {
+			HashMap<ObjectNode, EscapeStatus> summary = entry.getValue();
+			String sbtemp = GetListOfNoEscapeObjects.get(summary);
+			if(sbtemp != null) {
+				//System.out.println("Value of sbtemp : "+ sbtemp.toString());
+				sb.append(transformFuncSignature(method.getBytecodeSignature()));
+				sb.append(" ");
+				sb.append(GetListOfNoEscapeObjects.get(summary));
+				sb.append(" ");
+				sb.append("[]");
+				sb.append(" ! ");
+				sb.append("{");
+				sb.append("}");
+				sb.append(" ~ ");
+				sb.append("[]");
+				sb.append("\n");
+			}
+		}
+		try {
+			System.out.println("Trying to write to:" + p_opFile);
+			Files.write(p_opFile, sb.toString().getBytes(StandardCharsets.UTF_8),
+					Files.exists(p_opFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			System.out.println("Results have been written.");
+		} catch (IOException e) {
+			System.out.println("There is an exception"+e);
+			e.printStackTrace();
+		}
+	}
 	static void printContReswitinlineForJVM(Map<SootMethod, HashMap<ObjectNode, EscapeStatus>> summaries,
 								   Map<CallSite, HashMap<SootMethod, HashSet<Integer>>> inlinesummaries,
 								   String ipDir, String opDir) {
