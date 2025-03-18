@@ -316,8 +316,10 @@ public class Main {
 			printContReswithSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
 		} else if (args[5] != null && args[5].equals("specoptini")) {
 			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
-		}  else if (args[5] != null && args[5].equals("specoptinibranch")) {
+		} else if (args[5] != null && args[5].equals("specoptinibranch")) {
 			printContReswithSPECTAndInlineAndBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
+		} else if(args[5] != null && args[5].equals("printpldi")) {
+			printPLDI(SpeculativeResolver.MergedSummaries, args[2], args[4]);
 		} else {
 			// printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
 		}

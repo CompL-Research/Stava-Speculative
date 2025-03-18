@@ -72,8 +72,8 @@ public class CopyStmt {
 		} else {
 			// rhs is a field variable
 			// rhs could be null
-			System.out.println("[Copystmthelper] " + u.toString());
-			System.out.println("[Copystmthelper] " + ptg.toString());
+			// System.out.println("[Copystmthelper] " + u.toString());
+			// System.out.println("[Copystmthelper] " + ptg.toString());
 			// throw new IllegalArgumentException("");
 //			ObjectNode obj = new ObjectNode(utils.getBCI.get(u), ObjectType.external);
 //			ptSet = new HashSet<ObjectNode>();

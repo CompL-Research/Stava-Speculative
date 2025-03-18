@@ -153,7 +153,7 @@ public class JInvokeStmtHandler {
 			// edges = new ArrayList<>();
 			//System.out.println("Empty edges: "+expr+", function incoming edges: "+cg.edgesInto(m).hasNext()+
 								//" Method: "+m.getBytecodeSignature());
-			edges.add(new Edge(m, u, expr.getMethod(), Kind.SPECIAL));	
+			// edges.add(new Edge(m, u, expr.getMethod(), Kind.SPECIAL));	
 		}
 		
 		//System.out.println("Edges: "+edges);
