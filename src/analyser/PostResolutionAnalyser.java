@@ -353,7 +353,9 @@ public class PostResolutionAnalyser extends BodyTransformer {
 			
 				// Reconstruct the branchList from merged results
 				for (Map.Entry<ListStringKey, Pair<String, Set<Integer>>> e : seen.entrySet()) {
-					branchList.add(new Pair<>(new ArrayList<>(e.getKey().list), new Pair<>(e.getValue().getKey(), new ArrayList<>(e.getValue().getValue()))));
+					if (e.getKey().list != null && e.getValue().getValue() != null) {
+						branchList.add(new Pair<>(new ArrayList<>(e.getKey().list), new Pair<>(e.getValue().getKey(), new ArrayList<>(e.getValue().getValue()))));
+					}
 				}
 			}
 			
