@@ -478,8 +478,10 @@ public class SpeculativeResolver extends Formatter {
                                             }
                                         } else {
                                             // Case 2: If Merged Summary doesn't have resolved value. ** Callee ** not yet resolved.
-                                            MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
-                                            if(debug) {System.out.println("No Summary: NOESCAPE"); }
+                                            if(!MergedSummaries.get(key).containsKey(obj)) {
+                                                MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                                if(debug) {System.out.println("No Summary: NOESCAPE"); }
+                                            }   
                                         }
                                     }
                                     allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
