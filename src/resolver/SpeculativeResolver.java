@@ -449,8 +449,11 @@ public class SpeculativeResolver extends Formatter {
                                                                             MergedSummaries.get(key).put(obj,
                                                                                     new EscapeStatus(Escape.getInstance()));
                                                                         } else {
-                                                                            MergedSummaries.get(key).put(obj,
-                                                                                    new EscapeStatus(NoEscape.getInstance()));
+                                                                            if(!MergedSummaries.get(key).containsKey(obj)){
+                                                                                MergedSummaries.get(key).put(obj,
+                                                                                new EscapeStatus(NoEscape.getInstance()));
+                                                                            }
+
                                                                         }
                                                                     }
                                                                 }
@@ -472,16 +475,22 @@ public class SpeculativeResolver extends Formatter {
                                                 }
 
                                             }
-                                            // (1.else) Mark as non escaping.
+                                            // (1.else) Mark as non escaping if is not marked for escaping already.
                                             else {
-                                                MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                                if(!MergedSummaries.get(key).containsKey(obj)) {
+                                                    MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
+                                                }
                                             }
                                         } else {
                                             // Case 2: If Merged Summary doesn't have resolved value. ** Callee ** not yet resolved.
                                             if(!MergedSummaries.get(key).containsKey(obj)) {
                                                 MergedSummaries.get(key).put(obj, new EscapeStatus(NoEscape.getInstance()));
                                                 if(debug) {System.out.println("No Summary: NOESCAPE"); }
-                                            }   
+                                            } else {
+                                                if(!MergedSummaries.get(key).get(obj).doesEscape()) {
+                                                    MergedSummaries.get(key).get(obj).status.add(NoEscape.getInstance());
+                                                }
+                                            }  
                                         }
                                     }
                                     allresolvedstatusforthisobject.put(cstate, MergedSummaries.get(key).get(obj));
@@ -519,7 +528,7 @@ public class SpeculativeResolver extends Formatter {
                                      */
 
                                     /* Case 1: Checking if the current object is a local object */
-                                    if(obj.type == ObjectType.internal || obj.type == ObjectType.parameter) {
+                                    if(obj.type == ObjectType.internal || obj.type == ObjectType.parameter || obj.type == ObjectType.external) {
                                         //  Mark as Escaping
                                         if(debug) {System.out.println("Local Object in return marked for escaping!!!");}
                                         MergedSummaries.get(key).put(obj, new EscapeStatus(Escape.getInstance()));  
@@ -1129,15 +1138,15 @@ public class SpeculativeResolver extends Formatter {
                         if (debug) { System.out.println("Final Resolved Value in this iteration is : " + MergedSummaries.get(key).get(obj)); }
 
                         // assert
-//                        if (previoussolvesummaries.get(key).get(obj).doesEscape()
-//                                && !MergedSummaries.get(key).get(obj).doesEscape()) {
-//                            System.out.println("Things Going Wrong Here");
-//                            System.out.println("Method is : " + key.toString() + "Object is : " + obj.toString());
-//                            System.out.println(
-//                                    "CV's for the object are : " + existingSummaries.get(key).get(obj).toString());
-//                            System.out
-//                                    .println("Resolved Status for CV's: " + allresolvedstatusforthisobject.toString());
-//                        }
+                    //    if (previoussolvesummaries.get(key).get(obj).doesEscape()
+                    //            && !MergedSummaries.get(key).get(obj).doesEscape()) {
+                    //        System.out.println("Things Going Wrong Here");
+                    //        System.out.println("Method is : " + key.toString() + "Object is : " + obj.toString());
+                    //        System.out.println(
+                    //                "CV's for the object are : " + existingSummaries.get(key).get(obj).toString());
+                    //        System.out
+                    //                .println("Resolved Status for CV's: " + allresolvedstatusforthisobject.toString());
+                    //    }
 
                         // Find the methods which need to be reanalyzed due to change in the current method "Object passed as parameter might be escaping now"
 

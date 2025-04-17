@@ -310,19 +310,19 @@ public class Main {
 
 		//System.out.println("Additional stack allocatable sites: "+ number_obj);
 		saveConStats(SpeculativeResolver.existingSummaries, resolved, SpeculativeResolver.inlineSummaries, args[4], StaticAnalyser.ptgs);
-		// if (args[5] != null && args[5].equals("inline")) {
-		// 	printContReswitinlineForJVM(SpeculativeResolver.MergedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
-		// } else if (args[5] != null && args[5].equals("specopt")) {
-		// 	printContReswithSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
-		// } else if (args[5] != null && args[5].equals("specoptini")) {
-		// 	printContReswithSPECTAndInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
-		// } else if (args[5] != null && args[5].equals("specoptinibranch")) {
-		// 	printContReswithSPECTAndInlineAndBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
-		// } else if(args[5] != null && args[5].equals("printpldi")) {
-		// 	printPLDI(SpeculativeResolver.MergedSummaries, args[2], args[4]);
-		// } else {
-		// 	// printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
-		// }
+		if (args[5] != null && args[5].equals("inline")) {
+			printContReswitinlineForJVM(SpeculativeResolver.MergedSummaries, SpeculativeResolver.inlineSummaries, args[2], args[4]);
+		} else if (args[5] != null && args[5].equals("specopt")) {
+			printContReswithSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
+		} else if (args[5] != null && args[5].equals("specoptini")) {
+			printContReswithSPECTAndInlineForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT);
+		} else if (args[5] != null && args[5].equals("specoptinibranch")) {
+			printContReswithSPECTAndInlineAndBranchForJVM(SpeculativeResolver.MergedSummaries,  SpeculativeResolver.inlineSummaries, args[2], args[4],SPEC_OPT, PostResolutionAnalyser.FinalBranchResult);
+		} else if(args[5] != null && args[5].equals("printpldi")) {
+			printPLDI(SpeculativeResolver.MergedSummaries, args[2], args[4]);
+		} else {
+			// printContResForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4]);
+		}
 
 		// if (args[5] != null && args[5].equals("specopt")) {
 		// 	printjustSPECTForJVM(SpeculativeResolver.MergedSummaries, args[2], args[4],SPEC_OPT);
@@ -685,6 +685,8 @@ public class Main {
 						sb.append("[]");
 					}
 					sb.append(" ! ");
+					sb.append("{}");
+					sb.append(" ~ ");
 					sb.append("[]");
 					sb.append("\n");
 				} else if(sbtemp == null && SPEC_OPT.containsKey(method)) {
