@@ -26,6 +26,8 @@ More instructions [here](https://github.com/adityaanand7/Speculative-Stack-Alloc
 * [Soot](https://github.com/soot-oss/soot)- a Java optimization framework which enables this project to look into class files and much more. 
 
 ## Authors
+* [*Nikhil T R*](https://github.com/42niks)
+* [*Dheeraj Yadav*](https://github.com/dheeraj135)
 * [*Aditya Anand*](https://adityaanand7.github.io)
 * [*Manas Thakur*](https://www.cse.iitb.ac.in/~manas/) 
 
